@@ -1,0 +1,64 @@
+.switch > input {
+    color: #FF4D4D;
+    font: 1em "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.toggle, .toggle:before, .slot__label {
+    transition-duration: 0.25s;
+}
+
+.toggle:before, .slot, .slot__label {
+    display: block;
+}
+
+.toggle:before {
+    position: absolute;
+}
+
+.toggle:checked {
+    background-color: #fad5b4;
+}
+
+.toggle {
+    border-radius: 0.75em;
+    box-shadow: 0 0 0 0.1em;
+    cursor: pointer;
+    position: relative;
+    margin-right: 0.25em;
+    width: 3em;
+    height: 1.5em;
+    appearance: none;
+}
+
+.toggle:before {
+    border-color: #FF4D4D;
+    background: currentColor;
+    border-radius: 50%;
+    content: "";
+    top: 0.2em;
+    left: 0.2em;
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.toggle:checked:before {
+    transform: translateX(1.5em);
+}
+
+.toggle:checked ~ .slot .slot__label, .slot__label:nth-child(2) {
+    transform: translateY(-50%) scaleY(0);
+}
+
+.toggle:checked ~ .slot .slot__label:nth-child(2) {
+    transform: translateY(-100%) scaleY(1);
+}
+
+.slot {
+    color: #FF4D4D;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1;
+    overflow: hidden;
+    height: 1em;
+}
