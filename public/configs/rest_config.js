@@ -1,7 +1,8 @@
 const GET_METHOD = 'GET';
 const POST_METHOD = 'POST';
 
-export const backendUrl = "https://127.0.0.1:8001/api/v1"
+export const backendUrl = "http://212.233.89.163:8001/api/v1"
+
 
 export const restEndpoints = {
     getPosts:  {

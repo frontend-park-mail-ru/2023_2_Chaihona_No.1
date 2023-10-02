@@ -22,6 +22,6 @@ export default async() => {
         }
         const user = {id: "1"};
         navbar(user);
-        //window.router.goTo('/profile' + user.id);
+        //window.router.goTo('/profile' + '1');
     });
 }

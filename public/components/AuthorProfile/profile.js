@@ -3,7 +3,7 @@ import {Api} from "../../modules/api.js";
 /**
  * Функция отрисовки страницы пользователя
  */
-export default async() => {
+export default async () => {
     const rootElement = document.querySelector('#root');
     rootElement.innerHTML = '';
     const currUrl = window.location.href.split('/').pop();

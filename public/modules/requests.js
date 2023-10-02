@@ -16,9 +16,12 @@ export class Requests {
         }
 
         const response = await fetch(url, params);
-
+	
         try {
-            const responseJson = await response.json();
+            let responseJson = ''
+	    if (url !== 'http://212.233.89.163:8001/api/v1/login'){
+	        responseJson = await response.json();
+	    }
             return {
                 status: response.status,
                 data: responseJson
