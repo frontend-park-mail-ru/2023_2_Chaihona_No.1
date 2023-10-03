@@ -21,6 +21,12 @@ export class Api extends Requests {
         return await this.make_request(url, endpoint.method, {login, password});
     }
 
+    async logout() {
+        const endpoint =restEndpoints['logout'];
+        consturl = backendUrl + endpoint.url;
+        return await this.make_request(url, endpoint.method)
+    }
+
     async isAuth() {
         const endpoint = restEndpoints['checkAuth'];
         const url = backendUrl + endpoint.url;

@@ -3,6 +3,10 @@ export default (user = null) => {
     navbarElement.innerHTML = '';
     if (user) {
         navbarElement.innerHTML = Handlebars.templates.navbar({"User": {"id": "1"}});
+        const logoutBtn = document.querySelector("#exit-btn")
+        logoutBtn.addEventListener("click", function (e) {
+            window.router.redirect('/logout');
+        });
     } else {
         navbarElement.innerHTML = Handlebars.templates.navbar();
         const loginBtn = document.querySelector("#login-btn");
