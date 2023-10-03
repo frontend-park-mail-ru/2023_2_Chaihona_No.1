@@ -23,7 +23,7 @@ export class Api extends Requests {
 
     async logout() {
         const endpoint =restEndpoints['logout'];
-        consturl = backendUrl + endpoint.url;
+        const url = backendUrl + endpoint.url;
         return await this.make_request(url, endpoint.method)
     }
 
