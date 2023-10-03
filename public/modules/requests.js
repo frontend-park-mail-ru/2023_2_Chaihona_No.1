@@ -18,10 +18,11 @@ export class Requests {
         const response = await fetch(url, params);
 	
         try {
-            let responseJson = ''
-	    if (url !== 'http://212.233.89.163:8001/api/v1/login'){
-	        responseJson = await response.json();
-	    }
+            let responseJson = '';
+            if (url !== 'http://212.233.89.163:8001/api/v1/login'){
+            // if (url !== 'http://localhost:8001/api/v1/login'){
+                responseJson = await response.json();
+            }
             return {
                 status: response.status,
                 data: responseJson

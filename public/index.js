@@ -8,6 +8,7 @@ const router = new Router();
 window.router = router;
 router.auth = true;
 if (isAuth.data.body.is_authorized === true) {
+    console.log(window.location)
     navbar({"User": {"id": "1"}});
     router.redirect('/profile1');
 } else {
