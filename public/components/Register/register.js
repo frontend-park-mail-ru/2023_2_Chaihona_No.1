@@ -53,5 +53,6 @@ export default async () => {
         const result = await api.register(login.value, pass.value, isAuthor);
         const user = {id: "1"};
         navbar(user);
+        window.router.redirect('/profile1');
     });
 }
