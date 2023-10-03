@@ -21,8 +21,13 @@ export const restEndpoints = {
         url: "/registration",
         method: POST_METHOD
     },
+    
     checkAuth: {
         url: '/is_authorized',
         method: GET_METHOD
+    },
+    logout: {
+        url: '/logout',
+        method: POST_METHOD
     }
 }
