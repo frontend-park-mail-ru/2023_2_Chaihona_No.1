@@ -21,8 +21,10 @@ export default async() => {
             err.textContent = "Неправильный логин или пароль";
             return;
         }
+        const id = result.data.body.id
+	//console.log(result.data);
         const user = {id: "1"};
-        navbar(user);
-        window.router.redirect('/profile' + '1')
+	navbar(user);
+        window.router.redirect('/profile' + id)
     });
 }
