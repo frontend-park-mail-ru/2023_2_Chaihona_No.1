@@ -25,13 +25,6 @@ export default async () => {
             alert('фронтендер отчислен =(');
         }
         profile.posts = postsRequest.data.body.posts;
-        console.log(profile.posts)
-        // profile.targets.forEach(function (target) {
-        //     target.doneproc = target.done/target.target*100;
-        //     target.leftproc = 100-target.doneproc;
-        //     console.log(target.doneproc)
-        //     console.log(target.leftproc)
-        // })
         Handlebars.registerPartial('target', Handlebars.templates.target);
         Handlebars.registerPartial('sub_level', Handlebars.templates.sub_level);
         Handlebars.registerPartial('comment', Handlebars.templates.comment);
