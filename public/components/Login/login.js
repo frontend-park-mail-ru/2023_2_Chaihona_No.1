@@ -22,8 +22,9 @@ export default async() => {
             return;
         }
         const id = result.data.body.id
+	//console.log(result.data);
         const user = {id: "1"};
-        navbar(user);
+	navbar(user);
         window.router.redirect('/profile' + id)
     });
 }
