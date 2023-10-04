@@ -5,18 +5,18 @@ import navbar from "../Navbar/Navbar.js";
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
 //от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
-const passRegExp = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
+//const passRegExp = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
+
+const passRegExp = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g;
 
 function verifyLogin(login) {
-   // const re = new RegExp(loginRegExp);
-   // return re.test(login);
-    return true;
+   const re = new RegExp(loginRegExp);
+   return re.test(login);
 }
 
 function verifyPassword(password) {
-   // const re = new RegExp(passRegExp);
-  //  return re.test(password);
-    return true;
+   const re = new RegExp(passRegExp);
+   return re.test(password);
 }
 
 

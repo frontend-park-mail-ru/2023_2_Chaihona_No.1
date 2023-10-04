@@ -1,6 +1,5 @@
 import {Api} from "../../modules/api.js";
 import navbar from "../Navbar/Navbar.js";
-// import {Router} from "../../modules/router.js";
 
 export default async() => {
     const rootElement = document.querySelector('#root');
@@ -25,7 +24,5 @@ export default async() => {
         const user = {id: "1"};
         navbar(user);
         window.router.redirect('/profile' + '1')
-        // Router.redirect('/profile' + '1');
-        //window.router.goTo('/profile' + '1');
     });
 }
