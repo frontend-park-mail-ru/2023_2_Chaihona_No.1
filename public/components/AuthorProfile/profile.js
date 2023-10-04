@@ -9,8 +9,6 @@ export default async () => {
     const currUrl = window.location.href.split('/').pop();
     const id = currUrl.replace('profile', '');
 
-    console.log('trying to get user w/id' + id);
-
     const api = new Api();
     const profileRequest = await api.getUserProfile(id);
 

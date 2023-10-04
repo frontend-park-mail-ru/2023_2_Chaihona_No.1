@@ -5,8 +5,6 @@ import navbar from "../Navbar/Navbar.js";
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
 //от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
-//const passRegExp = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
-
 const passRegExp = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g;
 
 function verifyLogin(login) {
@@ -49,7 +47,6 @@ export default async () => {
             err.textContent = "Пароль должен быть длиннее 8 символов и содержать буквы разных регистров, цифры и специальные символы.";
             return
         }
-        console.log(login.value, pass.value, isAuthor);
         const result = await api.register(login.value, pass.value, isAuthor);
         const id = result.data.body.id
         const user = {id: "1"};
