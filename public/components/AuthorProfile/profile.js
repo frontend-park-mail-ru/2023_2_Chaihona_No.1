@@ -9,8 +9,6 @@ export default async () => {
     const currUrl = window.location.href.split('/').pop();
     const id = currUrl.replace('profile', '');
 
-    console.log('trying to get user w/id' + id);
-
     const api = new Api();
     const profileRequest = await api.getUserProfile(id);
 
@@ -18,8 +16,8 @@ export default async () => {
         alert('фронтендер отчислен =(');
     }
 
-    const profile = profileRequest.data.body.profiles.user;
-    if (profile.user_type === 'creator') {
+    const profile = profileRequest.data.body.profiles;
+    if (profile.user.user_type === 'creator') {
         const postsRequest = await api.getUserPosts(id);
         if (postsRequest.status >= 300) {
             alert('фронтендер отчислен =(');

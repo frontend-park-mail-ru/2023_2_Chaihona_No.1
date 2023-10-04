@@ -2,7 +2,6 @@ const GET_METHOD = 'GET';
 const POST_METHOD = 'POST';
 
 export const backendUrl = "http://212.233.89.163:8001/api/v1"
-// export const backendUrl = "http://localhost:8001/api/v1"
 
 export const restEndpoints = {
     getPosts:  {
