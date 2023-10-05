@@ -1,16 +1,24 @@
 import {Router} from "./modules/router.js";
 import navbar from "./components/Navbar/Navbar.js";
 import {Api} from "./modules/api.js";
-importScripts('./modules/requests.js', './configs/link_config.js', './configs/rest_config.js',
-            './components/UserProfile/uprofile-prec.js', './components/Target/target-prec.js',
-            './components/SubLevel/sub_level-prec.js', './components/Register/register-prec.js',
-            './components/Register/register.js', './components/Post/post-prec.js',
-            './components/NotFound/notfound.js', './components/NotFound/notfound-prec.js',
-            './components/Navbar/Navbar.js', './components/Logout/logout.js',
-            './components/Login/login.js', './components/Login/login-prec.js',
-            './components/Comment/comment-prec.js', './components/AuthorProfile/profile.js',
-            './components/AuthorProfile/aprofile-prec.js'
-)
+import './modules/requests.js';
+import './configs/link_config.js';
+import './configs/rest_config.js';
+import './components/UserProfile/uprofile-prec.js'; 
+import './components/Target/target-prec.js';
+import './components/SubLevel/sub_level-prec.js'; 
+import './components/Register/register-prec.js';
+import './components/Register/register.js'; 
+import './components/Post/post-prec.js';
+import './components/NotFound/notfound.js'; 
+import './components/NotFound/notfound-prec.js';
+import './components/Navbar/Navbar.js';
+import './components/Logout/logout.js';
+import './components/Login/login.js';
+import './components/Login/login-prec.js';
+import'./components/Comment/comment-prec.js'; 
+import './components/AuthorProfile/profile.js';
+import './components/AuthorProfile/aprofile-prec.js';
 
 const api = new Api();
 const isAuth = await api.isAuth();
