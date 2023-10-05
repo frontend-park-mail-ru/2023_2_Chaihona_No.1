@@ -1,17 +1,25 @@
+
+body {
+    height: 100vh;
+}
+
 .container {
     height: 93vh;
-    width: 50vw;
+    text-align: center;
+
+}
+
+@media (min-height: 290px) {
+.container {
+    height: 93vh;
     text-align: center;
     margin: 0 auto;
     align-items: center;
     display: flex;
-    flex-direction: column;
     justify-content:center;
+    }
 }
 
-.container > input {
-    font-size: 7vh;
-}
 
 input[type="login"]{
     padding-left: 10px;
@@ -20,8 +28,8 @@ input[type="login"]{
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 16vw;
-    height: 8vh;
+    width: 25vw;
+    height: 10vh;
 }
 
 input[type="login"]::placeholder{
@@ -35,6 +43,7 @@ input[type="password"]::placeholder{
 }
 
 
+
 input[type="password"]{
     padding-left: 10px;
     margin: 10px;
@@ -42,8 +51,8 @@ input[type="password"]{
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 16vw;
-    height: 8vh;
+    width: 25vw;
+    height: 10vh;
 }
 
 .logbutton{
@@ -57,8 +66,34 @@ input[type="password"]{
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 16vw;
-    height: 8vh;
+    width: 15vw;
+    height: 10vh;
+}
+
+@media (max-width: 600px) {
+  .logbutton {
+    width: 90px;
+  }
+  input[type="password"]{
+      width: 150px;
+  }
+  input[type="login"]{
+      width: 150px;
+  }
+
+}
+
+@media (max-height: 500px) {
+
+  .logbutton {
+    height: 40px;
+  }
+  input[type="password"]{
+    height: 40px;
+  }
+  input[type="login"]{
+    height: 40px;
+  }
 }
 
 .forgotpassword{
@@ -79,9 +114,23 @@ input[type="password"]{
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 16vw;
-    height: 8vh;
+    width: 25vw;
+    height: 10vh;
 }
+
+
+@media (max-width: 700px) {
+    .regbutton{
+    width: 170px;
+  }
+}
+@media (max-height: 500px) {
+    .regbutton{
+    height: 45px;
+  }
+}
+
+
 
 h6{
     font-family: sans-serif;
