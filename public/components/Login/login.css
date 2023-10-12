@@ -21,7 +21,7 @@ body {
 }
 
 
-input[type="login"]{
+.login_{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
@@ -32,18 +32,18 @@ input[type="login"]{
 }
 
 
-input[type="login"]::placeholder{
+.login_::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
-input[type="password"]::placeholder{
+.password_::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
 
-input[type="password"]{
+.password_{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
@@ -73,10 +73,10 @@ input[type="password"]{
   .logbutton {
     width: 90px;
   }
-  input[type="password"]{
+  .password_{
       width: 150px;
   }
-  input[type="login"]{
+  .login_{
       width: 150px;
   }
 }
@@ -85,10 +85,10 @@ input[type="password"]{
   .logbutton {
     height: 49px;
   }
-  input[type="password"]{
+  .password_{
     height: 49px;
   }
-  input[type="login"]{
+  .login_{
     height: 49px;
   }
 }
