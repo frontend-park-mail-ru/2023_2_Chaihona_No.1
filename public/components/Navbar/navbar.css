@@ -80,6 +80,10 @@
     height: 100%;
 }
 
+.nav-ava > img {
+    object-fit: cover;
+}
+
 .navbar > input {
     float: right;
     margin-right: 1vh;

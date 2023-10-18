@@ -1,58 +1,87 @@
-import {Api} from "../../modules/api.js";
-import navbar from "../Navbar/Navbar.js";
+import { Api } from '../../modules/api.js';
+import navbar from '../Navbar/Navbar.js';
+import {
+  INCORRECT_LOGIN_ERROR_TEXT, MIN_FAIL_RESPONSE, MOUSE_CLICK_EVENT,
+  NOT_FOUND_URL,
+  PASS_REQUIREMENTS_TEXT, PASSWORDS_DONT_MATH_ERROR_TEXT,
+  ROOT_ELEMENT_ID,
+} from '../../configs/common_config.js';
 
-//3-16 символов латинского алфавита/цифр/нижних подчёркиваний/тире
-const loginRegExp = /^[A-z0-9_-]{3,16}$/;
+// 3-16 символов латинского алфавита/цифр/нижних подчёркиваний/тире
+const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
-//от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
-const passRegExp = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g;
+// от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
+const passRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+const LOGIN_FIELD_ID = '#login';
+const PASSWORD_FIELD_ID = '#password';
+const REPEAT_PASSWORD_FIELD_ID = '#repeat-password';
+const SWITCH_AUTHOR_ID = '#toggle';
+
+const REG_BUTTON_CLASS = '.regbtn';
+const ERROR_FIELD_CLASS = '.error';
+
+/**
+ * Проверяет логин на соответствие требованиям
+ * @param login - логин
+ * @returns {boolean} - соответствует ли логин требованиям
+ */
 function verifyLogin(login) {
-   const re = new RegExp(loginRegExp);
-   return re.test(login);
+  const re = new RegExp(loginRegExp);
+  return re.test(login);
 }
 
+/**
+ *
+ * Проверяет пароль на соответствие требованиям
+ * @param password - пароль
+ * @returns {boolean} - соответствует ли пароль требованиям
+ */
 function verifyPassword(password) {
-   const re = new RegExp(passRegExp);
-   return re.test(password);
+  const re = new RegExp(passRegExp);
+  return re.test(password);
 }
 
-
+/**
+ * Отрисовка страницы регистрации
+ */
 export default async () => {
-    const rootElement = document.querySelector('#root');
-    rootElement.innerHTML = '';
-    rootElement.innerHTML = Handlebars.templates.register();
-    const err = document.querySelector(".error");
-    err.textContent = "Пароль должен быть длиннее 8 символов и содержать буквы разных регистров, цифры и хотя бы один специальынй символ !@#$%^&*";
-    const regBtn = document.querySelector(".regbutton")
-    regBtn.addEventListener("click", async function (e) {
-        e.preventDefault();
-        const api = new Api();
-        const login = document.querySelector('#login');
-        const pass = document.querySelector("#password");
-        const repeatPass = document.querySelector("#repeat-password");
-        const isAuthor = document.querySelector('#toggle').checked;
-        if (pass.value !== repeatPass.value) {
-            const err = document.querySelector(".error");
-            err.textContent = "Пароли не совпадают";
-            return;
-        }
-        if (!verifyLogin(login.value)) {
-            const err = document.querySelector(".error");
-            err.textContent = "Логин должен быть от 3 до 16 символов и может содержать только цифры, латинские буквы и - _";
-            err.style = "color: #ef3a0c";
-            return;
-        }
-        if (!verifyPassword(pass.value)) {
-            const err = document.querySelector(".error");
-            err.textContent = "Пароль должен быть длиннее 8 символов и содержать буквы разных регистров, цифры и хотя бы один специальынй символ !@#$%^&*";
-            err.style = "color: #ef3a0c";
-            return;
-        }
-        const result = await api.register(login.value, pass.value, isAuthor);
-        const id = result.data.body.id
-        const user = {id: "1"};
-        navbar(user);
-        window.router.redirect('/profile' + id);
-    });
-}
+  const rootElement = document.querySelector(ROOT_ELEMENT_ID);
+  rootElement.innerHTML = '';
+  rootElement.innerHTML = Handlebars.templates.register();
+  const err = document.querySelector(ERROR_FIELD_CLASS);
+  err.textContent = PASS_REQUIREMENTS_TEXT;
+  const regBtn = document.querySelector(REG_BUTTON_CLASS);
+
+  /**
+     * Добавление обработчика на кнопку регистрации. Проверяет правильность логина и пароля.
+     * В случае ошибки выведет ошибку пользователю
+     * В случае успеха перерисует навбар под пользователя и редиректнет на его страницу
+     */
+  regBtn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
+    e.preventDefault();
+    const api = new Api();
+    const login = document.querySelector(LOGIN_FIELD_ID);
+    const pass = document.querySelector(PASSWORD_FIELD_ID);
+    const repeatPass = document.querySelector(REPEAT_PASSWORD_FIELD_ID);
+    const isAuthor = document.querySelector(SWITCH_AUTHOR_ID).checked;
+    if (pass.value !== repeatPass.value) {
+      err.textContent = PASSWORDS_DONT_MATH_ERROR_TEXT;
+      return;
+    }
+    if (!verifyLogin(login.value)) {
+      err.textContent = INCORRECT_LOGIN_ERROR_TEXT;
+      return;
+    }
+    if (!verifyPassword(pass.value)) {
+      err.textContent = PASS_REQUIREMENTS_TEXT;
+      return;
+    }
+    const result = await api.register(login.value, pass.value, isAuthor);
+    if (result.status >= MIN_FAIL_RESPONSE) {
+      window.router.redirect(NOT_FOUND_URL);
+    }
+    const user = { id: '1' };
+    navbar(user);
+  });
+};

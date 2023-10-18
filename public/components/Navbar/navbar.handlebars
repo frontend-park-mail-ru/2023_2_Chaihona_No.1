@@ -1,14 +1,12 @@
-<link rel="stylesheet" type="text/css" href="components/Navbar/navbar.css"/>
 <div class="navbar">
     <img src="img/logo.png" class="navlogo">
-    <button class="main-page-btn" id="exit-btn">На главную</button>
+    <button class="common-button main-page-btn">На главную</button>
     {{#if User}}
-        <button class="exit-btn"> Выйти </button>
+        <button class="common-button exit-btn"> Выйти </button>
         <img src="img/default-ava.png" class="nav-ava">
     {{else}}
-        <button class="exit-btn" id="login-btn">Войти</button>
-        <button class="reg-btn" id="reg-btn"> Регистрация </button>
+        <button class="common-button exit-btn" id="login-btn">Войти</button>
+        <button class="common-button reg-btn" id="reg-btn"> Регистрация </button>
      {{/if}}
     <input type="text" placeholder="Поиск автора...">
 </div>
-<script src="navbar_buttons.js"></script>

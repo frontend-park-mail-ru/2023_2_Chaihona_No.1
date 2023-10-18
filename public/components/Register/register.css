@@ -9,10 +9,6 @@
     justify-content:center;
 }
 
-.container > input {
-    font-size: 7vh;
-}
-
 input[type="login"]{
     padding-left: 10px;
     margin: 10px;

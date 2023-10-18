@@ -1,26 +1,35 @@
-export default (user = null) => {
-    const navbarElement = document.querySelector('#navbar');
-    navbarElement.innerHTML = '';
-    if (user) {
-        navbarElement.innerHTML = Handlebars.templates.navbar({"User": {"id": "1"}});
-        const logoutBtn = document.querySelector("#exit-btn")
-        logoutBtn.addEventListener("click", function (e) {
-            window.router.redirect('/logout');
-        });
-    } else {
-        navbarElement.innerHTML = Handlebars.templates.navbar();
-        const loginBtn = document.querySelector("#login-btn");
+import { MOUSE_CLICK_EVENT, NOT_FOUND_URL } from '../../configs/common_config.js';
 
-        loginBtn.addEventListener("click", function (e) {
-            window.router.redirect('/login');
-        });
-        const regBtn = document.querySelector("#reg-btn")
-        regBtn.addEventListener("click", function (e) {
-            window.router.redirect('/register');
-        });
-    }
-    const mainBtn = document.querySelector(".main-page-btn")
-    mainBtn.addEventListener("click", function (e) {
-        window.router.redirect('/nenahod');
+const NAVBAR_ELEMENT_ID = '#navbar';
+const LOGIN_BUTTON_ID = '#login-btn';
+const REGISTER_BUTTON_ID = '#reg-btn';
+
+const MAIN_PAGE_BUTTON_CLASS = '.main-page-btn';
+
+/**
+ * Отрисовка навбара
+ * @param user - пользователь. Если его нет, отрисует навбар с регистрацией,
+ * иначе отрисует навбар с его данными.
+ */
+export default (user = null) => {
+  const navbarElement = document.querySelector(NAVBAR_ELEMENT_ID);
+  navbarElement.innerHTML = '';
+  if (user) {
+    navbarElement.innerHTML = Handlebars.templates.navbar({ User: { id: '1' } });
+  } else {
+    navbarElement.innerHTML = Handlebars.templates.navbar();
+    const loginBtn = document.querySelector(LOGIN_BUTTON_ID);
+
+    loginBtn.addEventListener(MOUSE_CLICK_EVENT, () => {
+      window.router.redirect('/login');
     });
-}
+    const regBtn = document.querySelector(REGISTER_BUTTON_ID);
+    regBtn.addEventListener(MOUSE_CLICK_EVENT, () => {
+      window.router.redirect('/register');
+    });
+  }
+  const mainBtn = document.querySelector(MAIN_PAGE_BUTTON_CLASS);
+  mainBtn.addEventListener(MOUSE_CLICK_EVENT, () => {
+    window.router.redirect(NOT_FOUND_URL);
+  });
+};
