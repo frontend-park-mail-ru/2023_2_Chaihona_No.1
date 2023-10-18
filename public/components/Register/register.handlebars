@@ -1,11 +1,17 @@
-<link rel="stylesheet" type="text/css" href="components/Register/register.css"/>
-  <div class="container">
+<div class="container">
     <script src="error.js"></script>
     <div class="error"></div>
       <form action="register" method="post">
         <input type="login" placeholder="Логин" id="login" name="login" required><br>
         <input type="password" placeholder="Пароль" id="password" name="password" required><br>
         <input type="password" placeholder="Повторите пароль" id="repeat-password" name="password" required><br>
+          <div class="switch">
+          <input id="toggle" class="toggle" type="checkbox" role="switch" name="toggle" value="on">
+          <label for="toggle" class="slot">
+              <span class="slot__label">ДОНАТЕР</span>
+              <span class="slot__label">АВТОР</span>
+          </label>
+          </div>
         <input type="submit" class="regbutton" value="Зарегистрироваться">
       </form>
-  </div>
+</div>
