@@ -1,6 +1,7 @@
 import {Api} from "../../modules/api.js";
 import navbar from "../Navbar/Navbar.js";
 
+
 //3-16 символов латинского алфавита/цифр/нижних подчёркиваний/тире
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
