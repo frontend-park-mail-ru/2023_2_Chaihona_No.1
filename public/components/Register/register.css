@@ -16,8 +16,8 @@
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 25vw;
-    height: 10vh;
+    width: 16vw;
+    height: 8vh;
 }
 
 .login::placeholder{
@@ -38,8 +38,8 @@
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 25vw;
-    height: 10vh;
+    width: 16vw;
+    height: 8vh;
 }
 
 .logbutton{
@@ -53,8 +53,8 @@
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 15vw;
-    height: 10vh;
+    width: 16vw;
+    height: 8vh;
 }
 
 .forgotpassword{
@@ -75,8 +75,8 @@
     border-width: 1px;
     border-color: #FF8364;
 
-    width: 25vw;
-    height: 10vh;
+    width: 16vw;
+    height: 8vh;
 }
 
 h6{
