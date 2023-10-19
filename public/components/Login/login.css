@@ -1,36 +1,49 @@
+body {
+    height: 100vh;
+}
+
+.container {
+    height: 93vh;
+    text-align: center;
+
+}
+
+@media (min-height: 250px) {
 .container {
     height: 93vh;
     text-align: center;
     margin: 0 auto;
     align-items: center;
-    display: flex;
     flex-direction: column;
+    display: flex;
     justify-content:center;
+    }
 }
 
-.login{
+
+.login_{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
     border-width: 1px;
     border-color: #FF8364;
-
     width: 25vw;
     height: 10vh;
 }
 
-.login::placeholder{
+
+.login_::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
-.password::placeholder{
+.password_::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
 
-.password{
+.password_{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
@@ -55,6 +68,31 @@
     width: 15vw;
     height: 10vh;
 }
+
+@media (max-width: 600px) {
+  .logbutton {
+    width: 90px;
+  }
+  .password_{
+      width: 150px;
+  }
+  .login_{
+      width: 150px;
+  }
+}
+@media (max-height: 500px) {
+
+  .logbutton {
+    height: 49px;
+  }
+  .password_{
+    height: 49px;
+  }
+  .login_{
+    height: 49px;
+  }
+}
+
 
 .forgotpassword{
     font-family: sans-serif;
