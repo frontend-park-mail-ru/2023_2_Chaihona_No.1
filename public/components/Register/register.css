@@ -9,7 +9,7 @@
     justify-content:center;
 }
 
-input[type="login"]{
+.login{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
@@ -20,18 +20,18 @@ input[type="login"]{
     height: 10vh;
 }
 
-input[type="login"]::placeholder{
+.login::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
-input[type="password"]::placeholder{
+.password::placeholder{
     font-family: sans-serif;
     font-size: 1rem;
 }
 
 
-input[type="password"]{
+.password{
     padding-left: 10px;
     margin: 10px;
     border-radius: 12px;
