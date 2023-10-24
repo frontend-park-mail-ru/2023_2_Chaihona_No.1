@@ -87,7 +87,8 @@ body{
 
 .login_{
     margin-top: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
+
     border-radius: 12px;
     border-width: 1px;
     border-color: #FFB97D;
@@ -107,8 +108,8 @@ padding-left: 6px;
     border-color: #FFB97D;
     width: 80%;
     height: 7vh;
-    margin-top: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
+
 }
 
 
@@ -121,12 +122,11 @@ padding-left: 6px;
 .login_{
 height: 41px;
     margin-top: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 .password_{
     height: 41px;
-    margin-bottom: 15px;
-
+    margin-bottom: 2px;
 }
 }
 
@@ -181,13 +181,10 @@ height: 41px;
     font-family: sans-serif;
     font-size: 0.8rem;
 
-
-
 }
 .label_remember_me{
     margin-top: 100px;
     margin-right: 6.5vw;
-
 }
 
 .checkbox_{
@@ -196,7 +193,7 @@ margin-left: 1px;
 }
 
 .button_and_heading {
-margin-top: 15px;
+margin-top: 8px;
   display: inline-flex;
   align-items: center;
 }
