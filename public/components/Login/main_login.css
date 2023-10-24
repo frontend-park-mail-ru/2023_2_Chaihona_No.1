@@ -79,7 +79,7 @@ body{
     width: 210px;
     }
 }
-@media(min-height: 400px) {
+@media(min-height: 600px) {
 .pig{
     height: 225px;
     }
@@ -110,7 +110,7 @@ body{
     padding-left: 10px;
 }
 
-@media(max-height: 550px) {
+@media(max-height: 600px) {
 .login_{
 height: 41px;
     margin-top: 8px;
@@ -139,7 +139,7 @@ height: 41px;
 
 }
 
-@media(max-height: 550px) {
+@media(max-height: 600px) {
 .logbutton{
     height: 41px;
 }
