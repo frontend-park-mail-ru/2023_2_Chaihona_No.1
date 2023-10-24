@@ -5,8 +5,14 @@ body {
 .container {
     height: 93vh;
     text-align: center;
-
 }
+
+    display: flex;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
 @media (min-height: 250px) {
 .container {
@@ -20,6 +26,9 @@ body {
     }
 }
 
+.forgot{
+    font-family: sans-serif;
+}
 
 .login_{
     padding-left: 10px;
