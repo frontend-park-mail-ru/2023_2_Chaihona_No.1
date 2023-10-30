@@ -1,5 +1,5 @@
 .switch > input {
-    color: #FF4D4D;
+    color: #D68048;
     font: 1em "Helvetica Neue", Helvetica, sans-serif;
     line-height: 1.5;
 }
@@ -26,24 +26,24 @@
     cursor: pointer;
     position: relative;
     margin-right: 0.25em;
-    width: 3em;
-    height: 1.5em;
+    width: 2.3em;
+    height: 1.0em;
     appearance: none;
 }
 
 .toggle:before {
-    border-color: #FF4D4D;
+    border-color: #D68048;
     background: currentColor;
     border-radius: 50%;
     content: "";
-    top: 0.2em;
-    left: 0.2em;
-    width: 1.1em;
-    height: 1.1em;
+    top: 0.07em;
+    left: 0.12em;
+    width: 0.85em;
+    height: 0.85em;
 }
 
 .toggle:checked:before {
-    transform: translateX(1.5em);
+    transform: translateX(1.2em);
 }
 
 .toggle:checked ~ .slot .slot__label, .slot__label:nth-child(2) {
@@ -55,8 +55,8 @@
 }
 
 .slot {
-    color: #FF4D4D;
-    font-size: 1.5em;
+    color: #D68048;
+    font-size: 1.em;
     font-weight: bold;
     line-height: 1;
     overflow: hidden;
