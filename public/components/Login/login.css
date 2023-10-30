@@ -1,125 +1,196 @@
-body {
+
+body{
+    width: 100vw;
     height: 100vh;
-}
-
-.container {
-    height: 93vh;
-    text-align: center;
+    background-color: #F8F2EC
 
 }
 
-@media (min-height: 250px) {
-.container {
-    height: 93vh;
-    text-align: center;
-    margin: 0 auto;
-    align-items: center;
-    flex-direction: column;
+.cont{
+    width: 50vw;
+    height: 50vh;
     display: flex;
-    justify-content:center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-height: 360px) {
+    .cont {
+        top: 50%;
     }
 }
 
+@media (max-height: 360px) {
+    .cont {
+        top: 0;
+        transform: translateX(-50%);
+    }
+}
+
+@media(max-width: 1000px) {
+.cont{
+    width: 480px;
+    }
+
+}
+
+@media(max-height: 600px) {
+.cont{
+    height: 300px;
+    }
+}
+
+.container1{
+
+    height: 100%;
+    width:  60%;
+    border-color: #FF8362;
+    border-width: 10px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    background-color: #FFE5CC
+
+}
+
+.container2{
+
+    border-color: #FF8362;
+    border-width: 10px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: white;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.pig{
+    height: 75%;
+    width: 70%;
+}
+
+@media(min-width: 600px) {
+.pig{
+    width: 210px;
+    }
+}
+@media(min-height: 600px) {
+.pig{
+    height: 225px;
+    }
+}
 
 .login_{
-    padding-left: 10px;
-    margin: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
     border-radius: 12px;
     border-width: 1px;
-    border-color: #FF8364;
-    width: 25vw;
-    height: 10vh;
+    border-color: #FFB97D;
+    width: 80%;
+    height: 7vh;
+    padding-left: 10px;
+
+
 }
-
-
-.login_::placeholder{
-    font-family: sans-serif;
-    font-size: 1rem;
-}
-
-.password_::placeholder{
-    font-family: sans-serif;
-    font-size: 1rem;
-}
-
 
 .password_{
-    padding-left: 10px;
-    margin: 10px;
+
     border-radius: 12px;
     border-width: 1px;
-    border-color: #FF8364;
-
-    width: 25vw;
-    height: 10vh;
+    border-color: #FFB97D;
+    width: 80%;
+    height: 7vh;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    padding-left: 10px;
 }
+
+@media(max-height: 600px) {
+.login_{
+height: 41px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+.password_{
+    height: 41px;
+    margin-bottom: 15px;
+
+}
+}
+
+
 
 .logbutton{
-
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
     color: white;
-    background-color:  #FF4D4D;
-    margin: 10px;
-    border-radius: 12px;
-    border-width: 1px;
-    border-color: #FF8364;
-
-    width: 15vw;
-    height: 10vh;
-}
-
-@media (max-width: 600px) {
-  .logbutton {
-    width: 90px;
-  }
-  .password_{
-      width: 150px;
-  }
-  .login_{
-      width: 150px;
-  }
-}
-@media (max-height: 500px) {
-
-  .logbutton {
-    height: 49px;
-  }
-  .password_{
-    height: 49px;
-  }
-  .login_{
-    height: 49px;
-  }
-}
-
-
-.forgotpassword{
+    background-color: #FF8A26;
+    border-radius: 5px;
+    border: none;
     font-family: sans-serif;
-    font-size: 1rem;
-    text-decoration: None;
-    color: #FF4D4D;
+    width: 67px;
+    height: 7vh;
+
 }
 
-.regbutton{
-    padding-left: 10px;
+@media(max-height: 600px) {
+.logbutton{
+    height: 41px;
+}
+}
+
+.return_text{
     text-align: center;
-    font-size: 1rem;
-    color: white;
-    background-color:  #FF4D4D;
-    margin: 10px;
-    border-radius: 12px;
-    border-width: 1px;
-    border-color: #FF8364;
-
-    width: 25vw;
-    height: 10vh;
-}
-
-h6{
+    margin-left: 10px;
     font-family: sans-serif;
-    margin-bottom: -5px;
-    font-weight: normal;
-    font-size: 1rem;
-    color: #FF4D4D;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #D68048;
 }
+
+.entry_text{
+    text-align: left;
+    margin-left: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #D68048;
+}
+
+.forgot{
+     font-family: sans-serif;
+     font-size: 0.8rem;
+     margin-left: 2vw;
+     color: #FFB97D;
+
+}
+.remember_me{
+    font-family: sans-serif;
+    font-size: 0.8rem;
+
+
+
+}
+.label_remember_me{
+    margin-top: 100px;
+    margin-right: 6.5vw;
+
+}
+
+.checkbox_{
+text-align: left;
+margin-left: 1px;
+}
+
+.button_and_heading {
+margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+}
+
