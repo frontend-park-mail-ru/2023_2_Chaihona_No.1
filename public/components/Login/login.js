@@ -25,10 +25,3 @@ export default async() => {
         window.router.redirect('/profile' + id)
     });
 }
-
-const context = {
-  imageSrc: "../../../static/img/pig.jpg"
-};
-
-const template = Handlebars.compile("{{imageSrc}}");
-const html = template(context);
