@@ -5,7 +5,7 @@ const POST_METHOD = 'POST';
  * URL для всех REST-запросов
  * @type {string}
  */
-export const backendUrl = 'http://127.0.0.1:8001/api/v1';
+export const backendUrl = 'http://localhost:8001/api/v1';
 
 /**
  * Все возможные endpoint'ы и их методы
