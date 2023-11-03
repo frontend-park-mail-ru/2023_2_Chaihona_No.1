@@ -12,7 +12,7 @@ app.use('/profile[0-9]+',express.static(path.resolve(__dirname, '..', 'public'))
 app.use('/profile[0-9]+',express.static(path.resolve(__dirname, '..', 'node_modules')));
 app.use('/profile[0-9]+',express.static(path.resolve(__dirname, '..', 'static')));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 app.listen(port, function () {
     console.log(`Server listening port ${port}`);
