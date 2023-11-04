@@ -2,7 +2,7 @@
   "name": "chaihona-front",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index_bundle.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,10 +22,12 @@
     "image-webpack-loader": "^8.1.0",
     "morgan": "^1.10.0",
     "nunjucks": "^3.2.4",
+    "request": "^2.88.2",
     "style-loader": "^3.3.3",
     "svg-inline-loader": "^0.8.2",
     "typescript": "^5.2.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "webpack-dev-middleware": "^6.1.1"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
@@ -34,6 +36,7 @@
     "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }

@@ -72,6 +72,6 @@ export class Api extends Requests {
     } else {
       userType = 'simple_user';
     }
-    return this.make_request(url, endpoint.method, { login, password, user_type: userType });
+    return this.make_request(url, endpoint.method, { login, password, isAuthor});
   }
 }

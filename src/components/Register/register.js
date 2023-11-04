@@ -21,7 +21,7 @@ const PASSWORD_FIELD_ID = '#password';
 const REPEAT_PASSWORD_FIELD_ID = '#repeat-password';
 const SWITCH_AUTHOR_ID = '#toggle';
 
-const REG_BUTTON_CLASS = '.regbtn';
+const REG_BUTTON_CLASS = '.regbutton';
 const ERROR_FIELD_CLASS = '.error';
 
 /**
@@ -30,8 +30,9 @@ const ERROR_FIELD_CLASS = '.error';
  * @returns {boolean} - соответствует ли логин требованиям
  */
 function verifyLogin(login) {
-  const re = new RegExp(loginRegExp);
-  return re.test(login);
+  // const re = new RegExp(loginRegExp);
+  // return re.test(login);
+  return true
 }
 
 /**
@@ -41,8 +42,9 @@ function verifyLogin(login) {
  * @returns {boolean} - соответствует ли пароль требованиям
  */
 function verifyPassword(password) {
-  const re = new RegExp(passRegExp);
-  return re.test(password);
+  // const re = new RegExp(passRegExp);
+  // return re.test(password);
+  return true
 }
 
 /**
@@ -55,13 +57,11 @@ export default async () => {
   const err = document.querySelector(ERROR_FIELD_CLASS);
   err.textContent = PASS_REQUIREMENTS_TEXT;
   const regBtn = document.querySelector(REG_BUTTON_CLASS);
-
   /**
      * Добавление обработчика на кнопку регистрации. Проверяет правильность логина и пароля.
      * В случае ошибки выведет ошибку пользователю
      * В случае успеха перерисует навбар под пользователя и редиректнет на его страницу
      */
-  window.addEventListener("DOMContentLoaded", (event) => {
     regBtn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
       e.preventDefault();
       const api = new Api();
@@ -88,5 +88,4 @@ export default async () => {
       const user = { id: '1' };
       navbar(user);
     });
-  });
 };
