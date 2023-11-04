@@ -31,4 +31,8 @@ export const restEndpoints = {
     url: '/is_authorized',
     method: GET_METHOD,
   },
+  logout: {
+    url: '/logout',
+    method: POST_METHOD,
+  },
 };

@@ -85,7 +85,9 @@ export default async () => {
       if (result.status >= MIN_FAIL_RESPONSE) {
         window.router.redirect(NOT_FOUND_URL);
       }
-      const user = { id: '1' };
+      const user = { id: result.data.body.id };
+      window.user = user;
+      window.router.redirect('/profile' + result.data.body.id );
       navbar(user);
     });
 };

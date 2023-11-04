@@ -55,6 +55,12 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method);
   }
 
+  async logout() {
+    const endpoint = restEndpoints.logout;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method);
+  }
+
   /**
      * Регистрация пользователя
      * @param login - логин пользователя

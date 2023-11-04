@@ -25,7 +25,8 @@ export class Requests {
     };
 
     if (!noBodyRequests.includes(method)) {
-      params.body = {body: JSON.stringify(data)};
+      //params.body = JSON.stringify({body: JSON.stringify(data)});
+      params.body = JSON.stringify(data)
     }
 
     const response = await fetch(url, params);
