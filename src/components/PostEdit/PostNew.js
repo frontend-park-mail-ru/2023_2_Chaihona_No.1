@@ -20,7 +20,8 @@ export default async () => {
         const header = document.getElementById('theme').value;
         const body = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
-        const min_subscription_level_id = document.querySelector('input:checked').value;
+        const min_subscription_level_id = Number(document.querySelector('input:checked').value);
         api.newPost({header, min_subscription_level_id, body, postTags});
+        window.history.back();
     });
 }
