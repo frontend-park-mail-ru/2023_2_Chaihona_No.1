@@ -71,7 +71,6 @@ export default async () => {
     newPostButton.addEventListener('click', () => {
       window.router.redirect('newpost');
     })
-
     post();
   } else {
     rootElement.innerHTML = uprofile(profile);
@@ -93,19 +92,21 @@ export default async () => {
     })
   });
 
-  const aboutSettingButton = document.getElementById("about-setting");
-  aboutSettingButton.addEventListener('click', () => {
-    const dialog = document.getElementById("about_dialog");
-    dialog.showModal();
-    const aboutElement = document.getElementById("user_about");
-    const aboutData = document.getElementById("about_input");
-    aboutData.value = aboutElement.textContent;
-    const statusVerifyButton = document.getElementById('about_save_btn');
-    statusVerifyButton.addEventListener('click', async () => {
-      profile.user.description = aboutData.value;
-      await api.updateProfile(profile);
-      dialog.close();
-      aboutElement.innerHTML = aboutData.value;
-    })
-  });
+  if (profile.user.user_type === AUTHOR_USER_TYPE) {
+    const aboutSettingButton = document.getElementById("about-setting");
+    aboutSettingButton.addEventListener('click', () => {
+      const dialog = document.getElementById("about_dialog");
+      dialog.showModal();
+      const aboutElement = document.getElementById("user_about");
+      const aboutData = document.getElementById("about_input");
+      aboutData.value = aboutElement.textContent;
+      const statusVerifyButton = document.getElementById('about_save_btn');
+      statusVerifyButton.addEventListener('click', async () => {
+        profile.user.description = aboutData.value;
+        await api.updateProfile(profile);
+        dialog.close();
+        aboutElement.innerHTML = aboutData.value;
+      })
+    });
+  }
 };
