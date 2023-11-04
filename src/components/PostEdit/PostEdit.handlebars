@@ -53,8 +53,8 @@
 
                 {{#each sub_levels}}
                     <div class="sub_variant">
-                        <input type="radio" id="{{@index}}level" name="sub_variant" value="{{this.level}}">
-                        <label for="{{@index}}level">{{@index}} уровень подписки</label>
+                        <input type="radio" id="{{this.level}}level" name="sub_variant" value="{{this.id}}">
+                        <label for="{{this.level}}level">{{this.level}} уровень подписки</label>
                     </div>
                 {{/each}}
 
