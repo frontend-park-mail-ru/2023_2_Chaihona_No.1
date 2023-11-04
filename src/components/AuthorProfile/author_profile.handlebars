@@ -1,0 +1,73 @@
+<div class="user-cover"></div>
+
+<div class="page-data">
+
+    <div class="left-column">
+        <div class="ava-block">
+            <div class="ava">
+                <img src="img/rg-ava.png" class="ava-img">
+            </div>
+            <div class="subs-amount">{{subscribers}}</div>
+            <div class="subs-word">Подписчиков</div>
+            <button class="common-button ava-btn">Отслеживать</button>
+            <button class="common-button ava-btn">Отправить донат</button>
+        </div>
+
+        <button class="new-post common-button" id="new-post-button">Новый пост</button>
+
+        <div class="target-block">
+            <div class="target-word">Цели</div>
+            <div class="target-separator"></div>
+            {{#each targets}}
+                {{>target this}}
+                <div class="target-separator"></div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="main-data">
+        <div class="name-and-status">
+            <img src="icons/Settings2.svg" id = "status-setting" class="page-settings">
+            <div class="nickname">{{user.login}}</div>
+            <div class="status" id="user_status">{{user.status}}</div>
+        </div>
+
+        <div class="about-author">
+            <img src="icons/Settings2.svg" id = "about-setting" class="page-settings" style="margin-top: -1%;">
+            <div style="font-weight: 700; font-size: 3rem;">Об авторе</div>
+            <div class="target-separator" style="margin-top: 3%; margin-bottom: 3%;"></div>
+            <div id="user_about" style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{description}} </div>
+        </div>
+
+        <div class="switch-and-search">
+            <span> Лента </span>
+            <span style="margin-left: 2%;"> Медиа </span>
+        </div>
+
+        {{#each posts}}
+            {{>post this}}
+        {{/each}}
+    </div>
+
+
+    <div class="right-column">
+        <div class="subscriptions">
+            <div class="sub-word">Уровни подписки</div>
+            {{#each sub_levels}}
+                <div class = 'target-separator'></div>
+                {{>sub_level this}}
+            {{/each}}
+        </div>
+    </div>
+
+    <dialog id="status_dialog">
+        <h2 style="margin-top: 1vh">Статус:</h2>
+            <div><input type="text" class="status-input" id="status_input" maxlength="100"></div>
+            <div> <button class="save-btn common-button" id="status_save_btn">OK</button></div>
+    </dialog>
+    <dialog id="about_dialog">
+        <h2 style="margin-top: 1vh">О себе:</h2>
+        <div><input type="text" class="status-input" id="about_input" maxlength="100"></div>
+        <div> <button class="save-btn common-button" id="about_save_btn">OK</button></div>
+    </dialog>
+</div>

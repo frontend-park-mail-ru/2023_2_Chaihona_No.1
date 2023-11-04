@@ -1,0 +1,17 @@
+#uwork > img {
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    width: 50vh;
+    aspect-ratio: 1/1;
+}
+
+h1 > .nenahod {
+    text-align: center;
+    color: #FF4D4D;
+}
+
+h3 > .nenahod {
+    text-align: center;
+    color: #FF4D4D;
+}

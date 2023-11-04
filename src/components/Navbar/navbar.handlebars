@@ -1,0 +1,19 @@
+<div class="navbar">
+    <img class="navlogo">
+    <button class="common-button main-page-btn">На главную</button>
+    {{#if User}}
+        <button class="common-button exit-btn"> Выйти </button>
+        <img src="icons/down-arrow.png" id="submenu_button" class="button-down">
+        <img src="img/default-ava.png" class="nav-ava">
+    {{else}}
+        <button class="common-button exit-btn" id="login-btn">Войти</button>
+        <img src="icons/down-arrow.png" id="submenu_button" class="button-down" style="display: none;">
+        <button class="common-button reg-btn" id="reg-btn"> Регистрация </button>
+     {{/if}}
+    <input type="text" placeholder="Поиск автора...">
+</div>
+<div>
+    {{#if User}}
+        {{>ProfileMenu this}}
+    {{/if}}
+</div>

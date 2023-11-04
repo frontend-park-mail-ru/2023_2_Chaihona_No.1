@@ -1,0 +1,62 @@
+<div class="post">
+    <div class="post-lock-and-date">
+        <span>{{access}}</span>
+        <img src="icons/post_opts.svg" class="post_opts" data-post="{{id}}">
+        <span style="float: right; margin-right: 1vh;">{{creation_date}}</span>
+    </div>
+    <div id="submenu-{{id}}" class="submenu-post" style="display: none;">
+        <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
+        <div id="delete_post_button" style="padding: 1vh;">Удалить пост</div>
+    </div>
+
+    {{#if has_access}}
+        <div class="target-separator"></div>
+
+        <div class="unlocked-post">
+            <div class="unlocked-post-topic">
+                {{header}}
+            </div>
+            <div class="unlocked-post-content">
+                {{body}}
+            </div>
+        </div>
+
+        <div class="tagline">
+            {{#each tags}}
+                <span class="tag">{{this.name}}</span>
+            {{/each}}
+        </div>
+
+        <div class="target-separator"></div>
+
+    {{else}}
+        <div class="locked-post">
+            <div class="locked-post-topic">
+                {{topic}}
+            </div>
+            <div class="locked-post-price">{{availability}}</div>
+            <button class="common-button buy-post-button">Купить</button>
+        </div>
+    {{/if}}
+
+    <div class="like-comment-share">
+        <img src="icons/like.svg" style="margin-left: 2%">
+        <img src="icons/comment.svg">
+        <img src="icons/share.svg" style="float:right; margin-right: 2%;">
+    </div>
+
+    {{#if has_access}}
+        <div class="comments-sections">
+            {{#each comments}}
+                {{>comment this}}
+            {{/each}}
+        </div>
+        <div class="comment-input">
+            <div class="input-ava"><img src="img/default-ava.png"></div>
+            <div class="comment-field" data-post="{{id}}">
+                <input type="text" placeholder="Оставьте комментарий..." class="comment-field">
+                <img src="icons/send.svg" id="send-button" class="send_btn">
+            </div>
+        </div>
+    {{/if}}
+</div>
