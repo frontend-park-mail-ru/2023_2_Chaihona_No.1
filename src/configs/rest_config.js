@@ -42,5 +42,9 @@ export const restEndpoints = {
   updateProfile: {
     url: '/profile/{id}',
     method: POST_METHOD,
+  },
+  addPost: {
+    url: '/post',
+    method: POST_METHOD,
   }
 };

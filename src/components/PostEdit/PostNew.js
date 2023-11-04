@@ -6,7 +6,6 @@ import {Api} from "@modules/api";
 
 export default async () => {
     const api = new Api();
-    const profileRequest = await api.getUserProfile(window.user.id);
 
     const rootElement = document.querySelector(ROOT_ELEMENT_ID);
     rootElement.innerHTML = postEdit({new: true, sub_levels: window.sub_levels});
@@ -22,9 +21,6 @@ export default async () => {
         const postText = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
         const postLevel = document.querySelector('input:checked').value;
-        alert(postTheme);
-        alert(postText);
-        alert(postTags);
-        alert(postLevel);
+        api.newPost({postTheme, postLevel, postText, postTags});
     });
 }
