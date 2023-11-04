@@ -17,10 +17,10 @@ export default async () => {
 
     const verifyButton = document.getElementById('publish');
     verifyButton.addEventListener('click', () => {
-        const postTheme = document.getElementById('theme').value;
-        const postText = document.getElementById('text').value;
+        const header = document.getElementById('theme').value;
+        const body = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
-        const postLevel = document.querySelector('input:checked').value;
-        api.newPost({postTheme, postLevel, postText, postTags});
+        const min_subscription_level_id = document.querySelector('input:checked').value;
+        api.newPost({header, min_subscription_level_id, body, postTags});
     });
 }

@@ -15,12 +15,14 @@ const SUB_LEVEL_TEMPLATE_NAME = 'sub_level';
 const POST_TEMPLATE_NAME = 'post';
 const COMMENT_TEMPLATE_NAME = 'comment';
 
+//todo: назвать нормально =)
 import css from '@components/AuthorProfile/author_profile.css'
 import css2 from '@components/Post/post.css'
 import css3 from '@components/Target/target.css'
 import css4 from '@components/UserProfile/user_profile.css'
 import css5 from '@components/UserProfile/user_profile.css'
 import css6 from '@components/Comment/comment.css'
+import css7 from '@components/SubLevel/sub_level.css'
 
 /**
  * Функция отрисовки страницы пользователя
