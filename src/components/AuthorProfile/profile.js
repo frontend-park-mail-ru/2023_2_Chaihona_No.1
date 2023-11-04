@@ -7,6 +7,7 @@ import {
 import post from '@components/Post/post.js';
 
 import aprofile from '@components/AuthorProfile/author_profile.handlebars'
+import uprofile from '@components/UserProfile/user_profile.handlebars'
 
 const AUTHOR_USER_TYPE = 'creator';
 const TARGET_TEMPLATE_NAME = 'target';
@@ -73,7 +74,7 @@ export default async () => {
 
     post();
   } else {
-    rootElement.innerHTML = Handlebars.templates.user_profile(profile);
+    rootElement.innerHTML = uprofile(profile);
   }
 
   const statusSettingButton = document.getElementById("status-setting");

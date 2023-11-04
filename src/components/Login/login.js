@@ -1,6 +1,6 @@
 import { Api } from '@modules/api.js';
-import navbar from '@components/Navbar/navbar.handlebars';
-import login from '@components/login/login.handlebars'
+import navbar from '@components/Navbar/Navbar.js';
+import login from '@components/Login/login.handlebars'
 import {
   MIN_FAIL_RESPONSE, LOGIN_ERROR_TEXT, ROOT_ELEMENT_ID, MOUSE_CLICK_EVENT,
 } from '@configs/common_config.js';

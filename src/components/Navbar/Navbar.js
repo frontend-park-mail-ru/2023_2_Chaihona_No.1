@@ -20,7 +20,7 @@ let menuOpen = false;
  * @param user - пользователь. Если его нет, отрисует навбар с регистрацией,
  * иначе отрисует навбар с его данными.
  */
-export default (user = null) => {
+const Navbar = (user = null) => {
     const navbarElement = document.querySelector(NAVBAR_ELEMENT_ID);
     navbarElement.innerHTML = '';
     if (user) {
@@ -31,6 +31,8 @@ export default (user = null) => {
         logoutButton.addEventListener('click', async () => {
           const api = new Api();
           await api.logout();
+          Navbar();
+          window.router.redirect('login');
         })
         const subButton = document.querySelector(".button-down");
         subButton.addEventListener('click', () => {
@@ -65,3 +67,5 @@ export default (user = null) => {
         window.router.redirect(NOT_FOUND_URL);
     });
 };
+
+export default Navbar;
