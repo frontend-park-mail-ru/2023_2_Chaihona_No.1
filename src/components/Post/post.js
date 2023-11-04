@@ -28,6 +28,8 @@ export default () => {
         postDeleteButton.addEventListener('click', async () => {
             const api = new Api();
             await api.deletePost(id);
+            const post = postMenu.parentNode;
+            post.remove();
         })
     }))
 
