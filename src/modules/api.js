@@ -98,13 +98,13 @@ export class Api extends Requests {
 
   async editPost(post) {
     const endpoint = restEndpoints.editPost;
-    const url = backendUrl + endpoint.url;
+    const url = backendUrl + endpoint.url.replace('{id}', post.id);
     return this.make_request(url, endpoint.method, post);
   }
 
   async deletePost(id) {
     const endpoint = restEndpoints.deletePost;
-    const url = backendUrl + endpoint.url;
-    return this.make_request(url, endpoint.method, id);
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method);
   }
 }
