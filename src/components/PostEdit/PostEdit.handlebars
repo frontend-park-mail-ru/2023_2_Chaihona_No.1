@@ -50,18 +50,14 @@
                     <input type="radio" id="all" name="sub_variant" value="0" checked />
                     <label for="all">Доступно всем</label>
                 </div>
-                <div class="sub_variant">
-                    <input type="radio" id="1level" name="sub_variant" value="1">
-                    <label for="1level">1 уровень подписки</label>
-                </div>
-                <div class="sub_variant">
-                    <input type="radio" id="2level" name="sub_variant" value="2">
-                    <label for="2level">2 уровень подписки</label>
-                </div>
-                <div class="sub_variant">
-                    <input type="radio" id="3level" name="sub_variant" value="3">
-                    <label for="3level">3 уровень подписки</label>
-                </div>
+
+                {{#each sub_levels}}
+                    <div class="sub_variant">
+                        <input type="radio" id="{{@index}}level" name="sub_variant" value="{{this.id}}">
+                        <label for="{{@index}}level">{{@index}} уровень подписки</label>
+                    </div>
+                {{/each}}
+
             </div>
         </div>
     </div>

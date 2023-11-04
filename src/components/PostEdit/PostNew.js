@@ -2,10 +2,14 @@ import {ROOT_ELEMENT_ID} from "@configs/common_config.js";
 import postEdit from "@components/PostEdit/PostEdit.handlebars";
 
 import css from '@components/PostEdit/PostEdit.css';
+import {Api} from "@modules/api";
 
 export default async () => {
+    const api = new Api();
+    const profileRequest = await api.getUserProfile(window.user.id);
+
     const rootElement = document.querySelector(ROOT_ELEMENT_ID);
-    rootElement.innerHTML = postEdit({new: true});
+    rootElement.innerHTML = postEdit({new: true, sub_levels: window.sub_levels});
     const backElement = document.getElementById('back');
 
     backElement.addEventListener('click', () => {

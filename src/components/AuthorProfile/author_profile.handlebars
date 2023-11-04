@@ -36,7 +36,7 @@
             <img src="icons/Settings2.svg" id = "about-setting" class="page-settings" style="margin-top: -1%;">
             <div style="font-weight: 700; font-size: 3rem;">Об авторе</div>
             <div class="target-separator" style="margin-top: 3%; margin-bottom: 3%;"></div>
-            <div id="user_about" style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{description}} </div>
+            <div id="user_about" style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{user.description}} </div>
         </div>
 
         <div class="switch-and-search">
@@ -53,7 +53,7 @@
     <div class="right-column">
         <div class="subscriptions">
             <div class="sub-word">Уровни подписки</div>
-            {{#each sub_levels}}
+            {{#each subscribe_levels}}
                 <div class = 'target-separator'></div>
                 {{>sub_level this}}
             {{/each}}
