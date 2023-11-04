@@ -25,16 +25,10 @@ export default () => {
             return window.router.redirect('/editpost' + id);
         })
 
-        postDeleteButton.addEventListener('click', () => {
-            alert(id);
+        postDeleteButton.addEventListener('click', async () => {
+            const api = new Api();
+            await api.deletePost(id);
         })
     }))
 
-    const postDeleteButton = document.querySelectorAll('.delete-profile-button');
-
-    postDeleteButton.forEach((deleteButton) => deleteButton.addEventListener('click'), async (event) => {
-        const id = event.target.dataset.post;
-        const api = new Api();
-        await api.deletePost(id);
-    })
 }
