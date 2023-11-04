@@ -16,7 +16,7 @@ export default async () => {
         alert('фронтендер отчислен =(');
     }
 
-    const profile = profileRequest.data.body.profiles;
+    const profile = profileRequest.data.body.profile;
     if (profile.user.user_type === 'creator') {
         const postsRequest = await api.getUserPosts(id);
         if (postsRequest.status >= 300) {
