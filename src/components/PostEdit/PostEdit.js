@@ -23,7 +23,7 @@ export default async () => {
         const body = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
         const min_subscription_level_id = Number(document.querySelector('input:checked').value);
-        api.editPost({header, min_subscription_level_id, body, postTags});
+        api.editPost({header, min_subscription_level_id, body, postTags, id});
         window.history.back();
     });
 }
