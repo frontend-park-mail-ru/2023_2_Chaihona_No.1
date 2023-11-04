@@ -61,6 +61,12 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method);
   }
 
+  async getLevels(id) {
+    const endpoint = restEndpoints.getLevels;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method, {id});
+  }
+
   /**
      * Регистрация пользователя
      * @param login - логин пользователя
@@ -72,12 +78,15 @@ export class Api extends Requests {
   async register(login, password, isAuthor) {
     const endpoint = restEndpoints.register;
     const url = backendUrl + endpoint.url;
-    let userType;
-    if (isAuthor) {
-      userType = 'creator';
-    } else {
-      userType = 'simple_user';
-    }
     return this.make_request(url, endpoint.method, { login, password, isAuthor});
+  }
+
+  async updateProfile(profile) {
+    const endpoint = restEndpoints.updateProfile;
+    if (profile.posts !== undefined) {
+      delete profile.posts;
+    }
+    const url = backendUrl + endpoint.url.replace('{id}', profile.user.id);
+    return this.make_request(url, endpoint.method, profile);
   }
 }

@@ -35,4 +35,12 @@ export const restEndpoints = {
     url: '/logout',
     method: POST_METHOD,
   },
+  getLevels: {
+    url: '/getlevels',
+    method: GET_METHOD,
+  },
+  updateProfile: {
+    url: '/profile/{id}',
+    method: POST_METHOD,
+  }
 };
