@@ -24,9 +24,9 @@ async function init() {
   const api = new Api();
   const isAuth = await api.isAuth();
   if (isAuth.data.body.is_authorized === true) {
-    navbar({ User: { id: '0' } });
-    window.user = { id: '0' }
-    router.redirect('/profile0');
+    navbar({ User: { id: isAuth.data.body.id } });
+    window.user = { id: isAuth.data.body.id }
+    router.redirect('/profile' + isAuth.data.body.id);
   } else {
     navbar();
     router.redirect('/login');
