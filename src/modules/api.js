@@ -95,4 +95,16 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url;
     return this.make_request(url, endpoint.method, post);
   }
+
+  async editPost(post) {
+    const endpoint = restEndpoints.editPost;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method, post);
+  }
+
+  async deletePost(id) {
+    const endpoint = restEndpoints.deletePost;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method, id);
+  }
 }

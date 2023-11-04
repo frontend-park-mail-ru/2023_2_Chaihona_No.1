@@ -1,3 +1,5 @@
+import {Api} from "@modules/api";
+
 export default () => {
     const sendButtons = document.querySelectorAll('.send_btn');
     sendButtons.forEach((sendButton) => sendButton.addEventListener('click', (event) => {
@@ -26,6 +28,13 @@ export default () => {
         postDeleteButton.addEventListener('click', () => {
             alert(id);
         })
-
     }))
+
+    const postDeleteButton = document.querySelectorAll('.delete-profile-button');
+
+    postDeleteButton.forEach((deleteButton) => deleteButton.addEventListener('click'), async (event) => {
+        const id = event.target.dataset.post;
+        const api = new Api();
+        await api.deletePost(id);
+    })
 }

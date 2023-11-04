@@ -2,10 +2,12 @@ import {PROFILE_URL, ROOT_ELEMENT_ID} from "@configs/common_config.js";
 import postEdit from '@components/PostEdit/PostEdit.handlebars';
 
 import css from '@components/PostEdit/PostEdit.css';
+import {Api} from "@modules/api";
 
 export default async () => {
+    const api = new Api();
     const rootElement = document.querySelector(ROOT_ELEMENT_ID);
-    rootElement.innerHTML = postEdit({new: false});
+    rootElement.innerHTML = postEdit({new: false, sub_levels: window.sub_levels});
     const backElement = document.getElementById('back');
 
     const currUrl = window.location.href.split('/').pop();
@@ -17,19 +19,11 @@ export default async () => {
 
     const verifyButton = document.getElementById('publish');
     verifyButton.addEventListener('click', () => {
-        const postTheme = document.getElementById('theme').value;
-        const postText = document.getElementById('text').value;
+        const header = document.getElementById('theme').value;
+        const body = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
-        const postLevel = document.querySelector('input:checked').value;
-        // alert(postTheme);
-        // alert(postText);
-        // alert(postTags);
-        // alert(postLevel);
-        alert(id);
-    });
-
-    const removeButton = document.getElementById('delete');
-    removeButton.addEventListener('click', () => {
-        alert(id);
+        const min_subscription_level_id = Number(document.querySelector('input:checked').value);
+        api.editPost({header, min_subscription_level_id, body, postTags});
+        window.history.back();
     });
 }

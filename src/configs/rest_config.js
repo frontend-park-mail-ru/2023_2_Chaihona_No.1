@@ -1,5 +1,6 @@
 const GET_METHOD = 'GET';
 const POST_METHOD = 'POST';
+const DELETE_METHOD = 'DELETE';
 
 /**
  * URL для всех REST-запросов
@@ -45,6 +46,14 @@ export const restEndpoints = {
   },
   addPost: {
     url: '/post',
+    method: POST_METHOD,
+  },
+  deletePost: {
+    url: '/post/{id}',
+    method: DELETE_METHOD,
+  },
+  editPost: {
+    url: '/post/{id}',
     method: POST_METHOD,
   }
 };
