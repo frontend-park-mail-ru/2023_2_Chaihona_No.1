@@ -80,7 +80,7 @@ export default async () => {
             tipButton.addEventListener('click', (event) => {
                 const donateModal = document.getElementById('donate-dialog');
                 donateModal.showModal();
-                donate();
+                donate(id);
             })
 
             const subButton = document.getElementById('sub_button');

@@ -122,4 +122,10 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.blob_request(url);
   }
+
+  async donate(donaterId, creatorId, currency, value) {
+    const endpoint = restEndpoints.donate;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method, {donaterId, creatorId, currency, value});
+  }
 }

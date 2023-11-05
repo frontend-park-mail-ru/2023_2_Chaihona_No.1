@@ -10,6 +10,11 @@
             <div class="subs-amount">{{subscribers}}</div>
             <div class="subs-word">Подписчиков</div>
 
+            {{#if isOwner}}
+                <div class="subs-amount">{{donated}} RUB</div>
+                <div class="subs-word">Заработано</div>
+            {{/if}}
+
             {{#unless isOwner}}
                 <button class="common-button ava-btn" id="sub_button" data-subbed="false">Отслеживать</button>
                 <button class="common-button ava-btn" id="tip-button">Отправить донат</button>

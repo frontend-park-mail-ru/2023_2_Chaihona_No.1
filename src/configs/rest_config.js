@@ -67,5 +67,9 @@ export const restEndpoints = {
   getAvatar: {
     url: '/profile/{id}/avatar',
     method: GET_METHOD,
+  },
+  donate: {
+    url: '/donate',
+    method: POST_METHOD,
   }
 };
