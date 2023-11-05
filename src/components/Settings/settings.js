@@ -70,9 +70,9 @@ export default async () => {
             errorElement.textContent = PASS_REQUIREMENTS_TEXT;
             return;
         }
-        profile.login = newLogin;
-        profile.new_password = newPass;
-        profile.old_password = oldPass;
+        profile.user.login = newLogin;
+        profile.user.new_password = newPass;
+        profile.user.old_password = oldPass;
         await api.updateProfile(profile);
     })
 };
