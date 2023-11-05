@@ -77,11 +77,11 @@ export const restEndpoints = {
     method: GET_METHOD,
   },
   follow: {
-    url: '/follow',
+    url: '/profile/{id}/follow',
     method: POST_METHOD
   },
   unfollow: {
-    url: '/unfollow',
+    url: '/profile/{id}/unfollow',
     method: POST_METHOD,
   }
 };
