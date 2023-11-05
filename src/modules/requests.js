@@ -49,7 +49,7 @@ export class Requests {
     }
 
     async blob_request(url) {
-        const response = await fetch('http://127.0.0.1:8000/e000b0eee73c60f50e8b.png', {
+        const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
@@ -67,7 +67,7 @@ export class Requests {
                 'Content-Type': 'multipart/form-data',
             },
         };
-        
+
         params.body = JSON.stringify({body: data});
         const response = await fetch(url, params);
 
