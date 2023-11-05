@@ -46,12 +46,14 @@ export default () => {
             lks.classList.remove('like-comment-share-clicked');
             lks.classList.add('like-comment-share');
             likesCount.textContent = String (Number(likesCount.textContent) - 1);
+            event.target.dataset.liked = false;
         } else {
             const api = new Api();
             await api.likePost(id);
             lks.classList.remove('like-comment-share');
             lks.classList.add('like-comment-share-clicked');
             likesCount.textContent = String (Number(likesCount.textContent) + 1);
+            event.target.dataset.liked = true;
         }
     }))
 
