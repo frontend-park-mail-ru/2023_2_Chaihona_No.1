@@ -81,13 +81,10 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method, { login, password, isAuthor});
   }
 
-  async updateProfile(profile) {
+  async updateProfileFD(formData, id) {
     const endpoint = restEndpoints.updateProfile;
-    if (profile.posts !== undefined) {
-      delete profile.posts;
-    }
-    const url = backendUrl + endpoint.url.replace('{id}', profile.user.id);
-    return this.multipart_post(url, profile);
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.multipart_post(url, formData);
   }
 
   async newPost(post) {
