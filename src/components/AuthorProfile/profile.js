@@ -5,6 +5,7 @@ import {
     NOT_FOUND_URL,
 } from '@configs/common_config.js';
 import post from '@components/Post/post.js';
+import donate from "@components/Donate/donate.js";
 
 import aprofile from '@components/AuthorProfile/author_profile.handlebars'
 import uprofile from '@components/UserProfile/user_profile.handlebars'
@@ -74,6 +75,14 @@ export default async () => {
                 window.router.redirect('newpost');
             })
         } else {
+            const tipButton = document.getElementById('tip-button');
+
+            tipButton.addEventListener('click', (event) => {
+                const donateModal = document.getElementById('donate-dialog');
+                donateModal.showModal();
+                donate();
+            })
+
             const subButton = document.getElementById('sub_button');
 
             subButton.addEventListener('click', (event) => {
@@ -118,7 +127,9 @@ export default async () => {
             const statusVerifyButton = document.getElementById('status_save_btn');
             statusVerifyButton.addEventListener('click', async () => {
                 profile.user.status = statusData.value;
-                await api.updateProfile(profile);
+                const formData = new FormData();
+                formData.append('status', statusData.value);
+                await api.updateProfileFD(formData, id);
                 dialog.close();
                 statusElement.innerHTML = statusData.value;
             })
@@ -135,8 +146,9 @@ export default async () => {
                 aboutData.value = aboutElement.textContent;
                 const statusVerifyButton = document.getElementById('about_save_btn');
                 statusVerifyButton.addEventListener('click', async () => {
-                    profile.user.description = aboutData.value;
-                    await api.updateProfile(profile);
+                    const formData = new FormData();
+                    formData.append('description', aboutData.value);
+                    await api.updateProfileFD(formData, id);
                     dialog.close();
                     aboutElement.innerHTML = aboutData.value;
                 })

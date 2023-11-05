@@ -12,7 +12,8 @@
 
             {{#unless isOwner}}
                 <button class="common-button ava-btn" id="sub_button" data-subbed="false">Отслеживать</button>
-                <button class="common-button ava-btn">Отправить донат</button>
+                <button class="common-button ava-btn" id="tip-button">Отправить донат</button>
+                {{>Donate}}
             {{/unless}}
         </div>
 
