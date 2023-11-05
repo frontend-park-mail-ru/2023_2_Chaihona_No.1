@@ -87,7 +87,7 @@ export class Api extends Requests {
       delete profile.posts;
     }
     const url = backendUrl + endpoint.url.replace('{id}', profile.user.id);
-    return this.make_request(url, endpoint.method, profile);
+    return this.multipart_post(url, profile);
   }
 
   async newPost(post) {
@@ -123,6 +123,6 @@ export class Api extends Requests {
   async getAvatar(id) {
     const endpoint = restEndpoints.getAvatar;
     const url = backendUrl + endpoint.url.replace('{id}', id);
-    return this.blob_request();
+    return this.blob_request(url);
   }
 }

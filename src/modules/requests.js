@@ -49,12 +49,39 @@ export class Requests {
     }
 
     async blob_request(url) {
-        const response = await fetch(url, {
+        const response = await fetch('http://127.0.0.1:8000/e000b0eee73c60f50e8b.png', {
             method: 'GET',
             mode: 'cors',
             credentials: 'include',
         })
         const resBlob = await response.blob();
         return URL.createObjectURL(resBlob);
+    }
+
+    async multipart_post(url, data) {
+        const params = {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        };
+        
+        params.body = JSON.stringify({body: data});
+        const response = await fetch(url, params);
+
+        try {
+            const responseJson = await response.json();
+            return {
+                status: response.status,
+                data: responseJson,
+            };
+        } catch (e) {
+            return {
+                status: 500,
+                data: null,
+            };
+        }
     }
 }

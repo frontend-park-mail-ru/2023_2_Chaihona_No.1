@@ -58,6 +58,13 @@ export default async () => {
         const newLogin = newLoginField.value;
         const newPass = newPassField.value;
         const oldPass = oldPassField.value;
+        const avatarField = document.getElementById('set-ava');
+        const avatarFile = avatarField.files[0];
+
+        if (avatarFile) {
+            profile.avatar = avatarFile;
+        }
+
         if (newLogin !== undefined) {
             if (!verifyLogin(newLogin)) {
                 errorElement.textContent = LOGIN_ERROR_TEXT;
