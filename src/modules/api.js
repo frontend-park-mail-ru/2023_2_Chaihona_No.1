@@ -123,10 +123,10 @@ export class Api extends Requests {
     return this.blob_request(url);
   }
 
-  async donate(donater_id, creator_id, currency, value) {
+  async donate(donater_id, cid, currency, value) {
     const endpoint = restEndpoints.donate;
     const url = backendUrl + endpoint.url;
-    const cid = Number(creator_id);
-    return this.make_request(url, endpoint.method, {donater_id, cid, currency, value});
+    const creator_id = Number(cid);
+    return this.make_request(url, endpoint.method, {donater_id, creator_id, currency, value});
   }
 }
