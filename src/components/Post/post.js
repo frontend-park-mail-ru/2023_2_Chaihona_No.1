@@ -37,18 +37,21 @@ export default () => {
 
     postLikeButton.forEach((likeButton) => likeButton.addEventListener('click', async (event) => {
         const id = event.target.dataset.post;
-        const liked = event.dataset.liked;
+        const liked = event.target.dataset.liked;
         const lks = document.getElementById("like-" + id);
+        const likesCount = document.getElementById("likes-" + id);
         if (liked === "true") {
             const api = new Api();
             await api.unlikePost(id);
             lks.classList.remove('like-comment-share-clicked');
             lks.classList.add('like-comment-share');
+            likesCount.textContent = String (Number(likesCount.textContent) - 1);
         } else {
             const api = new Api();
             await api.likePost(id);
             lks.classList.remove('like-comment-share');
             lks.classList.add('like-comment-share-clicked');
+            likesCount.textContent = String (Number(likesCount.textContent) + 1);
         }
     }))
 
