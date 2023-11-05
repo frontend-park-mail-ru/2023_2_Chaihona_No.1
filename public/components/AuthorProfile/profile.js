@@ -32,3 +32,5 @@ export default async () => {
         rootElement.innerHTML = Handlebars.templates.user_profile(profile);
     }
 };
+
+

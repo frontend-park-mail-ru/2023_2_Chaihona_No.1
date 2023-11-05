@@ -8,10 +8,11 @@
             <div class="ava">
                 <img src="img/rg-ava.png" style="height: 100%; width: 100%; object-fit: cover;">
             </div>
+
             <div class="subs-amount">{{subscribers}}</div>
             <div class="subs-word">Подписчиков</div>
             <button class="ava-btn">Отслеживать</button>
-            <button class="ava-btn">Отправить донат</button>
+            <button class="donut-btn">Отправить донат</button>
         </div>
         <div class="target-block">
             <div class="target-word">Цели</div>
@@ -50,7 +51,7 @@
         <div class="subscriptions">
             Уровни подписки
             {{#each sub_levels}}
-                <div class = 'target-separator'></div>
+                <div class='target-separator'></div>
                 {{>sub_level this}}
             {{/each}}
         </div>

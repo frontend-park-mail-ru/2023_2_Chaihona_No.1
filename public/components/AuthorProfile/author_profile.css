@@ -121,6 +121,18 @@
     width: 80%;
 }
 
+.donut-btn {
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    top: 12%;
+    color: #FF4D4D;
+    background-color: white;
+    border-color: #FF4D4D;
+    border-radius: 1vh;
+    width: 80%;
+}
+
 .ava{
     position: relative;
     left: 50%;
@@ -193,3 +205,43 @@
 .right-column {
     margin-top: 0;
 }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background-color: #f9f9f9;
+  width: 300px;
+  padding: 20px;
+  margin: 100px auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+      .okno {
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #0000cc;
+        border-radius: 10px;
+        color: #0000cc;
+        display: none;
+      }
