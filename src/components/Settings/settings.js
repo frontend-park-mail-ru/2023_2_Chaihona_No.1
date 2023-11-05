@@ -8,7 +8,6 @@ import settings from '@components/Settings/settings.handlebars'
 
 import css from '@components/Settings/settings.css'
 import {Api} from "@modules/api";
-import {response} from "express";
 
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
