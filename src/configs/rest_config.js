@@ -75,5 +75,13 @@ export const restEndpoints = {
   feed: {
     url: '/feed',
     method: GET_METHOD,
+  },
+  follow: {
+    url: '/follow',
+    method: POST_METHOD
+  },
+  unfollow: {
+    url: '/unfollow',
+    method: POST_METHOD,
   }
 };

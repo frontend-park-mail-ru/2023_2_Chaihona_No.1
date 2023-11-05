@@ -95,12 +95,14 @@ export default async () => {
                     subBtn.dataset.subbed = 'false';
                     subBtn.textContent = 'Отслеживать';
                     subsAmount.textContent = String(Number(subsAmount.textContent) - 1);
+                    api.unfollow(profile.subscribe_levels[0].id);
                 } else {
                     subBtn.classList.remove('ava-btn');
                     subBtn.classList.add('ava-clicked-btn');
                     subBtn.dataset.subbed = 'true';
                     subBtn.textContent = 'Перестать отслеживать';
                     subsAmount.textContent = String(Number(subsAmount.textContent) + 1);
+                    api.follow(profile.subscribe_levels[0].id);
                 }
             });
         }
