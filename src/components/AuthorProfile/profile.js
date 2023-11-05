@@ -1,5 +1,9 @@
 import {Api} from '@modules/api.js';
-import {MIN_FAIL_RESPONSE, NOT_FOUND_URL, PROFILE_URL,} from '@configs/common_config.js';
+import {
+    PROFILE_URL,
+    MIN_FAIL_RESPONSE,
+    NOT_FOUND_URL,
+} from '@configs/common_config.js';
 import post from '@components/Post/post.js';
 
 import aprofile from '@components/AuthorProfile/author_profile.handlebars'
@@ -7,9 +11,17 @@ import uprofile from '@components/UserProfile/user_profile.handlebars'
 
 import profileSettingIcon from '@static/icons/Settings2.svg';
 import defaultAvaImg from '@static/img/default-ava.png';
-//todo: назвать нормально =)
 
 const AUTHOR_USER_TYPE = 'creator';
+
+//todo: назвать нормально =)
+import css from '@components/AuthorProfile/author_profile.css'
+import css2 from '@components/Post/post.css'
+import css3 from '@components/Target/target.css'
+import css4 from '@components/UserProfile/user_profile.css'
+import css5 from '@components/UserProfile/user_profile.css'
+import css6 from '@components/Comment/comment.css'
+import css7 from '@components/SubLevel/sub_level.css'
 
 /**
  * Функция отрисовки страницы пользователя
@@ -111,7 +123,7 @@ export default async () => {
             })
         });
 
-        if (profile.user.is_author) {
+        if (profile.user.user_type === AUTHOR_USER_TYPE) {
             const aboutSettingButton = document.getElementById("about-setting");
             aboutSettingButton.src = profileSettingIcon;
             aboutSettingButton.addEventListener('click', () => {

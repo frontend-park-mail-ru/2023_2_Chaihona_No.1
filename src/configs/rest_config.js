@@ -65,7 +65,7 @@ export const restEndpoints = {
     method: DELETE_METHOD,
   },
   getAvatar: {
-    url: 'profile/{id}/avatar',
+    url: '/profile/{id}/avatar',
     method: GET_METHOD,
   }
 };
