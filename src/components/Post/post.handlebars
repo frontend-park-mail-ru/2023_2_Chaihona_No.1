@@ -1,12 +1,12 @@
 <div class="post">
     <div class="post-lock-and-date">
         <span>{{access}}</span>
-        {{#if isOwner}}
+        {{#if isOwn}}
             <img src="icons/post_opts.svg" class="post_opts" data-post="{{id}}">
         {{/if}}
         <span style="float: right; margin-right: 1vh;">{{creation_date}}</span>
     </div>
-    {{#if isOwner}}
+    {{#if isOwn}}
         <div id="submenu-{{id}}" class="submenu-post" style="display: none;">
             <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
             <div class=".delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
