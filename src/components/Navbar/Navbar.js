@@ -41,6 +41,15 @@ const Navbar = (user = null) => {
         const userAvatar = document.querySelector(".nav-ava");
         userAvatar.src = defaultAva;
 
+        const mainButton = document.getElementById('main-button');
+        mainButton.addEventListener('click', ()=> {
+            if (window.user !== undefined ){
+                window.router.redirect('feed');
+            } else {
+                window.router.redirect('login');
+            }
+        })
+
         const subButton = document.querySelector(".button-down");
         subButton.src = downArrowImage;
         subButton.addEventListener('click', () => {

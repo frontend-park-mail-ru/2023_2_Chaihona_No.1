@@ -71,5 +71,9 @@ export const restEndpoints = {
   donate: {
     url: '/donate',
     method: POST_METHOD,
+  },
+  feed: {
+    url: '/feed',
+    method: GET_METHOD,
   }
 };

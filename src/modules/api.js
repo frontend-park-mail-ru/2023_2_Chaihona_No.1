@@ -129,4 +129,10 @@ export class Api extends Requests {
     const creator_id = Number(cid);
     return this.make_request(url, endpoint.method, {donater_id, creator_id, currency, value});
   }
+
+  async getFeed() {
+    const endpoint = restEndpoints.feed;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method);
+  }
 }
