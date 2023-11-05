@@ -47,6 +47,9 @@ export default async () => {
     const profile = profileRequest.data.body.profile;
     window.sub_levels = profile.subscribe_levels;
 
+
+    profile.user.is_author = true;
+
     // если пользователь автор - забираем посты и рендерим страницу, иначе просто рендерим страницу
     if (profile.user.is_author) {
         const postsRequest = await api.getUserPosts(id);
@@ -103,7 +106,8 @@ export default async () => {
     }
 
     const avatarElement = document.querySelector('.ava-img');
-    avatarElement.src = await api.getAvatar(id);
+    const ava = await api.getAvatar(id);
+    avatarElement.src = ava;
 
     if (isOwner) {
         const statusSettingButton = document.getElementById("status-setting");

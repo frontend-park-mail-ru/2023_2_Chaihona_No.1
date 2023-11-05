@@ -123,6 +123,6 @@ export class Api extends Requests {
   async getAvatar(id) {
     const endpoint = restEndpoints.getAvatar;
     const url = backendUrl + endpoint.url.replace('{id}', id);
-    return this.make_request(url, endpoint.method);
+    return this.blob_request();
   }
 }

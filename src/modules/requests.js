@@ -6,7 +6,7 @@ const UNAUTHORISED_CODE = 401;
  * @class
  */
 export class Requests {
-  /**
+    /**
      * Функция для создания запроса
      * @param url - url для отправки запроса
      * @param method - метод запроса
@@ -14,37 +14,47 @@ export class Requests {
      * @returns {Promise<{data: any, status: number}|{data: null, status: number}>} -
      * результат запроса и статус
      */
-  async make_request(url, method, data = null) {
-    const params = {
-      method,
-      mode: 'cors',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+    async make_request(url, method, data = null) {
+        const params = {
+            method,
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
 
-    if (!noBodyRequests.includes(method)) {
-      params.body = JSON.stringify({body: data});
-      //params.body = JSON.stringify(data)
+        if (!noBodyRequests.includes(method)) {
+            params.body = JSON.stringify({body: data});
+            //params.body = JSON.stringify(data)
+        }
+
+        const response = await fetch(url, params);
+
+        try {
+            const responseJson = await response.json();
+            if (response.status === UNAUTHORISED_CODE) {
+                window.router.redirect('/login');
+            }
+            return {
+                status: response.status,
+                data: responseJson,
+            };
+        } catch (e) {
+            return {
+                status: 500,
+                data: null,
+            };
+        }
     }
 
-    const response = await fetch(url, params);
-
-    try {
-      const responseJson = await response.json();
-      if (response.status === UNAUTHORISED_CODE) {
-        window.router.redirect('/login');
-      }
-      return {
-        status: response.status,
-        data: responseJson,
-      };
-    } catch (e) {
-      return {
-        status: 500,
-        data: null,
-      };
+    async blob_request(url) {
+        const response = await fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include',
+        })
+        const resBlob = await response.blob();
+        return URL.createObjectURL(resBlob);
     }
-  }
 }
