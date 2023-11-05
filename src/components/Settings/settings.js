@@ -60,10 +60,7 @@ export default async () => {
         const oldPass = oldPassField.value;
         const avatarField = document.getElementById('upload-avatar');
         const avatarFile = avatarField.files[0];
-
-        if (avatarFile) {
-            profile.avatar = avatarFile;
-        }
+        const formData = new FormData();
 
         if (newLogin !== undefined) {
             if (!verifyLogin(newLogin)) {
@@ -73,19 +70,30 @@ export default async () => {
                 profile.user.login = newLogin;
             }
         }
-        if (!verifyPassword(newPass)) {
-            errorElement.textContent = PASS_REQUIREMENTS_TEXT;
-            return;
+        if (newPass !== undefined) {
+            if (!verifyPassword(newPass)) {
+                errorElement.textContent = PASS_REQUIREMENTS_TEXT;
+                return;
+            }
+            formData.append('new_password', newPass);
         }
-        if (!verifyPassword(oldPass)) {
-            errorElement.textContent = PASS_REQUIREMENTS_TEXT;
-            return;
+        if (oldPass !== undefined) {
+            if (!verifyPassword(oldPass)) {
+                errorElement.textContent = PASS_REQUIREMENTS_TEXT;
+                return;
+            }
+            formData.append('old_password', oldPass);
         }
-        profile.user.new_password = newPass;
-        profile.user.old_password = oldPass;
 
-        const formData = new FormData();
-        formData.append('profile', profile);
+        formData.append('id', profile.user.id);
+        if (avatarFile) {
+            formData.append('avatar', avatarFile);
+        }
+
+        formData.append('login', profile.user.login);
+        formData.append('status', profile.user.status);
+        formData.append('description', profile.description);
+
 
         const response = await api.updateProfileFD(formData, profile.user.id);
         if (response.data.error === 'user_validation') {
