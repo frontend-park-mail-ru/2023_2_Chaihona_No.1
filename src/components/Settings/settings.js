@@ -83,6 +83,10 @@ export default async () => {
         }
         profile.user.new_password = newPass;
         profile.user.old_password = oldPass;
+
+        const formData = new FormData();
+        formData.append('profile', profile);
+
         const response = await api.updateProfile(profile);
         if (response.data.error === 'user_validation') {
             errorElement.textContent = ''

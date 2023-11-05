@@ -66,9 +66,9 @@ export class Requests {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
+            body: data
         };
 
-        params.body = JSON.stringify({body: data});
         const response = await fetch(url, params);
 
         try {
