@@ -119,4 +119,10 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.make_request(url, endpoint.method);
   }
+
+  async getAvatar(id) {
+    const endpoint = restEndpoints.getAvatar;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method);
+  }
 }

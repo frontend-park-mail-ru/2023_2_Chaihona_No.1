@@ -1,12 +1,12 @@
-
-
 <div class="user-cover"></div>
 
 <div class="page-data">
 
     <div class="left-column">
         <div class="ava-block">
-            <div class="ava"></div>
+            <div class="ava">
+                <img src="img/rg-ava.png" class="ava-img">
+            </div>
             <div class="subs-amount">{{donated}}</div>
             <div class="subs-word">Пожертвовано</div>
         </div>
@@ -14,7 +14,9 @@
 
     <div class="main-data">
         <div class="name-and-status">
-            <img src="icons/Settings2.svg" id = "status-setting" class="page-settings">
+            {{#if isOwner}}
+                <img src="icons/Settings2.svg" id="status-setting" class="page-settings">
+            {{/if}}
             <div class="nickname">{{user.login}}</div>
             <div class="status">{{user.status}}</div>
         </div>
@@ -22,11 +24,11 @@
     <div class="right-column">
         <div class="subscriptions">
             Подписки
-            <div class = 'target-separator'></div>
-            {{#each subs}}
+            <div class='target-separator'></div>
+            {{#each subscriptions}}
                 <div class="sub-element">
-                    <img src="img/default-ava.png">
-                    {{this.name}}
+                    <img src="img/default-ava.png" class="sub-pic">
+                    {{this.login}}
                 </div>
             {{/each}}
         </div>

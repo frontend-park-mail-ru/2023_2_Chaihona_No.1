@@ -10,27 +10,31 @@ export class Router {
      * @constructor
      */
   constructor() {
-    window.addEventListener('click', (e) => {
-      const target = e.target.getAttribute('href');
+    window.addEventListener('click', (event) => {
+      const target = event.target.getAttribute('href');
       if (target !== null) {
-        e.preventDefault();
+        event.preventDefault();
         this.redirect(target);
       }
     });
 
-    window.addEventListener('popstate', () => {
+    window.addEventListener('popstate', (event) => {
       const path = window.location.pathname;
       this.redirect(path);
     });
   }
 
   /**
-     * Редиректит пользователя по указанному пути внутри приложения
-     * @param path - путь внутри приложения
-     */
+   * Редиректит пользователя по указанному пути внутри приложения
+   * @param path - путь внутри приложения
+   * @param state - состояние
+   */
   redirect(path) {
     const renderer = path.replace(/[/0-9]*/g, ''); // удалить лишние цифры если ссылка связана с каким-то id (e.g. id профиля)
     let route = routes[renderer];
+    if (window.history.state) {
+      console.log(window.history.state.data);
+    }
     window.history.pushState(null, null, path);
     if (route === undefined) {
       route = routes.notfound;

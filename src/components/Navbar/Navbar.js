@@ -6,6 +6,9 @@ import css from './navbar.css';
 import css2 from '@components/ProfileMenu/ProfileMenu.css'
 
 import logoImage from '@static/img/logo.png';
+import downArrowImage from '@static/icons/down-arrow.png';
+import defaultAva from '@static/img/default-ava.png';
+
 import {Api} from "@modules/api";
 
 const NAVBAR_ELEMENT_ID = '#navbar';
@@ -34,7 +37,12 @@ const Navbar = (user = null) => {
           Navbar();
           window.router.redirect('login');
         })
+
+        const userAvatar = document.querySelector(".nav-ava");
+        userAvatar.src = defaultAva;
+
         const subButton = document.querySelector(".button-down");
+        subButton.src = downArrowImage;
         subButton.addEventListener('click', () => {
             const submenu = document.getElementById("submenu");
             if (menuOpen) {

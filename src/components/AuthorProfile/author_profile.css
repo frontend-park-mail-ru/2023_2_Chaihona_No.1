@@ -121,6 +121,18 @@
     width: 80%;
 }
 
+.ava-clicked-btn {
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    top: 12%;
+    color: white;
+    background-color: #FF4D4D;
+    border-color: #FF4D4D;
+    border-radius: 1vh;
+    width: 80%;
+}
+
 .ava{
     position: relative;
     left: 50%;

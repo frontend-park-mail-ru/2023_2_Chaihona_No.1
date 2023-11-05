@@ -63,5 +63,9 @@ export const restEndpoints = {
   unlikePost: {
     url: '/post/{id}/unlike',
     method: DELETE_METHOD,
+  },
+  getAvatar: {
+    url: 'profile/{id}/avatar',
+    method: GET_METHOD,
   }
 };

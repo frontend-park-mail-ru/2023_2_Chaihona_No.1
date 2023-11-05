@@ -1,27 +1,31 @@
 <div class="post">
     <div class="post-lock-and-date">
         <span>{{access}}</span>
-        <img src="icons/post_opts.svg" class="post_opts" data-post="{{id}}">
+        {{#if isOwner}}
+            <img src="icons/post_opts.svg" class="post_opts" data-post="{{id}}">
+        {{/if}}
         <span style="float: right; margin-right: 1vh;">{{creation_date}}</span>
     </div>
-    <div id="submenu-{{id}}" class="submenu-post" style="display: none;">
-        <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
-        <div class=".delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
-    </div>
+    {{#if isOwner}}
+        <div id="submenu-{{id}}" class="submenu-post" style="display: none;">
+            <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
+            <div class=".delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
+        </div>
+    {{/if}}
 
     {{#if has_access}}
         <div class="target-separator"></div>
 
         <div class="unlocked-post">
-            <div class="unlocked-post-topic">
+            <div class="unlocked-post-topic" id="header-{{id}}">
                 {{header}}
             </div>
-            <div class="unlocked-post-content">
+            <div class="unlocked-post-content" id="body-{{id}}">
                 {{body}}
             </div>
         </div>
 
-        <div class="tagline">
+        <div class="tagline" id="tags-{{id}}">
             {{#each tags}}
                 <span class="tag">{{this.name}}</span>
             {{/each}}
@@ -40,18 +44,20 @@
     {{/if}}
 
     {{#if is_liked}}
-    <div class="like-comment-share-clicked" id="like-{{id}}">
-        <img src="icons/like.svg" style="margin-left: 2%" class="like" data-post="{{id}}" data-liked="true">
-         <span id="likes-{{id}}"> {{likes}}  </span>
-        <img src="icons/comment.svg">
-        <img src="icons/share.svg" style="float:right; margin-right: 2%;">
-    </div>
+        <div class="like-comment-share-clicked" id="like-{{id}}">
+            <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+                 data-liked="true">
+            <span id="likes-{{id}}"> {{likes}}  </span>
+            <img src="icons/comment.svg" class="comment-ico" style="display: inline">
+            <img src="icons/share.svg" style="float:right; margin-right: 2%;display: inline" class="share">
+        </div>
     {{else}}
         <div class="like-comment-share" id="like-{{id}}">
-            <img src="icons/like.svg" style="margin-left: 2%" class="like" data-post="{{id}}" data-liked="false">
+            <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+                 data-liked="false">
             <span id="likes-{{id}}"> {{likes}}  </span>
-            <img src="icons/comment.svg">
-            <img src="icons/share.svg" style="float:right; margin-right: 2%;">
+            <img src="icons/comment.svg" class="comment-ico" style="display: inline">
+            <img src="icons/share.svg" style="float:right; margin-right: 2%; display: inline" class="share">
         </div>
     {{/if}}
 

@@ -8,11 +8,12 @@ module.exports = [
         entry: './index.js',
         devServer: {
             port: 8000,
+            historyApiFallback: true
          },
         module: {
             rules: [
-                {test: /\.svg$/, use: 'svg-inline-loader'},
                 {test: /\.(gif|png)$/i, type: 'asset/resource'},
+                {test: /\.svg/, type: 'asset/inline'},
                 {test: /\.css$/, use: ['style-loader', 'css-loader']},
                 {
                     test: /\.handlebars$/,
