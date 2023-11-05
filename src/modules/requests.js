@@ -63,9 +63,9 @@ export class Requests {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
+            // headers: {
+            //     'Content-Type': 'multipart/form-data',
+            // },
             body: data
         };
 

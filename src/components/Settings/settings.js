@@ -87,7 +87,7 @@ export default async () => {
         const formData = new FormData();
         formData.append('profile', profile);
 
-        const response = await api.updateProfile(profile);
+        const response = await api.updateProfile(formData);
         if (response.data.error === 'user_validation') {
             errorElement.textContent = ''
         }
