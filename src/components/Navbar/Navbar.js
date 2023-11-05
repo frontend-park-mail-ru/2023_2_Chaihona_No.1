@@ -44,9 +44,9 @@ const Navbar = (user = null) => {
         const mainButton = document.getElementById('main-button');
         mainButton.addEventListener('click', ()=> {
             if (window.user !== undefined ){
-                window.router.redirect('feed');
+                return window.router.redirect('feed');
             } else {
-                window.router.redirect('login');
+                return window.router.redirect('login');
             }
         })
 
@@ -79,10 +79,6 @@ const Navbar = (user = null) => {
             window.router.redirect('/register');
         });
     }
-    const mainBtn = document.querySelector(MAIN_PAGE_BUTTON_CLASS);
-    mainBtn.addEventListener(MOUSE_CLICK_EVENT, () => {
-        window.router.redirect(NOT_FOUND_URL);
-    });
 };
 
 export default Navbar;
