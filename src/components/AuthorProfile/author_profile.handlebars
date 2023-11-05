@@ -16,7 +16,11 @@
             {{/if}}
 
             {{#unless isOwner}}
+            {{#if is_subbed}}
+                <button class="common-button ava-clicked-btn" id="sub_button" data-subbed="true">Перестать отслеживать</button>
+            {{else}}
                 <button class="common-button ava-btn" id="sub_button" data-subbed="false">Отслеживать</button>
+            {{/if}}
                 <button class="common-button ava-btn" id="tip-button">Отправить донат</button>
                 {{>Donate}}
             {{/unless}}
