@@ -1,4 +1,9 @@
-import {INCORRECT_LOGIN_ERROR_TEXT, PASS_REQUIREMENTS_TEXT, ROOT_ELEMENT_ID} from "@configs/common_config.js";
+import {
+    INCORRECT_LOGIN_ERROR_TEXT,
+    MIN_FAIL_RESPONSE, NOT_FOUND_URL,
+    PASS_REQUIREMENTS_TEXT,
+    ROOT_ELEMENT_ID
+} from "@configs/common_config.js";
 import settings from '@components/Settings/settings.handlebars'
 
 import css from '@components/Settings/settings.css'
@@ -32,12 +37,19 @@ function verifyPassword(password) {
     return true
 }
 
-export default () => {
+export default async () => {
     const rootElement = document.querySelector(ROOT_ELEMENT_ID);
     rootElement.innerHTML = settings();
     const saveButton = document.querySelector('.save-profile-button');
     const api = new Api();
-    const profile = api.getUserProfile(window.user.id);
+    const profileRequest = await api.getUserProfile(window.user.id);
+
+    if (profileRequest.status >= MIN_FAIL_RESPONSE) {
+        window.router.redirect(NOT_FOUND_URL);
+    }
+
+    const profile = profileRequest.data.body.profile;
+
     saveButton.addEventListener('click', async () => {
         const errorElement = document.querySelector('.error');
         const newLoginField = document.getElementById('login');
@@ -58,6 +70,9 @@ export default () => {
             errorElement.textContent = PASS_REQUIREMENTS_TEXT;
             return;
         }
+        profile.login = newLogin;
+        profile.new_password = newPass;
+        profile.old_password = oldPass;
         await api.updateProfile(profile);
     })
 };
