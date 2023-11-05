@@ -41,11 +41,6 @@
             <div class="av-subscriptions">
                 <h3>Кто может смотреть</h3>
                 <div class = 'target-separator'></div>
-                <div class="sub_variant">
-                    <input type="radio" id="all" name="sub_variant" value="0" checked />
-                    <label for="all">Доступно всем</label>
-                </div>
-
                 {{#each sub_levels}}
                     <div class="sub_variant">
                         <input type="radio" id="{{this.level}}level" name="sub_variant" value="{{this.id}}">
