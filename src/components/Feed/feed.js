@@ -1,6 +1,7 @@
 import './feed.css'
 
 import feed from '@components/Feed/feed.handlebars'
+import post from "@components/Post/post.js";
 import {Api} from "@modules/api.js";
 
 export default async () => {
@@ -11,4 +12,5 @@ export default async () => {
         rootElement.textContent = 'У вас ещё нет подписок';
     }
     rootElement.innerHTML = feed(response.data.body);
+    post(false);
 }
