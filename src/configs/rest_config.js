@@ -56,4 +56,12 @@ export const restEndpoints = {
     url: '/post/{id}',
     method: POST_METHOD,
   },
+  likePost: {
+    url: '/post/{id}/like',
+    method: POST_METHOD,
+  },
+  unlikePost: {
+    url: '/post/{id}/unlike',
+    method: DELETE_METHOD,
+  }
 };

@@ -33,4 +33,23 @@ export default () => {
         })
     }))
 
+    const postLikeButton = document.querySelectorAll('.like')
+
+    postLikeButton.forEach((likeButton) => likeButton.addEventListener('click', async (event) => {
+        const id = event.target.dataset.post;
+        const liked = event.dataset.liked;
+        const lks = document.getElementById("like-" + id);
+        if (liked === "true") {
+            const api = new Api();
+            await api.unlikePost(id);
+            lks.classList.remove('like-comment-share-clicked');
+            lks.classList.add('like-comment-share');
+        } else {
+            const api = new Api();
+            await api.likePost(id);
+            lks.classList.remove('like-comment-share');
+            lks.classList.add('like-comment-share-clicked');
+        }
+    }))
+
 }

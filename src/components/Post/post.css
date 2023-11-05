@@ -64,6 +64,15 @@
     display: inline-block;
 }
 
+.like-comment-share-clicked {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    width: 100%;
+    display: inline-block;
+    background-color: #FF4D4D;
+    color: white;
+}
+
 .comment-input {
     display: grid;
     height: fit-content;

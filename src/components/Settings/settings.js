@@ -1,5 +1,5 @@
 import {
-    INCORRECT_LOGIN_ERROR_TEXT,
+    INCORRECT_LOGIN_ERROR_TEXT, LOGIN_ERROR_TEXT,
     MIN_FAIL_RESPONSE, NOT_FOUND_URL,
     PASS_REQUIREMENTS_TEXT,
     ROOT_ELEMENT_ID
@@ -8,6 +8,7 @@ import settings from '@components/Settings/settings.handlebars'
 
 import css from '@components/Settings/settings.css'
 import {Api} from "@modules/api";
+import {response} from "express";
 
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
@@ -58,21 +59,27 @@ export default async () => {
         const newLogin = newLoginField.value;
         const newPass = newPassField.value;
         const oldPass = oldPassField.value;
-        if (!verifyLogin(newLogin)) {
-            errorElement.textContent = ''
-            return
+        if (newLogin !== undefined) {
+            if (!verifyLogin(newLogin)) {
+                errorElement.textContent = LOGIN_ERROR_TEXT;
+                return
+            } else {
+                profile.user.login = newLogin;
+            }
         }
-        if (!verifyLogin(newPass)) {
-            errorElement.textContent = INCORRECT_LOGIN_ERROR_TEXT;
+        if (!verifyPassword(newPass)) {
+            errorElement.textContent = PASS_REQUIREMENTS_TEXT;
             return;
         }
         if (!verifyPassword(oldPass)) {
             errorElement.textContent = PASS_REQUIREMENTS_TEXT;
             return;
         }
-        profile.user.login = newLogin;
         profile.user.new_password = newPass;
         profile.user.old_password = oldPass;
-        await api.updateProfile(profile);
+        const response = await api.updateProfile(profile);
+        if (response.data.error === 'user_validation') {
+            errorElement.textContent = ''
+        }
     })
 };

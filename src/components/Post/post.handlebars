@@ -39,11 +39,21 @@
         </div>
     {{/if}}
 
-    <div class="like-comment-share">
-        <img src="icons/like.svg" style="margin-left: 2%">
+    {{#if liked}}
+    <div class="like-comment-share-clicked" id="like-{{id}}">
+        <img src="icons/like.svg" style="margin-left: 2%" class=".like" data-post="{{id}}" data-liked="true">
+        {{likes}}
         <img src="icons/comment.svg">
         <img src="icons/share.svg" style="float:right; margin-right: 2%;">
     </div>
+    {{else}}
+        <div class="like-comment-share" id="like-{{id}}">
+            <img src="icons/like.svg" style="margin-left: 2%" class=".like" data-post="{{id}}" data-liked="false">
+            {{likes}}
+            <img src="icons/comment.svg">
+            <img src="icons/share.svg" style="float:right; margin-right: 2%;">
+        </div>
+    {{/if}}
 
     {{#if has_access}}
         <div class="comments-sections">

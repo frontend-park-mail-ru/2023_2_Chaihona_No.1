@@ -107,4 +107,16 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.make_request(url, endpoint.method);
   }
+
+  async likePost(id) {
+    const endpoint = restEndpoints.likePost;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method);
+  }
+
+  async unlikePost(id) {
+    const endpoint = restEndpoints.unlikePost;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method);
+  }
 }
