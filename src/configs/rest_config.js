@@ -55,5 +55,5 @@ export const restEndpoints = {
   editPost: {
     url: '/post/{id}',
     method: POST_METHOD,
-  }
+  },
 };

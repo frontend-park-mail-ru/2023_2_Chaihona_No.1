@@ -4,6 +4,7 @@
     <div class="settings-grid">
         <div class="settings-params">
             <h3>Профиль</h3>
+            <div class = "errorField"><h4>{{error}}</h4></div>
             <h3>Фотография профиля</h3>
             <div class="ava-grid">
                 <div>
@@ -18,11 +19,11 @@
                 </div>
             </div>
             <h3>Логин</h3>
-            <input type="text" class="profile-params-input">
+            <input type="text" class="profile-params-input" id="login">
             <h3>Новый пароль</h3>
-            <input type="text" class="profile-params-input">
+            <input type="text" class="profile-params-input" id="new-password">
             <h3>Старый пароль</h3>
-            <input type="text" class="profile-params-input">
+            <input type="text" class="profile-params-input" id="old-password">
             <div class="buttons">
                 <button class="save-profile-button common-button">Сохранить</button>
                 <button class="delete-profile-button common-button">
