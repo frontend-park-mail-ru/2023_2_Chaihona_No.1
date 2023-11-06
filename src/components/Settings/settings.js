@@ -62,14 +62,14 @@ export default async () => {
 
     const avatarField = document.getElementById('upload-avatar');
 
-    avatarField.addEventListener('change', () => {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-            const upImage = reader.result;
-            setAva.src = `url(${upImage})`;
-        })
-        reader.readAsDataURL(this.files[0]);
-    })
+    // avatarField.addEventListener('change', () => {
+    //     const reader = new FileReader();
+    //     reader.addEventListener('load', () => {
+    //         const upImage = reader.result;
+    //         setAva.src = `url(${upImage})`;
+    //     })
+    //     reader.readAsDataURL(this.files[0]);
+    // })
 
     saveButton.addEventListener('click', async () => {
         const errorElement = document.querySelector('.errorField');
