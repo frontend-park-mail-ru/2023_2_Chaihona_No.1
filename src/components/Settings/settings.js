@@ -71,7 +71,7 @@ export default async () => {
             setAva.src = `url(${upImage})`;
         })
         avaBlob = e.target.files[0];
-        reader.readAsDataURL(this.files[0]);
+        reader.readAsDataURL(e.target.files[0]);
     })
 
     saveButton.addEventListener('click', async () => {
