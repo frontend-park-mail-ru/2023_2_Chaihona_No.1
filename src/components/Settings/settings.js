@@ -64,13 +64,13 @@ export default async () => {
 
     let avaBlob = null;
 
-    avatarField.addEventListener('change', () => {
+    avatarField.addEventListener('change', (e) => {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
             const upImage = reader.result;
             setAva.src = `url(${upImage})`;
         })
-        avaBlob = avatarField.files[0];
+        avaBlob = e.target.files[0];
         reader.readAsDataURL(this.files[0]);
     })
 
