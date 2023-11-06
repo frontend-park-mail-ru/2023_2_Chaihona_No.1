@@ -7,7 +7,7 @@ import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
 import defaultAva from '@static/img/default-ava.png'
 
-export default (isOwner) => {
+export default (isOwner, userAva) => {
     const sendButtons = document.querySelectorAll('.send_btn');
     sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
@@ -54,7 +54,7 @@ export default (isOwner) => {
     document.querySelectorAll('.comment-ico').forEach((commentButton) => commentButton.src = commentIcon);
     document.querySelectorAll('.share').forEach((shareButton) => shareButton.src = shareIcon);
 
-    document.querySelectorAll('.comment-ava-img').forEach((commentAva) => commentAva.src = defaultAva);
+    document.querySelectorAll('.comment-ava-img').forEach((commentAva) => commentAva.src = userAva);
 
     const postLikeButton = document.querySelectorAll('.like');
     postLikeButton.forEach((likeButton) => likeButton.src = likeIcon);

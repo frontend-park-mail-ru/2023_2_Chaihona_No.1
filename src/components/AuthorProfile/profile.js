@@ -110,7 +110,8 @@ export default async () => {
                 }
             });
         }
-        post(isOwner);
+        const userAva = await api.getAvatar(window.user.id);
+        post(isOwner, userAva);
     } else {
         profile.isOwner = isOwner;
         rootElement.innerHTML = uprofile(profile);
