@@ -8,6 +8,7 @@ import settings from '@components/Settings/settings.handlebars'
 
 import css from '@components/Settings/settings.css'
 import {Api} from "@modules/api";
+import Navbar from "@components/Navbar/Navbar.js";
 
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
@@ -62,8 +63,11 @@ export default async () => {
     const avatarField = document.getElementById('upload-avatar');
 
     avatarField.addEventListener('change', () => {
-        const avatar = avatarField.files[0]
-        setAva.src = `url(${avatar})`;
+        const reader = new FileReader()
+        reader.addEventListener('load', () => {
+            const upImage = reader.result;
+            setAva.src = `url(${upImage})`;
+        })
     })
 
     saveButton.addEventListener('click', async () => {
@@ -112,8 +116,11 @@ export default async () => {
 
         const response = await api.updateProfileFD(formData, profile.user.id);
         if (response.data.error === 'password_missmatch') {
-            errorElement.textContent = 'Неправильный старый пароль'
+            errorElement.textContent = 'Неправильный старый пароль';
         } else {
+            if (avatarFile) {
+                await Navbar({id: window.user.id});
+            }
             window.router.redirect('profile' + window.user.id);
         }
     })
