@@ -12,5 +12,6 @@ export default async () => {
         rootElement.textContent = 'У вас ещё нет подписок';
     }
     rootElement.innerHTML = feed(response.data.body);
-    post(false);
+    const ava = await api.getAvatar(window.user.id);
+    post(false, ava);
 }
