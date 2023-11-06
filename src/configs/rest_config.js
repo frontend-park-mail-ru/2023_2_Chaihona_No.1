@@ -85,11 +85,11 @@ export const restEndpoints = {
     method: POST_METHOD,
   },
   setStatus: {
-    url: 'profile/{id}/status',
+    url: '/profile/{id}/status',
     method: POST_METHOD,
   },
   setDescription: {
-    url: 'profile/{id}/description',
+    url: '/profile/{id}/description',
     method: POST_METHOD,
   }
 };
