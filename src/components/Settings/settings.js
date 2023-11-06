@@ -70,7 +70,7 @@ export default async () => {
             const upImage = reader.result;
             setAva.src = `url(${upImage})`;
         })
-        avaBlob = this.files[0];
+        avaBlob = avatarField.files[0];
         reader.readAsDataURL(this.files[0]);
     })
 
