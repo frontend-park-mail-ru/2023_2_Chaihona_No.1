@@ -44,17 +44,21 @@
     {{/if}}
 
     {{#if is_liked}}
-        <div class="like-comment-share-clicked" id="like-{{id}}">
-            <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
-                 data-liked="true">
+        <div class="like-comment-share">
+            <span class="like-clicked" id="like-{{id}}">
+                <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+                     data-liked="true">
+            </span>
             <span id="likes-{{id}}"> {{likes}}  </span>
             <img src="icons/comment.svg" class="comment-ico" style="display: inline">
             <img src="icons/share.svg" style="float:right; margin-right: 2%;display: inline" class="share">
         </div>
     {{else}}
-        <div class="like-comment-share" id="like-{{id}}">
-            <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
-                 data-liked="false">
+        <div class="like-comment-share">
+            <span class="" id="like-{{id}}">
+                <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+                     data-liked="false">
+            </span>
             <span id="likes-{{id}}"> {{likes}}  </span>
             <img src="icons/comment.svg" class="comment-ico" style="display: inline">
             <img src="icons/share.svg" style="float:right; margin-right: 2%; display: inline" class="share">
