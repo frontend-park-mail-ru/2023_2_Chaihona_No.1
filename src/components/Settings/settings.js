@@ -62,14 +62,17 @@ export default async () => {
 
     const avatarField = document.getElementById('upload-avatar');
 
-    // avatarField.addEventListener('change', () => {
-    //     const reader = new FileReader();
-    //     reader.addEventListener('load', () => {
-    //         const upImage = reader.result;
-    //         setAva.src = `url(${upImage})`;
-    //     })
-    //     reader.readAsDataURL(this.files[0]);
-    // })
+    let avaBlob = null;
+
+    avatarField.addEventListener('change', () => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+            const upImage = reader.result;
+            setAva.src = `url(${upImage})`;
+        })
+        avaBlob = this.files[0];
+        reader.readAsDataURL(this.files[0]);
+    })
 
     saveButton.addEventListener('click', async () => {
         const errorElement = document.querySelector('.errorField');
@@ -79,7 +82,7 @@ export default async () => {
         const newLogin = newLoginField.value;
         const newPass = newPassField.value;
         const oldPass = oldPassField.value;
-        const avatarFile = avatarField.files[0];
+        const avatarFile = avaBlob;
         const formData = new FormData();
 
         if (newLogin !== '') {

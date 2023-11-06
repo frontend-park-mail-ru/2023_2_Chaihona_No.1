@@ -147,4 +147,16 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', profId);
     return this.make_request(url, endpoint.method, {id});
   }
+
+  async setDescription(id, description) {
+    const endpoint = restEndpoints.setDescription;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method, {description});
+  }
+
+  async setStatus(id, status) {
+    const endpoint = restEndpoints.setStatus;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method, {status});
+  }
 }

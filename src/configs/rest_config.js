@@ -83,5 +83,13 @@ export const restEndpoints = {
   unfollow: {
     url: '/profile/{id}/unfollow',
     method: POST_METHOD,
+  },
+  setStatus: {
+    url: 'profile/{id}/status',
+    method: POST_METHOD,
+  },
+  setDescription: {
+    url: 'profile/{id}/description',
+    method: POST_METHOD,
   }
 };

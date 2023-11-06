@@ -133,13 +133,7 @@ export default async () => {
             statusData.value = statusElement.textContent;
             const statusVerifyButton = document.getElementById('status_save_btn');
             statusVerifyButton.addEventListener('click', async () => {
-                profile.user.status = statusData.value;
-                const formData = new FormData();
-                formData.append('status', statusData.value);
-                if (profile.user.is_author) {
-                    formData.append('description',profile.user.description);
-                }
-                await api.updateProfileFD(formData, id);
+                await api.setStatus(id, statusData.value);
                 dialog.close();
                 statusElement.innerHTML = statusData.value;
             })
@@ -156,10 +150,7 @@ export default async () => {
                 aboutData.value = aboutElement.textContent;
                 const statusVerifyButton = document.getElementById('about_save_btn');
                 statusVerifyButton.addEventListener('click', async () => {
-                    const formData = new FormData();
-                    formData.append('status', profile.user.status);
-                    formData.append('description', aboutData.value);
-                    await api.updateProfileFD(formData, id);
+                    await api.setDescription(id, aboutData.value);
                     dialog.close();
                     aboutElement.innerHTML = aboutData.value;
                 })
