@@ -28,6 +28,7 @@ const Navbar = async (user = null) => {
     const navbarElement = document.querySelector(NAVBAR_ELEMENT_ID);
     navbarElement.innerHTML = '';
     if (user) {
+        navbarElement.innerHTML = navbarTmpl({User: user});
         const api = new Api();
         const logo = document.querySelector(LOGO_CLASS);
         logo.src = logoImage;
@@ -37,8 +38,6 @@ const Navbar = async (user = null) => {
             Navbar();
             window.router.redirect('login');
         })
-
-        navbarElement.innerHTML = navbarTmpl({User: user});
 
         const avatarElement = document.querySelector(AVATAR_CLASS);
         avatarElement.src = await api.getAvatar(user.id);
