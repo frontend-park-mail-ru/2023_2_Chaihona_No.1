@@ -28,9 +28,6 @@ const Navbar = async (user = null) => {
     navbarElement.innerHTML = '';
     if (user) {
         const api = new Api();
-        const avatarElement = document.querySelector(AVATAR_CLASS);
-        avatarElement.src = await api.getAvatar(user.id);
-        navbarElement.innerHTML = navbarTmpl({User: user});
         const logo = document.querySelector(LOGO_CLASS);
         logo.src = logoImage;
         const logoutButton = document.querySelector(EXIT_BUTTON_CLASS)
@@ -40,8 +37,10 @@ const Navbar = async (user = null) => {
             window.router.redirect('login');
         })
 
-        const userAvatar = document.querySelector(AVATAR_CLASS);
-        userAvatar.src = defaultAva;
+        navbarElement.innerHTML = navbarTmpl({User: user});
+
+        const avatarElement = document.querySelector(AVATAR_CLASS);
+        avatarElement.src = await api.getAvatar(user.id);
 
         const mainButton = document.getElementById('main-button');
         mainButton.addEventListener('click', () => {

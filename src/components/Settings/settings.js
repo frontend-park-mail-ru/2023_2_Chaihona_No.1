@@ -48,6 +48,12 @@ export default async () => {
         window.router.redirect(NOT_FOUND_URL);
     }
 
+    const backElement = document.getElementById('back');
+
+    backElement.addEventListener('click', () => {
+        window.history.back();
+    })
+
     const profile = profileRequest.data.body.profile;
 
     saveButton.addEventListener('click', async () => {
