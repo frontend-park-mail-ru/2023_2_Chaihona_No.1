@@ -56,15 +56,23 @@ export default async () => {
 
     const profile = profileRequest.data.body.profile;
 
+    const setAva = document.querySelector(".settings-ava")
+    setAva.src = await api.getAvatar(profile.user.id);
+
+    const avatarField = document.getElementById('upload-avatar');
+
+    avatarField.addEventListener('change', () => {
+        setAva.src = avatarField.files[0];
+    })
+
     saveButton.addEventListener('click', async () => {
-        const errorElement = document.querySelector('.error');
+        const errorElement = document.querySelector('.errorField');
         const newLoginField = document.getElementById('login');
         const newPassField = document.getElementById('new-password');
         const oldPassField = document.getElementById('old-password');
         const newLogin = newLoginField.value;
         const newPass = newPassField.value;
         const oldPass = oldPassField.value;
-        const avatarField = document.getElementById('upload-avatar');
         const avatarFile = avatarField.files[0];
         const formData = new FormData();
 
@@ -102,10 +110,10 @@ export default async () => {
 
 
         const response = await api.updateProfileFD(formData, profile.user.id);
-        if (response.data.error === 'user_validation') {
-            errorElement.textContent = ''
+        if (response.data.error === 'password_missmatch') {
+            errorElement.textContent = 'Неправильный старый пароль'
+        } else {
+            window.router.redirect('profile' + window.user.id);
         }
-
-        window.router.redirect('profile' + window.user.id);
     })
 };
