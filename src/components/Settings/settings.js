@@ -98,7 +98,7 @@ export default async () => {
 
         formData.append('login', profile.user.login);
         formData.append('status', profile.user.status);
-        formData.append('description', profile.description);
+        formData.append('description', profile.user.description);
 
 
         const response = await api.updateProfileFD(formData, profile.user.id);
