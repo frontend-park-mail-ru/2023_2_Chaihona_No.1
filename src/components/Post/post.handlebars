@@ -2,7 +2,7 @@
     <div class="post-lock-and-date">
         <span>{{access}}</span>
         {{#if isOwner}}
-            <img src="icons/post_opts.svg" class="post_opts" data-post="{{id}}">
+            <img src="" class="post_opts" data-post="{{id}}">
         {{/if}}
         <span style="float: right; margin-right: 1vh;">{{creation_date}}</span>
     </div>
@@ -46,21 +46,21 @@
     {{#if is_liked}}
         <div class="like-comment-share">
             <span class="like-clicked" id="like-{{id}}">
-                <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+                <img src="" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
                      data-liked="true">
             </span>
             <span id="likes-{{id}}"> {{likes}}  </span>
-            <img src="icons/comment.svg" class="comment-ico" style="display: inline">
-            <img src="icons/share.svg" style="float:right; margin-right: 2%;display: inline" class="share">
+            <img src="" class="comment-ico" style="display: inline">
+            <img src="" style="float:right; margin-right: 2%;display: inline" class="share">
         </div>
     {{else}}
         <div class="like-comment-share">
             <span class="" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
-                <img src="icons/like.svg" style="vertical-align: middle;" class="like" data-post="{{id}}" data-liked="false">
+                <img src="" style="vertical-align: middle;" class="like" data-post="{{id}}" data-liked="false">
                     <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;">{{likes}}</span>
             </span>
-            <img src="icons/comment.svg" class="comment-ico" style="display: inline; vertical-align: middle;">
-            <img src="icons/share.svg" style="float:right; margin-right: 2%; display:inline  vertical-align: middle;" class="share">
+            <img src="" class="comment-ico" style="display: inline; vertical-align: middle;">
+            <img src="" style="float:right; margin-right: 2%; display:inline;  vertical-align: middle;" class="share">
         </div>
     {{/if}}
 
@@ -71,10 +71,10 @@
             {{/each}}
         </div>
         <div class="comment-input">
-            <div class="input-ava"><img src="img/default-ava.png"></div>
+            <div class="input-ava"><img src=""></div>
             <div class="comment-field" data-post="{{id}}">
                 <input type="text" placeholder="Оставьте комментарий..." class="comment-field">
-                <img src="icons/send.svg" id="send-button" class="send_btn">
+                <img src="" id="send-button" class="send_btn">
             </div>
         </div>
     {{/if}}
