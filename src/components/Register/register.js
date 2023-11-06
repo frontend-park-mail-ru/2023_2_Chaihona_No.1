@@ -30,9 +30,9 @@ const ERROR_FIELD_CLASS = '.error';
  * @returns {boolean} - соответствует ли логин требованиям
  */
 function verifyLogin(login) {
-  // const re = new RegExp(loginRegExp);
-  // return re.test(login);
-  return true
+   const re = new RegExp(loginRegExp);
+   return re.test(login);
+  //return true
 }
 
 /**
@@ -42,9 +42,9 @@ function verifyLogin(login) {
  * @returns {boolean} - соответствует ли пароль требованиям
  */
 function verifyPassword(password) {
-  // const re = new RegExp(passRegExp);
-  // return re.test(password);
-  return true
+  const re = new RegExp(passRegExp);
+  return re.test(password);
+  //return true
 }
 
 /**
