@@ -68,7 +68,7 @@ export default async () => {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
             const upImage = reader.result;
-            setAva.src = `url(${upImage})`;
+            setAva.src = upImage;
         })
         avaBlob = e.target.files[0];
         reader.readAsDataURL(e.target.files[0]);
