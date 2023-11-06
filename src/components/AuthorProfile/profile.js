@@ -46,6 +46,9 @@ export default async () => {
     }
 
     const profile = profileRequest.data.body.profile;
+    if (profile.user==null) {
+        window.router.redirect('nenahod');
+    }
     window.sub_levels = profile.subscribe_levels;
 
     // если пользователь автор - забираем посты и рендерим страницу, иначе просто рендерим страницу
