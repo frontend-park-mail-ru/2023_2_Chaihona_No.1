@@ -1,9 +1,6 @@
-import {MOUSE_CLICK_EVENT, NOT_FOUND_URL} from '@configs/common_config.js';
+import {MOUSE_CLICK_EVENT} from '@configs/common_config.js';
 import ProfileMenu from "@components/ProfileMenu/ProfileMenu.js";
 import navbarTmpl from '@components/Navbar/navbar.handlebars';
-
-import css from './navbar.css';
-import css2 from '@components/ProfileMenu/ProfileMenu.css'
 
 import logoImage from '@static/img/logo.png';
 import downArrowImage from '@static/icons/down-arrow.png';
@@ -15,7 +12,10 @@ const NAVBAR_ELEMENT_ID = '#navbar';
 const LOGIN_BUTTON_ID = '#login-btn';
 const REGISTER_BUTTON_ID = '#reg-btn';
 
-const MAIN_PAGE_BUTTON_CLASS = '.main-page-btn';
+const LOGO_CLASS = '.navbar__logo';
+const EXIT_BUTTON_CLASS = '.navbar__exit-button';
+const AVATAR_CLASS = '.navbar__user-avatar'
+const MENU_BUTTON_CLASS = '.navbar__down-button'
 let menuOpen = false;
 
 /**
@@ -23,34 +23,36 @@ let menuOpen = false;
  * @param user - пользователь. Если его нет, отрисует навбар с регистрацией,
  * иначе отрисует навбар с его данными.
  */
-const Navbar = (user = null) => {
+const Navbar = async (user = null) => {
     const navbarElement = document.querySelector(NAVBAR_ELEMENT_ID);
     navbarElement.innerHTML = '';
     if (user) {
+        const api = new Api();
+        const avatarElement = document.querySelector(AVATAR_CLASS);
+        avatarElement.src = await api.getAvatar(user.id);
         navbarElement.innerHTML = navbarTmpl({User: user});
-        const logo = document.querySelector(".navlogo");
+        const logo = document.querySelector(LOGO_CLASS);
         logo.src = logoImage;
-        const logoutButton = document.querySelector('.exit-btn')
+        const logoutButton = document.querySelector(EXIT_BUTTON_CLASS)
         logoutButton.addEventListener('click', async () => {
-          const api = new Api();
-          await api.logout();
-          Navbar();
-          window.router.redirect('login');
+            await api.logout();
+            Navbar();
+            window.router.redirect('login');
         })
 
-        const userAvatar = document.querySelector(".nav-ava");
+        const userAvatar = document.querySelector(AVATAR_CLASS);
         userAvatar.src = defaultAva;
 
         const mainButton = document.getElementById('main-button');
-        mainButton.addEventListener('click', ()=> {
-            if (window.user !== undefined ){
+        mainButton.addEventListener('click', () => {
+            if (window.user !== undefined) {
                 return window.router.redirect('feed');
             } else {
                 return window.router.redirect('login');
             }
         })
 
-        const subButton = document.querySelector(".button-down");
+        const subButton = document.querySelector(MENU_BUTTON_CLASS);
         subButton.src = downArrowImage;
         subButton.addEventListener('click', () => {
             const submenu = document.getElementById("submenu");
@@ -67,7 +69,7 @@ const Navbar = (user = null) => {
         });
     } else {
         navbarElement.innerHTML = navbarTmpl();
-        const logo = document.querySelector(".navlogo");
+        const logo = document.querySelector(LOGO_CLASS);
         logo.src = logoImage;
         const loginBtn = document.querySelector(LOGIN_BUTTON_ID);
 

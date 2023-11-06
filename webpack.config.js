@@ -14,7 +14,7 @@ module.exports = [
             rules: [
                 {test: /\.(gif|png)$/i, type: 'asset/resource'},
                 {test: /\.svg/, type: 'asset/inline'},
-                {test: /\.css$/, use: ['style-loader', 'css-loader']},
+                //{test: /\.css$/, use: ['style-loader', 'css-loader']},
                 {
                     test: /\.handlebars$/,
                     loader: 'handlebars-loader',
@@ -27,7 +27,8 @@ module.exports = [
                             path.resolve(__dirname, 'src/components/Donate'),]
                     }
                 },
-                {test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader'}
+                {test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader'},
+                {test: /\.(css|scss)$/, exclude: /node_modules/, use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']}
             ]
         },
         resolve: {

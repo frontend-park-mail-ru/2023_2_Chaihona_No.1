@@ -2,7 +2,8 @@ import {Router} from '@modules/router.js';
 import navbar from '@components/Navbar/Navbar.js';
 import {Api} from '@modules/api.js';
 import {precompiledDir, precompiledFnames} from '@configs/precompiled_config.js';
-import css from "./common.css";
+
+import css from "./common.scss";
 
 const router = new Router();
 window.router = router;

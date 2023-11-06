@@ -1,0 +1,97 @@
+@import "/common.scss";
+
+.navbar {
+  height: 7vh;
+  width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 0.8rem 3rem;
+
+  &__logo {
+    float: left;
+    height: 100%;
+    display: flex;
+  }
+
+  &__main-page-button {
+    @include button;
+    float: left;
+    margin-left: 1rem;
+    background: $main-color;
+    width: 7rem;
+    color: white;
+    border: none;
+    height: 100%;
+  }
+
+  &__registration-button {
+    @include button;
+    float: right;
+    margin-right: 1vh;
+    background: white;
+    color: #FF4D4D;
+    width: 7rem;
+    border: 1px solid #FF4D4D;
+    height: 100%;
+  }
+
+  &__exit-button {
+    @include button;
+    float: right;
+    background: #FF4D4D;
+    width: 7rem;
+    color: white;
+    border: none;
+    height: 100%;
+  }
+
+  &__user-avatar {
+    float: right;
+    margin-right: 1vh;
+    border-radius: 9999px;
+    height: 100%;
+  }
+
+  &__author-search {
+    float: right;
+    margin-right: 1vh;
+    width: 20vw;
+    border-radius: 12px;
+    border: 1px solid #FF8364;
+    box-sizing: border-box;
+    line-height: 100%;
+    padding: 1vh;
+  }
+
+  &__down-button {
+    float: right;
+    margin-right: 1vh;
+    border-radius: 9999px;
+    height: 100%;
+  }
+}
+
+/* на будущее для адаптивки */
+/* @media (max-width: 800px) {*/
+/*    button {*/
+/*        margin: 0 !important;*/
+/*    }*/
+/*    .main-page-btn {*/
+/*        height: 50% !important;*/
+/*    }*/
+/*    .exit-btn {*/
+/*        height: 50% !important;*/
+/*    }*/
+/*    .navlogo{*/
+/*        height: 50% !important;*/
+/*    }*/
+/*    .navbar > input {*/
+/*        height: 50% !important;*/
+/*        padding: 0 !important;*/
+/*        font-size: 1rem !important;*/
+/*        margin-top: 0 !important;*/
+/*    }*/
+/*    .nav-ava {*/
+/*        height: 50% !important;*/
+/*    }*/
+/*}*/
