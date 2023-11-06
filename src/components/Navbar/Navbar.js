@@ -4,7 +4,8 @@ import navbarTmpl from '@components/Navbar/navbar.handlebars';
 
 import logoImage from '@static/img/logo.png';
 import downArrowImage from '@static/icons/down-arrow.png';
-import defaultAva from '@static/img/default-ava.png';
+
+import css from './navbar.scss'
 
 import {Api} from "@modules/api";
 
