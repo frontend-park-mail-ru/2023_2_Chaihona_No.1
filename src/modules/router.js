@@ -32,9 +32,6 @@ export class Router {
   redirect(path) {
     const renderer = path.replace(/[/0-9]*/g, ''); // удалить лишние цифры если ссылка связана с каким-то id (e.g. id профиля)
     let route = routes[renderer];
-    if (window.history.state) {
-      console.log(window.history.state.data);
-    }
     window.history.pushState(null, null, path);
     if (route === undefined) {
       route = routes.notfound;

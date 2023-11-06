@@ -51,7 +51,7 @@ export default async () => {
     const backElement = document.getElementById('back');
 
     backElement.addEventListener('click', () => {
-        window.history.back();
+        router.redirect('profile' + window.user.id);
     })
 
     const profile = profileRequest.data.body.profile;

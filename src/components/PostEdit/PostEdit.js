@@ -26,9 +26,6 @@ export default async () => {
     }
 
     backElement.addEventListener('click', () => {
-        delete window.post;
-        const newData = { post: {header: headerEl.value, body: bodyEl.value, tags: tagEl.value}};
-        window.history.replaceState(newData, null);
         window.router.redirect('profile' + window.user.id);
     })
 
