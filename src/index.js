@@ -27,8 +27,8 @@ async function init() {
     const url = window.location.href.split('/').pop();
 
     if (isAuth.data.body.is_authorized === true) {
-        navbar({User: {id: isAuth.data.body.id}});
         window.user = {id: isAuth.data.body.id}
+        navbar( {id: isAuth.data.body.id});
     } else {
         navbar();
         return router.redirect('/login');
