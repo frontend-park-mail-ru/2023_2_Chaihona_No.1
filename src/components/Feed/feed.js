@@ -13,5 +13,5 @@ export default async () => {
     }
     rootElement.innerHTML = feed(response.data.body);
     const ava = await api.getAvatar(window.user.id);
-    post(false, ava);
+    post(false, ava, true);
 }
