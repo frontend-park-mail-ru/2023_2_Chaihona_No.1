@@ -135,13 +135,16 @@ export default async () => {
                 profile.user.status = statusData.value;
                 const formData = new FormData();
                 formData.append('status', statusData.value);
+                if (profile.user.is_author) {
+                    formData.append('description',profile.user.description);
+                }
                 await api.updateProfileFD(formData, id);
                 dialog.close();
                 statusElement.innerHTML = statusData.value;
             })
         });
 
-        if (profile.user.user_type === AUTHOR_USER_TYPE) {
+        if (profile.user.is_author) {
             const aboutSettingButton = document.getElementById("about-setting");
             aboutSettingButton.src = profileSettingIcon;
             aboutSettingButton.addEventListener('click', () => {
@@ -153,6 +156,7 @@ export default async () => {
                 const statusVerifyButton = document.getElementById('about_save_btn');
                 statusVerifyButton.addEventListener('click', async () => {
                     const formData = new FormData();
+                    formData.append('status', profile.user.status);
                     formData.append('description', aboutData.value);
                     await api.updateProfileFD(formData, id);
                     dialog.close();

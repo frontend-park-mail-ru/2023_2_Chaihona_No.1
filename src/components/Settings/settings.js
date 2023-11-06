@@ -105,5 +105,7 @@ export default async () => {
         if (response.data.error === 'user_validation') {
             errorElement.textContent = ''
         }
+
+        window.router.redirect('profile' + window.user.id);
     })
 };
