@@ -55,7 +55,10 @@ export default async () => {
             window.router.redirect(NOT_FOUND_URL);
         }
         profile.posts = postsRequest.data.body.posts;
-        profile.posts.forEach((post) => post.isOwner = isOwner);
+
+        if (profile.posts!=null) {
+            profile.posts.forEach((post) => post.isOwner = isOwner);
+        }
 
         // может быть профиль без целей
         if (profile.targets !== undefined) {
