@@ -55,13 +55,13 @@
         </div>
     {{else}}
         <div class="like-comment-share">
-            <span class="" id="like-{{id}}">
-                <img src="icons/like.svg" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
-                     data-liked="false">
+            <span class="" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
+                <img src="icons/like.svg" style="vertical-align: middle;" class="like" data-post="{{id}}" data-liked="false">
+                    <span class="likes-count" style="margin-bottom: 5%; vertical-align: middle;">20</span>
             </span>
             <span id="likes-{{id}}"> {{likes}}  </span>
-            <img src="icons/comment.svg" class="comment-ico" style="display: inline">
-            <img src="icons/share.svg" style="float:right; margin-right: 2%; display: inline" class="share">
+            <img src="icons/comment.svg" class="comment-ico" style="display: inline; vertical-align: middle;">
+            <img src="icons/share.svg" style="float:right; margin-right: 2%; display:inline  vertical-align: middle;" class="share">
         </div>
     {{/if}}
 

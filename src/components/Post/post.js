@@ -11,8 +11,6 @@ export default (isOwner, userAva) => {
     const sendButtons = document.querySelectorAll('.send_btn');
     sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
-    document.querySelectorAll('.input-ava').forEach((inputAva) => inputAva.children[0].src = defaultAva);
-
     sendButtons.forEach((sendButton) => sendButton.addEventListener('click', (event) => {
         alert(event.target.parentElement.dataset.post);
         alert(event.target.parentElement.children[0].value);
@@ -55,6 +53,7 @@ export default (isOwner, userAva) => {
     document.querySelectorAll('.share').forEach((shareButton) => shareButton.src = shareIcon);
 
     document.querySelectorAll('.comment-ava-img').forEach((commentAva) => commentAva.src = userAva);
+    document.querySelectorAll('.input-ava').forEach((inputAva) => inputAva.children[0].src = userAva);
 
     const postLikeButton = document.querySelectorAll('.like');
     postLikeButton.forEach((likeButton) => likeButton.src = likeIcon);
