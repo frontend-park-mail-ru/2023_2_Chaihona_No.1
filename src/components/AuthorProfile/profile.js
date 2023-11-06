@@ -47,7 +47,7 @@ export default async () => {
 
     const profile = profileRequest.data.body.profile;
     if (profile.user.id===0) {
-        window.router.redirect('nenahod');
+        return window.router.redirect('nenahod');
     }
     window.sub_levels = profile.subscribe_levels;
 
