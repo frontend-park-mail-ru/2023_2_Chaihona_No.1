@@ -77,7 +77,7 @@ export default async () => {
         const avatarFile = avatarField.files[0];
         const formData = new FormData();
 
-        if (newLogin !== undefined) {
+        if (newLogin !== '') {
             if (!verifyLogin(newLogin)) {
                 errorElement.textContent = LOGIN_ERROR_TEXT;
                 return
@@ -85,14 +85,14 @@ export default async () => {
                 profile.user.login = newLogin;
             }
         }
-        if (newPass !== undefined) {
+        if (newPass !== '') {
             if (!verifyPassword(newPass)) {
                 errorElement.textContent = PASS_REQUIREMENTS_TEXT;
                 return;
             }
             formData.append('new_password', newPass);
         }
-        if (oldPass !== undefined) {
+        if (oldPass !== '') {
             if (!verifyPassword(oldPass)) {
                 errorElement.textContent = PASS_REQUIREMENTS_TEXT;
                 return;
