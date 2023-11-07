@@ -118,7 +118,12 @@ export default async () => {
     } else {
         profile.isOwner = isOwner;
         rootElement.innerHTML = uprofile(profile);
-        document.querySelectorAll('.sub-pic').forEach((subPic) => subPic.src=defaultAvaImg);
+        for (const subPic of document.querySelectorAll('.sub-pic')) {
+            subPic.src = await api.getAvatar(subPic.dataset.sub);
+            subPic.addEventListener('click', () => {
+                return window.router.redirect('profile' + subPic.dataset.sub);
+            })
+        }
     }
 
     const avatarElement = document.querySelector('.ava-img');
