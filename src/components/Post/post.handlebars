@@ -1,10 +1,10 @@
 <div class="post">
     <div class="post-lock-and-date">
-        <span>{{access}}</span>
+        <span id = "sub-level-{{id}}" style="display:none;">{{min_sub_level}}</span>
         {{#if isOwner}}
             <img src="" class="post_opts" data-post="{{id}}">
         {{/if}}
-        <span style="float: right; margin-right: 1vh;">{{creation_date}}</span>
+        <span style="margin-right: 1vh;">{{creation_date}}</span>
     </div>
     {{#if isOwner}}
         <div id="submenu-{{id}}" class="submenu-post" style="display: none;">

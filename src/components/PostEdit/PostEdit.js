@@ -18,7 +18,7 @@ export default async () => {
     if (window.post !== undefined) {
         headerEl.value = window.post.header.trim();
         bodyEl.value = window.post.body.trim();
-	const subEl = document.getElementById('0level');
+	const subEl = document.getElementById(window.post.level + 'level');
 	subEl.checked = true;
     } else if (window.history.state.post !== undefined) {
         const lastEditedPost = window.history.state.getData().post;

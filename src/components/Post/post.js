@@ -36,7 +36,8 @@ export default (isOwner, userAva) => {
                 const post = {};
                 post.header = document.getElementById('header-' + id).textContent;
                 post.body = document.getElementById('body-' + id).textContent;
-                post.tags = [];
+                post.level = document.getElementById('sub-level-' + id).textContent;
+		    post.tags = [];
                 window.post = post;
                 return window.router.redirect('/editpost' + id);
             })

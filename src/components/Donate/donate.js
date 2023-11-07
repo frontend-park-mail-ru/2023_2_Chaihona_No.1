@@ -8,9 +8,14 @@ export default async (receiver) => {
     }
     document.querySelector('#send-donate').onclick = async function () {
         const sum = document.querySelector('.sum').value;
-        const api = new Api();
+        if (sum <= 10) {
+	const errEl = document.querySelector('.error');
+		errEl.textContent = 'Минимальная сумма - 10';
+	} else {
+	    const api = new Api();
         const response = await api.donate(window.user.id, receiver,'RUB', sum);
         dialog.close();
         window.location.href = response.data.body.redirect_url;
+	}
     }
 }
