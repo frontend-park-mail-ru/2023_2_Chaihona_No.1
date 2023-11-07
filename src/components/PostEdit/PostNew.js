@@ -3,7 +3,6 @@ import postEdit from "@components/PostEdit/PostEdit.handlebars";
 
 import css from '@components/PostEdit/PostEdit.css';
 import {Api} from "@modules/api";
-import {document} from "postcss";
 
 export default async () => {
     const api = new Api();
