@@ -19,7 +19,7 @@ export default async () => {
     verifyButton.addEventListener('click', () => {
         const header = document.getElementById('theme').value;
         const body = document.getElementById('text').value;
-        const postTags = document.getElementById('tags').value;
+        const postTags = null;
         const checked = document.querySelector('input:checked');
         if (checked === null) {
             const errorEl = document.querySelector('.error')

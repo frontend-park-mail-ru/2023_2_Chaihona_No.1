@@ -13,16 +13,18 @@ export default async () => {
     const backElement = document.getElementById('back');
     const headerEl = document.getElementById('theme');
     const bodyEl = document.getElementById('text');
-    const tagEl = document.getElementById('tags');
+    //const tagEl = document.getElementById('tags');
 
     if (window.post !== undefined) {
         headerEl.value = window.post.header.trim();
         bodyEl.value = window.post.body.trim();
+	const subEl = document.getElementById('0level');
+	subEl.checked = true;
     } else if (window.history.state.post !== undefined) {
         const lastEditedPost = window.history.state.getData().post;
         headerEl.value = lastEditedPost.header;
         bodyEl.value = lastEditedPost.body
-        tagEl.valueOf = lastEditedPost.tags
+       //tagEl.valueOf = lastEditedPost.tags
     }
 
     backElement.addEventListener('click', () => {
@@ -34,12 +36,12 @@ export default async () => {
     verifyButton.addEventListener('click', () => {
         const header = headerEl.value;
         const body = bodyEl.value;
-        const postTags = tagEl.value;
+        const postTags = null;
         const min_subscription_level_id = Number(document.querySelector('input:checked').value);
         api.editPost({header, min_subscription_level_id, body, postTags, id});
         delete window.post;
-        const newData = { post: {header: headerEl.value, body: bodyEl.value, tags: tagEl.value}};
-        window.history.replaceState(newData, null);
+        //const newData = { post: {header: headerEl.value, body: bodyEl.value, tags: tagEl.value}};
+        //window.history.replaceState(newData, null);
         window.router.redirect('profile' + window.user.id);
     });
 }

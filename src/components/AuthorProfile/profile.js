@@ -119,6 +119,7 @@ export default async () => {
         profile.isOwner = isOwner;
         rootElement.innerHTML = uprofile(profile);
         for (const subPic of document.querySelectorAll('.sub-pic')) {
+		//alert(subPic.dataset.sub);
             subPic.src = await api.getAvatar(subPic.dataset.sub);
             subPic.addEventListener('click', () => {
                 return window.router.redirect('profile' + subPic.dataset.sub);
