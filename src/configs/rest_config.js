@@ -6,7 +6,7 @@ const DELETE_METHOD = 'DELETE';
  * URL для всех REST-запросов
  * @type {string}
  */
-export const backendUrl = 'http://212.233.89.163:8001/api/v1';
+export const backendUrl = 'http://127.0.0.1:8001/api/v1';
 
 /**
  * Все возможные endpoint'ы и их методы
