@@ -3,6 +3,7 @@ import postEdit from "@components/PostEdit/PostEdit.handlebars";
 
 import css from '@components/PostEdit/PostEdit.css';
 import {Api} from "@modules/api";
+import {document} from "postcss";
 
 export default async () => {
     const api = new Api();
@@ -20,8 +21,14 @@ export default async () => {
         const header = document.getElementById('theme').value;
         const body = document.getElementById('text').value;
         const postTags = document.getElementById('tags').value;
-        const min_subscription_level_id = Number(document.querySelector('input:checked').value);
-        api.newPost({header, min_subscription_level_id, body, postTags});
-        window.history.back();
+        const checked = document.querySelector('input:checked');
+        if (checked === null) {
+            const errorEl = document.querySelector('.error')
+            errorEl.textContent = 'Выберите уровень доступа';
+        } else {
+            const min_subscription_level_id = Number(checked.value);
+            api.newPost({header, min_subscription_level_id, body, postTags});
+            window.history.back();
+        }
     });
 }
