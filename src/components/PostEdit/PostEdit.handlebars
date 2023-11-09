@@ -10,6 +10,7 @@
     <div class="post-edit-grid">
         <div class="post-params">
             <h3>Пост</h3>
+		<div class = "errorPost" style = "color: red;"> </div>
             <table class="attach-variants">
                 <td>Фото</td>
                 <td>Видео</td>
@@ -29,10 +30,7 @@
                 <button class="save-profile-button common-button" id="publish">Опубликовать</button>
 
                 {{#if new}}
-                    <button class="delete-profile-button common-button" id="now">
-                        <img src="">
-                        Сейчас
-                    </button>
+    		<!-- <button class="delete-profile-button common-button" id="now"><img src="">Сейчас</button> -->
                 {{/if}}
             </div>
         </div>

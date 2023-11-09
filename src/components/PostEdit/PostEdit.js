@@ -38,10 +38,15 @@ export default async () => {
         const body = bodyEl.value;
         const postTags = null;
         const min_subscription_level_id = Number(document.querySelector('input:checked').value);
-        api.editPost({header, min_subscription_level_id, body, postTags, id});
-        delete window.post;
-        //const newData = { post: {header: headerEl.value, body: bodyEl.value, tags: tagEl.value}};
-        //window.history.replaceState(newData, null);
-        window.router.redirect('profile' + window.user.id);
+	if (header === '' || body === '') {
+		const errHeader = document.querySelector('.errorPost');
+		errHeader.textContent = 'Заголовок и текст поста не могут быть пустыми';
+	} else {
+        	api.editPost({header, min_subscription_level_id, body, postTags, id});
+        	delete window.post;
+        	//const newData = { post: {header: headerEl.value, body: bodyEl.value, tags: tagEl.value}};
+        	//window.history.replaceState(newData, null);
+        	window.router.redirect('profile' + window.user.id);
+	}
     });
 }

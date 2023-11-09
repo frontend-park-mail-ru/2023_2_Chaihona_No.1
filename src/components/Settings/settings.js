@@ -15,6 +15,7 @@ const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 // от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
 const passRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+
 /**
  * Проверяет логин на соответствие требованиям
  * @param login - логин
@@ -111,7 +112,11 @@ export default async () => {
         formData.append('id', profile.user.id);
         if (avatarFile) {
             formData.append('avatar', avatarFile);
-        }
+		if (/\.(jpe?g|png)$/i.test(avatarFile.name) === false) {
+			errorElement.textContent = ('Фотография должна быть .jpg или .png')
+			return;
+		}
+		}
 
         formData.append('login', profile.user.login);
         formData.append('status', profile.user.status);

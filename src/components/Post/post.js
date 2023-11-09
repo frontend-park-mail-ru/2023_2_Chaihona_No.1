@@ -12,8 +12,9 @@ export default (isOwner, userAva) => {
     sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
     sendButtons.forEach((sendButton) => sendButton.addEventListener('click', (event) => {
-        alert(event.target.parentElement.dataset.post);
-        alert(event.target.parentElement.children[0].value);
+        //alert(event.target.parentElement.dataset.post);
+        //alert(event.target.parentElement.children[0].value);
+	alert('Комментарии будут на РК4');
     }))
 
     if (isOwner) {

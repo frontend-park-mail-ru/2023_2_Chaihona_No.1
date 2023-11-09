@@ -21,7 +21,11 @@ export default async () => {
         const body = document.getElementById('text').value;
         const postTags = null;
         const checked = document.querySelector('input:checked');
-        if (checked === null) {
+	if (header === '' || body === '') {
+		const errPost = document.querySelector('.errorPost');
+		errPost.textContent = 'Заголовок и текст поста не могут быть пустыми';
+	}    
+	    else if (checked === null) {
             const errorEl = document.querySelector('.error')
             errorEl.textContent = 'Выберите уровень доступа';
         } else {

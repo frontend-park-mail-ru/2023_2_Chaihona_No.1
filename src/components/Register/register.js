@@ -82,12 +82,13 @@ export default async () => {
         return;
       }
       const result = await api.register(login.value, pass.value, isAuthor);
-      if (result.status >= MIN_FAIL_RESPONSE) {
-        window.router.redirect(NOT_FOUND_URL);
+      if (result.status >= 400) {
+        err.textContent = 'Пользователь с таким логином уже существует';
+      } else {
+      	const user = { id: result.data.body.id };
+      	window.user = user;
+      	window.router.redirect('/profile' + result.data.body.id );
+      	navbar(user);
       }
-      const user = { id: result.data.body.id };
-      window.user = user;
-      window.router.redirect('/profile' + result.data.body.id );
-      navbar(user);
     });
 };
