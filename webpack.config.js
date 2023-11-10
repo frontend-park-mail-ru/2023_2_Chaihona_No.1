@@ -9,7 +9,8 @@ module.exports = [
         devServer: {
             port: 8000,
             historyApiFallback: true
-         },
+        },
+
         module: {
             rules: [
                 {test: /\.(gif|png)$/i, type: 'asset/resource'},
@@ -27,8 +28,20 @@ module.exports = [
                             path.resolve(__dirname, 'src/components/Donate'),]
                     }
                 },
-                {test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader'},
-                {test: /\.(css|scss)$/, exclude: /node_modules/, use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']}
+                {
+                    test: /\.(js)$/, exclude: /node_modules/, use: {
+                        loader: 'babel-loader', options: {
+                            presets: [
+                                ['@babel/preset-env', {targets: {"node" :"10"}}]
+                            ],
+                        }
+                    }
+                },
+                {
+                    test: /\.(css|scss)$/,
+                    exclude: /node_modules/,
+                    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                }
             ]
         },
         resolve: {
@@ -41,7 +54,10 @@ module.exports = [
         },
         output: {
             path: path.resolve(__dirname, 'dist/client'),
-            filename: 'index_bundle.js'
+            filename: 'index_bundle.js',
+            environment: {
+                arrowFunction: false
+            }
         },
         plugins: [
             new HtmlWebpackPlugin({template: './index.html'}),

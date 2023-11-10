@@ -1,9 +1,9 @@
-@import "/common.scss";
+@import "@components/Shared/common.scss";
 
 .navbar {
   height: 7vh;
   width: 100%;
-  background-color: white;
+  background-color: $white-color;
   box-sizing: border-box;
   padding: 0.8rem 3rem;
 
@@ -28,19 +28,19 @@
     @include button;
     float: right;
     margin-right: 1vh;
-    background: white;
-    color: #FF4D4D;
+    background: $white-color;
+    color: $main-color;
     width: 7rem;
-    border: 1px solid #FF4D4D;
+    border: 1px solid $main-color;
     height: 100%;
   }
 
   &__exit-button {
     @include button;
     float: right;
-    background: #FF4D4D;
+    background: $main-color;
     width: 7rem;
-    color: white;
+    color: $white-color;
     border: none;
     height: 100%;
   }
@@ -57,7 +57,7 @@
     margin-right: 1vh;
     width: 20vw;
     border-radius: 12px;
-    border: 1px solid #FF8364;
+    border: 1px solid $main-color;
     box-sizing: border-box;
     line-height: 100%;
     padding: 1vh;

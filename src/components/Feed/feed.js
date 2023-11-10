@@ -1,4 +1,4 @@
-import './feed.css'
+import './feed.scss'
 
 import feed from '@components/Feed/feed.handlebars'
 import post from "@components/Post/post.js";

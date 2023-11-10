@@ -1,37 +1,40 @@
 <div class="settings">
     <div id = "back" ><- Вернуться к профилю</div>
     <h2>Настройки</h2>
-    <div class="settings-grid">
-        <div class="settings-params">
+    <div class="settings__grid">
+        <div class="settings__grid-params">
             <h3>Профиль</h3>
             <h3>Фотография профиля</h3>
-            <div class="ava-grid">
+            <div class="settings__grid-params-ava-grid">
                 <div>
-                    <img src="" class="settings-ava">
+                    <img src="" class="settings__grid-params-ava-grid-ava-pic">
                 </div>
                 <div style="margin-top: 13vh;">
-                    <input class="upload-ava" type="file" id="upload-avatar" name="up-ava" hidden>
+                    <input class="settings_grid-params-ava-grid-upload" type="file" id="upload-avatar" name="up-ava" hidden>
                     <label for="upload-avatar">Выбрать файл</label>
-                    <div class="ava-reqs">
+                    <div class="settings__grid-params-ava-grid-reqs">
                         PNG, JPG размером 225x280 не более 10 Mb.
                     </div>
                 </div>
             </div>
             <h3>Логин</h3>
-            <input type="text" class="profile-params-input" id="login">
+            <input type="text" class="settings__grid-params-input" id="login">
             <h3>Новый пароль</h3>
-            <input type="password" class="profile-params-input" id="new-password">
+            <input type="password" class="settings__grid-params-input" id="new-password">
             <h3>Старый пароль</h3>
-            <input type="password" class="profile-params-input" id="old-password">
-            <div class = "errorField" style="font-size: 16px; color: red;"></div>
-            <div class="buttons">
-                <button class="save-profile-button common-button">Сохранить</button>
-               <!-- <button class="delete-profile-button common-button"><img src="">Удалить аккаунт</button> -->
+            <input type="password" class="settings__grid-params-input" id="old-password">
+            <div class = "settings__grid-params-error-field" style="font-size: 16px; color: red; margin-top: 3vh;"></div>
+            <div class="settings__grid-params-buttons">
+                <button class="settings__grid-params-buttons-save">Сохранить</button>
+             <!--   <button class="delete-profile-button common-button">
+                    <img src="">
+                    Удалить аккаунт
+                </button>-->
             </div>
         </div>
-        <div class="settings-list">
-            <div class="setting-element">
-                <img src="" style="height: 100%;">
+        <div class="settings__grid-list">
+            <div class="settings__grid-list-element">
+                <img src="" style="height: 100%;" id="profile-icon">
                 Профиль
             </div>
         </div>

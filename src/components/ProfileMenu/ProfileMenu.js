@@ -6,6 +6,8 @@ import settingsIcon from '@static/icons/Settings.svg'
 const PROFILE_MENU_BUTTON_ID = 'my_profile_button';
 const SETTINGS_MENU_BUTTON_ID = 'profile_settings_button';
 
+import css from './ProfileMenu.scss'
+
 export default () => {
     const profileBtn = document.getElementById(PROFILE_MENU_BUTTON_ID);
     profileBtn.children[0].src = profileIcon;

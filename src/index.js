@@ -3,7 +3,7 @@ import navbar from '@components/Navbar/Navbar.js';
 import {Api} from '@modules/api.js';
 import {precompiledDir, precompiledFnames} from '@configs/precompiled_config.js';
 
-import css from "./common.scss";
+import css from "./common.css";
 
 const router = new Router();
 window.router = router;
@@ -43,3 +43,6 @@ async function init() {
 // loadScript('handlebars/dist/handlebars.js');
 //await loadPrecompiled();
 await init();
+// const api = new Api();
+// const isAuth = await api.isAuth();
+// router.redirect('nenahod');

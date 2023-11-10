@@ -1,80 +1,79 @@
 <div class="post">
-    <div class="post-lock-and-date">
-        <span id = "sub-level-{{id}}" style="display:none;">{{min_sub_level}}</span>
+    <div class="post__date">
+        <span id="sub-level-{{id}}" style="display:none;">{{min_sub_level}}</span>
         {{#if isOwner}}
-            <img src="" class="post_opts" data-post="{{id}}">
+            <img src="" class="post__options-button" data-post="{{id}}">
         {{/if}}
         <span style="margin-right: 1vh;">{{creation_date}}</span>
     </div>
     {{#if isOwner}}
-        <div id="submenu-{{id}}" class="submenu-post" style="display: none;">
+        <div id="submenu-{{id}}" class="post__submenu" style="display: none;">
             <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
-            <div class=".delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
+            <div id="delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
         </div>
     {{/if}}
 
     {{#if has_access}}
         <div class="target-separator"></div>
 
-        <div class="unlocked-post">
-            <div class="unlocked-post-topic" id="header-{{id}}">
+        <div class="post__data_unlocked">
+            <div class="post__topic_unlocked" id="header-{{id}}">
                 {{header}}
             </div>
-            <div class="unlocked-post-content" id="body-{{id}}">
+            <div class="post__content_unlocked" id="body-{{id}}">
                 {{body}}
             </div>
         </div>
 
-        <div class="tagline" style="display:none"; id="tags-{{id}}">
+        <div class="post__tagline" id="tags-{{id}}">
             {{#each tags}}
-                <span class="tag">{{this.name}}</span>
+                <span class="post__tagline-tag">{{this.name}}</span>
             {{/each}}
         </div>
 
         <div class="target-separator"></div>
 
     {{else}}
-        <div class="locked-post">
-            <div class="locked-post-topic">
+        <div class="post__data_locked">
+            <div class="post__topic_locked">
                 {{topic}}
             </div>
-            <div class="locked-post-price">{{availability}}</div>
-            <button class="common-button buy-post-button">Купить</button>
+            <div class="post__price_locked">{{availability}}</div>
+            <button class="post__buy-button_locked">Купить</button>
         </div>
     {{/if}}
 
-    {{#if is_liked}}
-        <div class="like-comment-share">
-            <span class="like-clicked" id="like-{{id}}">
-                <img src="" style="margin-left: 2%; display:inline" class="like" data-post="{{id}}"
+
+    <div class="post__like-comments-share">
+        {{#if is_liked}}
+            <span class="post__like-comments-share-like_clicked" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
+                <img src="" style="vertical-align: middle;" class="post__like-comments-share_like" data-post="{{id}}"
                      data-liked="true">
+        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
             </span>
-            <span id="likes-{{id}}"> {{likes}}  </span>
-            <img src="" class="comment-ico" style="display: inline">
-            <img src="" style="float:right; margin-right: 2%;display: inline" class="share">
-        </div>
-    {{else}}
-        <div class="like-comment-share">
+        {{else}}
             <span class="" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
-                <img src="" style="vertical-align: middle;" class="like" data-post="{{id}}" data-liked="false">
-                    <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;">{{likes}}</span>
+                <img src="" style="vertical-align: middle;" class="post__like-comments-share_like" data-post="{{id}}"
+                     data-liked="false">
+        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
             </span>
-            <img src="" class="comment-ico" style="display: inline; vertical-align: middle;">
-            <img src="" style="float:right; margin-right: 2%; display:inline;  vertical-align: middle;" class="share">
-        </div>
-    {{/if}}
+        {{/if}}
+        <img src="" class="post__like-comments-share_comments-icon" style="display: inline; vertical-align: middle;">
+        <img src="" style="float:right; margin-right: 2%;display: inline; vertical-align: middle;"
+             class="post__like-comments-share_share-icon">
+    </div>
 
     {{#if has_access}}
-        <div class="comments-sections">
+        <div class="post__comment-list">
             {{#each comments}}
                 {{>comment this}}
             {{/each}}
         </div>
-        <div class="comment-input">
-            <div class="input-ava"><img src=""></div>
-            <div class="comment-field" data-post="{{id}}">
-                <input type="text" placeholder="Оставьте комментарий..." class="comment-field">
-                <img src="" id="send-button" class="send_btn">
+        <div class="post__comment-input">
+            <div class="post__comment-input-ava"><img src=""></div>
+            <div class="post__comment-input-field" data-post="{{id}}">
+                <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field">
+                <img src="" id="send-button" class="post__comment-input-send-button">
             </div>
         </div>
     {{/if}}

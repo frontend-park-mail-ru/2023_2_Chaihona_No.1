@@ -5,13 +5,17 @@ import {
   MIN_FAIL_RESPONSE, LOGIN_ERROR_TEXT, ROOT_ELEMENT_ID, MOUSE_CLICK_EVENT,
 } from '@configs/common_config.js';
 
-import css from "./login.css"
+import css from "./login.scss"
 
-const LOGIN_BUTTON_CLASS = '.logbutton';
-const ERROR_TEXT_CLASS = '.error';
+const LOGIN_BUTTON_CLASS = '.login-page__input-login-button';
+const ERROR_TEXT_CLASS = '.login-page__error-text';
+const PIG_IMAGE_CLASS = '.login-page__pig-img'
+
 
 const LOGIN_FIELD_ID = '#login';
 const PASSWORD_FIELD_ID = '#password';
+
+import pigImg from '@static/img/pngwing1.png'
 
 /**
  * Функция отрисовки страницы логина
@@ -22,6 +26,8 @@ export default async () => {
   rootElement.innerHTML = login();
 
   const loginBtn = document.querySelector(LOGIN_BUTTON_CLASS);
+  const pig = document.querySelector(PIG_IMAGE_CLASS);
+  pig.src = pigImg;
 
   // Добавляет обработчик на кнопку логина. В случае успеха перерисовывает навбар
   // под пользователя и редиректит на его страницу

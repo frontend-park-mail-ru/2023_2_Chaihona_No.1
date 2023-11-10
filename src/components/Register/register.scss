@@ -1,0 +1,128 @@
+@import "@components/Shared/common.scss";
+@import "@components/Shared/logreg.scss";
+
+.register-page {
+  @include log-reg-page;
+
+  &__pig {
+    @include pig;
+  }
+
+  &__input {
+    @include log-reg-input;
+  }
+
+  &__error-text {
+    color: black;
+  }
+
+  &__input-login {
+    @include login-field;
+  }
+
+  &__input-password {
+    @include password-field;
+  }
+
+  &__input-register-button {
+    @include button;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    background-color: #FF8A26;
+    border: none;
+    font-family: sans-serif;
+    width: 90%;
+    height: 7vh;
+    margin-top: 12px;
+    margin-block-end: 1em;
+  }
+
+  &__input-entry-text {
+    @include log-reg-text;
+  }
+
+  &__pig-welcome-text {
+    @include pig-text;
+  }
+
+  &__author-checkbox {
+    text-align: left;
+    margin-left: 1px;
+  }
+
+  &__author-slot {
+    color: #D68048;
+    width: 80%;
+    margin-left: 8%;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1;
+    overflow: hidden;
+    height: 1em;
+    margin-top: -1%;
+  }
+
+  &__author-toggle {
+     border-radius: 0.75em;
+     box-shadow: 0 0 0 0.1em;
+     cursor: pointer;
+     position: relative;
+     margin-right: 0.25em;
+     width: 2.3em;
+     height: 1.0em;
+     appearance: none;
+   }
+
+  &__author-toggle, &__author-toggle:before, &__author-slot-label {
+    transition-duration: 0.25s;
+  }
+
+  &__author-toggle:before, &__author-slot, &__author-slot-label {
+    display: block;
+  }
+
+  &__author-toggle:before {
+    position: absolute;
+  }
+
+  &__author-toggle:checked {
+    background-color: #fad5b4;
+  }
+
+  &__author-toggle:before {
+    border-color: #D68048;
+    background: currentColor;
+    border-radius: 50%;
+    content: "";
+    top: 0.07em;
+    left: 0.12em;
+    width: 0.85em;
+    height: 0.85em;
+  }
+
+  &__author-toggle:checked:before {
+    transform: translateX(1.2em);
+  }
+
+  &__author-toggle:checked ~ &__author-slot &__author-slot-label, &__author-slot-label:nth-child(2) {
+    transform: translateY(-50%) scaleY(0);
+  }
+
+  &__author-toggle:checked ~ &__author-slot &__author-slot-label:nth-child(2) {
+    transform: translateY(-100%) scaleY(1);
+  }
+
+  &__author-switch > input {
+    color: #D68048;
+    font: 1em "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 1.5;
+  }
+
+  &__pig-img {
+    margin-top: 7vh;
+  }
+}
+

@@ -3,22 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index_bundle.js",
+  "browserslist": [
+    "> 1%",
+    "ie > 9"
+  ],
   "scripts": {
     "start": "webpack serve --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "webpack": "babel-node --plugins=transform-es2015-modules-commonjs ./node_modules/webpack/bin/webpack.js --progress",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.23.0",
-    "@babel/core": "^7.23.2",
-    "@babel/plugin-transform-runtime": "^7.23.2",
-    "@babel/preset-react": "^7.22.15",
-    "@babel/runtime": "^7.23.2",
+    "@babel/preset-env": "^7.23.3",
     "autoprefixer": "^10.4.16",
-    "babel-env": "^2.4.1",
     "babel-loader": "^9.1.3",
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
@@ -45,7 +43,6 @@
     "webpack-dev-middleware": "^6.1.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.23.2",
     "eslint": "^8.50.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.28.1",

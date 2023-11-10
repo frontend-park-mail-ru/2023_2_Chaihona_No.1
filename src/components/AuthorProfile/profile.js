@@ -11,18 +11,16 @@ import aprofile from '@components/AuthorProfile/author_profile.handlebars'
 import uprofile from '@components/UserProfile/user_profile.handlebars'
 
 import profileSettingIcon from '@static/icons/Settings2.svg';
-import defaultAvaImg from '@static/img/default-ava.png';
 
 const AUTHOR_USER_TYPE = 'creator';
 
 //todo: назвать нормально =)
 import css from '@components/AuthorProfile/author_profile.css'
-import css2 from '@components/Post/post.css'
-import css3 from '@components/Target/target.css'
+import css2 from '@components/Post/post.scss'
+import css3 from '@components/Target/target.scss'
 import css4 from '@components/UserProfile/user_profile.css'
-import css5 from '@components/UserProfile/user_profile.css'
 import css6 from '@components/Comment/comment.css'
-import css7 from '@components/SubLevel/sub_level.css'
+import css7 from '@components/SubLevel/sub_level.scss'
 
 /**
  * Функция отрисовки страницы пользователя

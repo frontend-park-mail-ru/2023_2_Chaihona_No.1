@@ -53,8 +53,8 @@ const Navbar = async (user = null) => {
 
         const subButton = document.querySelector(MENU_BUTTON_CLASS);
         subButton.src = downArrowImage;
+        const submenu = document.getElementById("submenu");
         subButton.addEventListener('click', () => {
-            const submenu = document.getElementById("submenu");
             if (menuOpen) {
                 submenu.style.display = "none";
                 subButton.style.rotate = "0deg"
@@ -66,6 +66,14 @@ const Navbar = async (user = null) => {
                 ProfileMenu();
             }
         });
+        const children = submenu.children;
+        for (let i = 0; i < children.length; i++) {
+            children[i].addEventListener('click', () => {
+                submenu.style.display = "none";
+                subButton.style.rotate = "0deg"
+                menuOpen = false;
+            })
+        }
     } else {
         navbarElement.innerHTML = navbarTmpl();
         const logo = document.querySelector(LOGO_CLASS);

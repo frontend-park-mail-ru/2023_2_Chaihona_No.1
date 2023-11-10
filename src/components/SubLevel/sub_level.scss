@@ -1,0 +1,17 @@
+@import "@components/Shared/common.scss";
+
+.subscription-level {
+  height: fit-content;
+  background-color: white;
+
+  &__buy-button {
+    @include button;
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    width: 100%;
+    background-color: #FF4D4D;
+    border: 0;
+    color: white;
+  }
+}

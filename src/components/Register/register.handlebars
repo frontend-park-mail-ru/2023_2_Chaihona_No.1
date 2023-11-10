@@ -1,17 +1,24 @@
-<div class="container">
-    <script src="error.js"></script>
-    <div class="error"></div>
-      <form action="register" method="post">
-        <input type="login" placeholder="Логин" id="login" name="login" required><br>
-        <input type="password" placeholder="Пароль" id="password" name="password" class="pass" required><br>
-        <input type="password" placeholder="Повторите пароль" id="repeat-password" name="password" class="pass" required><br>
-          <div class="switch">
-          <input id="toggle" class="toggle" type="checkbox" role="switch" name="toggle" value="on">
-          <label for="toggle" class="slot">
-              <span class="slot__label">ДОНАТЕР</span>
-              <span class="slot__label">АВТОР</span>
-          </label>
-          </div>
-        <input type="submit" class="regbutton" value="Зарегистрироваться">
-      </form>
+<div class="register-page">
+    <div class="register-page__pig">
+        <p class="register-page__pig-welcome-text">Добро пожаловать!</p>
+        <img class="register-page__pig-img" src="default_pics/pngwing1.png">
+    </div>
+    <div class="register-page__input">
+        <p class="register-page__input-entry-text">Регистрация</p>
+        <div class="register-page__error-text"></div>
+        <form action="login" method="post">
+            <input type="login" class="register-page__input-login" placeholder="Логин" id="login" name="login" required><br>
+            <input type="password" class="register-page__input-password" placeholder="Пароль" id="password" name="password" required><br>
+            <input type="password" class="register-page__input-password" placeholder="Повторите пароль" id="repeat-password" name="password"
+                   required><br>
+            <div class="register-page__author-switch">
+                <input id="toggle" class="register-page__author-toggle" type="checkbox" role="switch" name="toggle" value="on">
+                <label for="toggle" class="register-page__author-slot">
+                    <span class="register-page__author-slot-label">ДОНАТЕР</span>
+                    <span class="register-page__author-slot-label">АВТОР</span>
+                </label>
+            </div>
+            <button type="reg" class="register-page__input-register-button" name="buttonreg">Зарегистрироваться</button>
+        </form>
+    </div>
 </div>

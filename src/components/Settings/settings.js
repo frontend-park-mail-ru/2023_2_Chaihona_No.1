@@ -6,15 +6,28 @@ import {
 } from "@configs/common_config.js";
 import settings from '@components/Settings/settings.handlebars'
 
-import css from '@components/Settings/settings.css'
+import css from '@components/Settings/settings.scss'
 import {Api} from "@modules/api";
 import Navbar from "@components/Navbar/Navbar.js";
+import profileImg from '@static/icons/Account.svg'
+
+const BACK_ELEMENT_ID = 'back';
+const LOGIN_ELEMENT_ID = 'login';
+const OLD_PASS_ELEMENT_ID = 'old-password';
+const NEW_PASS_ELEMENT_ID = 'new-password';
+const UPLOAD_AVA_ID = 'upload-avatar';
+const PROFILE_ICON_ID = 'profile-icon';
+
+const SAVE_PROFILE_BUTTON_CLASS = '.settings__grid-params-buttons-save';
+const SETTINGS_AVA_CLASS = '.settings__grid-params-ava-grid-ava-pic';
+const ERROR_FIELD_CLASS = '.settings__grid-params-error-field';
+
+const imgExtRegExp = /(jp(e)?g|png)$/;
 
 const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 
 // от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
 const passRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
 
 /**
  * Проверяет логин на соответствие требованиям
@@ -39,18 +52,27 @@ function verifyPassword(password) {
     //return true
 }
 
+function checkImgExtension(imgName) {
+    const re = new RegExp(imgExtRegExp);
+    return re.test(imgName);
+}
+
 export default async () => {
     const rootElement = document.querySelector(ROOT_ELEMENT_ID);
     rootElement.innerHTML = settings();
-    const saveButton = document.querySelector('.save-profile-button');
+    const saveButton = document.querySelector(SAVE_PROFILE_BUTTON_CLASS);
+    const errorElement = document.querySelector(ERROR_FIELD_CLASS);
     const api = new Api();
     const profileRequest = await api.getUserProfile(window.user.id);
+
+    const profileIcon = document.getElementById(PROFILE_ICON_ID)
+    profileIcon.src = profileImg;
 
     if (profileRequest.status >= MIN_FAIL_RESPONSE) {
         window.router.redirect(NOT_FOUND_URL);
     }
 
-    const backElement = document.getElementById('back');
+    const backElement = document.getElementById(BACK_ELEMENT_ID);
 
     backElement.addEventListener('click', () => {
         router.redirect('profile' + window.user.id);
@@ -58,10 +80,10 @@ export default async () => {
 
     const profile = profileRequest.data.body.profile;
 
-    const setAva = document.querySelector(".settings-ava")
+    const setAva = document.querySelector(SETTINGS_AVA_CLASS)
     setAva.src = await api.getAvatar(profile.user.id);
 
-    const avatarField = document.getElementById('upload-avatar');
+    const avatarField = document.getElementById(UPLOAD_AVA_ID);
 
     let avaBlob = null;
 
@@ -72,14 +94,18 @@ export default async () => {
             setAva.src = upImage;
         })
         avaBlob = e.target.files[0];
+        if (!checkImgExtension(avaBlob.name)) {
+            errorElement.textContent = 'Картинка должна быть в разрешении jpg или png';
+            e.target.value = null;
+            return;
+        }
         reader.readAsDataURL(e.target.files[0]);
     })
 
     saveButton.addEventListener('click', async () => {
-        const errorElement = document.querySelector('.errorField');
-        const newLoginField = document.getElementById('login');
-        const newPassField = document.getElementById('new-password');
-        const oldPassField = document.getElementById('old-password');
+        const newLoginField = document.getElementById(LOGIN_ELEMENT_ID);
+        const newPassField = document.getElementById(NEW_PASS_ELEMENT_ID);
+        const oldPassField = document.getElementById(OLD_PASS_ELEMENT_ID);
         const newLogin = newLoginField.value;
         const newPass = newPassField.value;
         const oldPass = oldPassField.value;
@@ -112,11 +138,7 @@ export default async () => {
         formData.append('id', profile.user.id);
         if (avatarFile) {
             formData.append('avatar', avatarFile);
-		if (/\.(jpe?g|png)$/i.test(avatarFile.name) === false) {
-			errorElement.textContent = ('Фотография должна быть .jpg или .png')
-			return;
-		}
-		}
+        }
 
         formData.append('login', profile.user.login);
         formData.append('status', profile.user.status);

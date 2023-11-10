@@ -1,0 +1,165 @@
+@import "@components/Shared/common.scss";
+
+.post {
+  background: white;
+  margin-top: 2%;
+  border-radius: 12px;
+  height: fit-content;
+
+  &__date {
+    border-radius: 12px;
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 1.2% 2% 0 2%;
+  }
+
+  &__submenu {
+    padding: 1vh;
+    float: right;
+    width: 22vh;
+    border-radius: 12px;
+    border: solid lightgray 1px;
+    background-color: white;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__data_locked {
+    aspect-ratio: 16/9;
+    height: fit-content;
+    background-color: #fe9a70;
+  }
+
+  &__topic_locked {
+    padding: 1.5% 2%;
+    font-size: 3rem;
+    color: white;
+    font-family: serif;
+  }
+
+  &__price_locked {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-top: 30rem;
+  }
+
+  &__buy-button_locked{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 22px;
+    margin-top: 1rem;
+    background-color: #FF4D4D;
+    border: 0;
+    color: white;
+    width: 10rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  &__topic_unlocked{
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &__content_unlocked {
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    padding-top: 1.5%;
+  }
+
+  &__data_unlocked{
+    padding: 1.5% 2% 0 2%;
+  }
+
+  &__like-comments-share {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    width: 100%;
+    display: inline-block;
+  }
+
+  &__like-comments-share > img {
+    width: 2.5vh;
+    aspect-ratio: 1/1;
+  }
+
+  &__like-comments-share-like_clicked{
+    background-color: #FF4D4D;
+    padding: 0.5%;
+    margin-left: 2%;
+  }
+  &__like-comments-share-comment-count{
+    width: 2.5vh;
+    aspect-ratio: 1/1;
+  }
+
+  &__tagline{
+    height: 3vh;
+    padding: 2%;
+  }
+
+  &__tagline-tag{
+    padding: 0.75% 1.5%;
+    background-color: rgba(0, 0, 0, 0.30);
+    color: black;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  &__options-button{
+    float: right;
+  }
+
+  &__comment-list{
+    padding-bottom: 1.5%;
+    padding-left:  2%;
+    padding-right: 2%;
+    height: fit-content;
+    width: 96%;
+    gap: 20px;
+  }
+
+  &__comment-input{
+    display: grid;
+    height: fit-content;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    grid-template-columns: 7% 93%;
+  }
+
+  &__comment-input-ava{
+    height: 5vh;
+  }
+
+  &__comment-input-ava > img {
+    height: 5vh;
+    aspect-ratio: 1/1;
+    margin-left: 1vh;
+    border-radius: 9999px;
+  }
+
+  &__comment-input-field {
+    padding-left: 1vh;
+  }
+  &__comment-input-field > input {
+    width: 90%;
+    height: 5vh;
+    border-radius: 12px;
+    border-color: rgba(0, 0, 0, 0.60);
+  }
+
+  &__comment-input-send-button {
+    @include button;
+    display: inline;
+    float: right;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    width: 3vh;
+    height: 3vh;
+  }
+}

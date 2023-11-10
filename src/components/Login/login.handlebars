@@ -1,12 +1,18 @@
-<form action="login" method="post">
-    <div class="container">
-        <script src="login.js"></script>
-        <div class="error"></div>
-        <form action="login" method="post">
-        <input type="login" placeholder="Логин" id="login" name="login" required><br>
-        <input type="password" placeholder="Пароль" id="password" name="password" required class="pass"><br>
-        <input type="button" class="common-button logbutton" name="buttonlog" value="Войти">
-        </form>
-        <p>Забыли пароль?</p>
+<div class="login-page">
+    <div class="login-page__pig">
+        <p class="login-page__pig-welcome-text">С возвращением!</p>
+        <img class="login-page__pig-img" src="default_pics/pngwing1.png">
     </div>
-</form>
+    <div class="login-page__input">
+        <p class="login-page__input-entry-text">Вход</p>
+        <div class="login-page__error-text" style="color: red;"></div>
+        <form action="login" method="post">
+            <input type="login" class="login-page__input-login" placeholder="Логин" id="login" name="login" required><br>
+            <input type="password" class="login-page__input-password" placeholder="Пароль" id="password" name="password" required><br>
+            <div class="login-page__input-buttons">
+                <input type="button" class="login-page__input-login-button" name="buttonlog" value="Войти">
+                <p class="login-page__input-forgot-pass" href="/">Забыли пароль?</p>
+            </div>
+    </div>
+    </form>
+</div>

@@ -1,0 +1,71 @@
+@mixin log-reg-page {
+  width: 50vw;
+  height: fit-content;
+  display: flex;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin pig{
+  width: 60%;
+  border-color: #FF8362;
+  border-width: 10px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #FFE5CC
+}
+
+@mixin log-reg-input {
+  border-color: #FF8362;
+  border-width: 10px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: white;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+@mixin login-field {
+  margin-bottom: 1em;
+  margin-top: 15px;
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #FFB97D;
+  width: 80%;
+  height: 7vh;
+  padding-left: 10px;
+}
+
+@mixin password-field {
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #FFB97D;
+  width: 80%;
+  height: 7vh;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+@mixin pig-text {
+  text-align: center;
+  margin-left: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #D68048;
+}
+
+@mixin log-reg-text{
+  text-align: center;
+  margin-left: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #D68048;
+}
