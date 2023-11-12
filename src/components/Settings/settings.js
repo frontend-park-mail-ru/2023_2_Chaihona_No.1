@@ -94,12 +94,20 @@ export default async () => {
             setAva.src = upImage;
         })
         avaBlob = e.target.files[0];
+	    if (avaBlob && avaBlob.name) {
         if (!checkImgExtension(avaBlob.name)) {
-            errorElement.textContent = 'Картинка должна быть в разрешении jpg или png';
+            errorElement.textContent = 'Картинка должна быть в разрешении jp(e)g или png';
+const MIN_SUM_ERROR_TEXT = 'Минимальная сумма - 10';
             e.target.value = null;
+		avaBlob = null;
             return;
         }
         reader.readAsDataURL(e.target.files[0]);
+	    } else {
+		    avaBlob = null;
+            errorElement.textContent = 'Здесь я должен был упасть';
+		return;
+	    }
     })
 
     saveButton.addEventListener('click', async () => {

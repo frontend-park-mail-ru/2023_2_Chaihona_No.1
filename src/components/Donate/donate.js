@@ -6,12 +6,11 @@ const DONATE_DIALOG_ID = 'donate-dialog';
 const CLOSE_BUTTON_ID = '#close';
 const SEND_DONATE_BUTTON_ID = '#send-donate';
 
-const DONATE_SUM_INPUT_CLASS = '.sum';
-const ERROR_TEXT_CLASS = '.error';
-
-const MIN_SUM_ERROR_TEXT = 'Минимальная сумма - 10';
+const DONATE_SUM_INPUT_CLASS = '.donate-window__sum-input';
+const ERROR_TEXT_CLASS = '.donate-window__error-text';
 
 const ONLY_AVAILABLE_CURRENCY = 'RUB';
+const MIN_SUM_ERROR_TEXT = 'Минимальная сумма - 10 RUB';
 
 
 export default async (receiver) => {
