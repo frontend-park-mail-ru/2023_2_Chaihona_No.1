@@ -1,0 +1,97 @@
+<div class="user-cover"></div>
+
+<div class="user-page">
+
+    <div class="user-page__left-column">
+        <div class="user-page__ava-block">
+            <div class="user-page__ava">
+                <img src="" class="user-page__ava-img">
+            </div>
+            <div class="user-page__subs-amount">{{subscribers}}</div>
+            <div class="user-page__subs-word">Подписчиков</div>
+
+            {{#if isOwner}}
+                <div class="user-page__subs-amount">{{donated}} RUB</div>
+                <div class="user-page__subs-word">Заработано</div>
+            {{/if}}
+
+            {{#unless isOwner}}
+            {{#if is_followed}}
+                <button class="user-page__ava-btn_clicked" id="sub_button" data-subbed="true">Перестать отслеживать</button>
+            {{else}}
+                <button class="user-page__ava-btn_unclicked" id="sub_button" data-subbed="false">Отслеживать</button>
+            {{/if}}
+                <button class="user-page__ava-btn_unclicked" id="tip-button">Отправить донат</button>
+                {{>Donate}}
+            {{/unless}}
+        </div>
+
+        {{#if isOwner}}
+            <button class="user-page__new-post" id="new-post-button">Новый пост</button>
+        {{/if}}
+
+        <div class="user-page__target-block">
+            <div class="user-page__target-word">Цели</div>
+            <div class="target-separator"></div>
+            {{#each targets}}
+                {{>target this}}
+                <div class="target-separator"></div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="user-page__main-block">
+        <div class="user-page__name-and-status">
+            {{#if isOwner}}
+                <img src="" id="status-setting" class="user-page__page-settings">
+            {{/if}}
+            <div class="user-page__nickname">{{user.login}}</div>
+            <div class="user-page__status" id="user_status">{{user.status}}</div>
+        </div>
+
+        <div class="user-page__about-author">
+            {{#if isOwner}}
+                <img src="" id="about-setting" class="user-page__page-settings" style="margin-top: -1%;">
+            {{/if}}
+            <div style="font-weight: 700; font-size: 3rem;">Об авторе</div>
+            <div class="target-separator" style="margin-top: 3%; margin-bottom: 3%;"></div>
+            <div id="user_about"
+                 style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{user.description}} </div>
+        </div>
+
+        <div class="user-page__switch-and-search">
+            <span> Лента </span>
+            <span style="margin-left: 2%;"> Медиа </span>
+        </div>
+
+        {{#each posts}}
+            {{>post post=this}}
+        {{/each}}
+    </div>
+
+
+    <div class="user-page__right-column">
+        <div class="user-page__subscriptions">
+            <div class="user-page__sub-word">Уровни подписки</div>
+            {{#each subscribe_levels}}
+                <div class='target-separator'></div>
+                {{>sub_level this}}
+            {{/each}}
+        </div>
+    </div>
+
+    <dialog id="status_dialog" class="user-page__status_dialog">
+        <h2 style="margin-top: 1vh">Статус:</h2>
+        <div><input type="text" class="user-page__status-input" id="status_input" maxlength="100"></div>
+        <div>
+            <button class="user-page__save-btn" id="status_save_btn">OK</button>
+        </div>
+    </dialog>
+    <dialog id="about_dialog" class="user-page__about_dialog">
+        <h2 style="margin-top: 1vh">О себе:</h2>
+        <div><input type="text" class="user-page__status-input" id="about_input" maxlength="100"></div>
+        <div>
+            <button class="user-page__save-btn" id="about_save_btn">OK</button>
+        </div>
+    </dialog>
+</div>

@@ -1,0 +1,129 @@
+@import "@components/Shared/common.scss";
+
+.post-edit {
+  margin-left: 25vw;
+  margin-right: 25vw;
+  margin-top: 3vh;
+
+  &__grid{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 62% 38%;
+  }
+
+  &__params {
+    padding-top: 0.5vh;
+    padding-left: 1vw;
+    background-color: white;
+    border-radius: 12px;
+    width: 30vw;
+    height: 45vh;
+  }
+
+  &__sub-params{
+    margin-left: 1vw;
+    border-radius: 12px;
+    width: 100%;
+    padding-bottom: 2vh;
+  }
+
+  &__params-buttons{
+    padding: 1vh;
+    background-color: white;
+    border-radius: 12px;
+    height: 5vh;
+    width: 100%;
+    margin-top: 3vh;
+    margin-left: -1vw;
+  }
+
+  &__params-buttons-save{
+    @include main-color-button;
+    width: 7vw;
+    height: 100%
+  }
+
+  &__params-attach-vars{
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+  }
+
+  &__params-theme {
+    display: block;
+    margin-top: 1vh;
+    font-size: 2rem;
+    border: none;
+    padding: 1vh;
+  }
+
+  &__params-description{
+    display: block;
+    margin-top: 1vh;
+    font-size: 1rem;
+    border: none;
+    padding: 1vh;
+    height: 20vh;
+    width: 25vw;
+    resize: none;
+  }
+
+  &__params-tags{
+    margin-top: 7vh;
+    background-color: white;
+    border-radius: 12px;
+    height: 10vh;
+    margin-left: -1vw;
+    padding-top: 1vh;
+    padding-bottom: 4vh;
+    padding-left: 1vw;
+  }
+
+  &__params-tag-input {
+    border-color: #D9D9D9;
+    border-radius: 12px;
+    height: 3vh;
+    padding: 1vh;
+    width: 90%;
+  }
+
+  &__sub-params-available{
+    background-color: white;
+    border-radius: 12px;
+    padding: 1vh 1vw;
+  }
+
+  &__sub-params-available-sub{
+    padding-top: 2vh;
+    font-size: 16px;
+  }
+
+  &__sub-params-available-sub > label{
+    border: none !important;
+  }
+}
+
+th, td {
+  padding: 1vh 1vw;
+  border: 1px solid lightgray;
+}
+
+tr:last-child td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+//.delete-profile-button {
+//  border-color: #FF4D4D;
+//  float: right;
+//  margin-right: 20vh;
+//  color: #FF4D4D;
+//  width: 12vw;
+//  background-color: white;
+//  height: 100%;
+//  margin-left: 1vw;
+//}

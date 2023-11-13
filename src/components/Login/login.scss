@@ -1,0 +1,65 @@
+@import "@components/Shared/common.scss";
+@import "@components/Shared/logreg.scss";
+
+.login-page {
+  @include log-reg-page;
+
+  &__pig {
+    @include pig;
+  }
+
+  &__input {
+    @include log-reg-input;
+  }
+
+  &__error-text {
+    color: $error-color;
+  }
+
+  &__input-login {
+    @include login-field;
+  }
+
+  &__input-password {
+    @include password-field;
+  }
+
+  &__input-login-button{
+    @include button;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #FF8A26;
+    border: none;
+    font-family: sans-serif;
+    width: 12rem;
+    height: 7vh;
+    margin-top: 3.5rem;
+  }
+
+  &__input-entry-text {
+    @include log-reg-text;
+  }
+
+  &__input-forgot-pass {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    margin-left: 1vw;
+    color: #FFB97D;
+    margin-top: 3.5rem;
+  }
+
+  &__input-buttons {
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__pig-img {
+  }
+
+  &__pig-welcome-text {
+    @include pig-text;
+  }
+}

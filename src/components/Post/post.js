@@ -1,0 +1,92 @@
+import { Api } from '@modules/api';
+
+import postOptionsIcon from '@static/icons/post_opts.svg';
+import likeIcon from '@static/icons/like.svg';
+import commentIcon from '@static/icons/comment.svg';
+import shareIcon from '@static/icons/share.svg';
+import sendIcon from '@static/icons/send.svg';
+
+const SUBMENU_ID = 'submenu';
+const HEADER_ID = 'header';
+const BODY_ID = 'body';
+const SUB_LEVEL_ID = 'sub-level';
+
+const COMMENT_ICON_CLASS = '.post__like-comments-share_comments-icon';
+const SHARE_ICON_CLASS = '.post__like-comments-share_share-icon';
+const POST_SETTINGS_ICON_CLASS = '.post__options-button';
+const CLICKED_LIKE_CLASS = 'post__like-comments-share-like_clicked';
+const LIKE_ICON_CLASS = '.post__like-comments-share_like';
+const SEND_ICON_CLASS = '.post__comment-input-send-button';
+const INPUT_AVA_IMG_CLASS = '.post__comment-input-ava';
+
+export default (isOwner, userAva) => {
+  const sendButtons = document.querySelectorAll(SEND_ICON_CLASS);
+  sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
+
+  sendButtons.forEach((sendButton) => sendButton.addEventListener('click', (event) => {
+    alert('Комментарии будут на РК4');
+  }));
+
+  if (isOwner) {
+    const postSettingsButton = document.querySelectorAll(POST_SETTINGS_ICON_CLASS);
+    postSettingsButton.forEach((settingsButton) => settingsButton.src = postOptionsIcon);
+
+    postSettingsButton.forEach((settingsButton) => settingsButton.addEventListener('click', (event) => {
+      const id = event.target.dataset.post;
+      const postMenu = document.getElementById(`${SUBMENU_ID}-${id}`);
+      if (postMenu.style.display === 'none') {
+        postMenu.style.display = 'block';
+      } else {
+        postMenu.style.display = 'none';
+      }
+
+      const postEditButton = postMenu.children[0];
+      const postDeleteButton = postMenu.children[1];
+
+      postEditButton.addEventListener('click', () => {
+        const post = {};
+        post.header = document.getElementById(`${HEADER_ID}-${id}`).textContent;
+        post.body = document.getElementById(`${BODY_ID}-${id}`).textContent;
+        post.level = document.getElementById(`${SUB_LEVEL_ID}-${id}`).textContent;
+		    post.tags = [];
+        window.post = post;
+        return window.router.redirect(`/editpost${id}`);
+      });
+
+      postDeleteButton.addEventListener('click', async () => {
+        const api = new Api();
+        await api.deletePost(id);
+        const post = postMenu.parentNode;
+        post.remove();
+      });
+    }));
+  }
+  document.querySelectorAll(COMMENT_ICON_CLASS).forEach((commentButton) => commentButton.src = commentIcon);
+  document.querySelectorAll(SHARE_ICON_CLASS).forEach((shareButton) => shareButton.src = shareIcon);
+
+  // document.querySelectorAll('.comment-ava-img').forEach((commentAva) => commentAva.src = userAva);
+  document.querySelectorAll(INPUT_AVA_IMG_CLASS).forEach((inputAva) => inputAva.children[0].src = userAva);
+
+  const postLikeButton = document.querySelectorAll(LIKE_ICON_CLASS);
+  postLikeButton.forEach((likeButton) => likeButton.src = likeIcon);
+
+  postLikeButton.forEach((likeButton) => likeButton.addEventListener('click', async (event) => {
+    const id = event.target.dataset.post;
+    const { liked } = event.target.dataset;
+    const lks = document.getElementById(`like-${id}`);
+    const likesCount = document.getElementById(`likes-${id}`);
+    if (liked === 'true') {
+      const api = new Api();
+      await api.unlikePost(id);
+      lks.classList.remove(CLICKED_LIKE_CLASS);
+      likesCount.textContent = String(Number(likesCount.textContent) - 1);
+      event.target.dataset.liked = false;
+    } else {
+      const api = new Api();
+      await api.likePost(id);
+      lks.classList.add(CLICKED_LIKE_CLASS);
+      likesCount.textContent = String(Number(likesCount.textContent) + 1);
+      event.target.dataset.liked = true;
+    }
+  }));
+};

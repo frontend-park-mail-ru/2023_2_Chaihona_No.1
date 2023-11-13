@@ -1,0 +1,42 @@
+<div class="settings">
+    <div id = "back" style="cursor: pointer;"><- Вернуться к профилю</div>
+    <h2>Настройки</h2>
+    <div class="settings__grid">
+        <div class="settings__grid-params">
+            <h3>Профиль</h3>
+            <h3>Фотография профиля</h3>
+            <div class="settings__grid-params-ava-grid">
+                <div>
+                    <img src="" class="settings__grid-params-ava-grid-ava-pic">
+                </div>
+                <div style="margin-top: 13vh;">
+                    <input class="settings_grid-params-ava-grid-upload" type="file" id="upload-avatar" name="up-ava" accept=".jpg,.jpeg,.png" hidden>
+                    <label for="upload-avatar">Выбрать файл</label>
+                    <div class="settings__grid-params-ava-grid-reqs">
+                        PNG, JPG не более 10 Mb.
+                    </div>
+                </div>
+            </div>
+            <h3>Логин</h3>
+            <input type="text" class="settings__grid-params-input" id="login">
+            <h3>Новый пароль</h3>
+            <input type="password" class="settings__grid-params-input" id="new-password">
+            <h3>Старый пароль</h3>
+            <input type="password" class="settings__grid-params-input" id="old-password">
+            <div class = "settings__grid-params-error-field" style="font-size: 16px; color: red; margin-top: 3vh;"></div>
+            <div class="settings__grid-params-buttons">
+                <button class="settings__grid-params-buttons-save">Сохранить</button>
+             <!--   <button class="delete-profile-button common-button">
+                    <img src="">
+                    Удалить аккаунт
+                </button>-->
+            </div>
+        </div>
+        <div class="settings__grid-list">
+            <div class="settings__grid-list-element">
+                <img src="" style="height: 100%;" id="profile-icon">
+                Профиль
+            </div>
+        </div>
+    </div>
+</div>

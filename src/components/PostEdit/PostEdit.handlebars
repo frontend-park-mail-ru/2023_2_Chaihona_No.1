@@ -1,0 +1,56 @@
+<div class="post-edit">
+    <div id ="back" style="color: black;"><- Назад</div>
+
+    {{#if new}}
+        <h2>Новый пост</h2>
+    {{else}}
+        <h2>Редактирование поста</h2>
+    {{/if}}
+
+    <div class="post-edit__grid">
+        <div class="post-edit__params">
+            <h3>Пост</h3>
+            <div class="post-edit__params-error" style="color: red;"></div>
+            <table class="post-edit__params-attach-vars">
+                <td>Фото</td>
+                <td>Видео</td>
+                <td>Файл</td>
+                <td>Аудио</td>
+            </table>
+            <input type="text" class="post-edit__params-theme" placeholder="Введите заголовок поста" id="theme">
+            <textarea class="post-edit__params-description" id="text">Текст поста</textarea>
+
+
+             <!-- <div class="tags"> --> 
+            <!--    <h3>Теги поста</h3> -->
+            <!--    <input type="text" class="tag-input" placeholder="Введите тэги через проблем" id="tags"> -->
+            <!-- </div> -->
+
+            <div class="post-edit__params-buttons">
+                <button class="post-edit__params-buttons-save" id="publish">Опубликовать</button>
+
+                <!--{{#if new}}
+                    <button class="delete-profile-button common-button" id="now">
+                        <img src="">
+                        Сейчас
+                    </button>
+                {{/if}}-->
+            </div>
+        </div>
+        <div class="post-edit__sub-params">
+
+            <div class="post-edit__sub-params-available">
+                <h3>Кто может смотреть</h3>
+                <div class = 'target-separator'></div>
+                <div class="post-edit__sub-params-error" style="color: red;"></div>
+                {{#each sub_levels}}
+                    <div class="post-edit__sub-params-available-sub">
+                        <input type="radio" id="{{this.level}}level" name="sub_variant" value="{{this.id}}">
+                        <label for="{{this.level}}level">{{this.level}} уровень подписки</label>
+                    </div>
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+</div>

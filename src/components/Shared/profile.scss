@@ -1,0 +1,128 @@
+@import "@components/Shared/common.scss";
+
+.user-cover {
+  height: 25vh;
+  width: 100%;
+  background-color: #fad5b4;
+}
+
+.user-page {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 22.5% 58.5% 20%;
+
+  &__main-block {
+    height: 100%;
+    color: black;
+  }
+
+  &__name-and-status {
+    margin-top: 20px;
+    height: fit-content;
+    border-radius: 12px;
+    background: white;
+  }
+
+  &__nickname {
+    padding-left: 3%;
+    padding-top: 2%;
+    font-weight: 700;
+    font-size: 3rem;
+  }
+
+  &__status {
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 3%;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.80);
+  }
+
+  &__left-column {
+    margin-top: -30%;
+  }
+
+  &__ava-block {
+    padding-top: 5%;
+    background-color: white;
+    border-radius: 12px;
+    height: fit-content;
+  }
+
+  &__subs-amount {
+    padding-top: 5%;
+    position: relative;
+    top: 7%;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+
+  &__subs-word {
+    position: relative;
+    top: 7%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-weight: 700;
+    word-wrap: break-word;
+    padding-bottom: 5%;
+  }
+
+  &__ava {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 9999px;
+    width: 75%;
+    aspect-ratio: 1/1;
+    background-color: white;
+  }
+
+  &__right-column {
+    margin-top: 0;
+  }
+
+  &__ava-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__page-settings {
+    cursor: pointer;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+  }
+
+  &__status_dialog, &__about_dialog {
+    width: 30%;
+    border-radius: 12px;
+    border-color: white;
+  }
+
+  &__save-btn {
+    @include main-color-button;
+    margin-bottom: 1vh;
+    width: 10vh;
+    margin-top: 2.5vh;
+  }
+
+  &__status-input {
+    margin-right: 1vh;
+    width: 100%;
+    height: 10vh;
+    border-radius: 12px;
+    border: 1px solid #FF8364;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+}

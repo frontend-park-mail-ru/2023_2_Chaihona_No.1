@@ -1,0 +1,80 @@
+<div class="post">
+    <div class="post__date">
+        <span id="sub-level-{{id}}" style="display:none;">{{min_sub_level}}</span>
+        {{#if isOwner}}
+            <img src="" class="post__options-button" data-post="{{id}}">
+        {{/if}}
+        <span style="margin-right: 1vh;">{{creation_date}}</span>
+    </div>
+    {{#if isOwner}}
+        <div id="submenu-{{id}}" class="post__submenu" style="display: none;">
+            <div id="edit_post_button" style="padding: 1vh;">Редактировать пост</div>
+            <div id="delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
+        </div>
+    {{/if}}
+
+    {{#if has_access}}
+        <div class="target-separator"></div>
+
+        <div class="post__data_unlocked">
+            <div class="post__topic_unlocked" id="header-{{id}}">
+                {{header}}
+            </div>
+            <div class="post__content_unlocked" id="body-{{id}}">
+                {{body}}
+            </div>
+        </div>
+
+        <!-- <div class="post__tagline" id="tags-{{id}}">
+            {{#each tags}}
+                <span class="post__tagline-tag">{{this.name}}</span>
+            {{/each}}
+        </div> -->
+
+        <div class="target-separator"></div>
+
+    {{else}}
+        <div class="post__data_locked">
+            <div class="post__topic_locked">
+                {{topic}}
+            </div>
+            <div class="post__price_locked">{{availability}}</div>
+            <button class="post__buy-button_locked">Купить</button>
+        </div>
+    {{/if}}
+
+
+    <div class="post__like-comments-share">
+        {{#if is_liked}}
+            <span class="post__like-comments-share-like_clicked" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
+                <img src="" style="vertical-align: middle;" class="post__like-comments-share_like" data-post="{{id}}"
+                     data-liked="true">
+        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
+            </span>
+        {{else}}
+            <span class="" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
+                <img src="" style="vertical-align: middle; cursor: pointer;" class="post__like-comments-share_like" data-post="{{id}}"
+                     data-liked="false">
+        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
+            </span>
+        {{/if}}
+        <img src="" class="post__like-comments-share_comments-icon" style="display: inline; vertical-align: middle;">
+        <img src="" style="float:right; margin-right: 2%;display: inline; vertical-align: middle;"
+             class="post__like-comments-share_share-icon">
+    </div>
+
+    {{#if has_access}}
+        <div class="post__comment-list">
+            {{#each comments}}
+                {{>comment this}}
+            {{/each}}
+        </div>
+        <div class="post__comment-input">
+            <div class="post__comment-input-ava"><img src=""></div>
+            <div class="post__comment-input-field" data-post="{{id}}">
+                <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field">
+                <img src="" id="send-button" class="post__comment-input-send-button">
+            </div>
+        </div>
+    {{/if}}
+</div>

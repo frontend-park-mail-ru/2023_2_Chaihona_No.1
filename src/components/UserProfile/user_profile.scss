@@ -1,0 +1,31 @@
+@import "@components/Shared/profile.scss";
+
+
+.user-page {
+  &__subscriptions {
+    font-size: 22px;
+    margin-top: 20px;
+    height: fit-content;
+    padding-top: 3vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    background-color: white;
+    border-radius: 12px;
+  }
+
+  &__sub-element {
+    margin-top: 1vh;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.60);
+    width: 23%;
+    margin-right: 2vh;
+    height: 9vh;
+    text-align: center;
+  }
+
+  &__sub-element > img {
+    width: 100%;
+    border-radius: 9999px;
+  }
+
+}

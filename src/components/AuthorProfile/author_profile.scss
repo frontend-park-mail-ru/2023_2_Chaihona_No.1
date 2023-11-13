@@ -1,0 +1,91 @@
+@import "@components/Shared/profile.scss";
+
+@mixin ava-button {
+  position: relative;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 12%;
+  border-radius: 1vh;
+  width: 80%;
+}
+
+
+.user-page {
+  &__about-author {
+    height: fit-content;
+    border-radius: 12px;
+    background: white;
+    margin-top: 2%;
+    padding: 3% 0 3% 3%;
+    font-size: 1rem;
+  }
+  &__switch-and-search{
+    background: white;
+    margin-top: 2%;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    height: fit-content;
+    padding-left: 3%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+  }
+
+  &__ava-btn {
+    &_unclicked {
+      @include ava-button;
+      @include white-button;
+    }
+    &_clicked {
+      @include ava-button;
+      @include main-color-button;
+    }
+  }
+
+  &__target-block {
+    position: relative;
+    top: 1.5vh;
+    border-radius: 12px;
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+  }
+
+  &__target-word {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: left;
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__sub-word {
+    padding-bottom: 10%;
+  }
+
+  &__subscriptions {
+    margin-top: 20px;
+    font-family:  sans-serif;
+    padding: 10% 7% 0 7%;
+    height: fit-content;
+    background-color: white;
+    border-radius: 12px;
+  }
+
+  &__new-post-block {
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 2vh;
+  }
+
+  &__new-post {
+    @include main-color-button;
+    width: 100%;
+    margin-top: 2vh;
+  }
+}
