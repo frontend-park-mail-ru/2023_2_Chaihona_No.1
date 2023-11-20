@@ -16,15 +16,8 @@ const cacheName = 'my-cache';
 // put the static assets and routes you want to cache here
 const filesToCache = [
   '/',
-  '/about',
-  '/index.html',
-  '/about.html',
-  '/css/styles.css',
-  '/js/app.js',
-  '/img/logo.png',
-  'public/components/Login/login.handlebars',
-  'public/components/Login/login.css',
-  'public/components/Login/login.js',
+  ''
+  'public/components/',
 
 
 ];
