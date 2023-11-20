@@ -1,0 +1,82 @@
+dialog{
+text-align:center;
+width: 200px;
+height: 250px;
+border-radius: 12px;
+border-width: 1px;
+}
+
+
+
+.donate_window{
+background-color: #FFE5CC;
+border-radius: 12px;
+border-width: 1px;
+}
+
+
+.sum{
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #FFB97D;
+    width: 80%;
+    height: 7vh;
+    padding-left: 10px;
+}
+.message{
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #FFB97D;
+    width: 80%;
+    height: 7vh;
+    padding-left: 10px;
+    padding-top: 12px;
+        font-family: sans-serif;
+
+}
+
+
+.message::placeholder{
+
+    font-family: sans-serif;
+
+
+}
+.send_donate{
+    text-align: center;
+    border-radius: 5px;
+    border-width: 1px;
+    font-family: sans-serif;
+    color: white;
+    background-color: #FF8A26;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 7vh;
+
+}
+
+
+.close_window{
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 5px;
+    border-width: 1px;
+    font-family: sans-serif;
+    color: white;
+    background-color: #FF8A26;
+    height: 5vh;
+}
+
+.text1{
+    font-family: sans-serif;
+
+}
+
+.text2{
+    font-family: sans-serif;
+
+}
