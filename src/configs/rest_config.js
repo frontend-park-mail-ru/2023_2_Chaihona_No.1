@@ -7,7 +7,7 @@ const DELETE_METHOD = 'DELETE';
  * @type {string}
  */
 
-export const url = '127.0.0.1'
+export const url = '212.233.89.163'
 export const backendUrl = 'http://' + url + ':8001/api/v1';
 
 /**

@@ -38,9 +38,9 @@ async function init() {
     await navbar({ id: isAuth.data.body.id });
   } else {
     await navbar();
-    if (url !== 'register' && url !== 'login') {
-      return router.redirect('/login');
-    }
+   // if (url !== 'register' && url !== 'login') {
+   //   return router.redirect('/login');
+   // }
   }
   if (url !== '') {
     return router.redirect(url);

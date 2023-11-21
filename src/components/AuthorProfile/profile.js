@@ -31,8 +31,12 @@ export default async () => {
   const currUrl = window.location.href.split('/').pop();
   const id = currUrl.replace(PROFILE_URL, '');
 
-  const isOwner = (window.user.id === Number(id));
-
+  var isOwner = false;
+  var isAuthorized = false;
+  if (window.user !== undefined) {
+    isOwner = (window.user.id === Number(id));
+    isAuthorized = true;
+  }
   // забираем пользователя
   const api = new Api();
   const profileRequest = await api.getUserProfile(id);
@@ -81,6 +85,9 @@ export default async () => {
       const tipButton = document.getElementById('tip-button');
 
       tipButton.addEventListener('click', () => {
+	if (!isAuthorized) {
+	  return window.router.redirect('login');
+	}
         const donateModal = document.getElementById('donate-dialog');
         donateModal.showModal();
         donate(id);
@@ -89,6 +96,9 @@ export default async () => {
       const subButton = document.getElementById('sub_button');
 
       subButton.addEventListener('click', (event) => {
+	if (!isAuthorized) {
+	  return window.router.redirect('login');
+	}
         const subBtn = event.target;
         const { subbed } = subBtn.dataset;
         const subsAmount = document.querySelector('.user-page__subs-amount');
@@ -109,7 +119,10 @@ export default async () => {
         }
       });
     }
-    const userAva = await api.getAvatar(window.user.id);
+    var userAva = "";
+    if (window.user !== undefined) {
+        userAva = await api.getAvatar(window.user.id);
+    }
     post(isOwner, userAva);
   } else {
     profile.isOwner = isOwner;
