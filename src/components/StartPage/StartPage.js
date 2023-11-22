@@ -14,5 +14,5 @@ export default () => {
   const pigImg = document.getElementById('flourish-pig');
   pigImg.src = pig;
   const handImg = document.getElementById('hand');
-  handImg.src = handImg;
+  handImg.src = hand;
 };
