@@ -1,0 +1,132 @@
+.start-page {
+  margin-left: 15%;
+  text-align: center;
+  width: 40vw;
+  height: 100vh;
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:  80%;
+    height: 23%;
+    border-radius: 12px;
+    background-color: #FFE5CC;
+
+    &__header{
+      text-align: center;
+      margin-left: 10px;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #D68048;
+    }
+    
+    &__img{
+      width: 50px;
+      height: 50px;
+    }
+
+    &__text{
+      font-family: sans-serif;
+      font-size: 7px;
+      font-weight: bold;
+      color: #D68048;
+    }
+
+    &__button{
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: white;
+      background-color: #FF8A26;
+      border-radius: 5px;
+      border: none;
+      font-family: sans-serif;
+      width: 150px;
+      height: 7vh;
+    }
+
+    &__profiles{
+      border-radius: 12px;
+      border: 1.5px solid #FFB97D;
+      width: 90%;
+      height: 65%;
+      margin-bottom: 10px;
+      display: flex;
+      background-color: #FFDBB8;
+
+      &__arrow{
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-top: 2px solid #000;
+        border-right: 2px solid #000;
+        color: #FFB97D;
+        margin-left:2%;
+        margin-top:16%;
+        &__left{
+          transform: rotate(-135deg);
+        }
+        &__right{
+          transform: rotate(45deg);
+        }
+      }
+      &__profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        margin-top: 1%;
+        border-radius: 12px;
+        border: 1.5px solid #FFB97D;
+        width: 26%;
+        height: 90%;
+        margin-left:8px;
+
+        &__ava{
+          margin-top: 7px;
+          margin-bottom: 7px;
+          width: 55px;
+          height: 55px;
+          background-color: #C8D9EB;
+          border-radius: 50%;
+        }
+        
+        &__name{
+          font-family: sans-serif;
+          font-size: 11px;
+          font-weight: bold;
+        }
+
+        &__followers{
+          font-family: sans-serif;
+          font-size: 7px;
+          font-weight: bold;
+        }
+        &__button{
+          width: 90px;
+          height: 25px;
+          font-family: sans-serif;
+          font-size: 7px;
+          font-weight: bold;
+          background-color: white;
+          border: 1.5px solid #FFB97D;
+          border-radius: 5px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  &__text{
+      text-align: center;
+  }
+
+  &__image {
+      position: relative;
+      transform: translate(-50%, 0);
+      left: 50%;
+      width: 50vh;
+  }
+}

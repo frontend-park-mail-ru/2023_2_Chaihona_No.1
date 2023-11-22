@@ -3,7 +3,7 @@ import startPage from '@components/StartPage/StartPage.handlebars';
 
 import pig from '@static/img/pngwing3.png';
 import hand from '@static/img/pngwingHand.png';
-// import css from './StartPage.scss';
+import css from './StartPage.scss';
 
 /**
  * Функция отрисовки стартовой страницы 
