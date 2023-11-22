@@ -6,11 +6,15 @@ import settings from '@components/Settings/settings.js';
 import PostEdit from '@components/PostEdit/PostEdit.js';
 import PostNew from '@components/PostEdit/PostNew.js';
 import Feed from '@components/Feed/feed.js';
+import StartPage from '../components/StartPage/StartPage';
 
 /**
  * Массив объектов с url и функциями отрисовки страниц
  */
 export const routes = {
+  start: {
+    render: StartPage,
+  },
   profile: {
     render: profile,
   },

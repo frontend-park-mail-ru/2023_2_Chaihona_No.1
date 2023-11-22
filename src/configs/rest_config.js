@@ -14,6 +14,10 @@ export const backendUrl = 'http://' + url + ':8001/api/v1';
  * Все возможные endpoint'ы и их методы
  */
 export const restEndpoints = {
+  getTop: {
+    url: '/profiles/{limit}',
+    method: GET_METHOD,
+  },
   getPosts: {
     url: '/profile/{id}/post',
     method: GET_METHOD,
