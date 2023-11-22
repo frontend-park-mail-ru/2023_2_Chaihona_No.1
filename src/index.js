@@ -45,7 +45,10 @@ async function init() {
   if (url !== '') {
     return router.redirect(url);
   }
-  return router.redirect(`/profile${isAuth.data.body.id}`);
+  if (isAuth.data.body.id !== undefined){
+    return router.redirect(`/profile${isAuth.data.body.id}`);
+  }
+  return router.redirect('/start');
 }
 
 await init();
