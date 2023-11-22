@@ -21,17 +21,17 @@ export default async () => {
   const handImg = document.getElementById('hand');
   handImg.src = hand;
 
-  const AuthorButton = document.querySelector('author-btn');
+  const AuthorButton = document.getElementById('author-btn');
   AuthorButton.addEventListener('click', async () => {
     window.router.redirect('/register');
   });
 
-  const DonaterButton = document.querySelector('donater-btn');
+  const DonaterButton = document.getElementById('donater-btn');
   DonaterButton.addEventListener('click', async () => {
     window.router.redirect('/register');
   });
 
-  const JoinButton = document.querySelector('join-btn');
+  const JoinButton = document.getElementById('join-btn');
   JoinButton.addEventListener('click', async () => {
     window.router.redirect('/register');
   });
