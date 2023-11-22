@@ -27,8 +27,8 @@ export default async () => {
   }
 
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
-  rootElement.innerHTML = startPage(profiles);
-  
+  rootElement.innerHTML = startPage(topRequest.data.body);
+
   const pigImg = document.getElementById('flourish-pig');
   pigImg.src = pig;
 
