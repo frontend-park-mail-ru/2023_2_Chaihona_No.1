@@ -33,7 +33,7 @@
                 <div class="start-page__container__profiles__profile__followers">
                     {{this.subscribers}} подписчиков<br>
                 </div>
-                <input type="button" class="start-page__container__profiles__profile__button" name="buttonlog" value="Перейти в профиль">
+                <input type="button" class="start-page__container__profiles__profile__button" data-sub="{{this.user.id}}" name="buttonlog" value="Перейти в профиль">
             </div>
             {{/each}}
             <span class="start-page__container__profiles__arrow__left"></span>

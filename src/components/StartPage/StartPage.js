@@ -54,4 +54,7 @@ export default async () => {
     topPic.src = await api.getAvatar(topPic.dataset.sub);
     topPic.addEventListener('click', () => window.router.redirect(`profile${topPic.dataset.sub}`));
   }
+  for (const btn of document.querySelectorAll('.start-page__container__profiles__profile__button')) {
+    btn.addEventListener('click', () => window.router.redirect(`profile${btn.dataset.sub}`));
+  }
 };
