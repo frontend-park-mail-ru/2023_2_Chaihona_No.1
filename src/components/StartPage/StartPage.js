@@ -44,6 +44,7 @@ export default async () => {
   }
 
   const { profiles } = topRequest.data.body;
+  console.log(profiles);
   if (profiles === undefined) {
     return window.router.redirect('nenahod');
   }
