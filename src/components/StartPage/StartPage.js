@@ -1,5 +1,10 @@
-import { ROOT_ELEMENT_ID } from '@configs/common_config.js';
+import {
+  ROOT_ELEMENT_ID,
+  MIN_FAIL_RESPONSE,
+  NOT_FOUND_URL,
+} from '@configs/common_config.js';
 import startPage from '@components/StartPage/StartPage.handlebars';
+import { Api } from '@modules/api.js';
 
 import pig from '@static/img/pngwing3.png';
 import hand from '@static/img/pngwingHand.png';
@@ -8,11 +13,43 @@ import css from './StartPage.scss';
 /**
  * Функция отрисовки стартовой страницы 
  */
-export default () => {
+export default async () => {
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
   rootElement.innerHTML = startPage();
   const pigImg = document.getElementById('flourish-pig');
   pigImg.src = pig;
   const handImg = document.getElementById('hand');
   handImg.src = hand;
+
+  const AuthorButton = document.querySelector('author-btn');
+  AuthorButton.addEventListener('click', async () => {
+    window.router.redirect('/register');
+  });
+
+  const DonaterButton = document.querySelector('donater-btn');
+  DonaterButton.addEventListener('click', async () => {
+    window.router.redirect('/register');
+  });
+
+  const JoinButton = document.querySelector('join-btn');
+  JoinButton.addEventListener('click', async () => {
+    window.router.redirect('/register');
+  });
+
+  const api = new Api();
+  const topRequest = await api.getTop(3);
+
+  if (topRequest.status >= MIN_FAIL_RESPONSE) {
+    window.router.redirect(NOT_FOUND_URL);
+  }
+
+  const { profiles } = topRequest.data.body;
+  if (profiles.user.id === undefined) {
+    return window.router.redirect('nenahod');
+  }
+
+  for (const topPic of document.querySelectorAll('.start-page__container__profiles__profile__ava')) {
+    topPic.src = await api.getAvatar(subPic.dataset.sub);
+    topPic.addEventListener('click', () => window.router.redirect(`profile${subPic.dataset.sub}`));
+  }
 };

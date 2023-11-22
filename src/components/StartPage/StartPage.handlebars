@@ -7,7 +7,7 @@
         Стабильный доход, независящий от рекламы<br>
         Создавайте уникальные мерпориятия<br>
         Свобода творчества<br></div>
-        <input type="button" class="start-page__container__button" name="buttonlog" value="Стать автором">
+        <input type="button" class="start-page__container__button" name="buttonlog" id="author-btn" value="Стать автором">
     </div>
     <br>
     <div class="start-page__container">
@@ -17,45 +17,27 @@
         Принимайте участие в творчестве автора<br>
         Следите за эксклюзивным контентом<br>
         Находите себе единомышленников<br></div>
-        <input type="button" class="start-page__container__button" name="buttonlog" value="Стать донатером">
+        <input type="button" class="start-page__container__button" name="buttonlog" id="donater-btn" value="Стать донатером">
     </div>
     <br>
     <div class="start-page__container">
         <p class="start-page__container__header">Уже с нами</p>
         <div class="start-page__container__profiles">
             <span class="start-page__container__profiles__arrow__left"></span>
+            {{#each profiles}}
             <div class="start-page__container__profiles__profile">
-                <div class="start-page__container__profiles__profile__ava"></div>
+                <img src="" class="start-page__container__profiles__profile__ava" data-sub="{{this.user.id}}">
                 <div class="start-page__container__profiles__profile__name">
-                    Serezha <br><br>
+                    {{this.user.login}} <br><br>
                 </div>
                 <div class="start-page__container__profiles__profile__followers">
-                    1000 подписчиков<br>
+                    {{this.subscribers}} подписчиков<br>
                 </div>
                 <input type="button" class="start-page__container__profiles__profile__button" name="buttonlog" value="Перейти в профиль">
             </div>
-            <div class="start-page__container__profiles__profile">
-                <div class="start-page__container__profiles__profile__ava"></div>
-                <div class="start-page__container__profiles__profile__name">
-                    Serezha <br><br>
-                </div>
-                <div class="start-page__container__profiles__profile__followers">
-                    1000 подписчиков<br>
-                </div>
-                <input type="button" class="start-page__container__profiles__profile__button" name="buttonlog" value="Перейти в профиль">
-            </div>
-            <div class="start-page__container__profiles__profile">
-                <div class="start-page__container__profiles__profile__ava"></div>
-                <div class="start-page__container__profiles__profile__name">
-                    Serezha <br><br>
-                </div>
-                <div class="start-page__container__profiles__profile__followers">
-                    1000 подписчиков<br>
-                </div>
-                <input type="button" class="start-page__container__profiles__profile__button" name="buttonlog" value="Перейти в профиль">
-            </div>
+            {{/each}}
             <span class="start-page__container__profiles__arrow__left"></span>
         </div>
-        <input type="button" class="start-page__container__button" name="buttonlog" value="Присоединиться">
+        <input type="button" class="start-page__container__button" name="buttonlog" id="join-btn" value="Присоединиться">
     </div>
 </div>
