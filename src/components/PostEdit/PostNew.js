@@ -57,6 +57,21 @@ export default async () => {
     window.history.replaceState(newData, null, window.location.pathname);
   }));
 
+  const uploadedImg = document.querySelector('uploaded-img')
+  const uploadImgButton = document.getElementById('upload-img');
+
+  let imageAttach = null;
+
+  uploadImgButton.addEventListener('change', (e) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      const upImage = reader.result;
+      uploadedImg.src = upImage;
+    })
+    imageAttach.data = e.target.files[0];
+    imageAttach.name = '1.png';
+  });
+
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
   verifyButton.addEventListener('click', () => {
     const header = headerEl.value;
@@ -71,8 +86,9 @@ export default async () => {
       errorEl.textContent = 'Выберите уровень доступа';
     } else {
       const min_subscription_level_id = Number(checked.value);
+      const attaches = [imageAttach];
       api.newPost({
-        header, min_subscription_level_id, body, postTags,
+        header, min_subscription_level_id, body, postTags, attaches
       });
       window.history.back();
     }
