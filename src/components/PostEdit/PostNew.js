@@ -57,7 +57,7 @@ export default async () => {
     window.history.replaceState(newData, null, window.location.pathname);
   }));
 
-  const uploadedImg = document.querySelector('uploaded-img')
+  const uploadedImg = document.querySelector('.uploaded-img');
   const uploadImgButton = document.getElementById('upload-img');
 
   let imageAttach = {
