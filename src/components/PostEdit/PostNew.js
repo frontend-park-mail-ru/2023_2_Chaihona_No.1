@@ -60,7 +60,10 @@ export default async () => {
   const uploadedImg = document.querySelector('uploaded-img')
   const uploadImgButton = document.getElementById('upload-img');
 
-  let imageAttach = null;
+  let imageAttach = {
+    'data': null,
+    'name': null,
+  };
 
   uploadImgButton.addEventListener('change', (e) => {
     const reader = new FileReader();
