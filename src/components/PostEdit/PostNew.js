@@ -71,11 +71,12 @@ export default async () => {
       const upImage = reader.result;
       uploadedImg.src = upImage;
       console.log(")"+upImage);
+      imageAttach.data = e.target.files[0];
+      imageAttach.name = '1.png';
     })
     console.log(e.target);
     console.log(e.target.files);
-    imageAttach.data = e.target.files[0];
-    imageAttach.name = '1.png';
+    reader.readAsDataURL(e.target.files[0]);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
