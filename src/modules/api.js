@@ -24,9 +24,9 @@ export class Api extends Requests {
      * @returns {Promise<{data: *, status: number}|{data: null, status: number}>} -
      * результат запроса и статус
      */
-  async getUserPosts(id) {
+  async getUserPosts(id, is_owner, is_followed) {
     const endpoint = restEndpoints.getPosts;
-    const url = backendUrl + endpoint.url.replace('{id}', id);
+    const url = backendUrl + endpoint.url.replace('{id}', id) + "?is_followed="+is_followed+"&&is_owner="+is_owner;
     return this.make_request(url, endpoint.method);
   }
 

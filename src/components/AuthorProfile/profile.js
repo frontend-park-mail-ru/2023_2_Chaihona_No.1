@@ -53,7 +53,7 @@ export default async () => {
 
   // если пользователь автор - забираем посты и рендерим страницу, иначе просто рендерим страницу
   if (profile.user.is_author) {
-    const postsRequest = await api.getUserPosts(id);
+    const postsRequest = await api.getUserPosts(id, isOwner, profile.is_followed);
     if (postsRequest.status >= MIN_FAIL_RESPONSE) {
       window.router.redirect(NOT_FOUND_URL);
     }
