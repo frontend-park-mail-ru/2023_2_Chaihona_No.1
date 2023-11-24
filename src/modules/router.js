@@ -40,7 +40,7 @@ export class Router {
     let route = routes[renderer];
     console.log(path);
     if (path.startsWith('document/')) {
-      window.location.href = path.split('/').slice(-1);
+      window.location.href = path.replace(/^document\//, '');
     }
     else {
       window.history.pushState(state, null, path);
