@@ -84,6 +84,13 @@ export default async () => {
               video.controls = true;
               attachesEl.appendChild(video);
             }
+            if (attach.file_path.endsWith(".mp3")){
+              const video = document.createElement('video');
+              video.height = 100;
+              video.src = atob(attach.data);
+              video.controls = true;
+              attachesEl.appendChild(video);
+            }
             // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
         }

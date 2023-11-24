@@ -104,6 +104,28 @@ export default async () => {
       });
   });
 
+  const uploadAudioButton = document.getElementById('upload-audio');
+
+  uploadAudioButton.addEventListener('change', (e) => {
+      Array.prototype.forEach.call(e.target.files, (file) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          const upAudio = reader.result;
+          const audio = document.createElement('audio');
+          audio.title = file.name;
+          audio.src = upAudio;
+          audio.controls = true;
+          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
+          attachesEl.appendChild(video);
+          pinned.push({
+            'data': btoa(upAudio),
+            'name': pinned.length+'.mp3',
+          });
+        });
+        reader.readAsDataURL(file);
+      });
+  });
+
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
   verifyButton.addEventListener('click', () => {
     const header = headerEl.value;
