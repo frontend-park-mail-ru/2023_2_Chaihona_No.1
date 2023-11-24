@@ -99,7 +99,7 @@ export default async () => {
               doc.addEventListener('click', (e) => {
                 e.preventDefault();
                 const aEl = document.createElement('a');
-                aEl.setAttribute("download", e.target.name);
+                aEl.setAttribute("download", e.target.text + '.txt');
                 const href = e.target.href;
                 aEl.href = href;
                 aEl.setAttribute('target', '_blank');
