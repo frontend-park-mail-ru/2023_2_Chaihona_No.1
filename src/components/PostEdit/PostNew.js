@@ -144,7 +144,7 @@ export default async () => {
             frame.src = e.target.href;
             let x = window.open();
             x.document.open();
-            x.document.write(frame.innerHTML);
+            x.document.write(frame.outerHTML);
             x.document.close();
           });
           attachesEl.appendChild(doc);
