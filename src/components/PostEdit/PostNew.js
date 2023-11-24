@@ -4,6 +4,7 @@ import postEdit from "@components/PostEdit/PostEdit.handlebars";
 import css from "@components/PostEdit/PostEdit.scss";
 import { Api } from "@modules/api";
 import { urlencoded } from "body-parser";
+import { format } from "path";
 
 const BACK_ELEMENT_ID = "back";
 const PUBLISH_ELEMENT_ID = "publish";
@@ -152,8 +153,8 @@ export default async () => {
         doc.text += file.name;
         doc.target = "_blank";
         doc.setAttribute("download", file.name);
-        // doc.href = upFile;
-        doc.href = URL.createObjectURL(new Blob([upFile]));
+        // doc.href = URL.createObjectURL(new Blob([upFile]));
+        doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
           const aEl = document.createElement('a');
@@ -170,7 +171,10 @@ export default async () => {
           name: pinned.length + ".txt",
         });
       });
-      reader.readAsArrayBuffer(file);
+      // reader.readAsArrayBuffer(file);
+      console.log(file);
+      reader.readAsBinaryString(file);
+
     });
   });
 
