@@ -68,7 +68,9 @@ export default async () => {
           window.router.redirect(NOT_FOUND_URL);
         }
         profilePost.attaches = attachRequest.data.body.attaches;
-        profilePost.attaches.forEach((attach) => attach.data = atob(attach.data));
+        if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
+          profilePost.attaches.forEach((attach) => attach.data = atob(attach.data));
+        }
       });
     }
 
