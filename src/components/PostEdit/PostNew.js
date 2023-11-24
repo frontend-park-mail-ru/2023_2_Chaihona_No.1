@@ -141,7 +141,7 @@ export default async () => {
             const frame = document.createElement('iframe');
             frame.width = "100";
             frame.height = "100";
-            frame.src = upFile;
+            frame.src = e.target.href;
             let x = window.open();
             x.document.open();
             x.document.write(frame);
