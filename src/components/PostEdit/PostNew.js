@@ -135,7 +135,18 @@ export default async () => {
           doc.text += file.name;
           doc.target = "_blank";
           doc.setAttribute("download", file.name);
-          doc.href = 'document/'+upFile;
+          doc.href = upFile;
+          doc.addEventListener('click', (e) => {
+            e.preventDefault();
+            const frame = document.createElement('iframe');
+            frame.width = "100";
+            frame.height = "100";
+            frame.src = upFile;
+            let x = window.open();
+            x.document.open();
+            x.document.write(frame);
+            x.document.close();
+          });
           attachesEl.appendChild(doc);
           pinned.push({
             'data': btoa(upFile),
