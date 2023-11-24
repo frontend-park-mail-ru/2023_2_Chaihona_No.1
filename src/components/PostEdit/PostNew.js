@@ -70,7 +70,6 @@ export default async () => {
           image.height = 100;
           image.title = file.name;
           image.src = upImage;
-          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
           attachesEl.appendChild(image);
           pinned.push({
             'data': btoa(upImage),
@@ -93,7 +92,6 @@ export default async () => {
           video.title = file.name;
           video.src = upVideo;
           video.controls = true;
-          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
           attachesEl.appendChild(video);
           pinned.push({
             'data': btoa(upVideo),
@@ -115,11 +113,30 @@ export default async () => {
           audio.title = file.name;
           audio.src = upAudio;
           audio.controls = true;
-          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
           attachesEl.appendChild(audio);
           pinned.push({
             'data': btoa(upAudio),
             'name': pinned.length+'.mp3',
+          });
+        });
+        reader.readAsDataURL(file);
+      });
+  });
+
+  const uploadFileButton = document.getElementById('upload-audio');
+
+  uploadFileButton.addEventListener('change', (e) => {
+      Array.prototype.forEach.call(e.target.files, (file) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          const upFile = reader.result;
+          const doc = document.createElement('a');
+          doc.title = file.name;
+          doc.href = upFile;
+          attachesEl.appendChild(doc);
+          pinned.push({
+            'data': btoa(upFile),
+            'name': pinned.length+'.txt',
           });
         });
         reader.readAsDataURL(file);

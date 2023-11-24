@@ -90,6 +90,12 @@ export default async () => {
               audio.controls = true;
               attachesEl.appendChild(audio);
             }
+            if (attach.file_path.endsWith(".txt")){
+              const doc = document.createElement('a');
+              // doc.download =true;
+              doc.href = atob(attach.data);
+              attachesEl.appendChild(doc);
+            }
             // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
         }
