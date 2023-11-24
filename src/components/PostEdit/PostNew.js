@@ -136,25 +136,26 @@ export default async () => {
           doc.text += file.name;
           doc.target = "_blank";
           doc.setAttribute("download", file.name);
-          doc.href = upFile;
-          doc.addEventListener('click', (e) => {
-            e.preventDefault();
-            // const frame = document.createElement('iframe');
-            // frame.width = "100";
-            // frame.height = "100";
-            // frame.src = e.target.href;
-            // let x = window.open();
-            // x.document.open();
-            // x.document.write(frame.outerHTML);
-            // x.document.close();
-            const aEl = document.createElement('a');
-            aEl.setAttribute("download", file.name);
-            const href = URL.createObjectURL(new Blob([upFile]));
-            aEl.href = href;
-            aEl.setAttribute('target', '_blank');
-            aEl.click();
-            URL.revokeObjectURL(href);
-          });
+          // doc.href = upFile;
+          doc.href = URL.createObjectURL(new Blob([upFile]));
+          // doc.addEventListener('click', (e) => {
+          //   e.preventDefault();
+          //   // const frame = document.createElement('iframe');
+          //   // frame.width = "100";
+          //   // frame.height = "100";
+          //   // frame.src = e.target.href;
+          //   // let x = window.open();
+          //   // x.document.open();
+          //   // x.document.write(frame.outerHTML);
+          //   // x.document.close();
+          //   const aEl = document.createElement('a');
+          //   aEl.setAttribute("download", file.name);
+          //   const href = URL.createObjectURL(new Blob([upFile]));
+          //   aEl.href = href;
+          //   aEl.setAttribute('target', '_blank');
+          //   aEl.click();
+          //   URL.revokeObjectURL(href);
+          // });
           attachesEl.appendChild(doc);
           pinned.push({
             'data': btoa(upFile),
