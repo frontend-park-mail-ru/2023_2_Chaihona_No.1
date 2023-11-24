@@ -136,17 +136,17 @@ export default async () => {
           doc.target = "_blank";
           doc.setAttribute("download", file.name);
           doc.href = upFile;
-          doc.addEventListener('click', (e) => {
-            e.preventDefault();
-            const frame = document.createElement('iframe');
-            frame.width = "100";
-            frame.height = "100";
-            frame.src = e.target.href;
-            let x = window.open();
-            x.document.open();
-            x.document.write(frame.outerHTML);
-            x.document.close();
-          });
+          // doc.addEventListener('click', (e) => {
+          //   e.preventDefault();
+          //   const frame = document.createElement('iframe');
+          //   frame.width = "100";
+          //   frame.height = "100";
+          //   frame.src = e.target.href;
+          //   let x = window.open();
+          //   x.document.open();
+          //   x.document.write(frame.outerHTML);
+          //   x.document.close();
+          // });
           attachesEl.appendChild(doc);
           pinned.push({
             'data': btoa(upFile),
