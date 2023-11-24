@@ -133,7 +133,8 @@ export default async () => {
           const doc = document.createElement('a');
           doc.title = file.name;
           doc.text += file.name;
-          doc.setAttribute("download", upFile);
+          doc.target = "_blank";
+          doc.setAttribute("download", file.name);
           // doc.addEventListener('click', (e) => {
           //   download(upFile);
           // });
