@@ -44,6 +44,7 @@ export class Router {
     }
     else {
       window.history.pushState(state, null, path);
+      return;
     }
     if (route === undefined) {
       route = routes.notfound;
