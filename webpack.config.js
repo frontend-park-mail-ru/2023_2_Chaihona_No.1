@@ -59,6 +59,10 @@ module.exports = [
                 '@static': path.resolve(__dirname, 'static/'),
             },
             fallback: {
+                "querystring": require.resolve("querystring-es3"),
+                "stream": require.resolve("stream-browserify"),
+                "zlib": require.resolve("browserify-zlib"),
+                "path": require.resolve("path-browserify"),
             }
         },
         output: {
