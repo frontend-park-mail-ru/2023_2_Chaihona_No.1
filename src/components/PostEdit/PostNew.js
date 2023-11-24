@@ -116,7 +116,7 @@ export default async () => {
           audio.src = upAudio;
           audio.controls = true;
           // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
-          attachesEl.appendChild(video);
+          attachesEl.appendChild(audio);
           pinned.push({
             'data': btoa(upAudio),
             'name': pinned.length+'.mp3',
