@@ -133,9 +133,10 @@ export default async () => {
           const doc = document.createElement('a');
           doc.title = file.name;
           doc.text += file.name;
-          doc.addEventListener('click', (e) => {
-            download(upFile);
-          });
+          doc.setAttribute("download", upFile);
+          // doc.addEventListener('click', (e) => {
+          //   download(upFile);
+          // });
           doc.href = upFile;
           attachesEl.appendChild(doc);
           pinned.push({
