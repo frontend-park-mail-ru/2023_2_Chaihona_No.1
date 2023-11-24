@@ -73,9 +73,10 @@ export default async () => {
         'name': pinned.length+'.png',
       });
     });
-    for (let i = 0; i < e.target.files.length; i++) {
-      reader.readAsDataURL(e.target.files[i]);
-    }
+    // for (let i = 0; i < e.target.files.length; i++) {
+    //   reader.readAsDataURL(e.target.files[i]);
+    // }
+    reader.readAsDataURL(e.target.files);
     // reader.readAsDataURL(e.target.files[0]);
   });
 
