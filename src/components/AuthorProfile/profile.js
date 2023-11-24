@@ -69,9 +69,11 @@ export default async () => {
         }
         profilePost.attaches = attachRequest.data.body.attaches;
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
-          profilePost.attaches.forEach((attach) => attach.data = atob(attach.data));
+          profilePost.attaches.forEach((attach) => {
+            const attachesEl = document.querySelector('.attaches');
+            attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
+          });
         }
-        console.log(profilePost.attaches);
       });
     }
 
