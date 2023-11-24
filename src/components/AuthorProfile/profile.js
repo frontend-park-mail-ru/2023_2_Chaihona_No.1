@@ -192,6 +192,9 @@ export default async () => {
 
   if (isOwner) {
     const statusSettingButton = document.getElementById('status-setting');
+    if (statusSettingButton === null) {
+      return
+    }
     statusSettingButton.src = profileSettingIcon;
     statusSettingButton.addEventListener('click', () => {
       const dialog = document.getElementById('status_dialog');
