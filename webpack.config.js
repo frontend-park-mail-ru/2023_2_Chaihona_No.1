@@ -58,6 +58,12 @@ module.exports = [
                 '@modules': path.resolve(__dirname, 'src/modules'),
                 '@static': path.resolve(__dirname, 'static/'),
             },
+            fallback: {
+                "zlib": false,
+                "querystring": false,
+                "stream": false,
+                "path": false,
+            }
         },
         output: {
             path: path.resolve(__dirname, 'dist/client'),
