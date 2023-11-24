@@ -57,27 +57,24 @@ export default async () => {
     window.history.replaceState(newData, null, window.location.pathname);
   }));
 
-  const uploadedImg = document.querySelector('.uploaded-img');
+  const attachesEl = document.querySelector('.attaches');
   const uploadImgButton = document.getElementById('upload-img');
 
-  let imageAttach = {
-    'data': null,
-    'name': null,
-  };
+  let pinned = [];
 
   uploadImgButton.addEventListener('change', (e) => {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
       const upImage = reader.result;
-      uploadedImg.src = upImage;
-      console.log(")"+btoa(upImage));
-      imageAttach.data = btoa(upImage);
-      imageAttach.name = '1.png';
-    })
-    console.log(e.target);
-    console.log(e.target.files);
+      // uploadedImg.src = upImage;
+      attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
+      pinned.push({
+        'data': btoa(upImage),
+        'name': pinned.length+'.png',
+      });
+    });
+    e.target.files.forEach((file) => reader.readAsDataURL(file));
     // reader.readAsDataURL(e.target.files[0]);
-    reader.readAsDataURL(e.target.files[0]);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
@@ -94,7 +91,7 @@ export default async () => {
       errorEl.textContent = 'Выберите уровень доступа';
     } else {
       const min_subscription_level_id = Number(checked.value);
-      const attaches = [imageAttach];
+      const attaches = pinned;
       api.newPost({
         header, min_subscription_level_id, body, postTags, attaches
       });

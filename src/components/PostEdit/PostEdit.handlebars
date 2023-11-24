@@ -14,9 +14,8 @@
             <table class="post-edit__params-attach-vars">
                 <td>
                     Фото
-                    <input type="file" id="upload-img" name="up-img" accept=".jpg,.jpeg,.png" hidden>
+                    <input type="file" id="upload-img" name="up-img" accept=".jpg,.jpeg,.png" hidden multiple>
                     <label for="upload-img">Выбрать файл</label>
-                    <img src="" class="uploaded-img">
                 </td>
                 <td>Видео</td>
                 <td>Файл</td>
@@ -24,6 +23,9 @@
             </table>
             <input type="text" class="post-edit__params-theme" placeholder="Введите заголовок поста" id="theme">
             <textarea class="post-edit__params-description" id="text">Текст поста</textarea>
+            <div class="attaches">
+                <img src="" class="uploaded-img">
+            </div>
 
 
              <!-- <div class="tags"> --> 
