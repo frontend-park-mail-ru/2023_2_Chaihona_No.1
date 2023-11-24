@@ -3,6 +3,7 @@ import postEdit from '@components/PostEdit/PostEdit.handlebars';
 
 import css from '@components/PostEdit/PostEdit.scss';
 import { Api } from '@modules/api';
+import { urlencoded } from 'body-parser';
 
 const BACK_ELEMENT_ID = 'back';
 const PUBLISH_ELEMENT_ID = 'publish';
@@ -135,21 +136,25 @@ export default async () => {
           doc.text += file.name;
           doc.target = "_blank";
           doc.setAttribute("download", file.name);
-          href = URL.createObjectURL(upFile)
-          doc.href = href;
-          // doc.addEventListener('click', (e) => {
-          //   e.preventDefault();
-          //   // const frame = document.createElement('iframe');
-          //   // frame.width = "100";
-          //   // frame.height = "100";
-          //   // frame.src = e.target.href;
-          //   // let x = window.open();
-          //   // x.document.open();
-          //   // x.document.write(frame.outerHTML);
-          //   // x.document.close();
-          //   const aEl = document.createElement('a');
-          //   doc.setAttribute("download", file.name);
-          // });
+          doc.href = upFile;
+          doc.addEventListener('click', (e) => {
+            e.preventDefault();
+            // const frame = document.createElement('iframe');
+            // frame.width = "100";
+            // frame.height = "100";
+            // frame.src = e.target.href;
+            // let x = window.open();
+            // x.document.open();
+            // x.document.write(frame.outerHTML);
+            // x.document.close();
+            const aEl = document.createElement('a');
+            aEl.setAttribute("download", file.name);
+            href = URL.createObjectURL(upFile);
+            aEl.href = href;
+            aEl.setAttribute('target', '_blank');
+            aEl.click();
+            URL.revokeObjectURL(href);
+          });
           attachesEl.appendChild(doc);
           pinned.push({
             'data': btoa(upFile),
