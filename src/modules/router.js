@@ -41,10 +41,10 @@ export class Router {
     console.log(path);
     if (path.startsWith('document/')) {
       window.location.href = path.replace(/^document\//, '');
+      return;
     }
     else {
       window.history.pushState(state, null, path);
-      return;
     }
     if (route === undefined) {
       route = routes.notfound;
