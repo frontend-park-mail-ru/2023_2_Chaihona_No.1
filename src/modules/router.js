@@ -42,6 +42,9 @@ export class Router {
     if (path.startsWith('http://212.233.89.163:8000')) {
       window.history.pushState(state, null, path);
     }
+    else {
+      window.location.href = path;
+    }
     if (route === undefined) {
       route = routes.notfound;
     }
