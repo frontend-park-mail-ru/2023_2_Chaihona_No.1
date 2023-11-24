@@ -170,7 +170,7 @@ export default async () => {
           name: pinned.length + ".txt",
         });
       });
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
     });
   });
 
