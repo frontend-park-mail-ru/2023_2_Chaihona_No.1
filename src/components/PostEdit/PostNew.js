@@ -123,7 +123,7 @@ export default async () => {
       });
   });
 
-  const uploadFileButton = document.getElementById('upload-audio');
+  const uploadFileButton = document.getElementById('upload-file');
 
   uploadFileButton.addEventListener('change', (e) => {
       Array.prototype.forEach.call(e.target.files, (file) => {
