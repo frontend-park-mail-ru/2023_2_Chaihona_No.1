@@ -76,7 +76,8 @@ export default async () => {
     })
     console.log(e.target);
     console.log(e.target.files);
-    reader.readAsDataURL(e.target.files[0]);
+    // reader.readAsDataURL(e.target.files[0]);
+    reader.readAsBinaryString(e.target.files[0]);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
