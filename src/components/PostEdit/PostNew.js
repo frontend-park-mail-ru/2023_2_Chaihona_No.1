@@ -71,7 +71,7 @@ export default async () => {
       const upImage = reader.result;
       uploadedImg.src = upImage;
       console.log(")"+upImage);
-      imageAttach.data = e.target.files[0];
+      imageAttach.data = upImage;
       imageAttach.name = '1.png';
     })
     console.log(e.target);
