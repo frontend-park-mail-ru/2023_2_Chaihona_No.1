@@ -69,7 +69,7 @@ export default async () => {
         }
         profilePost.attaches = attachRequest.data.body.attaches;
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
-          profilePost.attaches.forEach((attach) => {
+          profilePost.attaches.forEach((attach, ind) => {
             const attachesEl = document.getElementById('attaches-'+profilePost.id);
             if (attach.file_path.endsWith(".png")){
               const image = new Image();
@@ -93,13 +93,13 @@ export default async () => {
             if (attach.file_path.endsWith(".txt")){
               const doc = document.createElement('a');
               doc.target = "_blank";
-              doc.text += "attach_" + attach.name;
+              doc.text += "attach_" + ind + attach.name + ".txt";
               doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
-              doc.setAttribute("download", doc.text);
+              // doc.setAttribute("download", doc.text);
               doc.addEventListener('click', (e) => {
                 e.preventDefault();
                 const aEl = document.createElement('a');
-                aEl.setAttribute("download", e.target.text + '.txt');
+                aEl.setAttribute("download", e.target.text);
                 const href = e.target.href;
                 aEl.href = href;
                 aEl.setAttribute('target', '_blank');
@@ -108,7 +108,6 @@ export default async () => {
               });
               attachesEl.appendChild(doc);
             }
-            // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
         }
       });

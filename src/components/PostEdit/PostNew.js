@@ -152,7 +152,7 @@ export default async () => {
         doc.title = file.name;
         doc.text += file.name;
         doc.target = "_blank";
-        doc.setAttribute("download", file.name);
+        // doc.setAttribute("download", file.name);
         doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
@@ -170,7 +170,6 @@ export default async () => {
           name: pinned.length + ".txt",
         });
       });
-      // reader.readAsArrayBuffer(file);
       console.log(file);
       reader.readAsBinaryString(file);
 
