@@ -98,4 +98,8 @@ export const restEndpoints = {
     url: '/profile/{id}/description',
     method: POST_METHOD,
   },
+  getPostAttaches: {
+    url: '/post/{id}/attaches',
+    method: GET_METHOD,
+  },
 };

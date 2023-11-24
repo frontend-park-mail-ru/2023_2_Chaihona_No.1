@@ -32,6 +32,9 @@
         </div> -->
 
         <div class="target-separator"></div>
+        {{#each attaches}}
+            <img src="{{this.data}}" class="attach-img">
+        {{/each}}
 
     {{else}}
         <div class="post__data_locked">

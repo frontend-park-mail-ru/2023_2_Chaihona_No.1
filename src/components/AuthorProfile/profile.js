@@ -59,8 +59,17 @@ export default async () => {
     }
     profile.posts = postsRequest.data.body.posts;
 
+
     if (profile.posts != null) {
-      profile.posts.forEach((profilePost) => profilePost.isOwner = isOwner);
+      profile.posts.forEach(async (profilePost) => {
+        profilePost.isOwner = isOwner;
+        const attachRequest = await api.getPostAttaches(profilePost.id);
+        if (attachRequest.status >= MIN_FAIL_RESPONSE) {
+          window.router.redirect(NOT_FOUND_URL);
+        }
+        profilePost.attaches = attachRequest.data.body.attaches;
+        profilePost.attaches.forEach((attach) => attach.data = atob(attach.data));
+      });
     }
 
     // может быть профиль без целей

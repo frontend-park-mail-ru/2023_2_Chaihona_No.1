@@ -243,14 +243,25 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method, { status });
   }
 
-   /**
+  /**
    * Получить топ пользователей
    * @param limit - количество пользователей
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
-   async getTop(limit) {
+  async getTop(limit) {
     const endpoint = restEndpoints.getTop;
     const url = backendUrl + endpoint.url.replace('{limit}', limit);
+    return this.make_request(url, endpoint.method);
+  }
+
+  /**
+   * Получить аттачи поста
+   * @param id - id поста
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async getPostAttaches(id) {
+    const endpoint = restEndpoints.getPostAttaches;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.make_request(url, endpoint.method);
   }
 }
