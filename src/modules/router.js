@@ -40,7 +40,6 @@ export class Router {
     let route = routes[renderer];
     if (!path.startsWith('blob')){
       window.history.pushState(state, null, path);
-    } else {
       if (route === undefined) {
         route = routes.notfound;
       }
