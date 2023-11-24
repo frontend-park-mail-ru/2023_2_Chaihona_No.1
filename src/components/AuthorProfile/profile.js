@@ -71,7 +71,20 @@ export default async () => {
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach) => {
             const attachesEl = document.getElementById('attaches-'+profilePost.id);
-            attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
+            if (attach.file_path.endsWith(".png")){
+              const image = new Image();
+              image.height = 100;
+              image.src = atob(attach.data);
+              attachesEl.appendChild(image);
+            }
+            if (attach.file_path.endsWith(".mp4")){
+              const video = new HTMLVideoElement();
+              video.height = 100;
+              video.src = atob(attach.data);
+              video.controls = true;
+              attachesEl.appendChild(video);
+            }
+            // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
         }
       });

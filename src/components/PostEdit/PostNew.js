@@ -56,11 +56,10 @@ export default async () => {
     const newData = { post: { header: headerEl.value, body: bodyEl.value, level } };
     window.history.replaceState(newData, null, window.location.pathname);
   }));
+  let pinned = [];
 
   const attachesEl = document.querySelector('.attaches');
   const uploadImgButton = document.getElementById('upload-img');
-
-  let pinned = [];
 
   uploadImgButton.addEventListener('change', (e) => {
       Array.prototype.forEach.call(e.target.files, (file) => {
@@ -76,6 +75,29 @@ export default async () => {
           pinned.push({
             'data': btoa(upImage),
             'name': pinned.length+'.png',
+          });
+        });
+        reader.readAsDataURL(file);
+      });
+  });
+
+  const uploadVideoButton = document.getElementById('upload-video');
+
+  uploadVideoButton.addEventListener('change', (e) => {
+      Array.prototype.forEach.call(e.target.files, (file) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          const upVideo = reader.result;
+          const video = new HTMLVideoElement();
+          video.height = 100;
+          video.title = file.name;
+          video.src = upVideo;
+          video.controls = true;
+          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
+          attachesEl.appendChild(video);
+          pinned.push({
+            'data': btoa(upVideo),
+            'name': pinned.length+'.mp4',
           });
         });
         reader.readAsDataURL(file);
