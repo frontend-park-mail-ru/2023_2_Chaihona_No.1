@@ -70,8 +70,8 @@ export default async () => {
     reader.addEventListener('load', () => {
       const upImage = reader.result;
       uploadedImg.src = upImage;
-      console.log(")"+upImage);
-      imageAttach.data = upImage;
+      console.log(")"+btoa(upImage));
+      imageAttach.data = btoa(upImage);
       imageAttach.name = '1.png';
     })
     console.log(e.target);
