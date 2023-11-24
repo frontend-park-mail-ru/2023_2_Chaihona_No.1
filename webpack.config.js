@@ -59,10 +59,6 @@ module.exports = [
                 '@static': path.resolve(__dirname, 'static/'),
             },
             fallback: {
-                "zlib": false,
-                "querystring": false,
-                "stream": false,
-                "path": false,
             }
         },
         output: {
