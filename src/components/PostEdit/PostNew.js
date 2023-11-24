@@ -158,7 +158,7 @@ export default async () => {
           e.preventDefault();
           const aEl = document.createElement('a');
           aEl.setAttribute("download", file.name);
-          const href = URL.createObjectURL(e.target.href);
+          const href = e.target.href;
           aEl.href = href;
           aEl.setAttribute('target', '_blank');
           aEl.click();
