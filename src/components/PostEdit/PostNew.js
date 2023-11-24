@@ -73,7 +73,9 @@ export default async () => {
         'name': pinned.length+'.png',
       });
     });
-    e.target.files.forEach((file) => reader.readAsDataURL(file));
+    for (let i = 0; i < e.target.files.length; i++) {
+      reader.readAsDataURL(e.target.files[i]);
+    }
     // reader.readAsDataURL(e.target.files[0]);
   });
 
