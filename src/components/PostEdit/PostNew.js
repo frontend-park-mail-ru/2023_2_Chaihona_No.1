@@ -135,10 +135,7 @@ export default async () => {
           doc.text += file.name;
           doc.target = "_blank";
           doc.setAttribute("download", file.name);
-          // doc.addEventListener('click', (e) => {
-          //   download(upFile);
-          // });
-          doc.href = upFile;
+          doc.href = 'document/'+upFile;
           attachesEl.appendChild(doc);
           pinned.push({
             'data': btoa(upFile),

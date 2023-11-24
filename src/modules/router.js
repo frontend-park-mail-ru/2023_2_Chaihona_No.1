@@ -39,11 +39,11 @@ export class Router {
     const renderer = path.replace(/[/0-9]*/g, ''); // удалить лишние цифры если ссылка связана с каким-то id (e.g. id профиля)
     let route = routes[renderer];
     console.log(path);
-    if (path.startsWith('http://212.233.89.163:8000')) {
-      window.history.pushState(state, null, path);
+    if (path.startsWith('document/')) {
+      window.location.href = path.split('/').slice(-1);
     }
     else {
-      window.location.href = path;
+      window.history.pushState(state, null, path);
     }
     if (route === undefined) {
       route = routes.notfound;
