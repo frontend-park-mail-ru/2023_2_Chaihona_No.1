@@ -12,9 +12,6 @@
             <div id="delete_post_button" style="padding: 1vh;" data-post="{{id}}">Удалить пост</div>
         </div>
     {{/if}}
-    {{#each attaches}}
-        <img src="{{this.data}}" class="attach-img">
-    {{/each}}
     {{#if has_access}}
         <div class="target-separator"></div>
 
@@ -35,7 +32,7 @@
 
         <div class="target-separator"></div>
         {{#each attaches}}
-            <img src="{{this.data}}" class="attach-img">
+            <img src={{this.data}} class="attach-img">
         {{/each}}
 
     {{else}}

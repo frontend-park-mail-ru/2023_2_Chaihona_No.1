@@ -84,7 +84,7 @@ export default async () => {
     }
 
     profile.isOwner = isOwner;
-
+    console.log("render");
     rootElement.innerHTML = aprofile(profile);
 
     if (isOwner) {
