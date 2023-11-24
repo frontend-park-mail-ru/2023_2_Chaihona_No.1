@@ -70,7 +70,7 @@ export default async () => {
         profilePost.attaches = attachRequest.data.body.attaches;
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach) => {
-            const attachesEl = document.querySelector('.attaches');
+            const attachesEl = document.getElementById('attaches-'+profilePost.id);
             attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
         }
