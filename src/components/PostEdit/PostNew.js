@@ -69,15 +69,15 @@ export default async () => {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
       const upImage = reader.result;
-      uploadedImg.src = upImage;
-      console.log(")"+upImage);
+      uploadedImg.src = upImage.data;
+      console.log(")"+upImage.data);
       imageAttach.data = upImage;
       imageAttach.name = '1.png';
     })
     console.log(e.target);
     console.log(e.target.files);
     // reader.readAsDataURL(e.target.files[0]);
-    reader.readAsBinaryString(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
