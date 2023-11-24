@@ -85,11 +85,10 @@ export default async () => {
               attachesEl.appendChild(video);
             }
             if (attach.file_path.endsWith(".mp3")){
-              const video = document.createElement('video');
-              video.height = 100;
-              video.src = atob(attach.data);
-              video.controls = true;
-              attachesEl.appendChild(video);
+              const audio = document.createElement('audio');
+              audio.src = atob(attach.data);
+              audio.controls = true;
+              attachesEl.appendChild(audio);
             }
             // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';
           });
