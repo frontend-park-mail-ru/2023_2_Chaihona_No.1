@@ -63,21 +63,23 @@ export default async () => {
   let pinned = [];
 
   uploadImgButton.addEventListener('change', (e) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => {
-      const upImage = reader.result;
-      // uploadedImg.src = upImage;
-      attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
-      pinned.push({
-        'data': btoa(upImage),
-        'name': pinned.length+'.png',
+      Array.prototype.forEach.call(e.target.files, (file) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          const upImage = reader.result;
+          const image = new Image();
+          image.height = 100;
+          image.title = file.name;
+          image.src = upImage;
+          // attachesEl.innerHTML += '<img src='+upImage+'class="attach-img">';
+          attachesEl.appendChild(image);
+          pinned.push({
+            'data': btoa(upImage),
+            'name': pinned.length+'.png',
+          });
+        });
+        reader.readAsDataURL(file);
       });
-    });
-    // for (let i = 0; i < e.target.files.length; i++) {
-    //   reader.readAsDataURL(e.target.files[i]);
-    // }
-    reader.readAsDataURL(e.target.files);
-    // reader.readAsDataURL(e.target.files[0]);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
