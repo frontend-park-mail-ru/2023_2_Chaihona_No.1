@@ -92,8 +92,20 @@ export default async () => {
             }
             if (attach.file_path.endsWith(".txt")){
               const doc = document.createElement('a');
-              // doc.download =true;
-              doc.href = atob(attach.data);
+              doc.target = "_blank";
+              doc.text += "attach_" + attach.name;
+              doc.href = URL.createObjectURL(new Blob([atob(attach.data)]));
+              doc.setAttribute("download", doc.text);
+              doc.addEventListener('click', (e) => {
+                e.preventDefault();
+                const aEl = document.createElement('a');
+                aEl.setAttribute("download", e.target.name);
+                const href = URL.createObjectURL(new Blob([e.target.href]));
+                aEl.href = href;
+                aEl.setAttribute('target', '_blank');
+                aEl.click();
+                URL.revokeObjectURL(href);
+              });
               attachesEl.appendChild(doc);
             }
             // attachesEl.innerHTML+='<img src='+atob(attach.data)+' class="attach-img">';

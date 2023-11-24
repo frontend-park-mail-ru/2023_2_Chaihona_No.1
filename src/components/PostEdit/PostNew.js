@@ -156,17 +156,9 @@ export default async () => {
         doc.href = URL.createObjectURL(new Blob([upFile]));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
-          // const frame = document.createElement('iframe');
-          // frame.width = "100";
-          // frame.height = "100";
-          // frame.src = e.target.href;
-          // let x = window.open();
-          // x.document.open();
-          // x.document.write(frame.outerHTML);
-          // x.document.close();
           const aEl = document.createElement('a');
           aEl.setAttribute("download", file.name);
-          const href = URL.createObjectURL(new Blob([e.target.href]));
+          const href = URL.createObjectURL(e.target.href);
           aEl.href = href;
           aEl.setAttribute('target', '_blank');
           aEl.click();
