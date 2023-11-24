@@ -78,7 +78,7 @@ export default async () => {
               attachesEl.appendChild(image);
             }
             if (attach.file_path.endsWith(".mp4")){
-              const video = new HTMLVideoElement();
+              const video = document.createElement('video');
               video.height = 100;
               video.src = atob(attach.data);
               video.controls = true;
