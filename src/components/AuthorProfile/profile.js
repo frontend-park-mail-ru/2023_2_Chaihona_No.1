@@ -71,6 +71,9 @@ export default async () => {
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach, ind) => {
             const attachesEl = document.getElementById('attaches-'+profilePost.id);
+            if (attachesEl === null || attachesEl === undefined) {
+              return
+            }
             if (attach.file_path.endsWith(".png")){
               const image = new Image();
               image.height = 100;
