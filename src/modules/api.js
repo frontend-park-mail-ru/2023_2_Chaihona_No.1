@@ -274,4 +274,24 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url;
     return this.make_request(url, endpoint.method);
   }
+
+  /**
+   * Оценить
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async rate(id, rating) {
+    const endpoint = restEndpoints.getQuestions;
+    const url = backendUrl + endpoint.url.replace('{id}', id);
+    return this.make_request(url, endpoint.method, {rating});
+  }
+
+    /**
+   * Получить статистику
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async getStatistic() {
+    const endpoint = restEndpoints.getStatistic;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method);
+  }
 }

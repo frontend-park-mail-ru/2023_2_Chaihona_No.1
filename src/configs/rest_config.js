@@ -14,6 +14,14 @@ export const backendUrl = 'http://' + url + ':8001/api/v1';
  * Все возможные endpoint'ы и их методы
  */
 export const restEndpoints = {
+  getStatistic: {
+    url: '/statistic',
+    method: GET_METHOD,
+  },
+  rate: {
+    url: '/rate/{id}',
+    method: POST_METHOD,
+  },
   getQuestions: {
     url: '/questions',
     method: GET_METHOD,

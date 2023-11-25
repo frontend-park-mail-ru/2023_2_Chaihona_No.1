@@ -1,0 +1,21 @@
+<div class="statistic">
+  <div class="statistic__blocks">
+    {{#each questions}}
+      <div class="statistic__blocks__block">
+        <div class="statistic__blocks__block__question">
+          {{this.question}}
+        </div>
+        <div class="statistic__blocks__block__ratings">
+          {{#each this.ratings}}
+            <div class="statistic__blocks__block__ratings__rating">
+              {{this.rating}}
+            </div>
+            <div class="statistic__blocks__block__rating__answers">
+              {{this.answers}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
