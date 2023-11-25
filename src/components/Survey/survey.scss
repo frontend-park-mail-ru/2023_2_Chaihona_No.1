@@ -6,11 +6,9 @@
   padding: 1vh 1vw;
   position: relative;
   left: 50%;
-  // transform: translate(-50%, 0);
-  width: 80%;
+  width: 10%;
   display: grid;
-  // gap: 15px;
-  // grid-template-columns: 22.5% 58.5% 20%;
+  gap: 15px;
   
   &__question {
     &__text {
