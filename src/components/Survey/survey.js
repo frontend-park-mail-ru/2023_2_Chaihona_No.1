@@ -49,7 +49,7 @@ export default async () => {
       return
     }
     const rating = Number(checked.value);
-    const rateRequest = await api.rate(next.value.id, rating);
+    await api.rate(next.value.id, rating);
     next = iterator.next();
     renderForm(next);
   })
@@ -67,7 +67,6 @@ const renderForm = (next) => {
   }
   let question = next.value;
   //if 5 stars
-  console.log(question.question_type);
   if (question.question_type == 0) {
     const text = document.querySelector(".survey__question__text");
     text.textContent = question.question;
