@@ -19,7 +19,7 @@ export default async () => {
   const navbarElement = document.querySelector("#navbar");
   navbarElement.parentNode.removeChild(navbarElement);
   const api = new Api();
-  const questionsRequest = await api.getQuestions(id);
+  const questionsRequest = await api.getQuestions(window.user.id);
 
   if (questionsRequest.status >= MIN_FAIL_RESPONSE) {
     window.router.redirect(NOT_FOUND_URL);
