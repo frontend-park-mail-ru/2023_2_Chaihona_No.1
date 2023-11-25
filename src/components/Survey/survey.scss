@@ -1,4 +1,9 @@
+@import "@components/Shared/common.scss";
+
 .survey {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1vh 1vw;
   position: relative;
   left: 50%;
   // transform: translate(-50%, 0);
@@ -16,7 +21,8 @@
   }
   &__marks {
     &__mark {
-
+      padding-top: 2vh;
+      font-size: 16px;
     }
   }
 }
