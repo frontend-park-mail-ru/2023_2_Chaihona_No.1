@@ -7,7 +7,7 @@ import PostEdit from '@components/PostEdit/PostEdit.js';
 import PostNew from '@components/PostEdit/PostNew.js';
 import Feed from '@components/Feed/feed.js';
 import StartPage from '../components/StartPage/StartPage';
-import survey from '../components/survey/survey.js';
+import survey from '../components/survey/survey';
 
 /**
  * Массив объектов с url и функциями отрисовки страниц
