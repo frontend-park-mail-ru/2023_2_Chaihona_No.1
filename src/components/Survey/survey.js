@@ -25,7 +25,7 @@ export default async () => {
     window.router.redirect(NOT_FOUND_URL);
   }
 
-  const { questions } = questionsRequest.data.body;
+  const questions = questionsRequest.data.body;
   // if (questions.questions === undefined || questions.questions === null) {
   //   return window.router.redirect('nenahod');
   // }
