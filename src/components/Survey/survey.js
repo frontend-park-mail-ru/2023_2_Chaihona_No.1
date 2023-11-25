@@ -28,5 +28,6 @@ export default async () => {
   // if (questions.questions === undefined || questions.questions === null) {
   //   return window.router.redirect('nenahod');
   // }
-  rootElement.innerHTML = survey(questions);
+  console.log('???');
+  rootElement.innerHTML = survey();
 };
