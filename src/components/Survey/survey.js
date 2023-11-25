@@ -35,8 +35,8 @@ export default async () => {
   console.log(questions);
   console.log(questions.length);
   if (questions.length > 0) {
-    renderForm(next);
   }
+  renderForm(next);
 
   const submitBtn = document.querySelector(".survey__submit-button");
   submitBtn.addEventListener('click', async () => {
