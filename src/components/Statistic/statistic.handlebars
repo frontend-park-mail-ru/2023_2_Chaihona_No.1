@@ -5,16 +5,16 @@
         <div class="statistic__blocks__block__question">
           {{this.question}}
         </div>
-        <div class="statistic__blocks__block__ratings">
-          {{#each this.rating}}
+        {{#each this.rating}}
+          <div class="statistic__blocks__block__ratings">
             <div class="statistic__blocks__block__ratings__rating">
               {{this.rating}}
             </div>
             <div class="statistic__blocks__block__rating__answers">
               {{this.answers}}
             </div>
-          {{/each}}
-        </div>
+          </div>
+        {{/each}}
       </div>
     {{/each}}
   </div>
