@@ -79,7 +79,7 @@ const renderForm = (next) => {
       const newInput = document.createElement("input");
       newInput.type = "radio";
       newInput.id = "mark_" + i;
-      newInput.textContent = i;
+      newDiv.textContent = i;
       newInput.value = i;
       newInput.name = "mark_variant";
       const newLabel = document.createElement("label");
