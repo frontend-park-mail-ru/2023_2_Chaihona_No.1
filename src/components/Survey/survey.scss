@@ -4,6 +4,8 @@
   transform: translate(-50%, 0);
   width: 80%;
   display: grid;
+  gap: 15px;
+  grid-template-columns: 22.5% 58.5% 20%;
   
   &__question {
     &__text {
