@@ -9,6 +9,7 @@ import survey from '@components/Survey/survey.handlebars';
 
 import css from './survey.scss';
 import { Input } from 'postcss';
+import { format } from 'morgan';
 
 export default async () => {
   const rootElement = document.querySelector('#root');
@@ -41,6 +42,7 @@ export default async () => {
   const submitBtn = document.querySelector(".survey__submit-button");
   submitBtn.addEventListener('click', async () => {
     const checked = document.querySelector('input:checked');
+    console.log(checked);
     if (checked === null) {
       const errorEl = document.querySelector(".survey__marks-error");
       errorEl.textContent = "Выберите оценку";
