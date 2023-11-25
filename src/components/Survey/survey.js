@@ -32,7 +32,7 @@ export default async () => {
   rootElement.innerHTML = survey();
   const iterator = questions.questions[Symbol.iterator]();
   let next = iterator.next();
-  if (questions.lenght > 0) {
+  if (questions.length > 0) {
     renderForm(next);
   }
 
