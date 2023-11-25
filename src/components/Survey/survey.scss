@@ -1,0 +1,20 @@
+.survey {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+  display: grid;
+  
+  &__question {
+    &__text {
+      font-weight: 400;
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.80);
+    }
+  }
+  &__marks {
+    &__mark {
+
+    }
+  }
+}

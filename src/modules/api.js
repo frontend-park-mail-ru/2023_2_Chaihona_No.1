@@ -264,4 +264,14 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.make_request(url, endpoint.method);
   }
+
+  /**
+   * Получить вопросы
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async getQuestions() {
+    const endpoint = restEndpoints.getQuestions;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method);
+  }
 }
