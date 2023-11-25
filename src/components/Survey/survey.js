@@ -63,13 +63,13 @@ const renderForm = (next) => {
   }
   let question = next.value;
   //if 5 stars
+  console.log(question.question_type);
   if (question.question_type == 0) {
     const text = document.querySelector(".survey__question__text");
     text.textContent = question.question;
 
     const marks = document.querySelector('.survey__marks');
     marks.innerHTML = "";
-    console.log(i);
     for (let i = 1; i < 6; i++) {
       const newDiv = document.createElement("div");
       newDiv.classList.add("survey__marks__mark");
