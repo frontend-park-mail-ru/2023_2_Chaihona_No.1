@@ -280,7 +280,7 @@ export class Api extends Requests {
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
   async rate(id, rating) {
-    const endpoint = restEndpoints.getQuestions;
+    const endpoint = restEndpoints.rate;
     const url = backendUrl + endpoint.url.replace('{id}', id);
     return this.make_request(url, endpoint.method, {rating});
   }
