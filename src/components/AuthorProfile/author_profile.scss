@@ -9,9 +9,15 @@
   width: 80%;
 }
 
+
 .frame {
   width: 100%;
   height: 10%;
+  &__close-button{
+    @include main-color-button;
+    min-width: 7vw;
+    height: 100%
+  }
 }
 
 .user-page {

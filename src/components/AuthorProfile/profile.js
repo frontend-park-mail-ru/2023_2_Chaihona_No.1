@@ -237,7 +237,7 @@ export default async () => {
     left.appendChild(iframe);
 
     const closeBtn = document.createElement('button');
-    closeBtn.classList.add("ava-button");
+    closeBtn.classList.add("frame__close-button");
     closeBtn.id = "close-frame";
     closeBtn.textContent = "Закрыть окно";
     closeBtn.addEventListener('click', () => {
