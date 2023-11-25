@@ -26,9 +26,9 @@ export default async () => {
   }
 
   const { questions } = questionsRequest.data.body;
-  if (questions.questions === undefined || questions.questions === null) {
-    return window.router.redirect('nenahod');
-  }
+  // if (questions.questions === undefined || questions.questions === null) {
+  //   return window.router.redirect('nenahod');
+  // }
   rootElement.innerHTML = survey();
   const iterator = questions.questions[Symbol.iterator]();
   let next = iterator.next();
