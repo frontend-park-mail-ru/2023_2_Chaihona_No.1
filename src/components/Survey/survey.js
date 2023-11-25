@@ -12,11 +12,11 @@ import css from './survey.scss';
 export default async () => {
   const rootElement = document.querySelector('#root');
   rootElement.innerHTML = '';
-
   if (window.user === undefined) {
     return window.router.redirect('login');
   }
-
+  const navbarElement = document.querySelector(NAVBAR_ELEMENT_ID);
+  navbarElement.parentNode.removeChild(navbarElement);
   // const api = new Api();
   // const questionsRequest = await api.getQuestions(id);
 
