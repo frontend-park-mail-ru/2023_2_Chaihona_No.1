@@ -9,4 +9,11 @@
   min-width: 5%;
   max-width: 30%;
   display: inline-block;
+  &__blocks {
+    &__block {
+      &__ratings {
+        display: inline-block;
+      }
+    }
+  }
 }
