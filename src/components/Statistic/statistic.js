@@ -19,6 +19,6 @@ export default async () => {
     window.router.redirect(NOT_FOUND_URL);
   }
 
-  const { stat } = statisticRequest.data.body;
+  const stat = statisticRequest.data.body;
   rootElement.innerHTML = statistic(stat);
 }
