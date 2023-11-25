@@ -17,16 +17,16 @@ export default async () => {
     return window.router.redirect('login');
   }
 
-  const api = new Api();
-  const questionsRequest = await api.getQuestions(id);
+  // const api = new Api();
+  // const questionsRequest = await api.getQuestions(id);
 
-  if (questionsRequest.status >= MIN_FAIL_RESPONSE) {
-    window.router.redirect(NOT_FOUND_URL);
-  }
+  // if (questionsRequest.status >= MIN_FAIL_RESPONSE) {
+  //   window.router.redirect(NOT_FOUND_URL);
+  // }
 
-  const { questions } = questionsRequest.data.body;
-  if (questions.questions === undefined || questions.questions === null) {
-    return window.router.redirect('nenahod');
-  }
+  // const { questions } = questionsRequest.data.body;
+  // if (questions.questions === undefined || questions.questions === null) {
+  //   return window.router.redirect('nenahod');
+  // }
   rootElement.innerHTML = survey(questions);
 };
