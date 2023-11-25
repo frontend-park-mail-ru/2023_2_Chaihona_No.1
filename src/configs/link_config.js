@@ -8,11 +8,15 @@ import PostNew from '@components/PostEdit/PostNew.js';
 import Feed from '@components/Feed/feed.js';
 import StartPage from '../components/StartPage/StartPage';
 import survey from '../components/Survey/survey';
+import statistic from '../components/Statistic/statistic';
 
 /**
  * Массив объектов с url и функциями отрисовки страниц
  */
 export const routes = {
+  statistic: {
+    render: statistic,
+  },
   survey: {
     render: survey,
   },
