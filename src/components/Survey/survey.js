@@ -32,6 +32,8 @@ export default async () => {
   rootElement.innerHTML = survey();
   const iterator = questions.questions[Symbol.iterator]();
   let next = iterator.next();
+  console.log(questions);
+  console.log(questions.length);
   if (questions.length > 0) {
     renderForm(next);
   }
