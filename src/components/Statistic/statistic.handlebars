@@ -3,15 +3,15 @@
     {{#each questions}}
       <div class="statistic__blocks__block">
         <div class="statistic__blocks__block__question">
-          {{this.question}}
+          Вопрос: {{this.question}}
         </div>
         {{#each this.rating}}
           <div class="statistic__blocks__block__ratings">
             <div class="statistic__blocks__block__ratings__rating">
-              {{this.rating}}
+              Оценку {{this.rating}}
             </div>
             <div class="statistic__blocks__block__rating__answers">
-              {{this.answers}}
+              отметили {{this.answers}} раз
             </div>
           </div>
         {{/each}}
