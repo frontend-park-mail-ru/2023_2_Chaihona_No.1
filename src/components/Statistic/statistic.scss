@@ -10,9 +10,11 @@
   max-width: 30%;
   display: inline-block;
   &__blocks {
+    display: inline-block;
     &__block {
+      display: inline-block;
       &__ratings {
-        display: inline-block;
+        display: inline-flex;
       }
     }
   }
