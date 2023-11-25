@@ -70,6 +70,7 @@ const renderForm = (next) => {
     const marks = document.querySelector('.survey__marks');
     marks.innerHTML = "";
     for (let i = 1; i < 6; i++) {
+      console.log(i);
       const newDiv = document.createElement("div");
       newDiv.classList.add("survey__marks__mark");
 
