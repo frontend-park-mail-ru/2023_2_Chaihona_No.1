@@ -199,23 +199,23 @@ export default async () => {
           name: pinned.length + ".mp3",
         });
       });
-      reader.readAsDataURL(file);
+      if (file && file.name) {
+        if (!checkAudioExtension(file.name)) {
+          errorElement.textContent = 'Аудио должна быть в разрешении mp3';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned + file.size > 10485760) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        reader.readAsDataURL(file);
+      }
     });
-    if (file && file.name) {
-      if (!checkAudioExtension(file.name)) {
-        errorElement.textContent = 'Аудио должна быть в разрешении mp3';
-        file = null;
-        isError = true;
-        return;
-      }
-      if (pinned + file.size > 10485760) {
-        errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
-        file = null;
-        isError = true;
-        return;
-      }
-      reader.readAsDataURL(file);
-    }
+
   });
 
   const uploadFileButton = document.getElementById("upload-file");
