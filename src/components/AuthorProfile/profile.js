@@ -79,6 +79,7 @@ export default async () => {
               image.height = 100;
               image.src = atob(attach.data);
               attachesEl.appendChild(image);
+              return;
             }
             if (attach.file_path.endsWith(".mp4")){
               const video = document.createElement('video');
@@ -86,14 +87,16 @@ export default async () => {
               video.src = atob(attach.data);
               video.controls = true;
               attachesEl.appendChild(video);
+              return;
             }
             if (attach.file_path.endsWith(".mp3")){
               const audio = document.createElement('audio');
               audio.src = atob(attach.data);
               audio.controls = true;
               attachesEl.appendChild(audio);
+              return
             }
-            if (attach.file_path.endsWith(".txt")){
+            if (attach){
               const doc = document.createElement('a');
               doc.target = "_blank";
               doc.text += "attach_" + ind + attach.name + ".txt";
@@ -110,6 +113,7 @@ export default async () => {
                 URL.revokeObjectURL(href);
               });
               attachesEl.appendChild(doc);
+              return;
             }
           });
         }
