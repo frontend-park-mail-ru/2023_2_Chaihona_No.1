@@ -23,7 +23,7 @@ let searchOpen = false;
 
 async function renderSearched(searched) {
 
-  const searchedEl = document.querySelector('.searched');
+  const searchedEl = document.querySelector('.searched__profiles');
   searchedEl.innerHTML = '';
   if (searched.profiles !== null && searched.profiles !== undefined){
     searched.profiles.forEach(async (profile) => {
