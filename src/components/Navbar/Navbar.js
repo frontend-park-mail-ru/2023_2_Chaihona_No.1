@@ -114,12 +114,12 @@ const Navbar = async (user = null) => {
     });
 
     const { root } = document.getElementById('root');
-    root.forEach((element) => {
-      element.addEventListener('click', (e) => {
+    for (let i = 0; i < root.length; i++) {
+      root[i].addEventListener('click', (e) => {
         searchEl.style.display = 'none';
         searchOpen = false;
       });
-    });
+    }
   } else {
     navbarElement.innerHTML = navbarTmpl();
     const logo = document.querySelector(LOGO_CLASS);
