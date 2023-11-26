@@ -14,6 +14,25 @@ const TEXT_INPUT_ID = "text";
 const PARAMS_ERROR_CLASS = ".post-edit__params-error";
 const SUB_ERROR_CLASS = ".post-edit__sub-params-error";
 
+const imgExtRegExp = /(jp(e)?g|png)$/;
+const videoExtRegExp = /(mp4)$/;
+const audioExtRegExp = /(mp3)$/;
+
+function checkImgExtension(imgName) {
+  const re = new RegExp(imgExtRegExp);
+  return re.test(imgName);
+}
+
+function checkVideoExtension(videoName) {
+  const re = new RegExp(videoExtRegExp);
+  return re.test(videoName);
+}
+
+function checkAudioExtension(audioName) {
+  const re = new RegExp(audioExtRegExp);
+  return re.test(audioName);
+}
+
 export default async () => {
   const api = new Api();
 
@@ -75,13 +94,15 @@ export default async () => {
     }),
   );
   let pinned = [];
-
+  let pinnedSize = 0;
   const attachesEl = document.querySelector(".attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
   uploadImgButton.addEventListener("change", (e) => {
+    let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
+      const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
         const upImage = reader.result;
         const image = new Image();
@@ -89,18 +110,36 @@ export default async () => {
         image.title = file.name;
         image.src = upImage;
         attachesEl.appendChild(image);
+        if (!isError) {
+          errorElement.textContent = '';
+        }
         pinned.push({
           data: btoa(upImage),
-          name: pinned.length + ".png",
+          name: file.name,
         });
       });
-      reader.readAsDataURL(file);
+      if (file && file.name) {
+        if (!checkImgExtension(file.name)) {
+          errorElement.textContent = 'Картинка должна быть в разрешении jp(e)g или png';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned + file.size > 10485760) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        reader.readAsDataURL(file);
+      }
     });
   });
 
   const uploadVideoButton = document.getElementById("upload-video");
 
   uploadVideoButton.addEventListener("change", (e) => {
+    let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -111,18 +150,36 @@ export default async () => {
         video.src = upVideo;
         video.controls = true;
         attachesEl.appendChild(video);
+        if (!isError) {
+          errorElement.textContent = '';
+        }
         pinned.push({
           data: btoa(upVideo),
           name: pinned.length + ".mp4",
         });
       });
-      reader.readAsDataURL(file);
+      if (file && file.name) {
+        if (!checkVideoExtension(file.name)) {
+          errorElement.textContent = 'Видео должно быть в разрешении mp4';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned + file.size > 10485760) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        reader.readAsDataURL(file);
+      }
     });
   });
 
   const uploadAudioButton = document.getElementById("upload-audio");
 
   uploadAudioButton.addEventListener("change", (e) => {
+    let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -131,6 +188,9 @@ export default async () => {
         audio.title = file.name;
         audio.src = upAudio;
         audio.controls = true;
+        if (!isError) {
+          errorElement.textContent = '';
+        }
         attachesEl.appendChild(audio);
         pinned.push({
           data: btoa(upAudio),
@@ -139,11 +199,27 @@ export default async () => {
       });
       reader.readAsDataURL(file);
     });
+    if (file && file.name) {
+      if (!checkAudioExtension(file.name)) {
+        errorElement.textContent = 'Аудио должна быть в разрешении mp3';
+        file = null;
+        isError = true;
+        return;
+      }
+      if (pinned + file.size > 10485760) {
+        errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        file = null;
+        isError = true;
+        return;
+      }
+      reader.readAsDataURL(file);
+    }
   });
 
   const uploadFileButton = document.getElementById("upload-file");
 
   uploadFileButton.addEventListener("change", (e) => {
+    let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -165,14 +241,23 @@ export default async () => {
           URL.revokeObjectURL(href);
         });
         attachesEl.appendChild(doc);
+        if (!isError) {
+          errorElement.textContent = '';
+        }
         pinned.push({
           data: btoa(upFile),
           name: pinned.length + ".txt",
         });
       });
-      console.log(file);
-      reader.readAsBinaryString(file);
-
+      if (file && file.name) {
+        if (pinned + file.size > 10485760) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        reader.readAsBinaryString(file);
+      }
     });
   });
 
