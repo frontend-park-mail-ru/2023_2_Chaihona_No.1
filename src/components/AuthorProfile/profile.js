@@ -99,7 +99,7 @@ export default async () => {
             if (attach){
               const doc = document.createElement('a');
               doc.target = "_blank";
-              doc.text += "attach_" + ind + attach.name + ".txt";
+              doc.text += attach.name;
               doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
               // doc.setAttribute("download", doc.text);
               doc.addEventListener('click', (e) => {
