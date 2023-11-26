@@ -113,13 +113,13 @@ const Navbar = async (user = null) => {
       await renderSearched(searched);
     });
 
-    const { root } = document.getElementById('root');
-    for (let i = 0; i < root.length; i++) {
-      root[i].addEventListener('click', (e) => {
-        searchEl.style.display = 'none';
-        searchOpen = false;
-      });
-    }
+    // const { root } = document.getElementById('root');
+    // for (let i = 0; i < root.length; i++) {
+    //   root[i].addEventListener('click', (e) => {
+    //     searchEl.style.display = 'none';
+    //     searchOpen = false;
+    //   });
+    // }
   } else {
     navbarElement.innerHTML = navbarTmpl();
     const logo = document.querySelector(LOGO_CLASS);
