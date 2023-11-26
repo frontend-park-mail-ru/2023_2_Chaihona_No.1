@@ -25,19 +25,21 @@ async function renderSearched(searched) {
 
   const searchedEl = document.querySelector('.searched');
   searchedEl.innerHTML = '';
-  searched.profiles.forEach(async (profile) => {
-    const profileEl = document.createElement('div');
-    profileEl.classList.add('searched__profiles__profile');
-
-    const avatar = new Image();
-    const api = new Api();
-    avatar.src = await api.getAvatar(profile.user.id);
-    avatar.classList.add('searched__profiles__profile__avatar');
-    profileEl.appendChild(avatar);
-
-    profileEl.textContent = profile.user.login;
-    searchedEl.appendChild(profileEl);
-  });
+  if (searched.profiles !== null && searched.profiles !== undefined){
+    searched.profiles.forEach(async (profile) => {
+      const profileEl = document.createElement('div');
+      profileEl.classList.add('searched__profiles__profile');
+    
+      const avatar = new Image();
+      const api = new Api();
+      avatar.src = await api.getAvatar(profile.user.id);
+      avatar.classList.add('searched__profiles__profile__avatar');
+      profileEl.appendChild(avatar);
+    
+      profileEl.textContent = profile.user.login;
+      searchedEl.appendChild(profileEl);
+    });
+  }
 }
 
 /**
