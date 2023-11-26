@@ -188,7 +188,9 @@ export default async () => {
 
   const avatarElement = document.querySelector('.user-page__ava-img');
   const ava = await api.getAvatar(id);
-  avatarElement.src = ava;
+  if (avatarElement !== null && avatarElement !== undefined) {
+    avatarElement.src = ava;
+  }
 
   if (isOwner) {
     const statusSettingButton = document.getElementById('status-setting');
