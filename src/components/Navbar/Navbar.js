@@ -31,7 +31,7 @@ async function renderSearched(searched) {
 
     const avatar = new Image();
     const api = new Api();
-    avatar.src = await api.getAvatar(profile.id);
+    avatar.src = await api.getAvatar(profile.user.id);
     avatar.classList.add('searched__profiles__profile__avatar');
     profileEl.appendChild(avatar);
 
