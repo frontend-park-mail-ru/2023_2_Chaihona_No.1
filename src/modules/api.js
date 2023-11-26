@@ -294,4 +294,15 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url;
     return this.make_request(url, endpoint.method);
   }
+
+    /**
+   * Поиск пользователей
+   * @param nickname - nickname пользователя
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async search(nickname) {
+    const endpoint = restEndpoints.search;
+    const url = backendUrl + endpoint.url.replace('{nickname}', nickname);
+    return this.make_request(url, endpoint.method);
+  }
 }

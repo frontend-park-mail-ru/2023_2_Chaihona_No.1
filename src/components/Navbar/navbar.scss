@@ -63,6 +63,29 @@
   }
 }
 
+.searched {
+  &__count {
+
+  }
+  &__profiles{
+    padding: 1vh;
+    float: right;
+    width: 22vh;
+    border-radius: 10px;
+    background-color: white;
+    // display: inline;
+    margin-right: 8vw;
+    &__profile{
+      &__avatar{
+        float: right;
+        margin-right: 1vh;
+        border-radius: 9999px;
+        height: 100%;
+      }
+    }
+  }
+}
+
 /* на будущее для адаптивки */
 /* @media (max-width: 800px) {*/
 /*    button {*/

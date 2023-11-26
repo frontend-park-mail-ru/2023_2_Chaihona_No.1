@@ -7,6 +7,8 @@ import downArrowImage from '@static/icons/down-arrow.png';
 
 import { Api } from '@modules/api';
 import css from './navbar.scss';
+import profile from '../AuthorProfile/profile';
+import { render } from 'nunjucks';
 
 const NAVBAR_ELEMENT_ID = '#navbar';
 const LOGIN_BUTTON_ID = '#login-btn';
@@ -17,6 +19,26 @@ const EXIT_BUTTON_CLASS = '.navbar__exit-button';
 const AVATAR_CLASS = '.navbar__user-avatar';
 const MENU_BUTTON_CLASS = '.navbar__down-button';
 let menuOpen = false;
+let searchOpen = false;
+
+async function renderSearched(searched) {
+
+  const searchedEl = document.querySelector('.searched');
+  searchedEl.innerHTML = '';
+  searched.profiles.forEach(async (profile) => {
+    const profileEl = document.createElement('div');
+    profileEl.classList.add('searched__profiles__profile');
+
+    const avatar = new Image();
+    const api = new Api();
+    avatar.src = await api.getAvatar(profile.id);
+    avatar.classList.add('searched__profiles__profile__avatar');
+    profileEl.appendChild(avatar);
+
+    profileEl.textContent = profile.user.login;
+    searchedEl.appendChild(profileEl);
+  });
+}
 
 /**
  * Отрисовка навбара
@@ -72,6 +94,32 @@ const Navbar = async (user = null) => {
         menuOpen = false;
       });
     }
+
+    const searchEl = document.querySelector('.navbar__author-search');
+    searchEl.addEventListener('input', async (e) => {
+      if (!searchOpen) {
+        searchEl.style.display = 'inline';
+      }
+      const searchRequest = await api.search(e.target.value);
+      const searched = searchRequest.data.body;
+      await renderSearched(searched);
+    });
+    searchEl.addEventListener('click', async (e) => {
+      if (!searchOpen) {
+        searchEl.style.display = 'inline';
+      }
+      const searchRequest = await api.search(e.target.value);
+      const searched = searchRequest.data.body;
+      await renderSearched(searched);
+    });
+
+    const { root } = document.getElementById('root');
+    root.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        searchEl.style.display = 'none';
+        searchOpen = false;
+      });
+    });
   } else {
     navbarElement.innerHTML = navbarTmpl();
     const logo = document.querySelector(LOGO_CLASS);
