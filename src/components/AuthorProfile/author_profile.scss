@@ -64,6 +64,7 @@ table {
   height: 10%;
   border-radius: 12px;
   overflow: hidden;
+  margin-top: 3vh;
   &__close-button{
     @include main-color-button;
     min-width: 7vw;
