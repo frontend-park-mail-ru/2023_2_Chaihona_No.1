@@ -156,7 +156,7 @@ export default async () => {
         }
         pinned.push({
           data: btoa(upVideo),
-          name: pinned.length + ".mp4",
+          name: file.name,
         });
       });
       if (file && file.name) {
@@ -196,7 +196,7 @@ export default async () => {
         attachesEl.appendChild(audio);
         pinned.push({
           data: btoa(upAudio),
-          name: pinned.length + ".mp3",
+          name: file.name,
         });
       });
       if (file && file.name) {
@@ -249,7 +249,7 @@ export default async () => {
         }
         pinned.push({
           data: btoa(upFile),
-          name: pinned.length + ".txt",
+          name: file.name,
         });
       });
       if (file && file.name) {
