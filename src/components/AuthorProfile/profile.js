@@ -20,6 +20,14 @@ import uProfileCss from '@components/UserProfile/user_profile.scss';
 import commentCss from '@components/Comment/comment.css';
 import subLevelCss from '@components/SubLevel/sub_level.scss';
 
+
+const imgExtRegExp = /(jp(e)?g|png)$/;
+
+function checkImgExtension(imgName) {
+  const re = new RegExp(imgExtRegExp);
+  return re.test(imgName);
+}
+
 /**
  * Функция отрисовки страницы пользователя
  */
@@ -74,7 +82,7 @@ export default async () => {
             if (attachesEl === null || attachesEl === undefined) {
               return
             }
-            if (attach.file_path.endsWith(".png")){
+            if (checkImgExtension(attach.file_path)){
               const image = new Image();
               image.height = 100;
               image.src = atob(attach.data);

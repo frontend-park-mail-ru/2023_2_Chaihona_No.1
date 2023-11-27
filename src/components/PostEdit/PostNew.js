@@ -14,9 +14,9 @@ const TEXT_INPUT_ID = "text";
 const PARAMS_ERROR_CLASS = ".post-edit__params-error";
 const SUB_ERROR_CLASS = ".post-edit__sub-params-error";
 
-const imgExtRegExp = /(jp(e)?g|png)$/;
 const videoExtRegExp = /(mp4)$/;
 const audioExtRegExp = /(mp3)$/;
+const imgExtRegExp = /(jp(e)?g|png)$/;
 
 function checkImgExtension(imgName) {
   const re = new RegExp(imgExtRegExp);
