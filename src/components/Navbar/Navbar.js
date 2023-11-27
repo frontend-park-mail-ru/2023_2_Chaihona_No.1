@@ -96,7 +96,7 @@ const Navbar = async (user = null) => {
         menuOpen = false;
       });
     }
-    const searchedEl = document.querySelector('.searched__profiles');
+    const searchedEl = document.querySelector('.searched');
     const searchEl = document.querySelector('.navbar__author-search');
     searchEl.addEventListener('input', async (e) => {
       if (!searchOpen) {
