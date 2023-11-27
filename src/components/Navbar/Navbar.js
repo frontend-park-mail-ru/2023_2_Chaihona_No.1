@@ -34,9 +34,10 @@ async function renderSearched(searched) {
       const api = new Api();
       avatar.src = await api.getAvatar(profile.user.id);
       avatar.classList.add('searched__profiles__profile__avatar');
+      searchedEl.innerHTML = '';
+      profileEl.textContent = profile.user.login;
       profileEl.appendChild(avatar);
     
-      profileEl.textContent = profile.user.login;
       searchedEl.appendChild(profileEl);
     });
   }
