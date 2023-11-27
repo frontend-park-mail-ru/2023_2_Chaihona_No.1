@@ -294,8 +294,7 @@ export default async () => {
       errorEl.textContent = "Выберите уровень доступа";
     } else {
       const min_subscription_level_id = Number(checked.value);
-      pinned.filter(i => i !== undefined);
-      const attaches = pinned;
+      const attaches = pinned.filter(i => i !== undefined && i !==null);
       api.newPost({
         header,
         min_subscription_level_id,
