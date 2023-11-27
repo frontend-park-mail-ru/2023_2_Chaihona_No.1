@@ -5,6 +5,13 @@
   width: 100px;
 }
 
+.attaches {
+  &__attach {
+    height: 100px;
+    width: 100px;
+  }
+}
+
 .post-edit {
   margin-left: 25vw;
   margin-right: 25vw;

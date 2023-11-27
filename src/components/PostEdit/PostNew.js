@@ -104,12 +104,27 @@ export default async () => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
+        const div = document.createElement('div');
+        div.classList.add('attaches__attach');
+
         const upImage = reader.result;
         const image = new Image();
         image.height = 100;
         image.title = file.name;
         image.src = upImage;
-        attachesEl.appendChild(image);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('attaches__attach__delete-btn');
+        deleteBtn.id = 'delete-btn-' + pinned.length;
+        deleteBtn.name = pinned.length;
+        deleteBtn.textContent = 'Удалить';
+        deleteBtn.addEventListener('click', (e) => {
+          div.parentNode.removeChild(div);
+          delete pinned[Number(e.target.name)];
+        });
+
+        div.appendChild(image);
+        attachesEl.appendChild(div);
         if (!isError) {
           errorElement.textContent = '';
         }
@@ -278,6 +293,7 @@ export default async () => {
       errorEl.textContent = "Выберите уровень доступа";
     } else {
       const min_subscription_level_id = Number(checked.value);
+      pinned.filter(i => i !== undefined);
       const attaches = pinned;
       api.newPost({
         header,
