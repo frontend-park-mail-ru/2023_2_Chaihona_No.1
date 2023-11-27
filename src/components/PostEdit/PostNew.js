@@ -123,6 +123,7 @@ export default async () => {
           delete pinned[Number(e.target.name)];
         });
 
+        div.appendChild(deleteBtn);
         div.appendChild(image);
         attachesEl.appendChild(div);
         if (!isError) {
