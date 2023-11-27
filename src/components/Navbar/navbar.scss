@@ -83,6 +83,7 @@
     // display: inline;
     margin-right: 8vw;
     &__profile{
+      display: flex;
       &__avatar{
         float: right;
         margin-right: 1vh;
