@@ -22,7 +22,6 @@ let menuOpen = false;
 let searchOpen = false;
 
 function renderSearched(searched) {
-
   const searchedEl = document.querySelector('.searched__profiles');
   searchedEl.innerHTML = '';
   if (searched.profiles !== null && searched.profiles !== undefined){
@@ -37,6 +36,9 @@ function renderSearched(searched) {
       avatar.classList.add('searched__profiles__profile__avatar');
       profileEl.textContent = profile.user.login;
       profileEl.appendChild(avatar);
+      profileEl.addEventListener('click', (e) => {
+        window.router.redirect(`profile${profile.user.id}`);
+      });
     
       searchedEl.appendChild(profileEl);
     });
