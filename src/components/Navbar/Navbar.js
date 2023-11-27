@@ -21,7 +21,7 @@ const MENU_BUTTON_CLASS = '.navbar__down-button';
 let menuOpen = false;
 let searchOpen = false;
 
-async function renderSearched(searched) {
+function renderSearched(searched) {
 
   const searchedEl = document.querySelector('.searched__profiles');
   searchedEl.innerHTML = '';
@@ -31,8 +31,9 @@ async function renderSearched(searched) {
       profileEl.classList.add('searched__profiles__profile');
     
       const avatar = new Image();
-      const api = new Api();
-      avatar.src = await api.getAvatar(profile.user.id);
+      // const api = new Api();
+      // avatar.src = await api.getAvatar(profile.user.id);
+      avatar.src = profile.avatar;
       avatar.classList.add('searched__profiles__profile__avatar');
       profileEl.textContent = profile.user.login;
       profileEl.appendChild(avatar);
@@ -104,7 +105,10 @@ const Navbar = async (user = null) => {
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
-      await renderSearched(searched);
+      for (let i = 0; i < searched.profiles.length; ++i) {
+        searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+      }
+      renderSearched(searched);
     });
     searchEl.addEventListener('click', async (e) => {
       if (!searchOpen) {
@@ -112,7 +116,10 @@ const Navbar = async (user = null) => {
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
-      await renderSearched(searched);
+      for (let i = 0; i < searched.profiles.length; ++i) {
+        searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+      }
+      renderSearched(searched);
     });
 
     // const { root } = document.getElementById('root');
