@@ -100,7 +100,7 @@ const Navbar = async (user = null) => {
     const searchEl = document.querySelector('.navbar__author-search');
     searchEl.addEventListener('input', async (e) => {
       if (!searchOpen) {
-        searchEl.style.display = 'inline';
+        searchEl.style.display = 'flex';
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
@@ -108,7 +108,7 @@ const Navbar = async (user = null) => {
     });
     searchEl.addEventListener('click', async (e) => {
       if (!searchOpen) {
-        searchEl.style.display = 'inline';
+        searchEl.style.display = 'flex';
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
