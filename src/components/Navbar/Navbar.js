@@ -96,11 +96,11 @@ const Navbar = async (user = null) => {
         menuOpen = false;
       });
     }
-
+    const searchedEl = document.querySelector('.searched__profiles');
     const searchEl = document.querySelector('.navbar__author-search');
     searchEl.addEventListener('input', async (e) => {
       if (!searchOpen) {
-        searchEl.style.display = 'flex';
+        searchedEl.style.display = 'flex';
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
@@ -108,7 +108,7 @@ const Navbar = async (user = null) => {
     });
     searchEl.addEventListener('click', async (e) => {
       if (!searchOpen) {
-        searchEl.style.display = 'flex';
+        searchedEl.style.display = 'flex';
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
