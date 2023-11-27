@@ -190,6 +190,7 @@ export default async () => {
     // tagEl.valueOf = lastEditedPost.tags
   }
 
+  const attachesEl = document.querySelector(".post-edit__attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
   uploadImgButton.addEventListener("change", (e) => {
