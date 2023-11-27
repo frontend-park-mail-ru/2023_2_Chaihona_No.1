@@ -94,6 +94,7 @@ export default async () => {
     }),
   );
   let pinned = [];
+  let pinnedSize = 0;
   const attachesEl = document.querySelector(".post-edit__attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
@@ -119,6 +120,7 @@ export default async () => {
         deleteBtn.textContent = 'Удалить';
         deleteBtn.addEventListener('click', (e) => {
           div.parentNode.removeChild(div);
+          pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
 
@@ -132,6 +134,7 @@ export default async () => {
           data: btoa(upImage),
           name: file.name,
         });
+        pinnedSize += file.size;
       });
       if (file && file.name) {
         if (!checkImgExtension(file.name)) {
@@ -176,6 +179,7 @@ export default async () => {
         deleteBtn.textContent = 'Удалить';
         deleteBtn.addEventListener('click', (e) => {
           div.parentNode.removeChild(div);
+          pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
         
@@ -189,6 +193,7 @@ export default async () => {
           data: btoa(upVideo),
           name: file.name,
         });
+        pinnedSize += file.size;
       });
       if (file && file.name) {
         if (!checkVideoExtension(file.name)) {
@@ -232,6 +237,7 @@ export default async () => {
         deleteBtn.textContent = 'Удалить';
         deleteBtn.addEventListener('click', (e) => {
           div.parentNode.removeChild(div);
+          pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
         
@@ -245,6 +251,7 @@ export default async () => {
           data: btoa(upAudio),
           name: file.name,
         });
+        pinnedSize += file.size;
       });
       if (file && file.name) {
         if (!checkAudioExtension(file.name)) {
@@ -301,6 +308,7 @@ export default async () => {
         deleteBtn.textContent = 'Удалить';
         deleteBtn.addEventListener('click', (e) => {
           div.parentNode.removeChild(div);
+          pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
 
@@ -314,6 +322,7 @@ export default async () => {
           data: btoa(upFile),
           name: file.name,
         });
+        pinnedSize += file.size;
       });
       if (file && file.name) {
         if (pinned + file.size > 10485760) {
