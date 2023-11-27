@@ -94,7 +94,6 @@ export default async () => {
     }),
   );
   let pinned = [];
-  let pinnedSize = 0;
   const attachesEl = document.querySelector(".attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
