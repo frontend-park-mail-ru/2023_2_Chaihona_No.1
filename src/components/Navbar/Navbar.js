@@ -38,6 +38,7 @@ function renderSearched(searched) {
       profileEl.appendChild(avatar);
       profileEl.addEventListener('click', (e) => {
         window.router.redirect(`profile${profile.user.id}`);
+        return;
       });
     
       searchedEl.appendChild(profileEl);
