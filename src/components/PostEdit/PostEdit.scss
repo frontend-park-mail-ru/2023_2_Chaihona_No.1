@@ -5,19 +5,20 @@
   width: 100px;
 }
 
-.attaches {
-  display: inline;
-  &__attach {
-    height: 100px;
-    width: 100px;
-  }
-}
 
 .post-edit {
   margin-left: 25vw;
   margin-right: 25vw;
   margin-top: 3vh;
-
+  
+  &__attaches {
+    display: inline;
+    &__attach {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  
   &__grid{
     height: 100%;
     display: grid;

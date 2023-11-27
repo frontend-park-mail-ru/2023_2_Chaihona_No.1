@@ -94,7 +94,7 @@ export default async () => {
     }),
   );
   let pinned = [];
-  const attachesEl = document.querySelector(".attaches");
+  const attachesEl = document.querySelector(".post-edit__attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
   uploadImgButton.addEventListener("change", (e) => {
@@ -104,7 +104,7 @@ export default async () => {
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
         const div = document.createElement('div');
-        div.classList.add('attaches__attach');
+        div.classList.add('post-edit__attaches__attach');
 
         const upImage = reader.result;
         const image = new Image();
@@ -113,7 +113,7 @@ export default async () => {
         image.src = upImage;
 
         const deleteBtn = document.createElement('button');
-        deleteBtn.classList.add('attaches__attach__delete-btn');
+        deleteBtn.classList.add('post-edit__attaches__attach__delete-btn');
         deleteBtn.id = 'delete-btn-' + pinned.length;
         deleteBtn.name = pinned.length;
         deleteBtn.textContent = 'Удалить';
