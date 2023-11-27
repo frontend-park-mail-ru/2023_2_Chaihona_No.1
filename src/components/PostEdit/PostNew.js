@@ -143,7 +143,7 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned + file.size > 10485760) {
+        if (pinnedSize + file.size > 10485760) {
           errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
           file = null;
           isError = true;
@@ -202,7 +202,7 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned + file.size > 10485760) {
+        if (pinnedSize + file.size > 10485760) {
           errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
           file = null;
           isError = true;
@@ -260,7 +260,7 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned + file.size > 10485760) {
+        if (pinnedSize + file.size > 10485760) {
           errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
           file = null;
           isError = true;
@@ -325,7 +325,7 @@ export default async () => {
         pinnedSize += file.size;
       });
       if (file && file.name) {
-        if (pinned + file.size > 10485760) {
+        if (pinnedSize + file.size > 10485760) {
           errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
           file = null;
           isError = true;
