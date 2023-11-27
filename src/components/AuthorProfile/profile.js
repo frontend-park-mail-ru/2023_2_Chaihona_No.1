@@ -188,7 +188,7 @@ export default async () => {
     if (window.user !== undefined) {
         userAva = await api.getAvatar(window.user.id);
     }
-    post(isOwner, userAva);
+    post(isOwner, userAva, profile.posts);
   } else {
     profile.isOwner = isOwner;
     rootElement.innerHTML = uprofile(profile);

@@ -19,7 +19,7 @@ const LIKE_ICON_CLASS = '.post__like-comments-share_like';
 const SEND_ICON_CLASS = '.post__comment-input-send-button';
 const INPUT_AVA_IMG_CLASS = '.post__comment-input-ava';
 
-export default (isOwner, userAva) => {
+export default (isOwner, userAva, posts) => {
   const sendButtons = document.querySelectorAll(SEND_ICON_CLASS);
   sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
@@ -49,6 +49,10 @@ export default (isOwner, userAva) => {
         post.body = document.getElementById(`${BODY_ID}-${id}`).textContent;
         post.level = document.getElementById(`${SUB_LEVEL_ID}-${id}`).textContent;
 		    post.tags = [];
+        const curPost = posts.find(p => p.id === Number(id));
+        if (curPost !== undefined && curPost !== null) {
+          post.attaches = curPost.attaches;
+        }
         window.post = post;
         return window.router.redirect(`/editpost${id}`);
       });
