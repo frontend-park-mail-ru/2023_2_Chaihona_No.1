@@ -152,6 +152,7 @@ export default async () => {
         reader.readAsDataURL(file);
       }
     });
+    e.target.value = '';
   });
 
   const uploadVideoButton = document.getElementById("upload-video");
@@ -211,6 +212,7 @@ export default async () => {
         reader.readAsDataURL(file);
       }
     });
+    e.target.value = '';
   });
 
   const uploadAudioButton = document.getElementById("upload-audio");
@@ -269,7 +271,7 @@ export default async () => {
         reader.readAsDataURL(file);
       }
     });
-
+    e.target.value = '';
   });
 
   const uploadFileButton = document.getElementById("upload-file");
@@ -334,6 +336,7 @@ export default async () => {
         reader.readAsBinaryString(file);
       }
     });
+    e.target.value = '';
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
