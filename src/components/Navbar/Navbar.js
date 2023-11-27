@@ -36,10 +36,10 @@ function renderSearched(searched) {
       avatar.classList.add('searched__profiles__profile__avatar');
       profileEl.textContent = profile.user.login;
       profileEl.appendChild(avatar);
-      // profileEl.addEventListener('click', (e) => {
-      //   window.router.redirect(`profile${profile.user.id}`);
-      //   return;
-      // });
+      profileEl.addEventListener('click', (e) => {
+        window.router.redirect(`profile${profile.user.id}`);
+        return;
+      });
     
       searchedEl.appendChild(profileEl);
     });
