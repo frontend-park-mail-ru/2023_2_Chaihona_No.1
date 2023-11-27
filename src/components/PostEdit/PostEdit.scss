@@ -12,13 +12,13 @@
   margin-top: 3vh;
   
   &__attaches {
-    display: inline;
+    display: flex;
     &__attach {
       height: 100px;
       width: 100px;
     }
   }
-  
+
   &__grid{
     height: 100%;
     display: grid;
@@ -31,7 +31,7 @@
     background-color: white;
     border-radius: 12px;
     width: 30vw;
-    height: 45vh;
+    // height: 45vh;
   }
 
   &__sub-params{

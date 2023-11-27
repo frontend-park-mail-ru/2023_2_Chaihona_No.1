@@ -159,13 +159,29 @@ export default async () => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
+        const div = document.createElement('div');
+        div.classList.add('post-edit__attaches__attach');
+
         const upVideo = reader.result;
         const video = document.createElement("video");
         video.height = 100;
         video.title = file.name;
         video.src = upVideo;
         video.controls = true;
-        attachesEl.appendChild(video);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('post-edit__attaches__attach__delete-btn');
+        deleteBtn.id = 'delete-btn-' + pinned.length;
+        deleteBtn.name = pinned.length;
+        deleteBtn.textContent = 'Удалить';
+        deleteBtn.addEventListener('click', (e) => {
+          div.parentNode.removeChild(div);
+          delete pinned[Number(e.target.name)];
+        });
+        
+        div.appendChild(deleteBtn);
+        div.appendChild(video);
+        attachesEl.appendChild(div);
         if (!isError) {
           errorElement.textContent = '';
         }
@@ -200,15 +216,31 @@ export default async () => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
+        const div = document.createElement('div');
+        div.classList.add('post-edit__attaches__attach');
+        
         const upAudio = reader.result;
         const audio = document.createElement("audio");
         audio.title = file.name;
         audio.src = upAudio;
         audio.controls = true;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('post-edit__attaches__attach__delete-btn');
+        deleteBtn.id = 'delete-btn-' + pinned.length;
+        deleteBtn.name = pinned.length;
+        deleteBtn.textContent = 'Удалить';
+        deleteBtn.addEventListener('click', (e) => {
+          div.parentNode.removeChild(div);
+          delete pinned[Number(e.target.name)];
+        });
+        
+        div.appendChild(deleteBtn);
+        div.appendChild(audio);
+        attachesEl.appendChild(div);
         if (!isError) {
           errorElement.textContent = '';
         }
-        attachesEl.appendChild(audio);
         pinned.push({
           data: btoa(upAudio),
           name: file.name,
@@ -241,6 +273,9 @@ export default async () => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
       reader.addEventListener("load", () => {
+        const div = document.createElement('div');
+        div.classList.add('post-edit__attaches__attach');
+        
         const upFile = reader.result;
         const doc = document.createElement("a");
         doc.title = file.name;
@@ -258,7 +293,20 @@ export default async () => {
           aEl.click();
           URL.revokeObjectURL(href);
         });
-        attachesEl.appendChild(doc);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('post-edit__attaches__attach__delete-btn');
+        deleteBtn.id = 'delete-btn-' + pinned.length;
+        deleteBtn.name = pinned.length;
+        deleteBtn.textContent = 'Удалить';
+        deleteBtn.addEventListener('click', (e) => {
+          div.parentNode.removeChild(div);
+          delete pinned[Number(e.target.name)];
+        });
+
+        div.appendChild(deleteBtn);
+        div.appendChild(doc);
+        attachesEl.appendChild(div);
         if (!isError) {
           errorElement.textContent = '';
         }
