@@ -219,7 +219,7 @@ export default async () => {
               document.getElementById('sub_button').classList.add('user-page__ava-btn_clicked');
               document.getElementById('sub_button').dataset.subbed = 'true';
               document.getElementById('sub_button').textContent = 'Перестать отслеживать';
-              document.querySelector('.user-page__subs-amount').textContent = String(Number(subsAmount.textContent) + 1);
+              document.querySelector('.user-page__subs-amount').textContent = String(Number(document.querySelector('.user-page__subs-amount').textContent) + 1);
             }
 
             const otherBtns = document.querySelectorAll('.sub-level-btn');
