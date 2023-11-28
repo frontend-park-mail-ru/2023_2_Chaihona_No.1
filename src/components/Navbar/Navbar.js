@@ -140,7 +140,23 @@ const Navbar = async (user = null) => {
         }
     });
 
-    // const { root } = document.getElementById('root');
+    for (let el of navbarElement.children) {
+      if (el !== undefined && el !== null &&
+          el !== searchEl && el !== subButton) {
+        el.addEventListener('click', (e) => {
+          if (searchedEl !== undefined && searchedEl !== null) {
+            searchedEl.style.display = 'none';
+            searchOpen = false;
+          }
+  
+          if (submenu !== undefined && submenu !== null){
+            submenu.style.display = 'none';
+            subButton.style.rotate = '0deg';
+            menuOpen = false;
+          }
+        });
+      }
+    }
     // for (let i = 0; i < root.length; i++) {
     //   root[i].addEventListener('click', (e) => {
     //     searchEl.style.display = 'none';
