@@ -210,7 +210,7 @@ export default async () => {
             document.getElementById('sub_button').classList.add('user-page__ava-btn_unclicked');
             document.getElementById('sub_button').dataset.subbed = 'false';
             document.getElementById('sub_button').textContent = 'Отслеживать';
-            document.querySelector('.user-page__subs-amount').textContent = String(Number(subsAmount.textContent) - 1);
+            document.querySelector('.user-page__subs-amount').textContent = String(Number(document.querySelector('.user-page__subs-amount').textContent) - 1);
 
             api.unfollow(e.target.dataset.id, id);
           } else {
