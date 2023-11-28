@@ -216,7 +216,7 @@ export class Api extends Requests {
   async unfollow(id, profId) {
     const endpoint = restEndpoints.unfollow;
     const url = backendUrl + endpoint.url.replace('{id}', profId);
-    return this.make_request(url, endpoint.method, { id });
+    return this.make_request(url, endpoint.method, { id: Number(id) });
   }
 
   /**
