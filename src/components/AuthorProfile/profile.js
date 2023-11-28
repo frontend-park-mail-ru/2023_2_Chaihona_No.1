@@ -141,6 +141,7 @@ export default async () => {
     const profileWithoutZero = profile;
     profileWithoutZero.subscribe_levels = profileWithoutZero.subscribe_levels.filter((e) => e.level !== 0);
     profileWithoutZero.subscribe_levels = Array.from(profileWithoutZero.subscribe_levels, (level) => {
+      level.isOwner = isOwner;
       if (level.id === profile.visiter_subscription_level_id) {
         level.has = true;
       } else {
