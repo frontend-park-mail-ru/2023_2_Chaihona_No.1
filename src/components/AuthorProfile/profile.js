@@ -232,7 +232,7 @@ export default async () => {
             btn.textContent = 'Отписаться';
 
 
-            api.follow(e.target.dataset.id, id, profile.visiter_subscription_id);
+            api.follow(e.target.dataset.id, Number(id), profile.visiter_subscription_id);
           }
         });
       });
