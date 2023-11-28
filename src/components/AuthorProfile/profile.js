@@ -145,6 +145,7 @@ export default async () => {
         level.has = true;
       }
       level.has = false;
+      return level;
     });
     rootElement.innerHTML = aprofile(profileWithoutZero);
 
