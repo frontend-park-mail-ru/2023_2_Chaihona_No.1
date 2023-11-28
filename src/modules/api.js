@@ -201,10 +201,10 @@ export class Api extends Requests {
    * @param profId - на кого
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
-  async follow(id, profId) {
+  async follow(id, profId, subscription_id = 0) {
     const endpoint = restEndpoints.follow;
     const url = backendUrl + endpoint.url.replace('{id}', profId);
-    return this.make_request(url, endpoint.method, { id });
+    return this.make_request(url, endpoint.method, { id, subscription_id});
   }
 
   /**

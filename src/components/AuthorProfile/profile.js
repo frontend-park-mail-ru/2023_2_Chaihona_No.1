@@ -138,7 +138,15 @@ export default async () => {
 
     profile.isOwner = isOwner;
     console.log("render");
-    rootElement.innerHTML = aprofile(profile);
+    const profileWithoutZero = profile;
+    profileWithoutZero.subscribe_levels = profileWithoutZero.subscribe_levels.filter((e) => e.level !== 0);
+    profileWithoutZero.subscribe_levels = Array.from(profileWithoutZero.subscribe_levels, (level) => {
+      if (level.id === profile.visiter_subscription_level_id) {
+        level.has = true;
+      }
+      level.has = false;
+    });
+    rootElement.innerHTML = aprofile(profileWithoutZero);
 
     if (isOwner) {
       const newPostButton = document.getElementById('new-post-button');
@@ -150,9 +158,9 @@ export default async () => {
       const tipButton = document.getElementById('tip-button');
 
       tipButton.addEventListener('click', () => {
-	if (!isAuthorized) {
-	  return window.router.redirect('login');
-	}
+        if (!isAuthorized) {
+          return window.router.redirect('login');
+        }
         const donateModal = document.getElementById('donate-dialog');
         donateModal.showModal();
         donate(id);
@@ -161,9 +169,9 @@ export default async () => {
       const subButton = document.getElementById('sub_button');
 
       subButton.addEventListener('click', (event) => {
-	if (!isAuthorized) {
-	  return window.router.redirect('login');
-	}
+        if (!isAuthorized) {
+          return window.router.redirect('login');
+        }
         const subBtn = event.target;
         const { subbed } = subBtn.dataset;
         const subsAmount = document.querySelector('.user-page__subs-amount');
@@ -173,7 +181,12 @@ export default async () => {
           subBtn.dataset.subbed = 'false';
           subBtn.textContent = 'Отслеживать';
           subsAmount.textContent = String(Number(subsAmount.textContent) - 1);
-          api.unfollow(profile.subscribe_levels[0].id, id);
+          // api.unfollow(profile.subscribe_levels[0].id, id);
+          document.querySelectorAll('.sub-level-btn').forEach((btn) => {
+            btn.dataset.subbed = 'false';
+            btn.textContent = 'Подписаться';
+          });
+          api.unfollow(profile.visiter_subscription_level_id, id);
         } else {
           subBtn.classList.remove('user-page__ava-btn_unclicked');
           subBtn.classList.add('user-page__ava-btn_clicked');
@@ -182,6 +195,45 @@ export default async () => {
           subsAmount.textContent = String(Number(subsAmount.textContent) + 1);
           api.follow(profile.subscribe_levels[0].id, id);
         }
+      });
+
+      const subLevelBtns = document.querySelectorAll('.sub-level-btn');
+      subLevelBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const { subbed } = btn.dataset;
+          if (subbed === 'true') {
+            btn.dataset.subbed = 'false';
+            btn.textContent = 'Подписаться';
+
+            document.getElementById('sub_button').classList.remove('user-page__ava-btn_clicked');
+            document.getElementById('sub_button').classList.add('user-page__ava-btn_unclicked');
+            document.getElementById('sub_button').dataset.subbed = 'false';
+            document.getElementById('sub_button').textContent = 'Отслеживать';
+            document.querySelector('.user-page__subs-amount').textContent = String(Number(subsAmount.textContent) - 1);
+
+            api.unfollow(e.target.dataset.id, id);
+          } else {
+            if (document.getElementById('sub_button').dataset.subbed === 'false') {
+              document.getElementById('sub_button').classList.remove('user-page__ava-btn_unclicked');
+              document.getElementById('sub_button').classList.add('user-page__ava-btn_clicked');
+              document.getElementById('sub_button').dataset.subbed = 'true';
+              document.getElementById('sub_button').textContent = 'Перестать отслеживать';
+              document.querySelector('.user-page__subs-amount').textContent = String(Number(subsAmount.textContent) + 1);
+            }
+
+            const otherBtns = document.querySelectorAll('.sub-level-btn');
+            otherBtns.forEach((b) => {
+              b.dataset.subbed = 'false';
+              b.textContent = 'Подписаться';
+            });
+
+            btn.dataset.subbed = 'true';
+            btn.textContent = 'Отписаться';
+
+
+            api.follow(e.target.dataset.id, id, profile.visiter_subscription_id);
+          }
+        });
       });
     }
     var userAva = "";
