@@ -128,12 +128,16 @@ const Navbar = async (user = null) => {
 
     const rootEl = document.getElementById('root');
     rootEl.addEventListener('click', (e) => {
-        searchEl.style.display = 'none';
-        searchOpen = false;
+        if (searchedEl !== undefined && searchedEl !== null) {
+          searchedEl.style.display = 'none';
+          searchOpen = false;
+        }
 
-        submenu.style.display = 'none';
-        subButton.style.rotate = '0deg';
-        menuOpen = false;
+        if (submenu !== undefined && submenu !== null){
+          submenu.style.display = 'none';
+          subButton.style.rotate = '0deg';
+          menuOpen = false;
+        }
     });
 
     // const { root } = document.getElementById('root');
