@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = [
     {
         node: {
-            fs: empty,
+            fs: 'empty',
         },
         name: 'client',
         context: path.resolve(__dirname, 'src'),
