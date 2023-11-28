@@ -233,7 +233,7 @@ export default async () => {
             btn.dataset.subbed = 'true';
             btn.textContent = 'Отписаться';
 
-
+            profile.visiter_subscription_level_id = e.target.dataset.id;
             api.follow(e.target.dataset.id, Number(id), profile.visiter_subscription_id);
           }
         });
