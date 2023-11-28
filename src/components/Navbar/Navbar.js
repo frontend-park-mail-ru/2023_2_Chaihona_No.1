@@ -128,7 +128,7 @@ const Navbar = async (user = null) => {
 
     const rootEl = document.getElementById('root');
     [rootEl, document.querySelector('.navbar')].forEach((el)=>{
-      if (el !== undefined && el !== null) {
+      if (el !== undefined && el !== null && el !== searchEl && el !== subButton) {
         el.addEventListener('click', (e) => {
            if (searchedEl !== undefined && searchedEl !== null) {
              searchedEl.style.display = 'none';
