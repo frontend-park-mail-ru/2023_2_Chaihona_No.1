@@ -12,7 +12,6 @@ module.exports = [
             historyApiFallback: true,
             hot: true,
         },
-
         module: {
             rules: [
                 {test: /\.(gif|png)$/i, type: 'asset/resource'},
@@ -59,19 +58,14 @@ module.exports = [
                 '@static': path.resolve(__dirname, 'static/'),
             },
             fallback: {
-                // "querystring": require.resolve("querystring-es3"),
-                // "stream": require.resolve("stream-browserify"),
-                // "zlib": require.resolve("browserify-zlib"),
-                // "path": require.resolve("path-browserify"),
-                // "assert": require.resolve("assert/"),
-                // "util": require.resolve("util/"),
-
-                "querystring": false,
-                "stream": false,
-                "zlib": false,
-                "path": false,
-                "assert": false,
-                "util": false,
+                "async_hooks": false,
+                "path": require.resolve("path-browserify"),
+                "zlib": require.resolve("browserify-zlib"),
+                "querystring": require.resolve("querystring-es3"),
+                "fs": false, // Можно использовать пустой модуль, так как fs не используется в браузере
+                "stream": require.resolve("stream-browserify"),
+                "assert": require.resolve('assert'),
+                "util": require.resolve('util')
             }
         },
         output: {
