@@ -127,17 +127,21 @@ const Navbar = async (user = null) => {
     });
 
     const rootEl = document.getElementById('root');
-    rootEl.addEventListener('click', (e) => {
-        if (searchedEl !== undefined && searchedEl !== null) {
-          searchedEl.style.display = 'none';
-          searchOpen = false;
-        }
-
-        if (submenu !== undefined && submenu !== null){
-          submenu.style.display = 'none';
-          subButton.style.rotate = '0deg';
-          menuOpen = false;
-        }
+    [rootEl, document.querySelector('.navbar')].forEach((el)=>{
+      if (el !== undefined && el !== null) {
+        el.addEventListener('click', (e) => {
+           if (searchedEl !== undefined && searchedEl !== null) {
+             searchedEl.style.display = 'none';
+             searchOpen = false;
+           }
+   
+           if (submenu !== undefined && submenu !== null){
+             submenu.style.display = 'none';
+             subButton.style.rotate = '0deg';
+             menuOpen = false;
+           }
+       });
+      }
     });
 
     // const { root } = document.getElementById('root');
