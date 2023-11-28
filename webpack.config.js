@@ -4,6 +4,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = [
     {
+        node: {
+            fs: empty,
+        },
         name: 'client',
         context: path.resolve(__dirname, 'src'),
         entry: './index.js',
