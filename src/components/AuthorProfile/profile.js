@@ -143,8 +143,9 @@ export default async () => {
     profileWithoutZero.subscribe_levels = Array.from(profileWithoutZero.subscribe_levels, (level) => {
       if (level.id === profile.visiter_subscription_level_id) {
         level.has = true;
+      } else {
+        level.has = false;
       }
-      level.has = false;
       return level;
     });
     rootElement.innerHTML = aprofile(profileWithoutZero);
