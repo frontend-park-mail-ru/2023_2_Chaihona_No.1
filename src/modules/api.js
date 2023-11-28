@@ -204,7 +204,7 @@ export class Api extends Requests {
   async follow(id, profId, subscription_id = 0) {
     const endpoint = restEndpoints.follow;
     const url = backendUrl + endpoint.url.replace('{id}', profId);
-    return this.make_request(url, endpoint.method, { id, subscription_id});
+    return this.make_request(url, endpoint.method, { id: Number(id), subscription_id});
   }
 
   /**
