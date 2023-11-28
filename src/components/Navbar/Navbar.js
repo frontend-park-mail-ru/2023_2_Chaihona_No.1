@@ -9,6 +9,7 @@ import { Api } from '@modules/api';
 import css from './navbar.scss';
 import profile from '../AuthorProfile/profile';
 import { render } from 'nunjucks';
+import { root } from 'postcss';
 
 const NAVBAR_ELEMENT_ID = '#navbar';
 const LOGIN_BUTTON_ID = '#login-btn';
@@ -123,6 +124,16 @@ const Navbar = async (user = null) => {
         searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
       }
       renderSearched(searched);
+    });
+
+    const rootEl = document.getElementById('root');
+    rootEl.addEventListener('click', (e) => {
+        searchEl.style.display = 'none';
+        searchOpen = false;
+
+        submenu.style.display = 'none';
+        subButton.style.rotate = '0deg';
+        menuOpen = false;
     });
 
     // const { root } = document.getElementById('root');
