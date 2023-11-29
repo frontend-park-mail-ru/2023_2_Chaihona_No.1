@@ -71,11 +71,13 @@ export default async () => {
     if (profile.posts != null) {
       profile.posts.forEach(async (profilePost) => {
         profilePost.isOwner = isOwner;
-        const attachRequest = await api.getPostAttaches(profilePost.id);
-        if (attachRequest.status >= MIN_FAIL_RESPONSE) {
-          window.router.redirect(NOT_FOUND_URL);
+        if (profilePost.has_access) {
+          const attachRequest = await api.getPostAttaches(profilePost.id);
+          if (attachRequest.status >= MIN_FAIL_RESPONSE) {
+            window.router.redirect(NOT_FOUND_URL);
+          }
+          profilePost.attaches = attachRequest.data.body.attaches;
         }
-        profilePost.attaches = attachRequest.data.body.attaches;
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach, ind) => {
             const attachesEl = document.getElementById('attaches-'+profilePost.id);
