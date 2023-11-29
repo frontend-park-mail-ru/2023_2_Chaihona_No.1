@@ -36,10 +36,12 @@
     {{else}}
         <div class="post__data_locked">
             <div class="post__topic_locked">
-                {{topic}}
+                {{!-- {{topic}} --}}
+                {{header}}
             </div>
-            <div class="post__price_locked">{{availability}}</div>
-            <button class="post__buy-button_locked">Купить</button>
+            
+            <div class="post__price_locked">Этот пост недоступен. Оформите подписку {{min_sub_level}} уровня, чтобы видеть больше контента.</div>
+            {{!-- <button class="post__buy-button_locked">Купить</button> --}}
         </div>
     {{/if}}
 
