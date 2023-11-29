@@ -322,7 +322,7 @@ export default async () => {
           errorElement.textContent = '';
         }
         pinned.push({
-          // data: btoa(upFile),
+          data: btoa(upFile),
           name: file.name,
         });
         pinnedSize += file.size;
