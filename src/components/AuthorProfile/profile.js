@@ -108,8 +108,13 @@ export default async () => {
               const doc = document.createElement('a');
               doc.target = "_blank";
               doc.text += attach.name;
-              doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
-              // doc.setAttribute("download", doc.text);
+              const file = atob(attach.data);
+              const arr = new Uint8Array(file.length);
+              for (var i = 0; i < file.length; i++){
+                arr[i] = file.charCodeAt(i);
+              }
+              // doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
+              doc.href = URL.createObjectURL(new Blob([file], {type:"application/octet-stream"}));
               doc.addEventListener('click', (e) => {
                 e.preventDefault();
                 const aEl = document.createElement('a');
