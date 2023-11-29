@@ -291,8 +291,8 @@ export default async () => {
         doc.text += file.name;
         doc.target = "_blank";
         // doc.setAttribute("download", file.name);
-        doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
-        // doc.href = URL.createObjectURL(upFile);
+        // doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
+        doc.href = URL.createObjectURL(file);
         doc.addEventListener('click', (e) => {
           e.preventDefault();
           const aEl = document.createElement('a');
