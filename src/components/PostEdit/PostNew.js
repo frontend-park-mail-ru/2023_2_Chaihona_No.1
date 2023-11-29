@@ -333,8 +333,8 @@ export default async () => {
           isError = true;
           return;
         }
-        reader.readAsBinaryString(file);
-        // reader.readAsDataURL(file);
+        // reader.readAsBinaryString(file);
+        reader.readAsText(file);
       }
     });
     e.target.value = '';
