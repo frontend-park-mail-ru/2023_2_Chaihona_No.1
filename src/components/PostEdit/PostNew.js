@@ -292,7 +292,12 @@ export default async () => {
         doc.target = "_blank";
         // doc.setAttribute("download", file.name);
         // doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
-        doc.href = URL.createObjectURL(new Blob([upFile]));
+        // doc.href = URL.createObjectURL(new Blob([upFile]));
+        const arr = new Uint8Array(upFile.length);
+        for (var i = 0; i < upFile.length; i++){
+          arr[i] = upFile.charCodeAt(i);
+        }
+        doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
           const aEl = document.createElement('a');
@@ -335,7 +340,10 @@ export default async () => {
           return;
         }
         // reader.readAsBinaryString(file);
-        reader.readAsArrayBuffer(file);
+
+        // reader.readAsArrayBuffer(file);
+
+        reader.readAsBinaryString(file);
       }
     });
     e.target.value = '';
