@@ -334,7 +334,7 @@ export default async () => {
           return;
         }
         // reader.readAsBinaryString(file);
-        reader.readAsArrayBuffer(file);
+        reader.readAsDataURL(file);
       }
     });
     e.target.value = '';
