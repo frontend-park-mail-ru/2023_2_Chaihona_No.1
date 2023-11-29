@@ -110,9 +110,14 @@ function renderAttaches(attaches, pinned) {
         const doc = document.createElement('a');
         doc.target = "_blank";
         doc.text += attach.name;
-        const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
-        doc.href = URL.createObjectURL(file);
-        // doc.setAttribute("download", doc.text);
+        // const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
+        // // doc.href = URL.createObjectURL(file);
+        const file = atob(attach.data);
+        const arr = new Uint8Array(file.length);
+        for (var i = 0; i < file.length; i++){
+          arr[i] = file.charCodeAt(i);
+        }
+        doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
           const aEl = document.createElement('a');
@@ -361,8 +366,12 @@ export default async () => {
         doc.title = file.name;
         doc.text += file.name;
         doc.target = "_blank";
-        // doc.setAttribute("download", file.name);
-        doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
+        // doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
+        const arr = new Uint8Array(upFile.length);
+        for (var i = 0; i < upFile.length; i++){
+          arr[i] = upFile.charCodeAt(i);
+        }
+        doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
         doc.addEventListener('click', (e) => {
           e.preventDefault();
           const aEl = document.createElement('a');
