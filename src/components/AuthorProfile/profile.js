@@ -114,7 +114,7 @@ export default async () => {
                 arr[i] = file.charCodeAt(i);
               }
               // doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
-              doc.href = URL.createObjectURL(new Blob([file], {type:"application/octet-stream"}));
+              doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
               doc.addEventListener('click', (e) => {
                 e.preventDefault();
                 const aEl = document.createElement('a');
