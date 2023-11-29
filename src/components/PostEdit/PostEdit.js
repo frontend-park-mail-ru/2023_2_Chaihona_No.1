@@ -384,7 +384,7 @@ export default async () => {
         });
 
         const attach = {
-          data: btoa(doc),
+          data: btoa(upFile),
           name: file.name,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
