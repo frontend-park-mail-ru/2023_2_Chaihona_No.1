@@ -109,8 +109,10 @@ const Navbar = async (user = null) => {
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
-      for (let i = 0; i < searched.profiles.length; ++i) {
-        searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+      if (searched.profiles !== undefined && searched.profiles !== null) {
+        for (let i = 0; i < searched.profiles.length; ++i) {
+          searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+        }
       }
       renderSearched(searched);
     });
@@ -120,8 +122,10 @@ const Navbar = async (user = null) => {
       }
       const searchRequest = await api.search(e.target.value);
       const searched = searchRequest.data.body;
-      for (let i = 0; i < searched.profiles.length; ++i) {
-        searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+      if (searched.profiles !== undefined && searched.profiles !== null) {
+        for (let i = 0; i < searched.profiles.length; ++i) {
+          searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+        }
       }
       renderSearched(searched);
     });
