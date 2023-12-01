@@ -8,15 +8,15 @@ import { Api } from '@modules/api.js';
 
 import pig from '@static/img/pngwing3.png';
 import hand from '@static/img/pngwingHand.png';
-import css from './StartPage.scss';
+import css from './StartPage.css';
 
 /**
- * Функция отрисовки стартовой страницы 
+ * Функция отрисовки стартовой страницы
  */
 export default async () => {
   const api = new Api();
   const topRequest = await api.getTop(3);
-  
+
   if (topRequest.status >= MIN_FAIL_RESPONSE) {
     window.router.redirect(NOT_FOUND_URL);
   }
@@ -39,12 +39,12 @@ export default async () => {
   AuthorButton.addEventListener('click', async () => {
     window.router.redirect('/register');
   });
-  
+
   const DonaterButton = document.getElementById('donater-btn');
   DonaterButton.addEventListener('click', async () => {
     window.router.redirect('/register');
   });
-  
+
   const JoinButton = document.getElementById('join-btn');
   JoinButton.addEventListener('click', async () => {
     window.router.redirect('/register');

@@ -101,3 +101,24 @@
     max-height: 50px;
   }
 }
+
+.file {
+  @include button;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  background-color: white;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+audio {
+  border-radius: 12px;
+  padding: 1.5% 2%;
+}
+
+
+
+

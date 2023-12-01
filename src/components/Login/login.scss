@@ -1,6 +1,25 @@
 @import "@components/Shared/common.scss";
 @import "@components/Shared/logreg.scss";
 
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .login-page {
+    width: auto!important;
+  }
+  .login-page__pig {
+    display: none !important;
+  }
+
+  .login-page__input {
+    width: fit-content !important;
+    border-radius: 12px !important;
+  }
+
+  .login-page__input-login-button {
+    margin-left: 1vh;
+  }
+}
+
 .login-page {
   @include log-reg-page;
 

@@ -64,12 +64,12 @@ function renderAttaches(attaches, pinned) {
         const image = new Image();
         image.height = 100;
         image.src = atob(attach.data);
-        
+
         const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
         pinned.size += file.size;
-        
+
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(image);
         attachesEl.appendChild(div);
@@ -85,10 +85,10 @@ function renderAttaches(attaches, pinned) {
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(video);
-        attachesEl.appendChild(div);        
+        attachesEl.appendChild(div);
         return;
       }
       if (attach.file_path.endsWith(".mp3")){
@@ -100,10 +100,10 @@ function renderAttaches(attaches, pinned) {
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(audio);
-        attachesEl.appendChild(div); 
+        attachesEl.appendChild(div);
         return;
       }
       if (attach){
@@ -132,10 +132,10 @@ function renderAttaches(attaches, pinned) {
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(doc);
-        attachesEl.appendChild(div); 
+        attachesEl.appendChild(div);
         return;
       }
     });
@@ -151,6 +151,11 @@ export default async () => {
   const backElement = document.getElementById(BACK_ELEMENT_ID);
   const headerEl = document.getElementById(THEME_INPUT_ID);
   const bodyEl = document.getElementById(TEXT_INPUT_ID);
+
+  backElement.addEventListener('click', () => {
+    window.history.back();
+    return;
+  });
 
   [headerEl, bodyEl].forEach((changableEl) => changableEl.addEventListener('input', () => {
     const level = document.querySelector('input:checked').id[0];
@@ -235,8 +240,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned.size + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinned.size + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.files.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -270,7 +281,7 @@ export default async () => {
           name: file.name,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(video);
         attachesEl.appendChild(div);
@@ -287,8 +298,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned.size + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinned.size + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.files.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -309,7 +326,7 @@ export default async () => {
       reader.addEventListener("load", () => {
         const div = document.createElement('div');
         div.classList.add('post-edit__attaches__attach');
-        
+
         const upAudio = reader.result;
         const audio = document.createElement("audio");
         audio.title = file.name;
@@ -321,7 +338,7 @@ export default async () => {
           name: file.name,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(audio);
         attachesEl.appendChild(div);
@@ -338,8 +355,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinned.size + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinned.size + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.files.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -360,7 +383,7 @@ export default async () => {
       reader.addEventListener("load", () => {
         const div = document.createElement('div');
         div.classList.add('post-edit__attaches__attach');
-        
+
         const upFile = reader.result;
         const doc = document.createElement("a");
         doc.title = file.name;
@@ -399,8 +422,14 @@ export default async () => {
         pinned.size += file.size;
       });
       if (file && file.name) {
-        if (pinned.size + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinned.size + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.files.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;

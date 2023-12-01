@@ -11,6 +11,7 @@ import aprofile from '@components/AuthorProfile/author_profile.handlebars';
 import uprofile from '@components/UserProfile/user_profile.handlebars';
 
 import profileSettingIcon from '@static/icons/Settings2.svg';
+import documentIcon from '@static/icons/file.svg';
 
 // todo: назвать нормально =)
 import css from '@components/AuthorProfile/author_profile.scss';
@@ -87,7 +88,7 @@ export default async () => {
               return
             }
             if (checkImgExtension(attach.file_path)){
-              const image = new Image();
+              const image = document.createElement('img');
               image.height = 100;
               image.src = atob(attach.data);
               attachesEl.appendChild(image);
@@ -109,9 +110,14 @@ export default async () => {
               return
             }
             if (attach){
-              const doc = document.createElement('a');
+              const doc = document.createElement('button');
+              doc.classList.add('file');
               doc.target = "_blank";
-              doc.text += attach.name;
+              const img = document.createElement('img');
+              img.src = documentIcon;
+              doc.appendChild(img);
+              doc.innerHTML = doc.innerHTML + attach.name;
+              doc.text = attach.name;
               const file = atob(attach.data);
               const arr = new Uint8Array(file.length);
               for (var i = 0; i < file.length; i++){
@@ -130,7 +136,6 @@ export default async () => {
                 URL.revokeObjectURL(href);
               });
               attachesEl.appendChild(doc);
-              return;
             }
           });
         }

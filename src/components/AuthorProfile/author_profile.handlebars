@@ -33,6 +33,9 @@
         <div class="user-page__target-block">
             <div class="user-page__target-word">Цели</div>
             <div class="target-separator"></div>
+            <div style="padding: 5%">
+                У этого автора пока нет целей
+            </div>
             {{#each targets}}
                 {{>target this}}
                 <div class="target-separator"></div>
@@ -53,7 +56,7 @@
             {{#if isOwner}}
                 <img src="" id="about-setting" class="user-page__page-settings" style="margin-top: -1%;">
             {{/if}}
-            <div style="font-weight: 700; font-size: 3rem;">Об авторе</div>
+            <div style="font-weight: 700; font-size: 3rem;" class="about">Об авторе</div>
             <div class="target-separator" style="margin-top: 3%; margin-bottom: 3%;"></div>
             <div id="user_about"
                  style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{user.description}} </div>

@@ -171,3 +171,28 @@
     height: 3vh;
   }
 }
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .post__comment-input-field > input {
+    margin-left: 2.5vh;
+    width: 67%;
+    height: 3.5vh;
+  }
+
+  .post__comment-input-ava > img {
+    height: 4vh;
+    aspect-ratio: 1/1;
+    margin-left: 1vh;
+    border-radius: 9999px;
+  }
+
+  .post__comment-input-send-button {
+    @include button;
+    display: inline;
+    float: right;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    width: 3vh;
+    height: 2.5vh;
+  }
+}

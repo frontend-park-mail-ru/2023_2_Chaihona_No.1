@@ -10,7 +10,7 @@
   margin-left: 25vw;
   margin-right: 25vw;
   margin-top: 3vh;
-  
+
   &__attaches {
     display: flex;
     &__attach {
@@ -131,6 +131,44 @@ tr:last-child td:last-child {
   border-top-right-radius: 10px;
 }
 
+td, label {
+  cursor: pointer;
+}
+
+
+#back {
+  cursor: pointer;
+}
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .post-edit {
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
+  }
+  .post-edit__grid {
+    display: block;
+  }
+  .post-edit__params {
+    width: 90vw;
+  }
+  .post-edit__sub-params-available {
+    margin-top: 2vh;
+  }
+  .post-edit__params-theme {
+    width: 90% !important;
+  }
+  .post-edit__params-buttons {
+    width: 90% !important;
+  }
+  .post-edit__params-buttons-save {
+    width: 30vw;
+  }
+
+  .post-edit__params-description {
+    width: 90% !important;
+  }
+}
+
 //.delete-profile-button {
 //  border-color: #FF4D4D;
 //  float: right;
@@ -141,3 +179,7 @@ tr:last-child td:last-child {
 //  height: 100%;
 //  margin-left: 1vw;
 //}
+
+.post-edit__attaches__attach__delete-btn {
+  @include main-color-button;
+}

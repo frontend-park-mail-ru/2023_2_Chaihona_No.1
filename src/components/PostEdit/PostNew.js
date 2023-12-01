@@ -143,8 +143,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinnedSize + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinnedSize + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -183,7 +189,7 @@ export default async () => {
           pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(video);
         attachesEl.appendChild(div);
@@ -203,8 +209,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinnedSize + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinnedSize + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -225,7 +237,7 @@ export default async () => {
       reader.addEventListener("load", () => {
         const div = document.createElement('div');
         div.classList.add('post-edit__attaches__attach');
-        
+
         const upAudio = reader.result;
         const audio = document.createElement("audio");
         audio.title = file.name;
@@ -242,7 +254,7 @@ export default async () => {
           pinnedSize -= file.size;
           delete pinned[Number(e.target.name)];
         });
-        
+
         div.appendChild(deleteBtn);
         div.appendChild(audio);
         attachesEl.appendChild(div);
@@ -262,8 +274,14 @@ export default async () => {
           isError = true;
           return;
         }
-        if (pinnedSize + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinnedSize + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
@@ -284,7 +302,7 @@ export default async () => {
       reader.addEventListener("load", () => {
         const div = document.createElement('div');
         div.classList.add('post-edit__attaches__attach');
-        
+
         const upFile = reader.result;
         const doc = document.createElement("a");
         doc.title = file.name;
@@ -333,8 +351,14 @@ export default async () => {
         pinnedSize += file.size;
       });
       if (file && file.name) {
-        if (pinnedSize + file.size > 10485760) {
-          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 10 МБ';
+        if (pinnedSize + file.size > 104857600) {
+          errorElement.textContent = 'Общий размер прикрепляемых файлов не должен превышать 100 МБ';
+          file = null;
+          isError = true;
+          return;
+        }
+        if (pinned.length >= 10) {
+          errorElement.textContent = 'Нельзя прикрепить больше 10 вложений';
           file = null;
           isError = true;
           return;
