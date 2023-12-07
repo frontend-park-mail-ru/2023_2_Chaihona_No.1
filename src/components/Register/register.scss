@@ -160,7 +160,7 @@
     transform: translateY(-100%) scaleY(1);
   }
 
-  &__author-switch {
+  &__author-switch > input{
     color: #D68048;
     font: 1em "Helvetica Neue", Helvetica, sans-serif;
     line-height: 1.5;
