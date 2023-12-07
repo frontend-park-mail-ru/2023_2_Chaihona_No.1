@@ -50,6 +50,11 @@
     color: black;
     font-size: 14px;
   }
+  &__input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+  }
 
   &__input-login {
     @include login-field;
