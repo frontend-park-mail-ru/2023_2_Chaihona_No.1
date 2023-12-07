@@ -56,6 +56,7 @@
     justify-content: left;
     &__list {
       display: flex;
+      flex-direction: column;
       justify-content: left;
     }
   }
