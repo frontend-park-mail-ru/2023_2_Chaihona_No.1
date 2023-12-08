@@ -18,7 +18,11 @@
   border-width: 10px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  background-color: #FFE5CC
+  background-color: #FFE5CC;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @mixin log-reg-input {
