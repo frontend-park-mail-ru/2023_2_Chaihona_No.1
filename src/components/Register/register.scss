@@ -1,5 +1,6 @@
 @import "@components/Shared/common.scss";
 @import "@components/Shared/logreg.scss";
+@import "@components/Shared/reset.scss";
 
 @mixin pass-icon {
   width: 30px;
@@ -192,7 +193,7 @@
     }
     &_hide {
       @include pass-icon;
-      background: url(@static/icons/icons8-hide-30.png) 0 0 no-repeat;
+      background: url(@static/icons/icons8-hide-30.png) center/calc(15px + 1vh) no-repeat;
     }
   }
 
