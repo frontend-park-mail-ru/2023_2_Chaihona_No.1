@@ -7,7 +7,7 @@
   // display: inline;
   border: none;
   cursor: pointer;
-  position: absolute;
+  position: relative;
   top: 50%;
   transform: translate(0, -50%);
 }
@@ -188,7 +188,7 @@
   &__pass-icon {
     &_show {
       @include pass-icon;
-      background: url(@static/icons/icons8-eye-30.png) 0 0 no-repeat;
+      background: url(@static/icons/icons8-eye-30.png) center/calc(15px + 1vh) no-repeat;
     }
     &_hide {
       @include pass-icon;
