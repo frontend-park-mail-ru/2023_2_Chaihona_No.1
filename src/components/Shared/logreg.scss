@@ -39,7 +39,7 @@
   border-width: 1px;
   border-color: #FFB97D;
   height: calc(25px + 2.5vh);
-  width: 80%;
+  width: calc(100% - 15px - 1vw);
   padding-left: 10px;
 }
 
@@ -47,7 +47,7 @@
   border-radius: 12px;
   border-width: 1px;
   border-color: #FFB97D;
-  width: 80%;
+  width: 100%;
   height: calc(25px + 2.5vh);
   // margin-top: 8px;
   // margin-bottom: 15px;

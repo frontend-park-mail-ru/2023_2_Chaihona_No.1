@@ -3,8 +3,8 @@
 @import "@components/Shared/reset.scss";
 
 @mixin pass-icon {
-  width: 30px;
-  height: 30px;
+  width: calc(15px + 1vw);
+  height: calc(15px + 1vh);
   // display: inline;
   border: none;
   cursor: pointer;
