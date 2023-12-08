@@ -56,6 +56,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
+    gap: 15px;
     &__list {
       list-style-position: inside;
       text-align: left;
