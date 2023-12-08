@@ -7,6 +7,9 @@
   // display: inline;
   border: none;
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
