@@ -57,9 +57,8 @@
     flex-direction: column;
     justify-content: left;
     &__list {
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
+      list-style-position: inside;
+      text-align: left;
     }
   }
 
