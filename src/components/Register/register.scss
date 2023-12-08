@@ -108,6 +108,7 @@
     overflow: hidden;
     height: 1em;
     margin-top: -1%;
+    font: 1em "Helvetica Neue", Helvetica, sans-serif;
   }
 
   &__author-toggle {
@@ -119,6 +120,7 @@
      width: 2.3em;
      height: 1.0em;
      appearance: none;
+     color: #D68048;
    }
 
   &__author-toggle, &__author-toggle:before, &__author-slot-label {
@@ -161,12 +163,9 @@
   }
 
   &__author-switch{
-    color: #D68048;
-    font: 1em "Helvetica Neue", Helvetica, sans-serif;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    // color: #D68048;
+    // font: 1em "Helvetica Neue", Helvetica, sans-serif;
+    // line-height: 1.5;
   }
 
   &__pig-img {
