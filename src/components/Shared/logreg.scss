@@ -28,6 +28,8 @@
   display: flex;
   flex-direction: column;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.05);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 @mixin login-field {
@@ -63,7 +65,7 @@
 
 @mixin log-reg-text{
   text-align: center;
-  margin-left: 10px;
+  // margin-left: 10px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
