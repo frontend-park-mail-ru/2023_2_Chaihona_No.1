@@ -5,7 +5,8 @@
   text-align: center;
   position: relative;
   // padding-top: 15px;
-  margin: 2% auto;
+  // margin: 2% auto;
+  margin: max(calc((100vh - 366px - 50px)/2), 30px) auto;
   // position: absolute;
   // left: 50%;
   // top: 50%;
