@@ -82,6 +82,10 @@
 
   &__left-column {
     margin-top: calc(-200px + 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
   }
 
   &__ava-block {
