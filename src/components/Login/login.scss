@@ -1,6 +1,16 @@
 @import "@components/Shared/common.scss";
 @import "@components/Shared/logreg.scss";
 
+@mixin pass-icon {
+  width: calc(5px + 1vw);
+  height: calc(15px + 1vh);
+  // display: inline;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 
 @media (max-width: 760px) and (orientation: portrait) {
   .login-page {
