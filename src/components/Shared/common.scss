@@ -12,10 +12,12 @@ body {
 }
 
 @mixin button () {
-  height: calc(25px + 2.5vh);
-  font-size: 0.75rem;
+  // height: calc(25px + 2.5vh);
+  height: 30px;
+  // font-size: 0.75rem;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 1vh;
+  // margin-bottom: 1vh;
   word-wrap: break-word;
   border-radius: 12px;
   overflow: hidden;
