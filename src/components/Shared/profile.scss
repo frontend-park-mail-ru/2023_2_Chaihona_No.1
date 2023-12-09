@@ -85,14 +85,14 @@
   }
 
   &__ava-block {
-    padding-top: 15px;
+    padding: 15px;
     background-color: white;
     border-radius: 12px;
     height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
   }
 
   &__subs-amount {
