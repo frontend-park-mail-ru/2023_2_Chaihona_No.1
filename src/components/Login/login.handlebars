@@ -9,8 +9,11 @@
         <p class="login-page__input-entry-text">Вход</p>
         <div class="login-page__error-text" style="color: red;"></div>
         <form action="login" method="post" class="login-page__input-form">
-            <input type="login" class="login-page__input-login" placeholder="Логин" id="login" name="login" required><br>
-            <input type="password" class="login-page__input-password" placeholder="Пароль" id="password" name="password" required><br>
+            <input type="login" class="login-page__input-login" placeholder="Логин" id="login" name="login" required>
+            <div class="login-page__passin">
+                <input type="password" class="login-page__input-password" placeholder="Пароль" id="password" name="password" required>
+                <button class="login-page__pass-icon_show" id="hide-pass"></button>
+            </div>
             <div class="login-page__input-buttons">
                 <input type="button" class="login-page__input-login-button" name="buttonlog" value="Войти">
                 <p class="login-page__input-forgot-pass" href="/">Забыли пароль?</p>

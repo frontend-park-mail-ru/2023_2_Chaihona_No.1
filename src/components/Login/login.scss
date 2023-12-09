@@ -90,4 +90,12 @@
   &__pig-welcome-text {
     @include pig-text;
   }
+
+  &__passin {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    gap: 5px;
+  }
 }
