@@ -30,7 +30,7 @@ export default async () => {
   const pig = document.querySelector(PIG_IMAGE_CLASS);
   pig.src = pigImg;
 
-  const pass = document.getElementById(PASSWORD_FIELD_ID);
+  const pass = document.getElementById("password");
   hidePassEl.addEventListener('click', (e) => {
     e.preventDefault();
     if (pass.getAttribute('type') === 'password') {
