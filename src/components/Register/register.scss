@@ -40,6 +40,7 @@
 .register-page {
   @include log-reg-page;
   margin: max(calc((100vh - 556px - 50px)/2), 30px) auto;
+  margin-bottom: 0px;
 
   &__pig {
     @include pig;
