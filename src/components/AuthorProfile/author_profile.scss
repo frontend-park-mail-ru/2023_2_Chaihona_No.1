@@ -70,10 +70,13 @@
   &__subscriptions {
     margin-top: 20px;
     font-family:  sans-serif;
-    padding: 10% 7% 0 7%;
+    padding: 15px;
     height: fit-content;
     background-color: white;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__new-post-block {
