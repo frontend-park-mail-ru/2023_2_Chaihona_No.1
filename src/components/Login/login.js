@@ -11,6 +11,8 @@ import css from './login.scss';
 const LOGIN_BUTTON_CLASS = '.login-page__input-login-button';
 const ERROR_TEXT_CLASS = '.login-page__error-text';
 const PIG_IMAGE_CLASS = '.login-page__pig-img';
+const hidePassId = 'hide-pass';
+const PASSWORD_HIDE_ID = 'register-page__pass-icon_hide';
 
 const LOGIN_FIELD_ID = '#login';
 const PASSWORD_FIELD_ID = '#password';
@@ -20,12 +22,25 @@ const PASSWORD_FIELD_ID = '#password';
  */
 export default async () => {
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
+  const hidePassEl = document.getElementById(hidePassId);
   rootElement.innerHTML = '';
   rootElement.innerHTML = loginTemplate();
 
   const loginBtn = document.querySelector(LOGIN_BUTTON_CLASS);
   const pig = document.querySelector(PIG_IMAGE_CLASS);
   pig.src = pigImg;
+
+  const pass = document.getElementById(PASSWORD_FIELD_ID);
+  hidePassEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (pass.getAttribute('type') === 'password') {
+      hidePassEl.classList.add(PASSWORD_HIDE_ID);
+      pass.setAttribute('type', 'text');
+    } else {
+      hidePassEl.classList.remove(PASSWORD_HIDE_ID);
+      pass.setAttribute('type', 'password');
+    }
+  });
 
   // Добавляет обработчик на кнопку логина. В случае успеха перерисовывает навбар
   // под пользователя и редиректит на его страницу
