@@ -22,10 +22,10 @@ const PASSWORD_FIELD_ID = '#password';
  */
 export default async () => {
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
-  const hidePassEl = document.getElementById(hidePassId);
   rootElement.innerHTML = '';
   rootElement.innerHTML = loginTemplate();
-
+  
+  const hidePassEl = document.getElementById(hidePassId);
   const loginBtn = document.querySelector(LOGIN_BUTTON_CLASS);
   const pig = document.querySelector(PIG_IMAGE_CLASS);
   pig.src = pigImg;
