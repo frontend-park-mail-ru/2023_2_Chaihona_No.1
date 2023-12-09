@@ -3,6 +3,10 @@
 .subscription-level {
   height: fit-content;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 5px;
 
   &__buy-button {
     @include white-button;
