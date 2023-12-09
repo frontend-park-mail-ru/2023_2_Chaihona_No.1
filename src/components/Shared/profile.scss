@@ -38,7 +38,7 @@
 }
 
 .user-cover {
-  height: 25vh;
+  height: 200px;
   width: 100%;
   background-color: #fad5b4;
 }
@@ -81,7 +81,7 @@
   }
 
   &__left-column {
-    margin-top: -30%;
+    margin-top: calc(-200px + 100px);
   }
 
   &__ava-block {
