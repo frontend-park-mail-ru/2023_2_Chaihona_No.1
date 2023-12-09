@@ -43,6 +43,13 @@
     @include password-field;
   }
 
+  &__input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 15px;
+  }
+
   &__input-login-button{
     @include button;
     text-align: center;
