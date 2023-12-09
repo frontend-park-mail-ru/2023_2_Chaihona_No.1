@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: left;
   gap: 5px;
+  font-size: 16px;
 
   &__buy-button {
     @include white-button;
