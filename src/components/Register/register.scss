@@ -169,7 +169,9 @@
   }
 
   &__pig-img {
-    margin-top: 7vh;
+    // margin-top: 7vh;
+    height: 300px;
+    position: relative;
   }
 
   &__input-password-reqs {
