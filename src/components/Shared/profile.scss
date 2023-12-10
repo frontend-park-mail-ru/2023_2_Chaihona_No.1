@@ -186,3 +186,14 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .user-page {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    left: 0% !important;
+    gap: 15px !important;
+    transform: translate(0, 0) !important;
+  }
+}
