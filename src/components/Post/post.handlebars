@@ -71,12 +71,12 @@
                 {{>comment this}}
             {{/each}}
         </div>
-        <div class="post__comment-input">
+        <div class="post__comment-input-field" data-post="{{id}}">
             <div class="post__comment-input-ava"><img src=""></div>
-            <div class="post__comment-input-field" data-post="{{id}}">
-                <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field__input">
-                <img src="" id="send-button" class="post__comment-input-send-button">
-            </div>
+            <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field__input">
+            <img src="" id="send-button" class="post__comment-input-send-button">
+            {{!-- <div class="post__comment-input-field" data-post="{{id}}">
+            </div> --}}
         </div>
     {{/if}}
 </div>
