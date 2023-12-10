@@ -159,9 +159,10 @@
     flex-direction: row;
     gap: 5px;
     padding: 15px;
-    
+
     &__input {
       height: 30px;
+      width: 100%;
       border-radius: 12px;
       border-color: rgba(0, 0, 0, 0.60);
     }
