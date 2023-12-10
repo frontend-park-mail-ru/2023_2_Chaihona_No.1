@@ -63,13 +63,13 @@
   }
 
   &__grid-params-buttons {
-    padding: 1vh;
+    // padding: 1vh;
     background-color: white;
     border-radius: 12px;
-    height: 5vh;
+    // height: 5vh;
     width: 100%;
-    margin-top: 3vh;
-    margin-left: -1vw;
+    // margin-top: 3vh;
+    // margin-left: -1vw;
   }
 
   &__grid-params-ava-grid-reqs {
@@ -88,7 +88,7 @@
 
   &__grid-params-buttons-save {
     @include main-color-button;
-    width: 7vw;
+    width: 20px;
     height: 100%;
   }
 }
