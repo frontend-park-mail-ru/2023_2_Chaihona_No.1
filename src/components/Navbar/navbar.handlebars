@@ -2,12 +2,14 @@
     <img class="navbar__logo">
     {{#if User}}
         <button class="navbar__main-page-button" id="main-button">На главную</button>
-        <button class="navbar__exit-button"> Выйти</button>
-        <img src="" id="submenu_button" class="navbar__down-button">
-        <figure class="ava-figure" style="float: right;">
-            <img src="" class="navbar__user-avatar">
-        </figure>
-        <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+        <div style="float: right;">
+            <button class="navbar__exit-button"> Выйти</button>
+            <img src="" id="submenu_button" class="navbar__down-button">
+            <figure class="ava-figure" style="float: right;">
+                <img src="" class="navbar__user-avatar">
+            </figure>
+            <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+        </div>
     {{else}}
         <button class="navbar__exit-button" id="login-btn">Войти</button>
         <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
