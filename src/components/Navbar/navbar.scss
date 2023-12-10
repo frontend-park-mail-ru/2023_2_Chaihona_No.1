@@ -49,7 +49,8 @@
   &__exit-button {
     @include main-color-button;
     float: right;
-    width: 7rem;
+    width: fit-content;
+    padding: 15px;
     height: 100%;
   }
 
@@ -68,9 +69,8 @@
   }
 
   &__author-search {
-    // float: right;
-    // margin-right: 15px;
-    width: 250px;
+    // width: 250px;
+    width: fit-content;
     border-radius: 12px;
     border: 1px solid $main-color;
     box-sizing: border-box;
