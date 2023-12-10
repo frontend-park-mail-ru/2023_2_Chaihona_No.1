@@ -45,10 +45,12 @@
 
     <div class="user-page__main-block">
         <div class="user-page__name-and-status">
-            {{#if isOwner}}
-                <img src="" id="status-setting" class="user-page__page-settings">
-            {{/if}}
-            <div class="user-page__nickname">{{user.login}}</div>
+            <div>
+                {{#if isOwner}}
+                    <img src="" id="status-setting" class="user-page__page-settings">
+                {{/if}}
+                <div class="user-page__nickname">{{user.login}}</div>
+            </div>
             <div class="user-page__status" id="user_status">{{user.status}}</div>
         </div>
 
