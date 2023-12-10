@@ -2,8 +2,8 @@
 @import "@components/Shared/logreg.scss";
 
 @mixin pass-icon {
-  width: calc(5px + 1vw);
-  height: calc(15px + 1vh);
+  width: 20px;
+  height: 20px;
   // display: inline;
   border: none;
   cursor: pointer;
