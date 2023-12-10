@@ -81,8 +81,9 @@
   }
 
   &__like-comments-share {
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
+    // padding-top: 1.5%;
+    // padding-bottom: 1.5%;
+    padding: 15px;
     width: 100%;
     display: inline-block;
     &_comments-icon {
@@ -132,42 +133,46 @@
   }
 
   &__comment-input{
-    display: grid;
+    display: flex;
+    flex-direction: row;
     height: fit-content;
     padding-left: 2%;
     padding-bottom: 2%;
     grid-template-columns: 7% 93%;
+    gap: 15px;
   }
 
   &__comment-input-ava{
-    height: 5vh;
+    height: 30px;
   }
 
   &__comment-input-ava > img {
-    height: 5vh;
+    height: 30px;
     aspect-ratio: 1/1;
-    margin-left: 1vh;
+    // margin-left: 1vh;
     border-radius: 9999px;
   }
 
   &__comment-input-field {
-    padding-left: 1vh;
-  }
-  &__comment-input-field > input {
-    width: 90%;
-    height: 5vh;
-    border-radius: 12px;
-    border-color: rgba(0, 0, 0, 0.60);
+    // padding-left: 1vh;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    &__input {
+      height: 30px;
+      border-radius: 12px;
+      border-color: rgba(0, 0, 0, 0.60);
+    }
   }
 
   &__comment-input-send-button {
     @include button;
     display: inline;
     float: right;
-    margin-right: 3vh;
-    margin-top: 1vh;
-    width: 3vh;
-    height: 3vh;
+    // margin-right: 3vh;
+    // margin-top: 1vh;
+    // width: 3vh;
+    height: 30px;
   }
 }
 
