@@ -10,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-self: flex-end;
+  gap: 15px;
 
   &__logo {
     float: left;
@@ -20,16 +21,20 @@
   &__main-page-button {
     @include main-color-button;
     float: left;
-    margin-left: 1rem;
-    width: 7rem;
+    // margin-left: 1rem;
+    // width: 7rem;
+    width: fit-content;
+    padding: 15px;
     height: 100%;
   }
 
   &__registration-button {
     @include white-button;
     float: right;
-    margin-right: 15px;
-    width: 7rem;
+    // margin-right: 15px;
+    // width: 7rem;
+    width: fit-content;
+    padding: 15px;
     height: 100%;
   }
 
