@@ -3,7 +3,10 @@
 .settings {
   margin-left: 25vw;
   margin-right: 25vw;
-  margin-top: 3vh;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
   &__grid {
     height: 100%;
