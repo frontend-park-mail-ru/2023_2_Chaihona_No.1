@@ -55,6 +55,9 @@
   &__main-block {
     height: 100%;
     color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
 
   &__name-and-status {
