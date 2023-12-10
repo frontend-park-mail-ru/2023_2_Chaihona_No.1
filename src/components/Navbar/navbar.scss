@@ -22,7 +22,7 @@
 
   &__logo {
     float: left;
-    height: 25px;
+    height: 30px;
     // display: flex;
   }
 
@@ -118,11 +118,11 @@
   }
 }
 
-@media (max-width: 760px) and (orientation: portrait) {
-  .navbar {
+// @media (max-width: 760px) and (orientation: portrait) {
+//   .navbar {
 
-  }
-}
+//   }
+// }
 
 /* на будущее для адаптивки */
 /* @media (max-width: 800px) {*/

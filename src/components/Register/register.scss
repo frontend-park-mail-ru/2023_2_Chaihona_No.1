@@ -14,27 +14,23 @@
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
-  .register-page {
-    width: 80% !important;
-  }
+  // .register-page {
+  //   width: 80% !important;
+  // }
 
   .register-page__pig {
     display: none !important;
   }
 
-  .register-page__input {
-    margin-top: 2vh !important;
-    width: 100% !important;
-    border-radius: 12px !important;
-  }
+  // .register-page__input {
+  //   margin-top: 2vh !important;
+  //   width: 100% !important;
+  //   border-radius: 12px !important;
+  // }
 
-  .login-page__input-login-button {
-    margin-left: 1vh;
-  }
-
-  .register-page__pass-icon_show {
-
-  }
+  // .login-page__input-login-button {
+  //   margin-left: 1vh;
+  // }
 }
 
 .register-page {
