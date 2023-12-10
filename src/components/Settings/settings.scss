@@ -8,6 +8,11 @@
   flex-direction: column;
   gap: 15px;
 
+  &__header {
+    font-size: 20px;
+    font-weight: 600px;
+  }
+
   &__grid {
     height: 100%;
     display: flex;
@@ -26,6 +31,14 @@
     flex-direction: column;
     gap: 15px;
     flex: 1;
+    &__header {
+      font-size: 18px;
+      font-weight: 500px;
+    }
+    &__subheader {
+      font-size: 16px;
+      font-weight: 400px;
+    }
   }
 
   &__grid-list {
