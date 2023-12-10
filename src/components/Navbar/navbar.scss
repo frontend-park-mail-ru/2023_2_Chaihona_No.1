@@ -122,9 +122,10 @@
   .navbar__exit-button {
     display: none !important;
   }
-  .navbar {
+  #navbar {
     position: fixed;
     z-index: 999;
+    width: 100%;
   }
 }
 
