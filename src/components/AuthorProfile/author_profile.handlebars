@@ -55,10 +55,12 @@
         </div>
 
         <div class="user-page__about-author">
-            {{#if isOwner}}
-                <img src="" id="about-setting" class="user-page__page-settings" style="margin-top: -1%;">
-            {{/if}}
-            <div style="font-weight: 700; font-size: 15px" class="about">Об авторе</div>
+            <div>
+                {{#if isOwner}}
+                    <img src="" id="about-setting" class="user-page__page-settings" style="margin-top: -1%;">
+                {{/if}}
+                <div style="font-weight: 700; font-size: 15px" class="about">Об авторе</div>
+            </div>
             <div class="target-separator"></div>
             <div id="user_about"
                  style="font-weight: 400; font-size: 1rem; color: rgba(0, 0, 0, 0.60);"> {{user.description}} </div>
