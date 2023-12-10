@@ -115,10 +115,14 @@
 
 .upload-avatar-label {
   cursor: pointer;
-  border: 1px solid #FF8A26;
+  border: 2px solid #FF8A26;
   padding: 5px;
   border-radius: 5px;
   width: fit-content;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 /*.delete-profile-button {*/
