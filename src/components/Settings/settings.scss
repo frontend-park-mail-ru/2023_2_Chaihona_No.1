@@ -31,9 +31,10 @@
     flex-direction: column;
     gap: 15px;
     flex: 1;
+
     &__header {
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
     }
     &__subheader {
       font-size: 16px;
@@ -93,7 +94,7 @@
 
   &__grid-params-ava-grid-reqs {
     color: gray;
-    margin-top: 2vh;
+    // margin-top: 2vh;
   }
 
   &__grid-params-label {

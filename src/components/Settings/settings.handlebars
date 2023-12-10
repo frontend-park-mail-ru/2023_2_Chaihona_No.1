@@ -4,25 +4,36 @@
     <div class="settings__grid">
         <div class="settings__grid-params">
             <p class="settings__grid-params__header">Профиль</p>
-            <p class="settings__grid-params__subheader">Фотография профиля</p>
-            <div class="settings__grid-params-ava-grid">
-                <figure class="ava-figure">
-                    <img src="" class="settings__grid-params-ava-grid-ava-pic">
-                </figure>
-                <div style="margin-top: 13vh;">
-                    <input class="settings_grid-params-ava-grid-upload" type="file" id="upload-avatar" name="up-ava" accept=".jpg,.jpeg,.png" hidden>
-                    <label for="upload-avatar">Выбрать файл</label>
-                    <div class="settings__grid-params-ava-grid-reqs">
-                        PNG, JPG не более 10 Mb.
+            <div>
+                <p class="settings__grid-params__subheader">Фотография профиля</p>
+                <div class="settings__grid-params-ava-grid">
+                    <figure class="ava-figure">
+                        <img src="" class="settings__grid-params-ava-grid-ava-pic">
+                    </figure>
+                    <div>
+                        <input class="settings_grid-params-ava-grid-upload" type="file" id="upload-avatar" name="up-ava" accept=".jpg,.jpeg,.png" hidden>
+                        <label for="upload-avatar">Выбрать файл</label>
+                        <div class="settings__grid-params-ava-grid-reqs">
+                            PNG, JPG не более 10 Mb.
+                        </div>
                     </div>
                 </div>
             </div>
-            <h3>Логин</h3>
-            <input type="text" class="settings__grid-params-input" id="login">
-            <h3>Новый пароль</h3>
-            <input type="password" class="settings__grid-params-input" id="new-password">
-            <h3>Старый пароль</h3>
-            <input type="password" class="settings__grid-params-input" id="old-password">
+
+            <div>
+                <h3>Логин</h3>
+                <input type="text" class="settings__grid-params-input" id="login">
+            </div>
+
+            <div>
+                <h3>Новый пароль</h3>
+                <input type="password" class="settings__grid-params-input" id="new-password">
+            </div>
+
+            <div>
+                <h3>Старый пароль</h3>
+                <input type="password" class="settings__grid-params-input" id="old-password">
+            </div>
             <div class = "settings__grid-params-error-field" style="font-size: 16px; color: red; margin-top: 3vh;"></div>
             <div class="settings__grid-params-buttons">
                 <button class="settings__grid-params-buttons-save">Сохранить</button>
