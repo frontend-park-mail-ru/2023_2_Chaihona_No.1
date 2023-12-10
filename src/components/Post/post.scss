@@ -85,11 +85,10 @@
     padding-bottom: 1.5%;
     width: 100%;
     display: inline-block;
-  }
-
-  &__like-comments-share > img {
-    width: 2.5vh;
-    aspect-ratio: 1/1;
+    &_comments-icon {
+      width: 2.5vh;
+      aspect-ratio: 1/1;
+    }
   }
 
   &__like-comments-share-like_clicked{
