@@ -118,11 +118,11 @@
   }
 }
 
-// @media (max-width: 760px) and (orientation: portrait) {
-//   .navbar {
-
-//   }
-// }
+@media (max-width: 760px) and (orientation: portrait) {
+  .navbar__exit-button {
+    display: none !important;
+  }
+}
 
 /* на будущее для адаптивки */
 /* @media (max-width: 800px) {*/
