@@ -3,18 +3,18 @@
     {{#if User}}
         <button class="navbar__main-page-button" id="main-button">На главную</button>
         <div class="navbar__right-elements">
-            <button class="navbar__exit-button"> Выйти</button>
-            <img src="" id="submenu_button" class="navbar__down-button">
+            <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
             <figure class="ava-figure" style="float: right;">
                 <img src="" class="navbar__user-avatar">
             </figure>
-            <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+            <img src="" id="submenu_button" class="navbar__down-button">
+            <button class="navbar__exit-button"> Выйти</button>
         </div>
     {{else}}
         <div class="navbar__right-elements">
-            <button class="navbar__exit-button" id="login-btn">Войти</button>
-            <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
             <button class="navbar__registration-button" id="reg-btn"> Регистрация</button>
+            <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
+            <button class="navbar__exit-button" id="login-btn">Войти</button>
         </div>
     {{/if}}
 </div>
