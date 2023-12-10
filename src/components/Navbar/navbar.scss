@@ -123,7 +123,8 @@
     display: none !important;
   }
   .navbar {
-    position: fixed;;
+    position: fixed;
+    z-index: 999;
   }
 }
 
