@@ -91,6 +91,7 @@ export default async () => {
               const image = document.createElement('img');
               image.height = 100;
               image.src = atob(attach.data);
+              image.classList.add("post__image-attach");
               attachesEl.appendChild(image);
               return;
             }
