@@ -48,21 +48,20 @@
 
     <div class="post__like-comments-share">
         {{#if is_liked}}
-            <span class="post__like-comments-share-like_clicked" id="like-{{id}}" style="padding: 0.5%;margin-left: 2%;">
+            <span class="post__like-comments-share-like_clicked" id="like-{{id}}">
                 <img src="" style="vertical-align: middle;" class="post__like-comments-share_like" data-post="{{id}}"
                      data-liked="true">
-        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
+                <span id="likes-{{id}}"> {{likes}} </span>
             </span>
         {{else}}
             <span class="" id="like-{{id}}">
                 <img src="" style="vertical-align: middle; cursor: pointer;" class="post__like-comments-share_like" data-post="{{id}}"
                      data-liked="false">
-        <span id="likes-{{id}}" style="margin-bottom: 5%; vertical-align: middle;"> {{likes}} </span>
+                <span id="likes-{{id}}"> {{likes}} </span>
             </span>
         {{/if}}
         <img src="" class="post__like-comments-share_comments-icon" style="display: inline; vertical-align: middle;">
-        <img src="" style="float:right; margin-right: 2%;display: inline; vertical-align: middle;"
-             class="post__like-comments-share_share-icon">
+        <img src="" style="float:right;" class="post__like-comments-share_share-icon">
     </div>
 
     {{#if has_access}}
