@@ -117,6 +117,7 @@
 .file {
   @include button;
   display: flex;
+  height: auto;
   flex-wrap: wrap;
   border-radius: 12px;
   background-color: white;
