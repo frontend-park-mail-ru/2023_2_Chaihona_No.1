@@ -195,5 +195,14 @@
     left: 0% !important;
     gap: 15px !important;
     transform: translate(0, 0) !important;
+    &__left-column {
+      order: 1 !important;
+    }
+    &__main-block {
+      order: 3 !important;
+    }
+    &__right-column {
+      order: 2 !important;
+    }
   }
 }
