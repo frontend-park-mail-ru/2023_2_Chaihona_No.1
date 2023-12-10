@@ -122,6 +122,9 @@
   .navbar__exit-button {
     display: none !important;
   }
+  .navbar {
+    position: fixed;;
+  }
 }
 
 /* на будущее для адаптивки */
