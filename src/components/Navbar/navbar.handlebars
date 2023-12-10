@@ -11,9 +11,11 @@
             <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
         </div>
     {{else}}
-        <button class="navbar__exit-button" id="login-btn">Войти</button>
-        <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
-        <button class="navbar__registration-button" id="reg-btn"> Регистрация</button>
+        <div style="float: right;">
+            <button class="navbar__exit-button" id="login-btn">Войти</button>
+            <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
+            <button class="navbar__registration-button" id="reg-btn"> Регистрация</button>
+        </div>
     {{/if}}
 </div>
 {{#if User}}
