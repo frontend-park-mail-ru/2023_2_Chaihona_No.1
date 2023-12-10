@@ -151,8 +151,9 @@
   &__page-settings {
     cursor: pointer;
     float: right;
-    margin-top: 2%;
-    margin-right: 2%;
+    // margin-top: 2%;
+    // margin-right: 2%;
+    height: 20px;
   }
 
   &__status_dialog, &__about_dialog {
