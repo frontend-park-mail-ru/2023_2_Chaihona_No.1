@@ -314,21 +314,21 @@ export default async () => {
     }
   }
 
-  if (isAuthorized) {
-    const iframe = document.createElement('iframe');
-    iframe.src = "http://212.233.89.163:8000/survey";
-    iframe.classList.add("frame");
-    const left = document.querySelector('.user-page__left-column');
-    left.appendChild(iframe);
+  // if (isAuthorized) {
+  //   const iframe = document.createElement('iframe');
+  //   iframe.src = "http://212.233.89.163:8000/survey";
+  //   iframe.classList.add("frame");
+  //   const left = document.querySelector('.user-page__left-column');
+  //   left.appendChild(iframe);
 
-    const closeBtn = document.createElement('button');
-    closeBtn.classList.add("frame__close-button");
-    closeBtn.id = "close-frame";
-    closeBtn.textContent = "Закрыть окно";
-    closeBtn.addEventListener('click', () => {
-      left.removeChild(iframe);
-      left.removeChild(closeBtn);
-    });
-    left.appendChild(closeBtn);
-  }
+  //   const closeBtn = document.createElement('button');
+  //   closeBtn.classList.add("frame__close-button");
+  //   closeBtn.id = "close-frame";
+  //   closeBtn.textContent = "Закрыть окно";
+  //   closeBtn.addEventListener('click', () => {
+  //     left.removeChild(iframe);
+  //     left.removeChild(closeBtn);
+  //   });
+  //   left.appendChild(closeBtn);
+  // }
 };
