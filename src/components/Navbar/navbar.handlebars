@@ -2,7 +2,7 @@
     <img class="navbar__logo">
     {{#if User}}
         <button class="navbar__main-page-button" id="main-button">На главную</button>
-        <div style="height: 100%; flex: 1; display: flex; gap: 15px;">
+        <div class="navbar__right-elements">
             <button class="navbar__exit-button"> Выйти</button>
             <img src="" id="submenu_button" class="navbar__down-button">
             <figure class="ava-figure" style="float: right;">
@@ -11,7 +11,7 @@
             <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
         </div>
     {{else}}
-        <div style="height: 100%; flex: 1; display: flex; gap: 15px;">
+        <div class="navbar__right-elements">
             <button class="navbar__exit-button" id="login-btn">Войти</button>
             <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
             <button class="navbar__registration-button" id="reg-btn"> Регистрация</button>

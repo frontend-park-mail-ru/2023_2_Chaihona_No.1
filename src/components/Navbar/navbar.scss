@@ -12,6 +12,14 @@
   justify-self: flex-end;
   gap: 15px;
 
+  &__right-elements {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+  }
+
   &__logo {
     float: left;
     height: 25px;
