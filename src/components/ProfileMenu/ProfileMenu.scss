@@ -7,12 +7,12 @@
     display: inline;
     // margin-right: 8vw;
     &__exit-button {
-        cursor: pointer;
+        display: none;
     }
 }
 
 @media (max-width: 1980px) and (orientation: portrait) {
     .submenu__exit-button {
-      display: none !important;
+      cursor: pointer;
     }
   }
