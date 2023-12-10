@@ -1,9 +1,18 @@
 .submenu {
-    padding: 1vh;
+    padding: 15px;
     float: right;
-    width: 22vh;
-    border-radius: 10px;
+    width: fit-content;
+    border-radius: 12px;
     background-color: white;
     display: inline;
-    margin-right: 8vw;
+    // margin-right: 8vw;
+    &__exit-button {
+        cursor: pointer;
+    }
 }
+
+@media (max-width: 760px) and (orientation: portrait) {
+    .submenu__exit-button {
+      display: none !important;
+    }
+  }
