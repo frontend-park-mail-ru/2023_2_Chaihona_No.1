@@ -37,9 +37,14 @@
   }
 
   &__grid-params-ava-grid-ava-pic {
-    border-radius: 999px;
-    width: 10vw;
-    aspect-ratio: 1/1;
+    // border-radius: 999px;
+    // width: 10vw;
+    // aspect-ratio: 1/1;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
   }
 
   &__grid-params-input {
