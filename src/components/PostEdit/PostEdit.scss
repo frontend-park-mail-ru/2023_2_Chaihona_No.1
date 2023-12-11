@@ -29,8 +29,7 @@
   }
 
   &__params {
-    padding-top: 0.5vh;
-    padding-left: 1vw;
+    padding: 15px;
     background-color: white;
     border-radius: 12px;
     width: 30vw;
@@ -38,25 +37,22 @@
   }
 
   &__sub-params{
-    margin-left: 1vw;
     border-radius: 12px;
     width: 100%;
-    padding-bottom: 2vh;
+    padding: 15px;
+    // padding-bottom: 2vh;
   }
 
   &__params-buttons{
-    padding: 1vh;
     background-color: white;
     border-radius: 12px;
-    height: 5vh;
+    height: 30px;
     width: 100%;
-    margin-top: 3vh;
-    margin-left: -1vw;
   }
 
   &__params-buttons-save{
     @include main-color-button;
-    width: 7vw;
+    width: 100px;
     height: 100%
   }
 
