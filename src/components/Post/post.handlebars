@@ -5,13 +5,13 @@
             <img src="" class="post__options-button" data-post="{{id}}">
         {{/if}}
         <span style="margin-right: 1vh;">{{created_at}}</span>
+        {{#if isOwner}}
+            <div id="submenu-{{id}}" class="post__submenu" style="display: none;">
+                <div id="edit_post_button">Редактировать пост</div>
+                <div id="delete_post_button" data-post="{{id}}">Удалить пост</div>
+            </div>
+        {{/if}}
     </div>
-    {{#if isOwner}}
-        <div id="submenu-{{id}}" class="post__submenu" style="display: none;">
-            <div id="edit_post_button">Редактировать пост</div>
-            <div id="delete_post_button" data-post="{{id}}">Удалить пост</div>
-        </div>
-    {{/if}}
     {{#if has_access}}
         <div class="target-separator"></div>
 
