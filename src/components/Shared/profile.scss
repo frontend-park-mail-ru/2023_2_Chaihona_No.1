@@ -203,18 +203,34 @@
   .user-page {
     display: flex !important;
     flex-direction: column !important;
+    margin: 0 !important;
     width: 100% !important;
     left: 0% !important;
     gap: 15px !important;
     transform: translate(0, 0) !important;
-    &__left-column {
-      order: 1 !important;
+    &__ava-block {
+      order: 1;
     }
-    &__main-block {
-      order: 3 !important;
+    &__name-and-status {
+      order: 2;
     }
-    &__right-column {
-      order: 2 !important;
+    &__about-author {
+      order: 3;
+    }
+    &__target-block {
+      order: 4;
+    }
+    &__subscriptions-author {
+      order: 5;
+    }
+    &__new-post {
+      order: 6;
+    }
+    &__switch-and-search {
+      order: 7;
+    }
+    &__posts {
+      order: 8;
     }
   }
 }
