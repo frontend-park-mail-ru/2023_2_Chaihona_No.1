@@ -3,11 +3,13 @@
     float: right;
     width: fit-content;
     border-radius: 12px;
+    border: 1px solid;
+    border-color: #eaeaea;
     background-color: white;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    // margin-right: 8vw;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
     position: absolute;
     top: 38px;
     right: 0;
