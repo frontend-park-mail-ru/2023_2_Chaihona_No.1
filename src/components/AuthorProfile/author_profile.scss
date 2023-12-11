@@ -71,7 +71,7 @@
     width: 100%;
     height: fit-content;
 
-    grid-row: 4 / 5;
+    grid-row: 4 / 7;
     grid-column: 1 / 2;
   }
 
@@ -119,7 +119,7 @@
     @include main-color-button;
     width: 100%;
     grid-column: 1 / 2;
-    grid-row: 5 / 6;
+    grid-row: 7 / 8;
     // margin-top: 2vh;
   }
 }
