@@ -36,7 +36,7 @@ function renderSearched(searched) {
       avatar.classList.add('searched__profiles__profile__avatar');
       profileEl.textContent = profile.user.login;
 
-      const figure = new document.createElement('figure');
+      const figure = document.createElement('figure');
       figure.classList.add('ava-figure');
       figure.appendChild(avatar);
       profileEl.appendChild(figure);
