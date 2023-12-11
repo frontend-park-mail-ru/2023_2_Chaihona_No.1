@@ -50,7 +50,7 @@
   width: 80%;
   display: grid;
   gap: 15px;
-  grid-template-columns: 230px min(auto, 660px) 230px;
+  grid-template-columns: 230px minmax(auto, 700px) 230px;
   // grid-template-rows: fit-content fit-content fit-content fit-content;
 
   // &__main-block {
