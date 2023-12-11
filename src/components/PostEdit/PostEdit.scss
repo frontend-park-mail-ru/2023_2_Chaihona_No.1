@@ -168,6 +168,9 @@ td, label {
     }
     &__sub-params {
       width: auto;
+      &-available {
+        width: auto;
+      }
     }
   }
 }
