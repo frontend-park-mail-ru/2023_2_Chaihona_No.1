@@ -4,18 +4,24 @@
     width: fit-content;
     border-radius: 12px;
     background-color: white;
-    display: inline;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     // margin-right: 8vw;
+    position: absolute;
+    top: 38px;
+    right: 0;
+
     &__exit-button {
         display: none;
     }
-    position: absolute;
     &__btn {
       cursor: pointer;
       width: fit-content;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+      gap: 5px;
     }
 }
 

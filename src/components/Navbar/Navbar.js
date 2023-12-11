@@ -87,7 +87,7 @@ const Navbar = async (user = null) => {
         subButton.style.rotate = '0deg';
         menuOpen = false;
       } else {
-        submenu.style.display = 'inline';
+        submenu.style.display = 'flex';
         subButton.style.rotate = '180deg';
         menuOpen = true;
         ProfileMenu();
