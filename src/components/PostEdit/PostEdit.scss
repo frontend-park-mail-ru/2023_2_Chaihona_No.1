@@ -148,8 +148,8 @@ td, label {
 
 @media (max-width: 760px) and (orientation: portrait) {
   .post-edit {
-    margin-left: 5vw !important;
-    margin-right: 5vw !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
   .post-edit__grid {
     display: block;
