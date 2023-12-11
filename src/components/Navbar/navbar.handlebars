@@ -3,7 +3,13 @@
     {{#if User}}
         <button class="navbar__main-page-button" id="main-button" style="display: none;">На главную</button>
         <div class="navbar__right-elements">
-            <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+            <div style="position: relative;">
+                <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+                <div class="searched" style="display: none">
+                    <div class="searched__count"></div>
+                    <div class="searched__profiles"></div>
+                </div>
+            </div>
             <div style="display: flex; gap: 5px;">
                 <figure class="ava-figure">
                     <img src="" class="navbar__user-avatar">
@@ -23,9 +29,3 @@
         </div>
     {{/if}}
 </div>
-{{#if User}}
-    <div class="searched" style="display: none">
-        <div class="searched__count"></div>
-        <div class="searched__profiles"></div>
-    </div>
-{{/if}}
