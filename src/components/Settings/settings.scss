@@ -146,9 +146,17 @@
     }
     &__grid-params {
       order: 2;
+      width: auto !important;
     }
     &__grid-list {
       order: 1;
+      width: 100% !important;
     }
+    &__header {
+      margin-left: 15px;
+    }
+  }
+  #back {
+    margin-left: 15px;
   }
 }
