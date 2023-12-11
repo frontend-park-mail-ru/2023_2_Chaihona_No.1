@@ -1,9 +1,9 @@
 @import "@components/Shared/common.scss";
 
 .settings {
-  margin-left: 25vw;
-  margin-right: 25vw;
-  margin-top: 15px;
+  margin: 0 auto;
+  width: fit-content;
+  padding-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
