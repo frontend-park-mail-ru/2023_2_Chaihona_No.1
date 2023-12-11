@@ -215,6 +215,7 @@
     &__ava-block {
       order: 1;
       &__ava {
+        @include ava-figure;
         height: 200px;
       }
     }
