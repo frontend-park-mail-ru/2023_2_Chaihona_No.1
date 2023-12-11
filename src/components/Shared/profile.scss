@@ -44,10 +44,12 @@
 }
 
 .user-page {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 80%;
+  // position: relative;
+  // left: 50%;
+  // transform: translate(-50%, 0);
+  // width: 80%;
+  width: fit-content;
+  margin: 0 auto;
   display: grid;
   gap: 15px;
   grid-template-columns: 230px minmax(auto, 700px) 230px;
