@@ -16,7 +16,7 @@
     height: 100%;
     flex: 1;
     display: flex;
-    gap: 15px;
+    gap: 0px;
     justify-content: flex-end;
   }
 
@@ -113,7 +113,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: 15px;
 
     &__profile{
       display: flex;
