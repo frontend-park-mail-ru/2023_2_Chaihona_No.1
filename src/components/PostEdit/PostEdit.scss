@@ -16,7 +16,13 @@
 
   &__attaches {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
     &__attach {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 5px;
       height: 100px;
       width: 100px;
     }
