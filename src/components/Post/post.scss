@@ -35,15 +35,15 @@
 
   &__submenu {
     padding: 15px;
-    float: right;
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     width: fit-content;
     border-radius: 12px;
     border: solid lightgray 1px;
     background-color: white;
-    position: relative;
+    position: absolute;
     z-index: 100;
   }
 

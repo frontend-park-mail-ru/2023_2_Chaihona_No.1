@@ -35,7 +35,7 @@ export default (isOwner, userAva, posts) => {
       const id = event.target.dataset.post;
       const postMenu = document.getElementById(`${SUBMENU_ID}-${id}`);
       if (postMenu.style.display === 'none') {
-        postMenu.style.display = 'block';
+        postMenu.style.display = 'flex';
       } else {
         postMenu.style.display = 'none';
       }
