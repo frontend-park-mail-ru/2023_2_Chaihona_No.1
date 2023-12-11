@@ -2,7 +2,7 @@
 
 <div class="user-page">
 
-    <div class="user-page__left-column">
+    {{!-- <div class="user-page__left-column"> --}}
         <div class="user-page__ava-block">
             {{!-- <div class="user-page__ava">
             </div> --}}
@@ -43,9 +43,9 @@
                 <div class="target-separator"></div>
             {{/each}}
         </div>
-    </div>
+    {{!-- </div> --}}
 
-    <div class="user-page__main-block">
+    {{!-- <div class="user-page__main-block"> --}}
         <div class="user-page__name-and-status">
             <div>
                 {{#if isOwner}}
@@ -73,13 +73,15 @@
             <span> Медиа </span>
         </div>
 
-        {{#each posts}}
-            {{>post post=this}}
-        {{/each}}
-    </div>
+        <div class="user-page__posts">
+            {{#each posts}}
+                {{>post post=this}}
+            {{/each}}
+        </div>
+    {{!-- </div> --}}
 
 
-    <div class="user-page__right-column">
+    {{!-- <div class="user-page__right-column"> --}}
         <div class="user-page__subscriptions-author">
             <div class="user-page__sub-word">Уровни подписки</div>
             {{#each subscribe_levels}}
@@ -87,7 +89,7 @@
                 {{>sub_level this}}
             {{/each}}
         </div>
-    </div>
+    {{!-- </div> --}}
 
     <dialog id="status_dialog" class="user-page__status_dialog">
         <h2 style="margin-top: 1vh">Статус:</h2>

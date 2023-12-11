@@ -50,15 +50,16 @@
   width: 80%;
   display: grid;
   gap: 15px;
-  grid-template-columns: 22.5% 58.5% 20%;
+  grid-template-columns: fit-content 58.5% fit-content;
+  grid-template-rows: fit-content fit-content fit-content fit-content;
 
-  &__main-block {
-    height: 100%;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+  // &__main-block {
+  //   height: 100%;
+  //   color: black;
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 15px;
+  // }
 
   &__name-and-status {
     margin-top: 20px;
@@ -69,6 +70,8 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
   }
 
   &__nickname {
@@ -87,13 +90,13 @@
     color: rgba(0, 0, 0, 0.80);
   }
 
-  &__left-column {
-    margin-top: calc(-200px + 100px);
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    gap: 15px;
-  }
+  // &__left-column {
+  //   margin-top: calc(-200px + 100px);
+  //   display: flex;
+  //   flex-direction: column;
+  //   // justify-content: center;
+  //   gap: 15px;
+  // }
 
   &__ava-block {
     padding: 15px;
@@ -104,6 +107,9 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
   }
 
   &__subs-amount {
@@ -140,6 +146,9 @@
 
   &__right-column {
     margin-top: 0;
+
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
   }
 
   &__ava-img {
