@@ -61,6 +61,14 @@ body {
   bottom: 0;
 }
 
+@mixin ava-figure {
+  border-radius: 999px;
+  overflow: hidden;
+  height: 100%;
+  aspect-ratio: 1/1;
+  // width: 100%;
+}
+
 .ava-figure {
   border-radius: 999px;
   overflow: hidden;
