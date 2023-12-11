@@ -89,9 +89,10 @@
 
 .searched {
   padding: 15px;
-  float: right;
   width: fit-content;
+  height: fit-content;
   max-width: 200px;
+  max-height: 300px;
   border-radius: 12px;
   border: 1px solid;
   border-color: #eaeaea;
@@ -106,18 +107,19 @@
 
   }
   &__profiles{
-    padding: 1vh;
-    float: right;
-    width: 22vh;
-    border-radius: 10px;
+    width: 100%;
     background-color: white;
-    // display: inline;
-    margin-right: 8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
     &__profile{
       display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
       &__avatar{
         float: right;
-        margin-right: 1vh;
         border-radius: 9999px;
         height: 40px;
       }
