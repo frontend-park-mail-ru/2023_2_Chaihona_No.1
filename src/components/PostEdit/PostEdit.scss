@@ -155,8 +155,12 @@ td, label {
   .post-edit {
     width: 100% !important;
     margin: 0 !important;
+    flex-direction: column;
     &__header {
       margin-left: 15px;
+    }
+    &__params {
+      width: auto;
     }
   }
 }
