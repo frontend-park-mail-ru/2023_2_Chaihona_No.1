@@ -119,7 +119,7 @@
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
-  .navbar__exit-button {
+  #exit-btn {
     display: none !important;
   }
   #navbar {
