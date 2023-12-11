@@ -42,8 +42,6 @@
   &__sub-params{
     border-radius: 12px;
     width: 100%;
-    padding: 15px;
-    // padding-bottom: 2vh;
   }
 
   &__params-buttons{
@@ -102,11 +100,13 @@
   &__sub-params-available{
     background-color: white;
     border-radius: 12px;
-    padding: 1vh 1vw;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
 
   &__sub-params-available-sub{
-    padding-top: 2vh;
     font-size: 16px;
   }
 
