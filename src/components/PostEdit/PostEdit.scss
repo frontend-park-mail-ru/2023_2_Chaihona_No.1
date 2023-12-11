@@ -73,6 +73,7 @@
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
+    width: fit-content;
   }
 
   &__params-theme {
@@ -129,7 +130,7 @@
 }
 
 th, td {
-  padding: 5px;
+  padding: 5px 15px;
   text-align: center;
   border: 1px solid lightgray;
 }
