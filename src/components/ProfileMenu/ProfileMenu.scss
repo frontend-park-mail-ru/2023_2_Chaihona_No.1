@@ -10,6 +10,13 @@
         display: none;
     }
     position: absolute;
+    &__btn {
+      cursor: pointer;
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
 }
 
 @media (max-width: 760px){
