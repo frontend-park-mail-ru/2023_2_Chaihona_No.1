@@ -24,8 +24,8 @@
 
   &__grid{
     height: 100%;
-    display: grid;
-    grid-template-columns: 62% 38%;
+    display: flex;
+    gap: 15px;
   }
 
   &__params {
