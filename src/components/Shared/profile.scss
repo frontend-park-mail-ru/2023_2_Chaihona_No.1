@@ -213,6 +213,7 @@
     }
     &__name-and-status {
       order: 2;
+      margin: 0;
     }
     &__about-author {
       order: 3;
@@ -223,6 +224,7 @@
     &__subscriptions-author {
       order: 5;
       width: 100%;
+      margin: 0;
     }
     &__new-post {
       order: 6;
