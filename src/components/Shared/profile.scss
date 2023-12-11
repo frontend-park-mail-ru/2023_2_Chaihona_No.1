@@ -50,8 +50,8 @@
   width: 80%;
   display: grid;
   gap: 15px;
-  grid-template-columns: fit-content 58.5% fit-content;
-  grid-template-rows: fit-content fit-content fit-content fit-content;
+  grid-template-columns: 230px auto auto;
+  // grid-template-rows: fit-content fit-content fit-content fit-content;
 
   // &__main-block {
   //   height: 100%;
