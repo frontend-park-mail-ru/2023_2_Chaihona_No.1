@@ -153,7 +153,8 @@ export default async () => {
 
     profile.isOwner = isOwner;
     console.log("render");
-    const profileWithoutZero = structuredClone(profile);
+    // const profileWithoutZero = structuredClone(profile);
+    const profileWithoutZero = Object.assign({}, profile);
     console.log(profile);
     profileWithoutZero.subscribe_levels = profileWithoutZero.subscribe_levels.filter((e) => e.level !== 0);
     profileWithoutZero.subscribe_levels = Array.from(profileWithoutZero.subscribe_levels, (level) => {
