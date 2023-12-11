@@ -113,6 +113,10 @@
 
     grid-column: 1 / 2;
     grid-row: 1 / 4;
+
+    &__ava {
+      @include ava-figure;
+    }
   }
 
   &__subs-amount {
