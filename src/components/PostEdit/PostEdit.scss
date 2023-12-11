@@ -64,7 +64,7 @@
 
   &__params-buttons-save{
     @include main-color-button;
-    width: 100px;
+    width: fit-content;
     height: 100%;
     padding: 15px;
   }
