@@ -116,6 +116,7 @@
 
     &__ava {
       @include ava-figure;
+      gap: 1px;
     }
   }
 
