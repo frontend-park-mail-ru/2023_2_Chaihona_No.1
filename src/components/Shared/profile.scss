@@ -214,6 +214,9 @@
     transform: translate(0, 0) !important;
     &__ava-block {
       order: 1;
+      &__ava {
+        height: 200px;
+      }
     }
     &__name-and-status {
       order: 2;
