@@ -7,9 +7,12 @@
 
 
 .post-edit {
-  margin-left: 25vw;
-  margin-right: 25vw;
-  margin-top: 3vh;
+  margin: 0 auto;
+  width: fit-content;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
   &__attaches {
     display: flex;
