@@ -29,14 +29,17 @@ function renderSearched(searched) {
     searched.profiles.forEach(async (profile) => {
       const profileEl = document.createElement('div');
       profileEl.classList.add('searched__profiles__profile');
-    
       const avatar = new Image();
       // const api = new Api();
       // avatar.src = await api.getAvatar(profile.user.id);
       avatar.src = profile.avatar;
       avatar.classList.add('searched__profiles__profile__avatar');
       profileEl.textContent = profile.user.login;
-      profileEl.appendChild(avatar);
+
+      const figure = new document.createElement('figure');
+      figure.classList.add('ava-figure');
+      figure.appendChild(avatar);
+      profileEl.appendChild(figure);
       profileEl.addEventListener('click', (e) => {
         window.router.redirect(`profile${profile.user.id}`);
         return;

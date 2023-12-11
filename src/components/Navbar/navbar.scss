@@ -122,10 +122,15 @@
       align-items: center;
       cursor: pointer;
       gap: 5px;
+      max-height: 40px;
       &__avatar{
-        float: right;
-        border-radius: 9999px;
-        height: 40px;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
       }
     }
   }
