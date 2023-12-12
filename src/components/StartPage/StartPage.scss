@@ -18,6 +18,7 @@
    border-radius: 12px;
    background-color: #FFE5CC;
    gap: 15px;
+   padding: 15px;
 
    &__text-part {
     display: flex;
@@ -27,10 +28,9 @@
 
    &__header{
      text-align: center;
-     margin-left: 10px;
      font-family: sans-serif;
      font-weight: bold;
-     font-size: 1rem;
+     font-size: 20px;
      color: #D68048;
    }
 
