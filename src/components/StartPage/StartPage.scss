@@ -125,6 +125,7 @@
      flex-direction: row;
      gap: 15px;
      background-color: #FFDBB8;
+     align-items: center;
 
      &__arrow{
        &__left{
@@ -156,15 +157,17 @@
        width: fit-content;
        height: fit-content;
        position: relative;
+       gap: 15px;
 
        &__ava{
         position: relative;
-        top: 50%;
         left: 50%;
-        width: 55px;
-        height: 55px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
         background-color: #C8D9EB;
-        border-radius: 50%;
        }
 
        &__name{
@@ -175,7 +178,7 @@
 
        &__followers{
          font-family: sans-serif;
-         font-size: 2px;
+         font-size: 12px;
          font-weight: bold;
        }
        &__button{
