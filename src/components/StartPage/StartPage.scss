@@ -27,10 +27,13 @@
   gap: 15px;
 
  &__container{
-  @include container;
-
+   @include container;
    &-1{
+     @include container;
     flex-direction: row-reverse;
+   }
+   &-2{
+    @include container;
    }
 
    &__text-part {
