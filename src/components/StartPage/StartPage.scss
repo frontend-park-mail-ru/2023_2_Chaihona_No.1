@@ -17,7 +17,7 @@
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
-
+  margin-top: 15px;
 
   // margin-top: 50px;
   // position: absolute;
@@ -188,4 +188,13 @@
      }
    }
  }
+}
+
+@media (max-width: 760px) {
+  .start-page {
+    margin: 0 !important;
+    width: 100%;
+  }
+    
+  
 }
