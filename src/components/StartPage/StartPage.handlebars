@@ -27,22 +27,22 @@
             <img class="start-page__container__img" src="" id="hand">
         </figure>
     </div>
-    <div class="start-page__container">
+    <div class="start-page__container-3">
         <p class="start-page__container__header">Уже с нами</p>
         <div class="start-page__container__profiles">
             <span class="start-page__container__profiles__arrow__left"></span>
-                    {{#each profiles}}
-            <div class="start-page__container__profiles__profile">
-                <img src="" class="start-page__container__profiles__profile__ava" data-sub="{{this.user.id}}">
-                <div class="start-page__container__profiles__profile__name">
-                    {{this.user.login}} <br><br>
+            {{#each profiles}}
+                <div class="start-page__container__profiles__profile">
+                    <img src="" class="start-page__container__profiles__profile__ava" data-sub="{{this.user.id}}">
+                    <div class="start-page__container__profiles__profile__name">
+                        {{this.user.login}} <br><br>
+                    </div>
+                    <div class="start-page__container__profiles__profile__followers">
+                        {{this.subscribers}} подписчиков<br>
+                    </div>
+                    <input type="button" class="start-page__container__profiles__profile__button" data-sub="{{this.user.id}}" name="buttonlog" value="Перейти в профиль">
                 </div>
-                <div class="start-page__container__profiles__profile__followers">
-                    {{this.subscribers}} подписчиков<br>
-                </div>
-                <input type="button" class="start-page__container__profiles__profile__button" data-sub="{{this.user.id}}" name="buttonlog" value="Перейти в профиль">
-            </div>
-                    {{/each}}
+            {{/each}}
             <span class="start-page__container__profiles__arrow__left"></span>
         </div>
         <button type="button" class="start-page__container__button" name="buttonlog" id="join-btn">Присоединиться</button>

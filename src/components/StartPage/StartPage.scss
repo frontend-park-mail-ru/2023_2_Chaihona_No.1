@@ -39,6 +39,10 @@
       @include container;
       flex-direction: row-reverse;
    }
+   &-3{
+    @include container();
+    flex-direction: column;
+   }
 
    &__text-part {
     display: flex;
@@ -113,10 +117,12 @@
    &__profiles{
      border-radius: 12px;
      border: 1.5px solid #FFB97D;
-     width: 90%;
-     height: 65%;
-     margin-bottom: 10px;
+     width: fit-content;
+     height: fit-content;
+     padding: 15px;
      display: flex;
+     flex-direction: row;
+     gap: 15px;
      background-color: #FFDBB8;
 
      &__arrow{
