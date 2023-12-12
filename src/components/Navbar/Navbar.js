@@ -80,6 +80,12 @@ const Navbar = async (user = null) => {
       }
       return window.router.redirect('login');
     });
+    logo.addEventListener('click', () => {
+      if (window.user !== undefined) {
+        return window.router.redirect('feed');
+      }
+      return window.router.redirect('login');
+    });
 
     const subButton = document.querySelector(MENU_BUTTON_CLASS);
     subButton.src = downArrowImage;
