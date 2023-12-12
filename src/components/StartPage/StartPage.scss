@@ -42,6 +42,7 @@
    &-3{
     @include container();
     flex-direction: column;
+    align-items: center !important;
    }
 
    &__text-part {
@@ -133,8 +134,6 @@
          border-top: 2px solid #000;
          border-right: 2px solid #000;
          color: #FFB97D;
-         margin-left:2%;
-         margin-top:16%;
          transform: rotate(-135deg);
        }
        &__right{
@@ -144,8 +143,6 @@
          border-top: 2px solid #000;
          border-right: 2px solid #000;
          color: #FFB97D;
-         margin-left:2%;
-         margin-top:16%;
          transform: rotate(45deg);
        }
      }
@@ -154,31 +151,31 @@
        flex-direction: column;
        align-items: center;
        background-color: white;
-       margin-top: 1%;
        border-radius: 12px;
        border: 1.5px solid #FFB97D;
-       width: 26%;
-       height: 90%;
-       margin-left:8px;
+       width: fit-content;
+       height: fit-content;
+       position: relative;
 
        &__ava{
-         margin-top: 7px;
-         margin-bottom: 7px;
-         width: 55px;
-         height: 55px;
-         background-color: #C8D9EB;
-         border-radius: 50%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 55px;
+        height: 55px;
+        background-color: #C8D9EB;
+        border-radius: 50%;
        }
 
        &__name{
          font-family: sans-serif;
-         font-size: 11px;
+         font-size: 14px;
          font-weight: bold;
        }
 
        &__followers{
          font-family: sans-serif;
-         font-size: 7px;
+         font-size: 2px;
          font-weight: bold;
        }
        &__button{
