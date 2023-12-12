@@ -8,7 +8,7 @@ import { Api } from '@modules/api.js';
 
 import pig from '@static/img/pngwing3.png';
 import hand from '@static/img/pngwingHand.png';
-import css from './StartPage.css';
+import css from './StartPage.scss';
 
 /**
  * Функция отрисовки стартовой страницы
