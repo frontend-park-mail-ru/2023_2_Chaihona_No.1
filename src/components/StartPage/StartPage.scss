@@ -107,6 +107,7 @@
 
    &__button{
     @include main-color-button;
+    padding: 15px;
    }
 
    &__profiles{
