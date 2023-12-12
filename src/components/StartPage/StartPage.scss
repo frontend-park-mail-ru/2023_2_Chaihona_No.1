@@ -44,6 +44,9 @@
      font-size: 7px;
      font-weight: bold;
      color: #D68048;
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
    }
 
    &__button{
