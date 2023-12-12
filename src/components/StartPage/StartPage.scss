@@ -106,16 +106,7 @@
    }
 
    &__button{
-     text-align: center;
-     font-size: 0.9rem;
-     font-weight: bold;
-     color: white;
-     background-color: #FF8A26;
-     border-radius: 5px;
-     border: none;
-     font-family: sans-serif;
-     width: 150px;
-     height: 7vh;
+    @include main-color-button;
    }
 
    &__profiles{
@@ -185,15 +176,6 @@
        }
        &__button{
         @include main-color-button;
-        //  width: 90px;
-        //  height: 25px;
-        //  font-family: sans-serif;
-        //  font-size: 7px;
-        //  font-weight: bold;
-        //  background-color: white;
-        //  border: 1.5px solid #FFB97D;
-        //  border-radius: 5px;
-        //  margin-top: 5px;
        }
      }
    }
