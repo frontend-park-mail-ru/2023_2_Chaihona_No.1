@@ -1,6 +1,5 @@
 @mixin container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   border-radius: 12px;
   background-color: #FFE5CC;
@@ -29,11 +28,12 @@
  &__container{
    @include container;
    &-1{
-     @include container;
-    flex-direction: row-reverse;
-   }
-   &-2{
-    @include container;
+      @include container;
+      flex-direction: row;
+    }
+    &-2{
+      @include container;
+      flex-direction: row-reverse;
    }
 
    &__text-part {
