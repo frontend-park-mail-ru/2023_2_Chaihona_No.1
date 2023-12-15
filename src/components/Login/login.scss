@@ -39,6 +39,7 @@
 
   &__input {
     @include log-reg-input;
+    width: 270px;
   }
 
   &__error-text {
