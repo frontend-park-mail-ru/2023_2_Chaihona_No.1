@@ -309,7 +309,7 @@ export class Api extends Requests {
   async createComment(text, post_id) {
     const endpoint = restEndpoints.createComment;
     const url = backendUrl + endpoint.url;
-    return this.make_request(url, endpoint.method, {text, post_id});
+    return this.make_request(url, endpoint.method, {text, post_id: Number(post_id)});
   }
 
   async editComment(comment) {
