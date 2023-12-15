@@ -277,6 +277,8 @@ export class Api extends Requests {
 
   /**
    * Оценить
+  * @param id - id поста
+  * @param rating - rating поста
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
   async rate(id, rating) {
@@ -285,7 +287,7 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method, {rating});
   }
 
-    /**
+  /**
    * Получить статистику
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
@@ -295,7 +297,7 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method);
   }
 
-    /**
+  /**
    * Поиск пользователей
    * @param nickname - nickname пользователя
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
@@ -306,18 +308,35 @@ export class Api extends Requests {
     return this.make_request(url, endpoint.method);
   }
 
+
+  /**
+   * Добавление нового поста
+   * @param text - текст коммента
+   * @param post_id - id поста
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
   async createComment(text, post_id) {
     const endpoint = restEndpoints.createComment;
     const url = backendUrl + endpoint.url;
     return this.make_request(url, endpoint.method, {text, post_id: Number(post_id)});
   }
 
+  /**
+   * Добавление нового поста
+   * @param comment - коммент
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
   async editComment(comment) {
     const endpoint = restEndpoints.editComment;
     const url = backendUrl + endpoint.url.replace('{comment}', comment.id);
     return this.make_request(url, endpoint.method, comment);
   }
 
+  /**
+   * Добавление нового поста
+   * @param comment - коммент
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
   async deleteComment(comment) {
     const endpoint = restEndpoints.deleteComment;
     const url = backendUrl + endpoint.url.replace('{comment', comment.id);
