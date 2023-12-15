@@ -24,7 +24,7 @@ export default (isOwner, userAva, posts) => {
   sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
   sendButtons.forEach((sendButton) => sendButton.addEventListener('click', async (event) => {
-    const text = document.querySelector('comment-field-' + sendButton.dataset.post).value;
+    const text = document.querySelector('#comment-field-' + sendButton.dataset.post).value;
     const api = new Api();
     await api.createComment(text, sendButton.dataset.post);
     // alert('Комментарии будут на РК4');
