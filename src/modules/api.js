@@ -305,4 +305,22 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{nickname}', nickname);
     return this.make_request(url, endpoint.method);
   }
+
+  async createComment(text, post_id) {
+    const endpoint = restEndpoints.createComment;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method, {text, post_id});
+  }
+
+  async editComment(comment) {
+    const endpoint = restEndpoints.editComment;
+    const url = backendUrl + endpoint.url.replace('{comment}', comment.id);
+    return this.make_request(url, endpoint.method, comment);
+  }
+
+  async deleteComment(comment) {
+    const endpoint = restEndpoints.deleteComment;
+    const url = backendUrl + endpoint.url.replace('{comment', comment.id);
+    return this.make_request(url, endpoint.method);
+  }
 }

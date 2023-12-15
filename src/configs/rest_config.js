@@ -14,6 +14,18 @@ export const backendUrl = 'http://' + url + ':8001/api/v1';
  * Все возможные endpoint'ы и их методы
  */
 export const restEndpoints = {
+  createComment: {
+    url: '/comment',
+    method: POST_METHOD,
+  },
+  EditComment: {
+    url: '/comment/{id}',
+    method: POST_METHOD,
+  },
+  DeleteComment: {
+    url: '/comment/{id}',
+    method: DELETE_METHOD,
+  },
   search: {
     url: '/search/{nickname}',
     method: GET_METHOD,

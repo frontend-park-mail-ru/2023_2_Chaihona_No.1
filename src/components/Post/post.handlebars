@@ -75,8 +75,8 @@
         </div>
         <div class="post__comment-input-field" data-post="{{id}}">
             <figure class="post__comment-input-ava ava-figure" style="height: 35.2px;"><img src=""></figure>
-            <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field__input">
-            <img src="" id="send-button" class="post__comment-input-send-button">
+            <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field__input" id="comment-field-{{id}}" data-post="{{id}}">
+            <img src="" id="send-button={{id}}" class="post__comment-input-send-button" data-post="{{id}}">
             {{!-- <div class="post__comment-input-field" data-post="{{id}}">
             </div> --}}
         </div>
