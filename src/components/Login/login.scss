@@ -61,15 +61,8 @@
   }
 
   &__input-login-button{
-    @include button;
-    text-align: center;
-    font-size: 13px;
+    @include main-color-button;
     padding: 10px 5px;
-    font-weight: bold;
-    color: white;
-    background-color: #FF8A26;
-    border: none;
-    font-family: sans-serif;
     width: fit-content;
     height: 30px;
   }
