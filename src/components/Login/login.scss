@@ -69,9 +69,8 @@
     background-color: #FF8A26;
     border: none;
     font-family: sans-serif;
-    width: 12rem;
-    height: 7vh;
-    margin-top: 3.5rem;
+    width: fit-content;
+    height: 30px;
   }
 
   &__input-entry-text {
@@ -81,15 +80,14 @@
   &__input-forgot-pass {
     font-family: sans-serif;
     font-size: 0.8rem;
-    margin-left: 1vw;
     color: #FFB97D;
-    margin-top: 3.5rem;
   }
 
   &__input-buttons {
     margin-bottom: 1rem;
     display: inline-flex;
     align-items: center;
+    gap: 15px;
   }
 
   &__pig-img {
