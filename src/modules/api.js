@@ -328,7 +328,7 @@ export class Api extends Requests {
    */
   async editComment(comment) {
     const endpoint = restEndpoints.editComment;
-    const url = backendUrl + endpoint.url.replace('{comment}', comment.id);
+    const url = backendUrl + endpoint.url.replace('{id}', comment.id);
     return this.make_request(url, endpoint.method, comment);
   }
 
@@ -339,7 +339,7 @@ export class Api extends Requests {
    */
   async deleteComment(commentId) {
     const endpoint = restEndpoints.deleteComment;
-    const url = backendUrl + endpoint.url.replace('{comment}', Number(commentId));
+    const url = backendUrl + endpoint.url.replace('{id}', Number(commentId));
     return this.make_request(url, endpoint.method);
   }
 }
