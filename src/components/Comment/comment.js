@@ -6,10 +6,10 @@ export default async () => {
     const userId = element.dataset.user;
     const userAva = await api.getAvatar(userId);
     element.src = userAva;
-    element.addEventListner('click', () => {
+    element.addEventListener('click', () => {
       window.router.redirect(`profile${userId}`);
       return;
-    })
+    });
   });
 
 };
