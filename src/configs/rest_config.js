@@ -18,11 +18,11 @@ export const restEndpoints = {
     url: '/comment',
     method: POST_METHOD,
   },
-  EditComment: {
+  editComment: {
     url: '/comment/{id}',
     method: POST_METHOD,
   },
-  DeleteComment: {
+  deleteComment: {
     url: '/comment/{id}',
     method: DELETE_METHOD,
   },
