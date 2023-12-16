@@ -1,6 +1,6 @@
 <div class="comment">
     <figure class="post__comment-input-ava ava-figure" style="height: 35.2px;">
-        <img src="" class="comment-ava" data-user="{{user_id}}">
+        <img src="{{ava}}" class="comment-ava" data-user="{{user_id}}">
     </figure>
     <div class="comment-data">
         {{!-- <div class = "comment-nickname">{{user.login}}</div> --}}
@@ -9,7 +9,7 @@
     </div>
     {{#if is_owner}}
         <div style="position: relative;">
-            <img src="{{ava}}" class="comment__options-button" data-comment="{{id}}" id="comment-options-button-{{id}}">
+            <img src="{{editBtn}}" class="comment__options-button" data-comment="{{id}}" id="comment-options-button-{{id}}">
             <div id="comment-submenu-{{id}}" class="post__submenu" style="display: none;">
                 {{!-- <div id="edit_comment_button">Редактировать комментарий</div> --}}
                 <div class="delete_comment_button" data-comment="{{id}}">Удалить комментарий</div>

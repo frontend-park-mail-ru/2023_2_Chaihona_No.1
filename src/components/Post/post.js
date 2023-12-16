@@ -48,6 +48,7 @@ export default (isOwner, userAva, posts) => {
         id: commentRequest.data.body.id,
         text: text,
         ava: userAva,
+        editBtn: postOptionsIcon,
       });
       const commentEditBtn = document.querySelector('#comment-options-button-'+commentRequest.data.body.id);
       commentEditBtn.addEventListener('click' ,(e) => {
