@@ -37,10 +37,7 @@ export default (isOwner, userAva, posts) => {
       const text = document.querySelector('#comment-field-' + sendButton.dataset.post).value;
       const api = new Api();
       const commentErrText = document.querySelector('#comment-error-text-' + sendButton.dataset.post);
-      console.log(text);
-      console.log(text.lenght);
-      console.log(text.lenght === 0);
-      if (text.lenght === 0) {
+      if (text.length === 0) {
         commentErrText.style.display = 'flex';
         commentErrText.textContent = "Комментарий не может быть пустым";
         return;
