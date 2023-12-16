@@ -1,8 +1,9 @@
 <div class="comment">
-    <div class="comment-ava"><img src="" class="comment-ava-img"></div>
+    <figure class="post__comment-input-ava ava-figure" style="height: 35.2px;">
+        <img src="" class="comment-ava" data-user="{{user_id}}">
+    </figure>
     <div class="comment-data">
         {{!-- <div class = "comment-nickname">{{user.login}}</div> --}}
-        <figure class="post__comment-input-ava ava-figure" style="height: 35.2px;"><img src="" class="comment-ava" data-user="{{user_id}}"></figure>
         <div class = "comment-text">{{text}}</div>
         <div class = "comment-date">{{created_at}}</div>
     </div>
