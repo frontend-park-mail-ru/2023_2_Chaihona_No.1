@@ -32,7 +32,7 @@ export default async () => {
       commentDeleteButton.addEventListener('click', async () => {
         const api = new Api();
         await api.deleteComment(id);
-        const comment = commentMenu.parentNode;
+        const comment = commentMenu.parentNode.parentNode;
         comment.remove();
       });
     });

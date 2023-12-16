@@ -66,7 +66,7 @@ export default (isOwner, userAva, posts) => {
       postDeleteButton.addEventListener('click', async () => {
         const api = new Api();
         await api.deletePost(id);
-        const post = postMenu.parentNode;
+        const post = postMenu.parentNode.parentNode.parentNode;
         post.remove();
       });
     }));
