@@ -66,6 +66,12 @@ export default (isOwner, userAva, posts) => {
           const comment = commentMenu.parentNode.parentNode;
           comment.remove();
         });
+
+        const commentAvaEl = document.querySelector('#comment-ava-' + +commentRequest.data.body.id);
+        commentAvaEl.addEventListener('click', () => {
+          window.router.redirect(`profile${window.user.id}`);
+          return
+        })
       });
     } else {
       return window.router.redirect('login');
