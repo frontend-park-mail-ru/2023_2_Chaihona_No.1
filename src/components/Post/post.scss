@@ -215,6 +215,11 @@
     height: 20px;
     width: 20px;
   }
+
+  &__comment-error-text {
+    color: red;
+    font-size: 14px;
+  }
 }
 
 // @media (max-width: 760px) and (orientation: portrait) {

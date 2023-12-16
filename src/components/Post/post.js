@@ -36,10 +36,20 @@ export default (isOwner, userAva, posts) => {
     if (isAuthorized) {
       const text = document.querySelector('#comment-field-' + sendButton.dataset.post).value;
       const api = new Api();
-      const commentRequest = await api.createComment(text, sendButton.dataset.post);
-      if (commentRequest.status >= 400 || commentRequest.data.body === undefined) {
+      const commentErrText = document.querySelector('#comment-error-text-' + sendButton.dataset.post);
+      if (text.lenght === 0) {
+        commentErrText.style.display = 'flex';
+        commentErrText.textContent = "Комментарий не может быть пустым";
         return;
       }
+      const commentRequest = await api.createComment(text, sendButton.dataset.post);
+      if (commentRequest.status >= 400 || commentRequest.data.body === undefined) {
+        commentErrText.style.display = 'flex';
+        commentErrText.textContent = "Не удалось отправить комментарий";
+        return;
+      }
+      commentErrText.textContent = '';
+      commentErrText.style.display = 'none';
       document.querySelector('#comment-field-' + sendButton.dataset.post).value = "";
       const commentList = document.querySelector('#post-comment-list-' + sendButton.dataset.post);
       commentList.innerHTML += CommentHB({
