@@ -8,8 +8,8 @@ const DELETE_METHOD = 'DELETE';
  */
 
 export const url = '212.233.89.163'
-export const backendUrl = 'http://' + url + ':8001/api/v1';
-
+//export const backendUrl = 'https://' + url + ':8001/api/v1';
+export const backendUrl = 'https://my-kopilka.ru/api/v1';
 /**
  * Все возможные endpoint'ы и их методы
  */

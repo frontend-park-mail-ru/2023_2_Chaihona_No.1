@@ -26,7 +26,8 @@ module.exports = [
                             path.resolve(__dirname, 'src/components/Target'),
                             path.resolve(__dirname, 'src/components/SubLevel'),
                             path.resolve(__dirname, 'src/components/Post'),
-                            path.resolve(__dirname, 'src/components/Donate'),]
+                            path.resolve(__dirname, 'src/components/Donate'),],
+			encoding: 'utf-8',
                     }
                 },
                 {
