@@ -7,7 +7,7 @@ import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
 import { comment } from 'postcss';
 
-import commentJS from '@components/Donate/comment.js';
+import commentJS from '@components/Comment/comment.js';
 
 const SUBMENU_ID = 'submenu';
 const HEADER_ID = 'header';
