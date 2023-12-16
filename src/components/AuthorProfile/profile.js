@@ -18,7 +18,7 @@ import css from '@components/AuthorProfile/author_profile.scss';
 import postCss from '@components/Post/post.scss';
 import targetCss from '@components/Target/target.scss';
 import uProfileCss from '@components/UserProfile/user_profile.scss';
-import commentCss from '@components/Comment/comment.css';
+// import commentCss from '@components/Comment/comment.css';
 import subLevelCss from '@components/SubLevel/sub_level.scss';
 
 
