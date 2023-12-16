@@ -9,7 +9,7 @@
     </div>
     {{#if is_owner}}
         <div style="position: relative;">
-            <img src="" class="comment__options-button" data-comment="{{id}}">
+            <img src="{{ava}}" class="comment__options-button" data-comment="{{id}}" id="comment-options-button-{{id}}">
             <div id="comment-submenu-{{id}}" class="post__submenu" style="display: none;">
                 {{!-- <div id="edit_comment_button">Редактировать комментарий</div> --}}
                 <div class="delete_comment_button" data-comment="{{id}}">Удалить комментарий</div>

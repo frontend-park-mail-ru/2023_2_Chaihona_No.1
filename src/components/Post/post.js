@@ -5,8 +5,9 @@ import likeIcon from '@static/icons/like.svg';
 import commentIcon from '@static/icons/comment.svg';
 import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
-import { comment } from 'postcss';
 
+import { comment } from 'postcss';
+import CommentHB from '@components/Comment/comment.handlebars';
 import commentJS from '@components/Comment/comment.js';
 
 const SUBMENU_ID = 'submenu';
@@ -26,10 +27,48 @@ export default (isOwner, userAva, posts) => {
   const sendButtons = document.querySelectorAll(SEND_ICON_CLASS);
   sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
+  var isAuthorized = false;
+  if (window.user !== undefined) {
+    isAuthorized = true;
+  }
+
   sendButtons.forEach((sendButton) => sendButton.addEventListener('click', async (event) => {
-    const text = document.querySelector('#comment-field-' + sendButton.dataset.post).value;
-    const api = new Api();
-    await api.createComment(text, sendButton.dataset.post);
+    if (isAuthorized) {
+      const text = document.querySelector('#comment-field-' + sendButton.dataset.post).value;
+      const api = new Api();
+      const commentRequest = await api.createComment(text, sendButton.dataset.post);
+      if (commentRequest.status >= 400 || commentRequest.data.body === undefined) {
+        return;
+      }
+      document.querySelector('#comment-field-' + sendButton.dataset.post).value = "";
+      const commentList = document.querySelector('#post-comment-list-' + sendButton.dataset.post);
+      commentList.innerHTML += CommentHB({
+        user_id: window.user.id,
+        is_owner: true,
+        id: commentRequest.data.body.id,
+        text: text,
+        ava: userAva,
+      });
+      const commentEditBtn = document.querySelector('#comment-options-button-'+commentRequest.data.body.id);
+      commentEditBtn.addEventListener('click' ,(e) => {
+        const id = e.target.dataset.comment;
+        const commentMenu = document.getElementById('comment-submenu-'+id);
+        if (commentMenu.style.display === 'none') {
+          commentMenu.style.display = 'flex';
+        } else {
+          commentMenu.style.display = 'none';
+        }
+        const commentDeleteButton = commentMenu.children[0];
+        commentDeleteButton.addEventListener('click', async () => {
+          const api = new Api();
+          await api.deleteComment(id);
+          const comment = commentMenu.parentNode.parentNode;
+          comment.remove();
+        });
+      });
+    } else {
+      return window.router.redirect('login');
+    }
     // alert('Комментарии будут на РК4');
   }));
 
