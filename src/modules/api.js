@@ -337,9 +337,9 @@ export class Api extends Requests {
    * @param comment - коммент
    * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
    */
-  async deleteComment(comment) {
+  async deleteComment(commentId) {
     const endpoint = restEndpoints.deleteComment;
-    const url = backendUrl + endpoint.url.replace('{comment', comment.id);
+    const url = backendUrl + endpoint.url.replace('{comment', commentId);
     return this.make_request(url, endpoint.method);
   }
 }
