@@ -5,6 +5,8 @@
     flex-direction: row;
     gap: 15px;
     height: fit-content;
+    align-items: center;
+    padding: 5px 10px;
 
     &__optinons-button {
         cursor: pointer;
@@ -20,6 +22,8 @@
     color: rgba(0, 0, 0, 0.60);
     padding: 1vh;
     font-size: 18px;
+    flex: 1;
+    word-wrap: break-all;
 }
 
 .comment-nickname{
