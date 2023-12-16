@@ -5,6 +5,15 @@
     flex-direction: row;
     gap: 15px;
     height: fit-content;
+
+    &__optinons-button {
+        cursor: pointer;
+        float: right;
+    }
+}
+
+.delete_comment_button {
+    cursor: pointer;
 }
 
 .comment-data {
