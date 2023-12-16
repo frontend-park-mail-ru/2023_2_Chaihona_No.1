@@ -6,6 +6,8 @@ import commentIcon from '@static/icons/comment.svg';
 import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
 
+import comment from '@components/Donate/donate.js';
+
 const SUBMENU_ID = 'submenu';
 const HEADER_ID = 'header';
 const BODY_ID = 'body';
