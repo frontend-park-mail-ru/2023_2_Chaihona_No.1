@@ -20,6 +20,7 @@ import targetCss from '@components/Target/target.scss';
 import uProfileCss from '@components/UserProfile/user_profile.scss';
 // import commentCss from '@components/Comment/comment.css';
 import subLevelCss from '@components/SubLevel/sub_level.scss';
+import { response } from 'express';
 
 
 const imgExtRegExp = /(jp(e)?g|png)$/;
@@ -219,7 +220,7 @@ export default async () => {
 
       const subLevelBtns = document.querySelectorAll('.sub-level-btn');
       subLevelBtns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
           const { subbed } = btn.dataset;
           if (subbed === 'true') {
             btn.dataset.subbed = 'false';
@@ -241,17 +242,20 @@ export default async () => {
               document.querySelector('.user-page__subs-amount').textContent = String(Number(document.querySelector('.user-page__subs-amount').textContent) + 1);
             }
 
-            const otherBtns = document.querySelectorAll('.sub-level-btn');
-            otherBtns.forEach((b) => {
-              b.dataset.subbed = 'false';
-              b.textContent = 'Подписаться';
-            });
+            // const otherBtns = document.querySelectorAll('.sub-level-btn');
+            // otherBtns.forEach((b) => {
+            //   b.dataset.subbed = 'false';
+            //   b.textContent = 'Подписаться';
+            // });
 
-            btn.dataset.subbed = 'true';
-            btn.textContent = 'Отписаться';
+            // btn.dataset.subbed = 'true';
+            // btn.textContent = 'Отписаться';
 
             profile.visiter_subscription_level_id = e.target.dataset.id;
-            api.follow(e.target.dataset.id, Number(id), profile.visiter_subscription_id);
+            const subResponse = await api.follow(e.target.dataset.id, Number(id), profile.visiter_subscription_id);
+            if (response.data.body !== undefined) {
+              window.location.href = response.data.body.redirect_url;
+            }
           }
         });
       });

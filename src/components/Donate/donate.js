@@ -20,7 +20,7 @@ export default async (receiver) => {
     });
   document.querySelector(SEND_DONATE_BUTTON_ID).addEventListener('click', async () => {
     const sum = document.querySelector(DONATE_SUM_INPUT_CLASS).value;
-    if (sum <= 10) {
+    if (sum < 10) {
       const errEl = document.querySelector(ERROR_TEXT_CLASS);
       errEl.textContent = MIN_SUM_ERROR_TEXT;
     } else {
