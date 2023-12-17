@@ -253,7 +253,7 @@ export default async () => {
             profile.visiter_subscription_level_id = e.target.dataset.id;
             const subResponse = await api.follow(e.target.dataset.id, Number(id), profile.visiter_subscription_id);
             if (subResponse.data.body !== undefined) {
-              window.location.href = response.data.body.redirect_url;
+              window.location.href = subResponse.data.body.redirect_url;
             }
           }
         });
