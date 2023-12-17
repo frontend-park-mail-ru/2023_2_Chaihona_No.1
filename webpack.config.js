@@ -71,7 +71,8 @@ module.exports = [
                 "crypto": require.resolve("crypto-browserify"),
                 "http": require.resolve("stream-http"),
                 "url": require.resolve("url/"),
-                "net": require.resolve("net-browserify")
+                "net": require.resolve("net-browserify"),
+                "process": require.resolve("process/browser")
             }
         },
         output: {
