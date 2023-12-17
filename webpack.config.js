@@ -13,6 +13,7 @@ module.exports = [
             hot: true,
         },
         module: {
+            exprContextCritical: false,
             rules: [
                 {test: /\.(gif|png)$/i, type: 'asset/resource'},
                 {test: /\.svg/, type: 'asset/inline'},
@@ -27,7 +28,7 @@ module.exports = [
                             path.resolve(__dirname, 'src/components/SubLevel'),
                             path.resolve(__dirname, 'src/components/Post'),
                             path.resolve(__dirname, 'src/components/Donate'),],
-			encoding: 'utf-8',
+			            encoding: 'utf-8',
                     }
                 },
                 {
