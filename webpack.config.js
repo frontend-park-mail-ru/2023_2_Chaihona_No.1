@@ -66,7 +66,11 @@ module.exports = [
                 "fs": false, // Можно использовать пустой модуль, так как fs не используется в браузере
                 "stream": require.resolve("stream-browserify"),
                 "assert": require.resolve('assert'),
-                "util": require.resolve('util')
+                "util": require.resolve('util'),
+                "crypto": require.resolve("crypto-browserify"),
+                "http": require.resolve("stream-http"),
+                "url": require.resolve("url/"),
+                "net": require.resolve("net-browserify")
             }
         },
         output: {
