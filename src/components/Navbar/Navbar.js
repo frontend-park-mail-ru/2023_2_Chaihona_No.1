@@ -8,8 +8,8 @@ import downArrowImage from '@static/icons/down-arrow.png';
 import { Api } from '@modules/api';
 import css from './navbar.scss';
 import profile from '../AuthorProfile/profile';
-import { render } from 'nunjucks';
-import { root } from 'postcss';
+// import { render } from 'nunjucks';
+// import { root } from 'postcss';
 
 const NAVBAR_ELEMENT_ID = '#navbar';
 const LOGIN_BUTTON_ID = '#login-btn';

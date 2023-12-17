@@ -20,7 +20,6 @@ import targetCss from '@components/Target/target.scss';
 import uProfileCss from '@components/UserProfile/user_profile.scss';
 // import commentCss from '@components/Comment/comment.css';
 import subLevelCss from '@components/SubLevel/sub_level.scss';
-import { response } from 'express';
 
 
 const imgExtRegExp = /(jp(e)?g|png)$/;
