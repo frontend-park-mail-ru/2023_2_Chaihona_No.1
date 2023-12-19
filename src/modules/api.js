@@ -342,4 +342,15 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url.replace('{id}', Number(commentId));
     return this.make_request(url, endpoint.method);
   }
+
+  /**
+   * Добавление нового поста
+   * @param comment - коммент
+   * @returns {Promise<{data: *, status: number}|{data: null, status: number}>}
+   */
+  async analytics() {
+    const endpoint = restEndpoints.analytics;
+    const url = backendUrl + endpoint.url;
+    return this.make_request(url, endpoint.method);
+  }
 }

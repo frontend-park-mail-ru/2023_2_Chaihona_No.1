@@ -14,6 +14,10 @@ export const backendUrl = 'https://my-kopilka.ru/api/v1';
  * Все возможные endpoint'ы и их методы
  */
 export const restEndpoints = {
+  analytics: {
+    url: '/analytics',
+    method: GET_METHOD,
+  },
   createComment: {
     url: '/comment',
     method: POST_METHOD,
