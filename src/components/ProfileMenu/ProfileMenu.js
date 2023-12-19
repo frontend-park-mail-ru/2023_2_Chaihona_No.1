@@ -19,7 +19,7 @@ export default () => {
   const settingsBtn = document.getElementById(SETTINGS_MENU_BUTTON_ID);
   settingsBtn.children[0].src = settingsIcon;
   settingsBtn.addEventListener(MOUSE_CLICK_EVENT, (e) => window.router.redirect('/settings'));
-  const amalyticBtn = document.getElementById(PROFILE_MENU_BUTTON_ID);
+  const amalyticBtn = document.getElementById(PROFILE_MENU_ANALYTICS_ID);
   amalyticBtn.children[0].src = profileIcon;
   amalyticBtn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
     // window.router.redirect(`/profile${window.user.id}`);
