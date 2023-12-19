@@ -84,20 +84,30 @@ export default async () => {
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach, ind) => {
             const attachesEl = document.getElementById('attaches-'+profilePost.id);
+            const currAttach = document.createElement('div');
+            currAttach.classList.add('post-block');
             if (attachesEl === null || attachesEl === undefined) {
               return
             }
+            if (attach.isMedia === false) {
+              const txt = document.createElement('p');
+              txt.textContent = attach.data;
+              currAttach.appendChild(txt);
+              attachesEl.appendChild(currAttach);
+              return;
+            }
             if (checkImgExtension(attach.file_path)){
               const image = document.createElement('img');
-              image.height = 100;
               image.src = atob(attach.data);
               image.classList.add("post__image-attach");
-              attachesEl.appendChild(image);
+              image.classList.add('post-image');
+              currAttach.appendChild(image);
+              attachesEl.appendChild(currAttach);
               return;
             }
             if (attach.file_path.endsWith(".mp4")){
               const video = document.createElement('video');
-              video.height = 100;
+              video.classList.add('post-image');
               video.src = atob(attach.data);
               video.controls = true;
               attachesEl.appendChild(video);

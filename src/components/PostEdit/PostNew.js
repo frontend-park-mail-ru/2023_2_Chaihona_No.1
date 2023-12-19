@@ -3,8 +3,6 @@ import postEdit from "@components/PostEdit/PostEdit.handlebars";
 
 import css from "@components/PostEdit/PostEdit.scss";
 import { Api } from "@modules/api";
-// import { urlencoded } from "body-parser";
-// import { format } from "path";
 
 const BACK_ELEMENT_ID = "back";
 const PUBLISH_ELEMENT_ID = "publish";
@@ -17,6 +15,10 @@ const SUB_ERROR_CLASS = ".post-edit__sub-params-error";
 const videoExtRegExp = /(mp4)$/;
 const audioExtRegExp = /(mp3)$/;
 const imgExtRegExp = /(jp(e)?g|png)$/;
+
+
+let pinned = [];
+let pinnedSize = 0;
 
 function checkImgExtension(imgName) {
   const re = new RegExp(imgExtRegExp);
@@ -33,7 +35,81 @@ function checkAudioExtension(audioName) {
   return re.test(audioName);
 }
 
+
+function keyDownListen(event) {
+  const postDescription = document.querySelector('.post-edit__params-description');
+  if (event.keyCode === 13) {
+    let idx = Number(event.target.getAttribute('data-idx'));
+    while ((idx+1 < postDescription.children.length)) {
+      if ((pinned[idx+1])) {
+        if ((pinned[idx+1].isMedia)) {
+          idx = idx + 1;
+        } else {
+          break;
+        }
+      }
+    }
+    event.preventDefault();
+    const newPostBlock = document.createElement("div");
+    newPostBlock.innerHTML = '<p></p>';
+    newPostBlock.classList.add('post-block');
+    newPostBlock.contentEditable = 'true';
+    newPostBlock.addEventListener('keydown', keyDownListen);
+    newPostBlock.addEventListener('blur', changeListen);
+    newPostBlock.setAttribute('data-idx', String(idx+1));
+    let focus = idx+1;
+    if (idx === postDescription.children.length - 1) {
+      postDescription.appendChild(newPostBlock);
+      pinned.push({
+        data: newPostBlock.textContent,
+        name: 'text',
+        isMedia: false,
+      });
+    } else {
+      postDescription.insertBefore(newPostBlock, postDescription.children[idx+1]);
+      pinned.splice(idx+1, 0, {
+        data: newPostBlock.textContent,
+        name: 'text',
+        isMedia: false,
+      });
+      for (let i = idx + 2; i<=postDescription.children.length-1; i++) {
+        postDescription.children.item(i).setAttribute('data-idx', String(i));
+      }
+    }
+    console.log('focus = ', focus);
+    const abc = postDescription.children.item(focus);
+    abc.focus();
+  }
+  if ((event.keyCode === 8) && (postDescription.children.length > 1)) {
+    if (event.target.textContent === '') {
+      let idx = Number(event.target.getAttribute('data-idx'));
+      pinned[idx] = undefined;
+      event.preventDefault();
+      event.target.remove();
+      idx = idx-1;
+      while (pinned[idx] === undefined) {
+        idx = idx - 1;
+      }
+      const abc = postDescription.children.item(idx);
+      abc.focus();
+      document.execCommand('selectAll', false, null);
+      document.getSelection().collapseToEnd();
+    }
+  }
+}
+
+function changeListen (event) {
+  const idx = Number(event.target.getAttribute('data-idx'));
+  if (pinned[idx]) {
+    pinned[idx].data = event.target.children[0].textContent;
+  }
+}
+
+
+
+
 export default async () => {
+  pinned = [];
   const api = new Api();
 
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
@@ -41,9 +117,24 @@ export default async () => {
     new: true,
     sub_levels: window.sub_levels,
   });
+  const postBlocks = document.querySelectorAll('.post-block');
+  const postDescription = document.querySelector('.post-edit__params-description');
+
+  postBlocks.forEach(postBlock => {
+    postBlock.setAttribute('data-idx', String(pinned.length));
+    pinned.push({
+      data: postBlock.children[0].textContent,
+      name: 'text',
+      isMedia: false,
+    });
+    postBlock.addEventListener('keydown', keyDownListen);
+    postBlock.addEventListener('blur', changeListen);
+  });
+
+
   const backElement = document.getElementById(BACK_ELEMENT_ID);
   const headerEl = document.getElementById(THEME_INPUT_ID);
-  const bodyEl = document.getElementById(TEXT_INPUT_ID);
+  //const bodyEl = document.getElementById(TEXT_INPUT_ID);
 
   backElement.addEventListener("click", () => {
     window.history.back();
@@ -55,14 +146,14 @@ export default async () => {
   ) {
     const lastEditedPost = window.history.state.post;
     headerEl.value = lastEditedPost.header;
-    bodyEl.value = lastEditedPost.body;
+    //bodyEl.value = lastEditedPost.body;
     if (lastEditedPost.level) {
       const subEl = document.getElementById(`${lastEditedPost.level}level`);
       subEl.checked = true;
     }
   }
 
-  [headerEl, bodyEl].forEach((changableEl) =>
+  [headerEl].forEach((changableEl) =>
     changableEl.addEventListener("input", () => {
       const levelEl = document.querySelector("input:checked");
       let level = null;
@@ -70,7 +161,7 @@ export default async () => {
         level = levelEl.id[0];
       }
       const newData = {
-        post: { header: headerEl.value, body: bodyEl.value, level },
+        post: { header: headerEl.value, body: '', level },
       };
       window.history.replaceState(newData, null, window.location.pathname);
     }),
@@ -88,13 +179,11 @@ export default async () => {
         level = levelEl.id[0];
       }
       const newData = {
-        post: { header: headerEl.value, body: bodyEl.value, level },
+        post: { header: headerEl.value, body: '', level },
       };
       window.history.replaceState(newData, null, window.location.pathname);
     }),
   );
-  let pinned = [];
-  let pinnedSize = 0;
   const attachesEl = document.querySelector(".post-edit__attaches");
   const uploadImgButton = document.getElementById("upload-img");
 
@@ -109,7 +198,7 @@ export default async () => {
 
         const upImage = reader.result;
         const image = new Image();
-        image.height = 100;
+        image.classList.add('post-image');
         image.title = file.name;
         image.src = upImage;
 
@@ -124,15 +213,21 @@ export default async () => {
           delete pinned[Number(e.target.name)];
         });
 
-        div.appendChild(deleteBtn);
         div.appendChild(image);
-        attachesEl.appendChild(div);
+        div.appendChild(deleteBtn);
+        const newPostBlock = document.createElement("div");
+        newPostBlock.appendChild(div);
+        newPostBlock.classList.add('post-block');
+        //newPostBlock.contentEditable = 'true';
+        newPostBlock.addEventListener('keydown', keyDownListen);
+        postDescription.appendChild(newPostBlock);
         if (!isError) {
           errorElement.textContent = '';
         }
         pinned.push({
           data: btoa(upImage),
           name: file.name,
+          isMedia: true,
         });
         pinnedSize += file.size;
       });
@@ -174,7 +269,7 @@ export default async () => {
 
         const upVideo = reader.result;
         const video = document.createElement("video");
-        video.height = 100;
+        video.classList.add('post-image');
         video.title = file.name;
         video.src = upVideo;
         video.controls = true;
@@ -190,15 +285,21 @@ export default async () => {
           delete pinned[Number(e.target.name)];
         });
 
-        div.appendChild(deleteBtn);
         div.appendChild(video);
-        attachesEl.appendChild(div);
+        div.appendChild(deleteBtn);
+        const newPostBlock = document.createElement("div");
+        newPostBlock.appendChild(div);
+        newPostBlock.classList.add('post-block');
+        //newPostBlock.contentEditable = 'true';
+        newPostBlock.addEventListener('keydown', keyDownListen);
+        postDescription.appendChild(newPostBlock);
         if (!isError) {
           errorElement.textContent = '';
         }
         pinned.push({
           data: btoa(upVideo),
           name: file.name,
+          isMedia: true,
         });
         pinnedSize += file.size;
       });
@@ -257,13 +358,19 @@ export default async () => {
 
         div.appendChild(deleteBtn);
         div.appendChild(audio);
-        attachesEl.appendChild(div);
+        const newPostBlock = document.createElement("div");
+        newPostBlock.appendChild(div);
+        newPostBlock.classList.add('post-block');
+        //newPostBlock.contentEditable = 'true';
+        newPostBlock.addEventListener('keydown', keyDownListen);
+        postDescription.appendChild(newPostBlock);
         if (!isError) {
           errorElement.textContent = '';
         }
         pinned.push({
           data: btoa(upAudio),
           name: file.name,
+          isMedia: true,
         });
         pinnedSize += file.size;
       });
@@ -338,15 +445,23 @@ export default async () => {
           delete pinned[Number(e.target.name)];
         });
 
+
+        let idx = Number(event.target.getAttribute('data-idx'));
         div.appendChild(deleteBtn);
         div.appendChild(doc);
-        attachesEl.appendChild(div);
+        const newPostBlock = document.createElement("div");
+        newPostBlock.appendChild(div);
+        newPostBlock.classList.add('post-block');
+        //newPostBlock.contentEditable = 'true';
+        newPostBlock.addEventListener('keydown', keyDownListen);
+        postDescription.appendChild(newPostBlock);
         if (!isError) {
           errorElement.textContent = '';
         }
         pinned.push({
           data: btoa(upFile),
           name: file.name,
+          isMedia: true,
         });
         pinnedSize += file.size;
       });
@@ -376,10 +491,10 @@ export default async () => {
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
   verifyButton.addEventListener("click", () => {
     const header = headerEl.value;
-    const body = bodyEl.value;
+    const body = '';
     const postTags = null;
     const checked = document.querySelector("input:checked");
-    if (body === "" || header === "") {
+    if (pinned.length === 0 || header === "") {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
       errorEl.textContent = "Тема или текст поста не могут быть пустыми";
     } else if (checked === null) {
@@ -388,6 +503,7 @@ export default async () => {
     } else {
       const min_subscription_level_id = Number(checked.value);
       const attaches = pinned.filter(i => i !== undefined && i !==null);
+      //const  attaches = null;
       api.newPost({
         header,
         min_subscription_level_id,
