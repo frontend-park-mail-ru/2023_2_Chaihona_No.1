@@ -19,19 +19,19 @@
     font-weight: 600;
   }
 
-  &__attaches {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    &__attach {
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 5px;
-      height: 100px;
-      width: 100px;
-    }
-  }
+  //&__attaches {
+  //  display: flex;
+  //  flex-direction: row;
+  //  flex-wrap: wrap;
+  //  gap: 15px;
+  //  &__attach {
+  //    display: flex;
+  //    flex-direction: column-reverse;
+  //    gap: 5px;
+  //    height: 100px;
+  //    width: 100px;
+  //  }
+  //}
 
   &__grid{
     height: 100%;
@@ -47,7 +47,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    // height: 45vh;
   }
 
   &__sub-params{
@@ -83,12 +82,12 @@
   }
 
   &__params-description{
-    display: block;
-    font-size: 20px;
-    border: none;
-    height: 100px;
-    width: 100%;
-    resize: none;
+    //display: block;
+    //font-size: 20px;
+    //border: none;
+    //width: 100%;
+    //resize: none;
+    //height: fit-content;
   }
 
   &__params-tags{
@@ -187,6 +186,30 @@ td, label {
 //  margin-left: 1vw;
 //}
 
-.post-edit__attaches__attach__delete-btn {
-  @include main-color-button;
+.post-block {
+  outline: none;
+  height: fit-content;
+  margin: 0;
+  user-select: text;
 }
+
+.post-block p {
+  padding: 7px 0;
+  margin: 0;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-edit__attaches__attach__delete-btn {
+  border: none;
+  background: none;
+  color: gray;
+  font-style: italic;
+  height: auto;
+  cursor: pointer;
+}
+
