@@ -23,8 +23,6 @@ export default () => {
   amalyticBtn.children[0].src = profileIcon;
   amalyticBtn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
     // window.router.redirect(`/profile${window.user.id}`);
-    const api = new Api();
-    const analyticsRequest = await api.analytics();
-    console.log(analyticsRequest.body);
+    return window.router.redirect('/analytics');
   });
 };

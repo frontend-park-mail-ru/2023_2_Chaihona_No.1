@@ -1,21 +1,101 @@
-<div class="statistic">
-  <div class="statistic__blocks">
-    {{#each questions}}
-      <div class="statistic__blocks__block">
-        <div class="statistic__blocks__block__question">
-          Вопрос: {{this.question}}
+<div class="statistics">
+    <h1 style="margin-top: 2vh">Ваша статистика</h1>
+    <h2>За всё время</h2>
+    <div class="statistics__block_subs">
+        <img class="statistics__block-img" src="">
+        <div class="statistics__block-content">
+            {{analytics.total_subscribers}} <br>
+            <span style="color: #7c7c7c"> Подписчиков </span>
         </div>
-        {{#each this.rating}}
-          <div class="statistic__blocks__block__ratings">
-            <div class="statistic__blocks__block__ratings__rating">
-              {{this.rating}} -
+    </div>
+    <div class="statistics-list">
+        <div class="statistics__block_common">
+            <img class="statistics__block-img post-img" src="icons/share.svg">
+            <div class="statistics__block-content">
+                {{analytics.total_posts}} <br>
+                <span style="color: #7c7c7c"> Постов </span>
             </div>
-            <div class="statistic__blocks__block__rating__answers">
-              {{this.answers}}
+        </div>
+        <div class="statistics__block_common">
+            <img class="statistics__block-img like-img" src="icons/like.svg">
+            <div class="statistics__block-content">
+                {{analytics.total_likes}} <br>
+                <span style="color: #7c7c7c"> Лайков </span>
             </div>
-          </div>
-        {{/each}}
-      </div>
-    {{/each}}
-  </div>
+        </div>
+        <div class="statistics__block_common">
+            <img class="statistics__block-img comment-img" src="icons/comment.svg">
+            <div class="statistics__block-content">
+                {{analytics.total_comments}} <br>
+                <span style="color: #7c7c7c"> Комментариев </span>
+            </div>
+        </div>
+
+        <br><br>
+    </div>
+    <div>
+        <table class="stat-variants">
+            <td>
+                <span style="font-weight: bold;"> {{analytics.total_donations}} </span><br>
+                Получено донатов
+            </td>
+            <td>
+                <span style="font-weight: bold;"> {{analytics.total_donations_earned_integer}}.{{analytics.total_donations_earned_fractional}}₽ </span><br>
+                Сумма донатов
+            </td>
+            <td>
+                <span style="font-weight: bold;"> {{analytics.total_earned_integer}}.{{analytics.total_earned_fractional}}₽ </span><br>
+                Всего заработано
+            </td>
+        </table>
+    </div>
+    <h2>Прирост за последний месяц</h2>
+    <div class="statistics__block_subs">
+        <img class="statistics__block-img" src="css/Account.svg">
+        <div class="statistics__block-content">
+            {{analytics.difference_subscribers}} <br>
+            <span style="color: #7c7c7c"> Подписчиков </span>
+        </div>
+    </div>
+    <div class="statistics-list">
+        <div class="statistics__block_common">
+            <img class="statistics__block-img post-img" src="icons/share.svg">
+            <div class="statistics__block-content">
+                {{analytics.difference_posts}} <br>
+                <span style="color: #7c7c7c"> Постов </span>
+            </div>
+        </div>
+        <div class="statistics__block_common">
+            <img class="statistics__block-img like-img" src="icons/like.svg">
+            <div class="statistics__block-content">
+                {{analytics.difference_likes}} <br>
+                <span style="color: #7c7c7c"> Лайков </span>
+            </div>
+        </div>
+        <div class="statistics__block_common">
+            <img class="statistics__block-img comment-img" src="icons/comment.svg">
+            <div class="statistics__block-content">
+                {{analytics.difference_comments}} <br>
+                <span style="color: #7c7c7c"> Комментариев </span>
+            </div>
+        </div>
+
+        <br><br>
+    </div>
+    <div>
+        <table class="stat-variants">
+            <td>
+                <span style="font-weight: bold;"> {{analytics.difference_donations}} </span><br>
+                Получено донатов
+            </td>
+            <td>
+                <span style="font-weight: bold;"> {{analytics.difference_donations_earned_integer}}.{{analytics.difference_donations_earned_fractional}}₽ </span><br>
+                Сумма донатов
+            </td>
+            <td>
+                <span style="font-weight: bold;"> {{analytics.difference_donations_earned_integer}}.{{analytics.difference_donations_earned_fractional}}₽ </span><br>
+                Всего заработано
+            </td>
+        </table>
+    </div>
 </div>
