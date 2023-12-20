@@ -326,6 +326,7 @@ export default async () => {
         const attach = {
           data: btoa(upImage),
           name: file.name,
+          isMedia: true,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
 
@@ -384,6 +385,7 @@ export default async () => {
         const attach = {
           data: btoa(upVideo),
           name: file.name,
+          isMedia: true,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
 
@@ -441,6 +443,7 @@ export default async () => {
         const attach = {
           data: btoa(upAudio),
           name: file.name,
+          isMedia: true,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
 
@@ -514,6 +517,7 @@ export default async () => {
         const attach = {
           data: btoa(upFile),
           name: file.name,
+          isMedia: true,
         };
         const deleteBtn = createDeleteBtn(div, attach, pinned, true);
 
