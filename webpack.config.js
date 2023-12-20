@@ -88,7 +88,7 @@ module.exports = [
             new HtmlWebpackPlugin({template: './index.html'}),
             new CopyPlugin({
                 patterns: [
-                    {from: path.resolve(__dirname, 'src/sw.js'), to: ''},
+                    {from: path.resolve(__dirname, 'src/firebase-messaging-sw.js'), to: ''},
                 ],
             }),
             new webpack.ProvidePlugin({

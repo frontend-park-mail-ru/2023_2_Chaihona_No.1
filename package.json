@@ -33,6 +33,7 @@
     "css-loader": "^6.8.1",
     "debug": "^4.3.4",
     "express": "^4.18.2",
+    "firebase": "^10.7.1",
     "fs": "^0.0.1-security",
     "graceful-fs": "^4.2.11",
     "handlebars": "^4.7.8",

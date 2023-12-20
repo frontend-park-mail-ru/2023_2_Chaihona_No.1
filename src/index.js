@@ -2,26 +2,32 @@ import { Router } from '@modules/router.js';
 import navbar from '@components/Navbar/Navbar.js';
 import { Api } from '@modules/api.js';
 import {url} from '@configs/rest_config';
+// importScripts('https://www.gstatic.com/firebasejs/3.6.8/firebase-app.js');
+// importScripts('https://www.gstatic.com/firebasejs/3.6.8/firebase-messaging.js');
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: '/' })
+    .then((reg) => {
+      console.log('sw success', reg);
+    })
+    .catch((error) => {
+      console.log('sw fail 2', error);
+    });
+}
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-//
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.getRegistration(url)
-//     .then(registrations => {
-//       if (registrations !== undefined) {
-//           registrations.update();
-//       }
-//       navigator.serviceWorker.register('/sw.js', { scope: '/' })
-//         .then((reg) => {
-//           console.log('sw success', reg);
-//         })
-//         .catch((error) => {
-//           console.log('sw fail 2', error);
-//         });
-//     });
-// }
+firebase.initializeApp({
+  messagingSenderId: '87099817426'
+});
+
+// браузер поддерживает уведомления
+// вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
+if ('Notification' in window) {
+  window.messaging = firebase.messaging();
+  // пользователь уже разрешил получение уведомлений
+  // подписываем на уведомления если ещё не подписали
+  // subscribe();
+  if (Notification.permission === 'granted') {
+  }
+}
 
 
 const router = new Router();

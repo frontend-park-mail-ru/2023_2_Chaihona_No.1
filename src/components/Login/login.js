@@ -63,6 +63,64 @@ export default async () => {
     const user = { id: result.data.body.id };
     window.user = user;
     await navbar(user);
+    subscribe();
     window.router.redirect(`/profile${user.id}`);
   });
 };
+
+function subscribe() {
+  // запрашиваем разрешение на получение уведомлений
+  window.messaging.requestPermission()
+      .then(function () {
+          // получаем ID устройства
+          window.messaging.getToken()
+              .then(function (currentToken) {
+                  console.log(currentToken);
+
+                  if (currentToken) {
+                      sendTokenToServer(currentToken);
+                  } else {
+                      console.warn('Не удалось получить токен.');
+                      setTokenSentToServer(false);
+                  }
+              })
+              .catch(function (err) {
+                  console.warn('При получении токена произошла ошибка.', err);
+                  setTokenSentToServer(false);
+              });
+  })
+  .catch(function (err) {
+      console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+  });
+}
+
+// отправка ID на сервер
+async function sendTokenToServer(currentToken) {
+  if (!isTokenSentToServer(currentToken)) {
+      console.log('Отправка токена на сервер...');
+
+      const api = new Api();
+      await api.addDevice(currentToken);
+      // var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
+      // $.post(url, {
+      //     token: currentToken
+      // });
+
+      setTokenSentToServer(currentToken);
+  } else {
+      console.log('Токен уже отправлен на сервер.');
+  }
+}
+
+// используем localStorage для отметки того,
+// что пользователь уже подписался на уведомления
+function isTokenSentToServer(currentToken) {
+  return window.localStorage.getItem('sentFirebaseMessagingToken') == currentToken;
+}
+
+function setTokenSentToServer(currentToken) {
+  window.localStorage.setItem(
+      'sentFirebaseMessagingToken',
+      currentToken ? currentToken : ''
+  );
+}
