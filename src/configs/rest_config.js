@@ -7,10 +7,10 @@ const DELETE_METHOD = 'DELETE';
  * @type {string}
  */
 
-// export const url = '212.233.89.163'
-export const url = 'localhost'
-export const backendUrl = 'http://' + url + ':8001/api/v1';
-// export const backendUrl = 'https://my-kopilka.ru/api/v1';
+export const url = '212.233.89.163'
+// export const url = 'localhost'
+// export const backendUrl = 'http://' + url + ':8001/api/v1';
+export const backendUrl = 'https://my-kopilka.ru/api/v1';
 /**
  * Все возможные endpoint'ы и их методы
  */
