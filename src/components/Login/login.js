@@ -74,9 +74,10 @@ function subscribe() {
       .then(function () {
           // получаем ID устройства
           window.messaging.getToken()
-              .then(function (currentToken) {
+              .then(async function (currentToken) {
                   console.log(currentToken);
-
+                  const api = new Api();
+                  await api.addDevice(currentToken);
                   if (currentToken) {
                       sendTokenToServer(currentToken);
                   } else {
@@ -96,11 +97,10 @@ function subscribe() {
 
 // отправка ID на сервер
 async function sendTokenToServer(currentToken) {
+
   if (!isTokenSentToServer(currentToken)) {
       console.log('Отправка токена на сервер...');
 
-      const api = new Api();
-      await api.addDevice(currentToken);
       // var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
       // $.post(url, {
       //     token: currentToken
