@@ -9,6 +9,7 @@ import sendIcon from '@static/icons/send.svg';
 import { comment } from 'postcss';
 import CommentHB from '@components/Comment/comment.handlebars';
 import commentJS from '@components/Comment/comment.js';
+import { isAwaitKeyword } from 'typescript';
 
 const SUBMENU_ID = 'submenu';
 const HEADER_ID = 'header';
@@ -23,7 +24,7 @@ const LIKE_ICON_CLASS = '.post__like-comments-share_like';
 const SEND_ICON_CLASS = '.post__comment-input-send-button';
 const INPUT_AVA_IMG_CLASS = '.post__comment-input-ava';
 
-export default (isOwner, userAva, posts) => {
+export default (isOwner, userAva, posts, isFeed=false) => {
   const sendButtons = document.querySelectorAll(SEND_ICON_CLASS);
   sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
 
@@ -89,6 +90,8 @@ export default (isOwner, userAva, posts) => {
     // alert('Комментарии будут на РК4');
   }));
 
+
+
   if (isOwner) {
     const postSettingsButton = document.querySelectorAll(POST_SETTINGS_ICON_CLASS);
     postSettingsButton.forEach((settingsButton) => settingsButton.src = postOptionsIcon);
@@ -132,6 +135,16 @@ export default (isOwner, userAva, posts) => {
 
   // document.querySelectorAll('.comment-ava-img').forEach((commentAva) => commentAva.src = userAva);
   document.querySelectorAll(INPUT_AVA_IMG_CLASS).forEach((inputAva) => inputAva.children[0].src = userAva);
+  if (isFeed) {
+    const auhtorAvaEl = document.querySelectorAll('.post__date-input-ava');
+    authorAva.style.display = 'flex';
+    auhtorAvaEl.forEach(async (creatorAva) => {
+      const api = new Api();
+      const authorAva = await api.getAvatar(Number(creatorAva.data.author));
+      creatorAva.children[0].src = authorAva;
+    });
+  }
+
 
   const postLikeButton = document.querySelectorAll(LIKE_ICON_CLASS);
   postLikeButton.forEach((likeButton) => likeButton.src = likeIcon);

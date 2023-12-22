@@ -117,6 +117,7 @@ export default async () => {
     const newLoginField = document.getElementById(LOGIN_ELEMENT_ID);
     const newPassField = document.getElementById(NEW_PASS_ELEMENT_ID);
     const oldPassField = document.getElementById(OLD_PASS_ELEMENT_ID);
+    const repeatNewPassField = document.getElementById('#new-password-repeat');
     const newLogin = newLoginField.value;
     const newPass = newPassField.value;
     const oldPass = oldPassField.value;
@@ -135,6 +136,11 @@ export default async () => {
         errorElement.textContent = PASS_REQUIREMENTS_TEXT;
         return;
       }
+      if (repeatNewPassField.value !== newPass) {
+        errorElement.textContent = "Пароли не совпадают";
+        return;
+      }
+
       formData.append('new_password', newPass);
     }
     if (oldPass !== '') {
@@ -143,6 +149,10 @@ export default async () => {
         return;
       }
       formData.append('old_password', oldPass);
+    }
+    if (newPass === oldPass && oldPass !== '') {
+      errorElement.textContent = 'Новый пароль совпадает со старым';
+      return;
     }
 
     formData.append('id', profile.user.id);

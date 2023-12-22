@@ -554,7 +554,7 @@ export default async () => {
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
-  verifyButton.addEventListener('click', () => {
+  verifyButton.addEventListener('click', async () => {
     const header = headerEl.value;
     const body = '';
     const postTags = null;
@@ -565,9 +565,18 @@ export default async () => {
     } else {
       pinned.files = pinned.files.filter(i => i !== undefined && i !==null);
       console.log(pinned);
-      api.editPost({
+      const editRequest = await api.editPost({
         header, min_subscription_level_id, body, postTags, id, pinned
       });
+      if (editRequest.status >= 400) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        if (editRequest.status === 521) {
+          errorEl.textContent = 'Ошибка: нет подключения к Интернету!';
+          return;
+        }
+        errorEl.textContent = "Произошла ошибка при редактировании поста, попробуйте позже";
+        return;
+      }
       delete window.post;
       window.router.redirect(`profile${window.user.id}`);
     }

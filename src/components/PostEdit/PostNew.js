@@ -489,14 +489,14 @@ export default async () => {
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
-  verifyButton.addEventListener("click", () => {
+  verifyButton.addEventListener("click", async () => {
     const header = headerEl.value;
     const body = '';
     const postTags = null;
     const checked = document.querySelector("input:checked");
     if (pinned.length === 0 || header === "") {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
-      errorEl.textContent = "Тема или текст поста не могут быть пустыми";
+      errorEl.textContent = "Заголовок или текст поста не могут быть пустыми";
     } else if (checked === null) {
       const errorEl = document.querySelector(SUB_ERROR_CLASS);
       errorEl.textContent = "Выберите уровень доступа";
@@ -504,13 +504,22 @@ export default async () => {
       const min_subscription_level_id = Number(checked.value);
       const attaches = pinned.filter(i => i !== undefined && i !==null);
       //const  attaches = null;
-      api.newPost({
+      const createRequest = await api.newPost({
         header,
         min_subscription_level_id,
         body,
         postTags,
         attaches,
       });
+      if (createRequest.status >= 400) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        if (createRequest.status === 521) {
+          errorEl.textContent = 'Ошибка: нет подключения к Интернету!';
+          return;
+        }
+        errorEl.textContent = "Произошла ошибка при создании поста, попробуйте позже";
+        return;
+      }
       window.history.back();
     }
   });
