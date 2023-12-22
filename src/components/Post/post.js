@@ -142,6 +142,10 @@ export default (isOwner, userAva, posts, isFeed=false) => {
       const api = new Api();
       const authorAva = await api.getAvatar(Number(creatorAva.dataset.author));
       creatorAva.children[0].src = authorAva;
+      creatorAva.addEventListener('click', () => {
+        window.router.redirect(`profile${creatorAva.dataset.author}`);
+        return;
+      });
     });
   }
 
