@@ -140,7 +140,7 @@ export default (isOwner, userAva, posts, isFeed=false) => {
     auhtorAvaEl.forEach(async (creatorAva) => {
       creatorAva.style.display = 'flex';
       const api = new Api();
-      const authorAva = await api.getAvatar(Number(creatorAva.data.author));
+      const authorAva = await api.getAvatar(Number(creatorAva.dataset.author));
       creatorAva.children[0].src = authorAva;
     });
   }
