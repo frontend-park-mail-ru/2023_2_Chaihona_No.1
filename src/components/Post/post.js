@@ -137,7 +137,7 @@ export default (isOwner, userAva, posts, isFeed=false) => {
   document.querySelectorAll(INPUT_AVA_IMG_CLASS).forEach((inputAva) => inputAva.children[0].src = userAva);
   if (isFeed) {
     const auhtorAvaEl = document.querySelectorAll('.post__date-input-ava');
-    authorAva.style.display = 'flex';
+    auhtorAvaEl.style.display = 'flex';
     auhtorAvaEl.forEach(async (creatorAva) => {
       const api = new Api();
       const authorAva = await api.getAvatar(Number(creatorAva.data.author));
