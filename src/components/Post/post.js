@@ -2,8 +2,8 @@ import { Api } from '@modules/api';
 
 import postOptionsIcon from '@static/icons/post_opts.svg';
 // import likeIcon from '@static/icons/like.svg';
-import liked from `@static/icons/liked.png`;
-import unliked from `@static/icons/favourite.png`;
+import liked from '@static/icons/liked.png';
+import unliked from '@static/icons/favourite.png';
 import commentIcon from '@static/icons/comment.svg';
 import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
