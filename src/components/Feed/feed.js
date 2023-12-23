@@ -21,7 +21,7 @@ export default async () => {
     response.data.body.posts.forEach(async (profilePost) => {
       if (profilePost.has_access) {
         const attachRequest = await api.getPostAttaches(profilePost.id);
-        if (attachRequest.status >= MIN_FAIL_RESPONSE) {
+        if (attachRequest.status >= 399) {
           // window.router.redirect(NOT_FOUND_URL);
           return
         }
