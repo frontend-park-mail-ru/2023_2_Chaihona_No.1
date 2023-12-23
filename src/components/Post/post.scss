@@ -119,7 +119,9 @@
       aspect-ratio: 1/1;
     }
   }
-
+  &__like-comments-share-like{
+    cursor: pointer;
+  }
   &__like-comments-share-like_clicked{
     cursor: pointer;
     // background-color: #FF4D4D;
