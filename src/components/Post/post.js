@@ -2,8 +2,8 @@ import { Api } from '@modules/api';
 
 import postOptionsIcon from '@static/icons/post_opts.svg';
 // import likeIcon from '@static/icons/like.svg';
-import liked from '@static/icons/liked.png';
-import unliked from '@static/icons/favourite.png';
+import likedImg from '@static/icons/liked.png';
+import unlikedImg from '@static/icons/favourite.png';
 import commentIcon from '@static/icons/comment.svg';
 import shareIcon from '@static/icons/share.svg';
 import sendIcon from '@static/icons/send.svg';
@@ -155,9 +155,9 @@ export default (isOwner, userAva, posts, isFeed=false) => {
   const postLikeButton = document.querySelectorAll(LIKE_ICON_CLASS);
   postLikeButton.forEach((likeButton) => {
     if (likeButton.dataset.liked) {
-      likeButton.src = liked;
+      likeButton.src = likedImg;
     } else {
-      likeButton.src = unliked;
+      likeButton.src = unlikedImg;
     }
   });
 
@@ -172,14 +172,14 @@ export default (isOwner, userAva, posts, isFeed=false) => {
       lks.classList.remove(CLICKED_LIKE_CLASS);
       likesCount.textContent = String(Number(likesCount.textContent) - 1);
       event.target.dataset.liked = false;
-      event.target.src = unliked;
+      event.target.src = unlikedImg;
     } else {
       const api = new Api();
       await api.likePost(id);
       lks.classList.add(CLICKED_LIKE_CLASS);
       likesCount.textContent = String(Number(likesCount.textContent) + 1);
       event.target.dataset.liked = true;
-      event.target.src = liked;
+      event.target.src = likedImg;
     }
   }));
 
