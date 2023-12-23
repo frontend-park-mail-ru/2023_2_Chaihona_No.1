@@ -75,7 +75,8 @@ export default async () => {
         if (profilePost.has_access) {
           const attachRequest = await api.getPostAttaches(profilePost.id);
           if (attachRequest.status >= MIN_FAIL_RESPONSE) {
-            window.router.redirect(NOT_FOUND_URL);
+            // window.router.redirect(NOT_FOUND_URL);
+            return
           }
           profilePost.attaches = attachRequest.data.body.attaches;
         } else {
