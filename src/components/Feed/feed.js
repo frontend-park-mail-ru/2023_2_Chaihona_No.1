@@ -4,6 +4,14 @@ import feed from '@components/Feed/feed.handlebars';
 import post from '@components/Post/post.js';
 import { Api } from '@modules/api.js';
 
+const imgExtRegExp = /(jp(e)?g|png)$/;
+
+
+function checkImgExtension(imgName) {
+  const re = new RegExp(imgExtRegExp);
+  return re.test(imgName);
+}
+
 export default async () => {
   const rootElement = document.querySelector('#root');
   const api = new Api();
