@@ -154,13 +154,9 @@ export default (isOwner, userAva, posts, isFeed=false) => {
 
   const postLikeButton = document.querySelectorAll(LIKE_ICON_CLASS);
   postLikeButton.forEach((likeButton) => {
-    if (likeButton.dataset.liked) {
-      console.log(likeButton.dataset.liked);
-      console.log(likeButton);
+    if (likeButton.dataset.liked === 'true') {
       likeButton.src = likedImg;
     } else {
-      console.log(likeButton.dataset.liked);
-      console.log(likeButton);
       likeButton.src = unlikedImg;
     }
   });
