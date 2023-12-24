@@ -311,7 +311,7 @@ export default async () => {
   const backElement = document.getElementById(BACK_ELEMENT_ID);
   const headerEl = document.getElementById(THEME_INPUT_ID);
   const bodyEl = document.getElementById(TEXT_INPUT_ID);
-
+  const tagEl = document.getElementById('tags');
   backElement.addEventListener(MOUSE_CLICK_EVENT, () => {
     window.history.back();
     return;
@@ -333,27 +333,26 @@ export default async () => {
 
   if (window.post !== undefined) {
     headerEl.value = window.post.header.trim();
-    //bodyEl.value = window.post.body.trim();
     const subEl = document.getElementById(`${window.post.level}level`);
     subEl.checked = true;
     pattaches = window.post.attaches;
     renderAttaches(window.post.attaches, pinned);
     const newData = { post: {
       header: headerEl.value,
-    //  body: bodyEl.value,
       level: window.post.level,
       attaches: window.post.attaches,
+      tags: window.post.tags,
     } };
     window.history.replaceState(newData, null, window.location.pathname);
+    tagEl.value = window.post.tags.join(' ');
     delete window.post;
   } else if (window.history.state.post !== undefined) {
     const lastEditedPost = window.history.state.post;
     headerEl.value = lastEditedPost.header;
-   // bodyEl.value = lastEditedPost.body;
     const subEl = document.getElementById(`${lastEditedPost.level}level`);
     subEl.checked = true;
     renderAttaches(lastEditedPost.attaches, pinned);
-    // tagEl.valueOf = lastEditedPost.tags
+    tagEl.value = lastEditedPost.tags.join(' ');
   }
 
   const attachesEl = document.querySelector(POSST_EDIT_ATTACHES);
@@ -608,16 +607,23 @@ export default async () => {
   verifyButton.addEventListener(MOUSE_CLICK_EVENT, async () => {
     const header = headerEl.value;
     const body = '';
-    const postTags = null;
     const min_subscription_level_id = Number(document.querySelector(INPUT_CHCKED).value);
     if (header === '') {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
       errorEl.textContent = 'Тема или текст поста не могут быть пустыми';
     } else {
       pinned.files = pinned.files.filter(i => i !== undefined && i !==null);
-      console.log(pinned);
+      const postTagsEl = document.getElementById('tags');
+      const postTags = postTagsEl.value.split(' ').filter((el) => el !== '').map((el) => {
+        return {name: el};
+      });
       const editRequest = await api.editPost({
-        header, min_subscription_level_id, body, postTags, id, pinned
+        header,
+        min_subscription_level_id,
+        body,
+        tags: postTags,
+        id,
+        pinned,
       });
       if (editRequest.status >= 400) {
         const errorEl = document.querySelector(PARAMS_ERROR_CLASS);

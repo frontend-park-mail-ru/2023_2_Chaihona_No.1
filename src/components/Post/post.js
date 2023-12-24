@@ -133,7 +133,10 @@ export default (isOwner, userAva, posts, isFeed=false) => {
         post.header = document.getElementById(`${HEADER_ID}-${id}`).textContent;
         post.body = document.getElementById(`${BODY_ID}-${id}`).textContent;
         post.level = document.getElementById(`${SUB_LEVEL_ID}-${id}`).textContent;
-		    post.tags = [];
+        const tagsEl = document.getElementById(`tags-${id}`).children;
+        post.tags = tagsEl.map((el) => {
+          return {name: el.innerHTML};
+        });
         const curPost = posts.find(p => p.id === Number(id));
         if (curPost !== undefined && curPost !== null) {
           post.attaches = curPost.attaches;
