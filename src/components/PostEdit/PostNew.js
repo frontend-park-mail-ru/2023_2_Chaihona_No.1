@@ -116,6 +116,7 @@ export default async () => {
   rootElement.innerHTML = postEdit({
     new: true,
     sub_levels: window.sub_levels,
+    isEdit: false,
   });
   const postBlocks = document.querySelectorAll('.post-block');
   const postDescription = document.querySelector('.post-edit__params-description');
