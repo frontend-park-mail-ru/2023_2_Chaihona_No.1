@@ -31,11 +31,12 @@
             </table>
             <input type="text" class="post-edit__params-theme" placeholder="Заголовок" id="theme">
             <div class="post-edit__params-description">
-                <div class="post-block" contenteditable="true">
-                    {{#unless isEdit}}
+                {{#if isEdit}}
+                {{else}}
+                    <div class="post-block" contenteditable="true">
                         <p>Текст поста</p>
-                    {{/unless}}
-                </div>
+                    </div>
+                {{/if}}
             </div>
             <div class="post-edit__attaches">
             </div>
