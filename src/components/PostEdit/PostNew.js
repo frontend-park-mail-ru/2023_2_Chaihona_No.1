@@ -511,10 +511,10 @@ export default async () => {
         return {name: el};
       });
 
-      const isZalgo = attaches.every((attach) => {
+      const isNorm = attaches.every((attach) => {
         return attach.isMedia || !validateZalgo(attach.data);
       });
-      if (isZalgo) {
+      if (isNorm) {
         const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
         errorEl.textContent = "Некорректные данные";
         return
