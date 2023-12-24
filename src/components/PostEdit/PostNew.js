@@ -35,6 +35,9 @@ function checkAudioExtension(audioName) {
   return re.test(audioName);
 }
 
+function validateZalgo(s) {
+  return /[^\u+0300-\u+036F]/.test(s);
+}
 
 function keyDownListen(event) {
   const postDescription = document.querySelector('.post-edit__params-description');
@@ -507,6 +510,15 @@ export default async () => {
       const postTags = postTagsEl.value.split(' ').filter((el) => el !== '').map((el) => {
         return {name: el};
       });
+
+      const isZalgo = attaches.every((attach) => {
+        return attach.isMedia || !validateZalgo(attach.data);
+      });
+      if (isZalgo) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        errorEl.textContent = "Некорректные данные";
+        return
+      }
 
       //const  attaches = null;
       const createRequest = await api.newPost({
