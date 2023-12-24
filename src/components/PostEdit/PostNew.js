@@ -512,8 +512,10 @@ export default async () => {
       });
 
       const isNorm = attaches.every((attach) => {
+        console.log(attach.isMedia || !validateZalgo(attach.data));
         return attach.isMedia || !validateZalgo(attach.data);
       });
+      console.log(isNorm);
       if (!isNorm) {
         const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
         errorEl.textContent = "Некорректные данные";
