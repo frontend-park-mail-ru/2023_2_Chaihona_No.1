@@ -503,14 +503,16 @@ export default async () => {
       const min_subscription_level_id = Number(checked.value);
       const attaches = pinned.filter(i => i !== undefined && i !==null);
       const postTagsEl = document.getElementById('tags');
-      const postTags = postTagsEl.value.split(' ').filter((el) => el !== '');
+      const postTags = postTagsEl.value.split(' ').filter((el) => el !== '').map((el) => {
+        return {name: el};
+      });
 
       //const  attaches = null;
       const createRequest = await api.newPost({
         header,
         min_subscription_level_id,
         body,
-        tags: {name: postTags},
+        tags: postTags,
         attaches,
       });
       if (createRequest.status >= 400) {
