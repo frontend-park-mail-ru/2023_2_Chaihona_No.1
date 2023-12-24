@@ -1,7 +1,7 @@
 import {
   MOUSE_CLICK_EVENT,
   LOGIN_URL,
-  FEED_URL,
+  FEDD_URL,
   REGISTER_URL,
 } from '@configs/common_config.js';
 import ProfileMenu from '@components/ProfileMenu/ProfileMenu.js';
@@ -102,13 +102,13 @@ const Navbar = async (user = null) => {
     const mainButton = document.getElementById(MAIN_BUTTON_ID);
     mainButton.addEventListener(MOUSE_CLICK_EVENT, () => {
       if (window.user !== undefined) {
-        return window.router.redirect(FEED_URL);
+        return window.router.redirect(FEDD_URL);
       }
       return window.router.redirect(LOGIN_URL);
     });
     logo.addEventListener(MOUSE_CLICK_EVENT, () => {
       if (window.user !== undefined) {
-        return window.router.redirect(FEED_URL);
+        return window.router.redirect(FEDD_URL);
       }
       return window.router.redirect(LOGIN_URL);
     });
