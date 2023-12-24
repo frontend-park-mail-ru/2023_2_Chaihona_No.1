@@ -344,7 +344,7 @@ export default async () => {
       tags: window.post.tags,
     } };
     window.history.replaceState(newData, null, window.location.pathname);
-    tagEl.value = window.post.tags.join(' ');
+    tagEl.value = window.post.tags.map((e) => e.name).join(' ');
     delete window.post;
   } else if (window.history.state.post !== undefined) {
     const lastEditedPost = window.history.state.post;
