@@ -35,8 +35,8 @@ function checkAudioExtension(audioName) {
   return re.test(audioName);
 }
 
-function validateZalgo(s) {
-  return /[^\u+0300-\u+036F]/.test(s);
+function isZalgo(s) {
+  return /[\u0300-\u036F\u0483-\u0489\u1DC0-\u1DFF\u20D0-\u20FF\u2DE0-\u2DFF\uA640-\uA69F\uFE20-\uFE2F]/g.test(s);
 }
 
 function keyDownListen(event) {
@@ -511,16 +511,14 @@ export default async () => {
         return {name: el};
       });
 
-      // const isNorm = attaches.every((attach) => {
-      //   console.log(attach.isMedia || !validateZalgo(attach.data));
-      //   return attach.isMedia || !validateZalgo(attach.data);
-      // });
-      // console.log(isNorm);
-      // if (!isNorm) {
-      //   const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
-      //   errorEl.textContent = "Некорректные данные";
-      //   return
-      // }
+      const isNorm = attaches.every((attach) => {
+        return attach.isMedia || !isZalgo(attach.data);
+      });
+      if (!isNorm) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        errorEl.textContent = "Некорректные данные";
+        return
+      }
 
       //const  attaches = null;
       const createRequest = await api.newPost({
