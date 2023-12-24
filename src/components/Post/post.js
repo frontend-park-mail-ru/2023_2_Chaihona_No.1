@@ -137,6 +137,7 @@ export default (isOwner, userAva, posts, isFeed=false) => {
         post.tags = [...tagsEl].map((el) => {
           return {name: el.innerHTML};
         });
+        console.log(post.tags);
         const curPost = posts.find(p => p.id === Number(id));
         if (curPost !== undefined && curPost !== null) {
           post.attaches = curPost.attaches;
