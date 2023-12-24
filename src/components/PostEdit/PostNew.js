@@ -514,7 +514,7 @@ export default async () => {
       const isNorm = attaches.every((attach) => {
         return attach.isMedia || !validateZalgo(attach.data);
       });
-      if (isNorm) {
+      if (!isNorm) {
         const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
         errorEl.textContent = "Некорректные данные";
         return
