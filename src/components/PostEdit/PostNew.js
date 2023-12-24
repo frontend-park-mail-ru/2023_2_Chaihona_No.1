@@ -492,7 +492,6 @@ export default async () => {
   verifyButton.addEventListener("click", async () => {
     const header = headerEl.value;
     const body = '';
-    const postTags = null;
     const checked = document.querySelector("input:checked");
     if (pinned.length === 0 || header === "") {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
@@ -504,7 +503,7 @@ export default async () => {
       const min_subscription_level_id = Number(checked.value);
       const attaches = pinned.filter(i => i !== undefined && i !==null);
       const postTagsEl = document.getElementById('tags');
-      postTags = postTagsEl.value.split(' ').filter((el) => el !== '');
+      const postTags = postTagsEl.value.split(' ').filter((el) => el !== '');
 
       //const  attaches = null;
       const createRequest = await api.newPost({
