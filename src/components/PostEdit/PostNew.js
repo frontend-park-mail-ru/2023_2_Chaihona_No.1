@@ -511,10 +511,13 @@ export default async () => {
         return {name: el};
       });
 
-      const isNorm = attaches.every((attach) => {
+
+      const isNormBody = attaches.every((attach) => {
         return attach.isMedia || !isZalgo(attach.data);
       });
-      if (!isNorm) {
+      const isNormTags = !isZalgo(postTagsEl.value);
+      const isNormHeader = !isZalgo(header);
+      if (!isNormBody || !isNormHeader || !isNormTags) {
         const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
         errorEl.textContent = "Некорректные данные";
         return

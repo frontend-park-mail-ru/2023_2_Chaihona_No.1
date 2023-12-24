@@ -76,6 +76,10 @@ let pattaches = [];
 pinned.files = [];
 pinned.deleted = [];
 
+function isZalgo(s) {
+  return /[\u0300-\u036F\u0483-\u0489\u1DC0-\u1DFF\u20D0-\u20FF\u2DE0-\u2DFF\uA640-\uA69F\uFE20-\uFE2F]/g.test(s);
+}
+
 function checkVideoExtension(videoName) {
   const re = new RegExp(videoExtRegExp);
   return re.test(videoName);
@@ -617,6 +621,17 @@ export default async () => {
       const postTags = postTagsEl.value.split(' ').filter((el) => el !== '').map((el) => {
         return {name: el};
       });
+
+      const isNormBody = pinned.files.every((attach) => {
+        return attach.isMedia || !isZalgo(attach.data);
+      });
+      const isNormTags = !isZalgo(postTagsEl.value);
+      const isNormHeader = !isZalgo(header);
+      if (!isNormBody || !isNormHeader || !isNormTags) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        errorEl.textContent = "Некорректные данные";
+        return
+      }
       const editRequest = await api.editPost({
         header,
         min_subscription_level_id,
