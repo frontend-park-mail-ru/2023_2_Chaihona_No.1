@@ -44,6 +44,10 @@ const STYLE_FLEX = 'flex';
 
 const TRUE_STRING = 'true';
 
+function isZalgo(s) {
+  return /[\u0300-\u036F\u0483-\u0489\u1DC0-\u1DFF\u20D0-\u20FF\u2DE0-\u2DFF\uA640-\uA69F\uFE20-\uFE2F]/g.test(s);
+}
+
 export default (isOwner, userAva, posts, isFeed=false) => {
   const sendButtons = document.querySelectorAll(SEND_ICON_CLASS);
   sendButtons.forEach((sendButton) => sendButton.src = sendIcon);
@@ -61,6 +65,11 @@ export default (isOwner, userAva, posts, isFeed=false) => {
       if (text.length === 0) {
         commentErrText.style.display = STYLE_FLEX;
         commentErrText.textContent = "Комментарий не может быть пустым";
+        return;
+      }
+      if (isZalgo(text)) {
+        commentErrText.style.display = STYLE_FLEX;
+        commentErrText.textContent = "Некорректные данные";
         return;
       }
       const commentRequest = await api.createComment(text, sendButton.dataset.post);
