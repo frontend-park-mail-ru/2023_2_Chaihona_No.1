@@ -3,14 +3,66 @@ import postEdit from '@components/PostEdit/PostEdit.handlebars';
 
 import css from '@components/PostEdit/PostEdit.scss';
 import { Api } from '@modules/api';
+import { MOUSE_CLICK_EVENT } from '../../configs/common_config';
+
+const KEYDOWN_EVENT = 'keydown';
+const BLUR_EVENT = 'blur';
+const INPUT_EVENT = 'input';
+const CHANGE_EVENT = 'change';
+const LOAD_EVENT = 'load';
+
+const EDITPOST_URL = 'editpost';
+
+const ATTRIBUTE_DOWNLOAD = 'download';
+
+const TARGET_BLANK = '_blank';
+
+const TARGET = 'target';
+
 
 const BACK_ELEMENT_ID = 'back';
 const PUBLISH_ELEMENT_ID = 'publish';
 const THEME_INPUT_ID = 'theme';
 const TEXT_INPUT_ID = 'text';
+const DELETE_BTN_ID = 'delete-btn-';
+const UPLOAD_IMG_ID = 'upload-img';
+const UPLOAD_VIDEO = 'upload-video';
+const UPLOAD_AUDIO = 'upload-audio';
+const UPLOAD_FILE = 'upload-file';
 
 const PARAMS_ERROR_CLASS = '.post-edit__params-error';
 const SUB_ERROR_CLASS = '.post-edit__sub-params-error';
+const POSST_EDIT_ATTACHES = '.post-edit__attaches';
+const POST_BLOCK_CLASS = 'post-block';
+const POST_EDIT_ATTACHES_ATTACH = 'post-edit__attaches__attach';
+const POST_EDIT_ATTACHES_ATTACH_DELETE_BTN = 'post-edit__attaches__attach__delete-btn';
+const POST_IMAGE_CLASS = 'post-image';
+const POST_EDIT_SUB_PARAMS_AVAILABLE_SUB_CLASS = '.post-edit__sub-params-available-sub';
+
+const INPUT_CHCKED = 'input:checked';
+
+const ATTRIBUTE_IDX = 'data-idx';
+const PINNED_IDX = 'pinned-idx';
+
+const TAG_DIV = 'div';
+const TAG_P = 'p';
+const TAG_IMG = 'img';
+const TAG_VIDEO = 'video';
+const TAG_AUDIO = 'audio';
+const TAG_BUTTON = 'button';
+const TAG_A = 'a';
+
+const TRUE_STRING = 'true';
+const FALSE_STRING = 'false';
+
+const ATTRIBURE_PATH = 'path';
+
+const EXEC_SELECT_ALL = 'selectAll';
+
+const OCTET_STREAM_TYPE = 'application/octet-stream';
+
+const EXTENSION_MP4 = '.mp4';
+const EXTENSION_MP3 = '.mp3';
 
 const videoExtRegExp = /(mp4)$/;
 const audioExtRegExp = /(mp3)$/;
@@ -41,9 +93,9 @@ function checkImgExtension(imgName) {
 
 
 function keyDownListen(event) {
-  const postDescription = document.querySelector('.post-edit__attaches');
+  const postDescription = document.querySelector(POSST_EDIT_ATTACHES);
   if (event.keyCode === 13) {
-    let idx = Number(event.target.getAttribute('data-idx'));
+    let idx = Number(event.target.getAttribute(ATTRIBUTE_IDX));
     while ((idx+1 < postDescription.children.length)) {
       if ((pattaches[idx+1])) {
         if ((pattaches[idx+1].isMedia)) {
@@ -54,14 +106,14 @@ function keyDownListen(event) {
       }
     }
     event.preventDefault();
-    const newPostBlock = document.createElement("div");
+    const newPostBlock = document.createElement(TAG_DIV);
     newPostBlock.innerHTML = '<p></p>';
-    newPostBlock.classList.add('post-block');
-    newPostBlock.contentEditable = 'true';
-    newPostBlock.addEventListener('keydown', keyDownListen);
-    newPostBlock.addEventListener('blur', changeListen);
-    newPostBlock.setAttribute('data-idx', String(idx+1));
-    newPostBlock.setAttribute('pinned-idx', String(pinned.files.length));
+    newPostBlock.classList.add(POST_BLOCK_CLASS);
+    newPostBlock.contentEditable = TRUE_STRING;
+    newPostBlock.addEventListener(KEYDOWN_EVENT, keyDownListen);
+    newPostBlock.addEventListener(BLUR_EVENT, changeListen);
+    newPostBlock.setAttribute(ATTRIBUTE_IDX, String(idx+1));
+    newPostBlock.setAttribute(PINNED_IDX, String(pinned.files.length));
     let focus = idx+1;
     if (idx === postDescription.children.length - 1) {
       postDescription.appendChild(newPostBlock);
@@ -78,18 +130,17 @@ function keyDownListen(event) {
         isMedia: false,
       });
       for (let i = idx + 2; i<=postDescription.children.length-1; i++) {
-        postDescription.children.item(i).setAttribute('data-idx', String(i));
+        postDescription.children.item(i).setAttribute(ATTRIBUTE_IDX, String(i));
       }
     }
-    console.log('focus = ', focus);
     const abc = postDescription.children.item(focus);
     abc.focus();
   }
   if ((event.keyCode === 8) && (postDescription.children.length > 1)) {
     if (event.target.textContent === '') {
-      let idx = Number(event.target.getAttribute('data-idx'));
-      let pinnedIdx = Number(event.target.getAttribute('pinned-idx'));
-      let fpath = event.target.getAttribute('path');
+      let idx = Number(event.target.getAttribute(ATTRIBUTE_IDX));
+      let pinnedIdx = Number(event.target.getAttribute(PINNED_IDX));
+      let fpath = event.target.getAttribute(ATTRIBURE_PATH);
       //pinned[idx] = undefined;
       event.preventDefault();
       event.target.remove();
@@ -104,14 +155,14 @@ function keyDownListen(event) {
       //}
       const abc = postDescription.children.item(idx);
       abc.focus();
-      document.execCommand('selectAll', false, null);
+      document.execCommand(EXEC_SELECT_ALL, false, null);
       document.getSelection().collapseToEnd();
     }
   }
 }
 
 function changeListen (event) {
-    const idx = Number(event.target.getAttribute('pinned-idx'));
+    const idx = Number(event.target.getAttribute(PINNED_IDX));
     if (pinned.files[idx]) {
       pinned.files[idx].data = event.target.children[0].textContent;
     }
@@ -119,14 +170,14 @@ function changeListen (event) {
 
 
 function createDeleteBtn(parent, attach, pinned, isNew) {
-  const deleteBtn = document.createElement('button');
-  deleteBtn.classList.add('post-edit__attaches__attach__delete-btn');
-  deleteBtn.id = 'delete-btn-' + pinned.files.length;
+  const deleteBtn = document.createElement(TAG_BUTTON);
+  deleteBtn.classList.add(POST_EDIT_ATTACHES_ATTACH_DELETE_BTN);
+  deleteBtn.id = DELETE_BTN_ID + pinned.files.length;
   deleteBtn.name = pinned.files.length;
   deleteBtn.textContent = 'Удалить';
-  deleteBtn.addEventListener('click', (e) => {
+  deleteBtn.addEventListener(MOUSE_CLICK_EVENT, (e) => {
     parent.parentNode.removeChild(parent);
-    const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
+    const file = new Blob([atob(attach.data)], {type: OCTET_STREAM_TYPE})
     pinned.size -= file.size;
     if (!isNew) {
       pinned.deleted.push(attach.file_path);
@@ -140,21 +191,21 @@ function createDeleteBtn(parent, attach, pinned, isNew) {
 function renderAttaches(attaches, pinned) {
   if (attaches !== null && attaches !== undefined) {
     attaches.forEach((attach, ind) => {
-      const attachesEl = document.querySelector(".post-edit__attaches");
+      const attachesEl = document.querySelector(POSST_EDIT_ATTACHES);
       if (attachesEl === null || attachesEl === undefined) {
         return
       }
-      const div = document.createElement('div');
-      div.classList.add('post-edit__attaches__attach');
-      div.classList.add('post-block');
-      div.addEventListener('keydown', keyDownListen);
-      div.addEventListener('blur', changeListen);
-      div.setAttribute('data-idx', String(ind));
+      const div = document.createElement(TAG_DIV);
+      div.classList.add(POST_EDIT_ATTACHES_ATTACH);
+      div.classList.add(POST_BLOCK_CLASS);
+      div.addEventListener(KEYDOWN_EVENT, keyDownListen);
+      div.addEventListener(BLUR_EVENT, changeListen);
+      div.setAttribute(ATTRIBUTE_IDX, String(ind));
 
       if (attach.isMedia === false) {
-        div.contentEditable = 'true';
-        const txt = document.createElement('p');
-        div.setAttribute('path', attach.file_path);
+        div.contentEditable = TRUE_STRING;
+        const txt = document.createElement(TAG_P);
+        div.setAttribute(ATTRIBURE_PATH, attach.file_path);
         txt.textContent = attach.data;
         div.appendChild(txt);
         attachesEl.appendChild(div);
@@ -163,10 +214,10 @@ function renderAttaches(attaches, pinned) {
 
       if (checkImgExtension(attach.file_path)){
         const image = new Image();
-        image.classList.add('post-image');
+        image.classList.add(POST_IMAGE_CLASS);
         image.src = atob(attach.data);
 
-        const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
+        const file = new Blob([atob(attach.data)], {type: OCTET_STREAM_TYPE})
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
@@ -176,13 +227,13 @@ function renderAttaches(attaches, pinned) {
         attachesEl.appendChild(div);
         return;
       }
-      if (attach.file_path.endsWith(".mp4")){
-        const video = document.createElement('video');
+      if (attach.file_path.endsWith(EXTENSION_MP4)){
+        const video = document.createElement(TAG_VIDEO);
         video.height = 100;
         video.src = atob(attach.data);
         video.controls = true;
 
-        const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
+        const file = new Blob([atob(attach.data)], {type: OCTET_STREAM_TYPE})
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
@@ -192,12 +243,12 @@ function renderAttaches(attaches, pinned) {
         attachesEl.appendChild(div);
         return;
       }
-      if (attach.file_path.endsWith(".mp3")){
-        const audio = document.createElement('audio');
+      if (attach.file_path.endsWith(EXTENSION_MP3)){
+        const audio = document.createElement(TAG_AUDIO);
         audio.src = atob(attach.data);
         audio.controls = true;
 
-        const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
+        const file = new Blob([atob(attach.data)], {type: OCTET_STREAM_TYPE})
         pinned.size += file.size;
 
         const deleteBtn = createDeleteBtn(div, attach, pinned, false);
@@ -208,8 +259,8 @@ function renderAttaches(attaches, pinned) {
         return;
       }
       if (attach){
-        const doc = document.createElement('a');
-        doc.target = "_blank";
+        const doc = document.createElement(TAG_A);
+        doc.target = TARGET_BLANK;
         doc.text += attach.name;
         // const file = new Blob([atob(attach.data)], {type:"application/octet-stream"})
         // // doc.href = URL.createObjectURL(file);
@@ -218,14 +269,14 @@ function renderAttaches(attaches, pinned) {
         for (var i = 0; i < file.length; i++){
           arr[i] = file.charCodeAt(i);
         }
-        doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
-        doc.addEventListener('click', (e) => {
+        doc.href = URL.createObjectURL(new Blob([arr], {type:OCTET_STREAM_TYPE}));
+        doc.addEventListener(MOUSE_CLICK_EVENT, (e) => {
           e.preventDefault();
-          const aEl = document.createElement('a');
-          aEl.setAttribute("download", e.target.text);
+          const aEl = document.createElement(TAG_A);
+          aEl.setAttribute(ATTRIBUTE_DOWNLOAD, e.target.text);
           const href = e.target.href;
           aEl.href = href;
-          aEl.setAttribute('target', '_blank');
+          aEl.setAttribute(TARGET, TARGET_BLANK);
           aEl.click();
           URL.revokeObjectURL(href);
         });
@@ -254,28 +305,28 @@ export default async () => {
 
   const api = new Api();
   const currUrl = window.location.href.split('/').pop();
-  const id = currUrl.replace('editpost', '');
+  const id = currUrl.replace(EDITPOST_URL, '');
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
   rootElement.innerHTML = postEdit({ new: false, sub_levels: window.sub_levels });
   const backElement = document.getElementById(BACK_ELEMENT_ID);
   const headerEl = document.getElementById(THEME_INPUT_ID);
   const bodyEl = document.getElementById(TEXT_INPUT_ID);
 
-  backElement.addEventListener('click', () => {
+  backElement.addEventListener(MOUSE_CLICK_EVENT, () => {
     window.history.back();
     return;
   });
 
-  [headerEl].forEach((changableEl) => changableEl.addEventListener('input', () => {
-    const level = document.querySelector('input:checked').id[0];
+  [headerEl].forEach((changableEl) => changableEl.addEventListener(INPUT_EVENT, () => {
+    const level = document.querySelector(INPUT_CHCKED).id[0];
     //const newData = { post: { header: headerEl.value, body: bodyEl.value, level } };
     window.history.replaceState(newData, null, window.location.pathname);
   }));
 
-  const levelChangeEl = document.querySelectorAll('.post-edit__sub-params-available-sub');
+  const levelChangeEl = document.querySelectorAll(POST_EDIT_SUB_PARAMS_AVAILABLE_SUB_CLASS);
 
-  levelChangeEl.forEach((levelChange) => levelChange.addEventListener('click', () => {
-    const level = document.querySelector('input:checked').id[0];
+  levelChangeEl.forEach((levelChange) => levelChange.addEventListener(MOUSE_CLICK_EVENT, () => {
+    const level = document.querySelector(INPUT_CHCKED).id[0];
     const newData = { post: { header: headerEl.value, body: bodyEl.value, level } };
     window.history.replaceState(newData, null, window.location.pathname);
   }));
@@ -305,17 +356,17 @@ export default async () => {
     // tagEl.valueOf = lastEditedPost.tags
   }
 
-  const attachesEl = document.querySelector(".post-edit__attaches");
-  const uploadImgButton = document.getElementById("upload-img");
+  const attachesEl = document.querySelector(POSST_EDIT_ATTACHES);
+  const uploadImgButton = document.getElementById(UPLOAD_IMG_ID);
 
-  uploadImgButton.addEventListener("change", (e) => {
+  uploadImgButton.addEventListener(CHANGE_EVENT, (e) => {
     let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
-      reader.addEventListener("load", () => {
-        const div = document.createElement('div');
-        div.classList.add('post-edit__attaches__attach');
+      reader.addEventListener(LOAD_EVENT, () => {
+        const div = document.createElement(TAG_DIV);
+        div.classList.add(POST_EDIT_ATTACHES_ATTACH);
 
         const upImage = reader.result;
         const image = new Image();
@@ -364,19 +415,19 @@ export default async () => {
     e.target.value = '';
   });
 
-  const uploadVideoButton = document.getElementById("upload-video");
+  const uploadVideoButton = document.getElementById(UPLOAD_VIDEO);
 
-  uploadVideoButton.addEventListener("change", (e) => {
+  uploadVideoButton.addEventListener(CHANGE_EVENT, (e) => {
     let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
-      reader.addEventListener("load", () => {
-        const div = document.createElement('div');
-        div.classList.add('post-edit__attaches__attach');
+      reader.addEventListener(LOAD_EVENT, () => {
+        const div = document.createElement(TAG_DIV);
+        div.classList.add(POST_EDIT_ATTACHES_ATTACH);
 
         const upVideo = reader.result;
-        const video = document.createElement("video");
+        const video = document.createElement(TAG_VIDEO);
         video.height = 100;
         video.title = file.name;
         video.src = upVideo;
@@ -423,19 +474,19 @@ export default async () => {
     e.target.value = '';
   });
 
-  const uploadAudioButton = document.getElementById("upload-audio");
+  const uploadAudioButton = document.getElementById(UPLOAD_AUDIO);
 
-  uploadAudioButton.addEventListener("change", (e) => {
+  uploadAudioButton.addEventListener(CHANGE_EVENT, (e) => {
     let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
-      reader.addEventListener("load", () => {
-        const div = document.createElement('div');
-        div.classList.add('post-edit__attaches__attach');
+      reader.addEventListener(LOAD_EVENT, () => {
+        const div = document.createElement(TAG_DIV);
+        div.classList.add(POST_EDIT_ATTACHES_ATTACH);
 
         const upAudio = reader.result;
-        const audio = document.createElement("audio");
+        const audio = document.createElement(TAG_AUDIO);
         audio.title = file.name;
         audio.src = upAudio;
         audio.controls = true;
@@ -481,35 +532,35 @@ export default async () => {
     e.target.value = '';
   });
 
-  const uploadFileButton = document.getElementById("upload-file");
+  const uploadFileButton = document.getElementById(UPLOAD_FILE);
 
-  uploadFileButton.addEventListener("change", (e) => {
+  uploadFileButton.addEventListener(CHANGE_EVENT, (e) => {
     let isError = false;
     Array.prototype.forEach.call(e.target.files, (file) => {
       const reader = new FileReader();
       const errorElement = document.querySelector(PARAMS_ERROR_CLASS);
-      reader.addEventListener("load", () => {
-        const div = document.createElement('div');
-        div.classList.add('post-edit__attaches__attach');
+      reader.addEventListener(LOAD_EVENT, () => {
+        const div = document.createElement(TAG_DIV);
+        div.classList.add(POST_EDIT_ATTACHES_ATTACH);
 
         const upFile = reader.result;
-        const doc = document.createElement("a");
+        const doc = document.createElement(TAG_A);
         doc.title = file.name;
         doc.text += file.name;
-        doc.target = "_blank";
+        doc.target = TARGET_BLANK;
         // doc.href = URL.createObjectURL(new Blob([upFile], {type:"application/octet-stream"}));
         const arr = new Uint8Array(upFile.length);
         for (var i = 0; i < upFile.length; i++){
           arr[i] = upFile.charCodeAt(i);
         }
-        doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
-        doc.addEventListener('click', (e) => {
+        doc.href = URL.createObjectURL(new Blob([arr], {type: OCTET_STREAM_TYPE}));
+        doc.addEventListener(MOUSE_CLICK_EVENT, (e) => {
           e.preventDefault();
-          const aEl = document.createElement('a');
-          aEl.setAttribute("download", file.name);
+          const aEl = document.createElement(TAG_A);
+          aEl.setAttribute(ATTRIBUTE_DOWNLOAD, file.name);
           const href = e.target.href;
           aEl.href = href;
-          aEl.setAttribute('target', '_blank');
+          aEl.setAttribute(TARGET, TARGET_BLANK);
           aEl.click();
           URL.revokeObjectURL(href);
         });
@@ -549,16 +600,16 @@ export default async () => {
     e.target.value = '';
   });
 
-  backElement.addEventListener('click', () => {
+  backElement.addEventListener(MOUSE_CLICK_EVENT, () => {
     window.router.redirect(`profile${window.user.id}`);
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
-  verifyButton.addEventListener('click', async () => {
+  verifyButton.addEventListener(MOUSE_CLICK_EVENT, async () => {
     const header = headerEl.value;
     const body = '';
     const postTags = null;
-    const min_subscription_level_id = Number(document.querySelector('input:checked').value);
+    const min_subscription_level_id = Number(document.querySelector(INPUT_CHCKED).value);
     if (header === '') {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
       errorEl.textContent = 'Тема или текст поста не могут быть пустыми';

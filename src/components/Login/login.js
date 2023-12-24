@@ -17,6 +17,10 @@ const PASSWORD_HIDE_ID = 'register-page__pass-icon_hide';
 const LOGIN_FIELD_ID = '#login';
 const PASSWORD_FIELD_ID = '#password';
 
+const ATTRIBUTE_TYPE = 'type';
+const TYPE_TEXT = 'text';
+const TYPE_PASSWORD = 'password';
+
 /**
  * Функция отрисовки страницы логина
  */
@@ -30,15 +34,15 @@ export default async () => {
   const pig = document.querySelector(PIG_IMAGE_CLASS);
   pig.src = pigImg;
 
-  const pass = document.getElementById("password");
-  hidePassEl.addEventListener('click', (e) => {
+  const pass = document.getElementById(TYPE_PASSWORD);
+  hidePassEl.addEventListener(MOUSE_CLICK_EVENT, (e) => {
     e.preventDefault();
-    if (pass.getAttribute('type') === 'password') {
+    if (pass.getAttribute(ATTRIBUTE_TYPE) === TYPE_PASSWORD) {
       hidePassEl.classList.add(PASSWORD_HIDE_ID);
-      pass.setAttribute('type', 'text');
+      pass.setAttribute(ATTRIBUTE_TYPE, TYPE_TEXT);
     } else {
       hidePassEl.classList.remove(PASSWORD_HIDE_ID);
-      pass.setAttribute('type', 'password');
+      pass.setAttribute(ATTRIBUTE_TYPE, TYPE_PASSWORD);
     }
   });
 

@@ -3,6 +3,9 @@ import {
   PROFILE_URL,
   MIN_FAIL_RESPONSE,
   NOT_FOUND_URL,
+  ROOT_ELEMENT_ID,
+  MOUSE_CLICK_EVENT,
+  NEWPOST_URL,
 } from '@configs/common_config.js';
 import post from '@components/Post/post.js';
 import donate from '@components/Donate/donate.js';
@@ -21,6 +24,52 @@ import uProfileCss from '@components/UserProfile/user_profile.scss';
 // import commentCss from '@components/Comment/comment.css';
 import subLevelCss from '@components/SubLevel/sub_level.scss';
 
+const ATTRIBUTE_DOWNLOAD = 'download';
+
+const TARGET_BLANK = '_blank';
+
+const TARGET = 'target';
+
+const EXTENSION_MP4 = '.mp4';
+const EXTENSION_MP3 = '.mp3';
+
+const ATTACHES_ID = 'attaches-';
+const NEW_POST_BUTTON_ID = 'new-post-button';
+const TIP_BUTTON_ID = 'tip-button';
+const DONATE_DIALOG_ID = 'donate-dialog';
+const SUB_BUTTON_ID = 'sub_button';
+const STATUS_SETTING_ID = 'status-setting';
+const STATUS_DIALOG = 'status_dialog';
+const USER_STATUS = 'user_status';
+const STATUS_INPUT = 'status_input';
+const STATUS_SAVE_BTN_ID = 'status_save_btn';
+const ABOUT_SETTING_ID = 'about-setting';
+const ABOUT_DIALOG_ID = 'about_dialog';
+const USER_ABOUT_ID = 'user_about';
+const ABOUT_INPUT_ID = 'about_input';
+const ABOUT_SAVE_BTN_ID = 'about_save_btn';
+
+const POST_BLOCK_CLASS = 'post-block';
+const POST_IMAGE_ATTACH_CLASS ='post__image-attach';
+const POST_IMAGE_CLASS = 'post-image';
+const FILE_CLASS = 'file';
+const SUBB_AMOUNT_CLASS = '.user-page__subs-amount';
+const AVA_BTN_CLICKED = 'user-page__ava-btn_clicked';
+const AVA_BTN_UNCLICKED = 'user-page__ava-btn_unclicked';
+const SUB_LEVEL_BTN_CLASS = '.sub-level-btn';
+const SUB_PIC_CLASS = '.user-page__sub-pic';
+const AVA_IMG_CLASS = '.user-page__ava-img';
+
+const TAG_DIV = 'div';
+const TAG_P = 'p';
+const TAG_IMG = 'img';
+const TAG_VIDEO = 'video';
+const TAG_AUDIO = 'audio';
+const TAG_BUTTON = 'button';
+const TAG_A = 'a';
+
+const TRUE_STRING = 'true';
+const FALSE_STRING = 'false';
 
 const imgExtRegExp = /(jp(e)?g|png)$/;
 
@@ -33,7 +82,7 @@ function checkImgExtension(imgName) {
  * Функция отрисовки страницы пользователя
  */
 export default async () => {
-  const rootElement = document.querySelector('#root');
+  const rootElement = document.querySelector(ROOT_ELEMENT_ID);
   rootElement.innerHTML = '';
 
   // отрезаем от url id профиля
@@ -56,7 +105,7 @@ export default async () => {
 
   const { profile } = profileRequest.data.body;
   if (profile.user.id === 0) {
-    return window.router.redirect('nenahod');
+    return window.router.redirect(NOT_FOUND_URL);
   }
   window.sub_levels = profile.subscribe_levels;
 
@@ -84,48 +133,48 @@ export default async () => {
         }
         if (profilePost.attaches !== null && profilePost.attaches !== undefined) {
           profilePost.attaches.forEach((attach, ind) => {
-            const attachesEl = document.getElementById('attaches-'+profilePost.id);
-            const currAttach = document.createElement('div');
-            currAttach.classList.add('post-block');
+            const attachesEl = document.getElementById(ATTACHES_ID+profilePost.id);
+            const currAttach = document.createElement(TAG_DIV);
+            currAttach.classList.add(POST_BLOCK_CLASS);
             if (attachesEl === null || attachesEl === undefined) {
               return
             }
             if (attach.isMedia === false) {
-              const txt = document.createElement('p');
+              const txt = document.createElement(TAG_P);
               txt.textContent = attach.data;
               currAttach.appendChild(txt);
               attachesEl.appendChild(currAttach);
               return;
             }
             if (checkImgExtension(attach.file_path)){
-              const image = document.createElement('img');
+              const image = document.createElement(TAG_IMG);
               image.src = atob(attach.data);
-              image.classList.add("post__image-attach");
-              image.classList.add('post-image');
+              image.classList.add(POST_IMAGE_ATTACH_CLASS);
+              image.classList.add(POST_IMAGE_CLASS);
               currAttach.appendChild(image);
               attachesEl.appendChild(currAttach);
               return;
             }
-            if (attach.file_path.endsWith(".mp4")){
-              const video = document.createElement('video');
-              video.classList.add('post-image');
+            if (attach.file_path.endsWith(EXTENSION_MP4)){
+              const video = document.createElement(TAG_VIDEO);
+              video.classList.add(POST_IMAGE_CLASS);
               video.src = atob(attach.data);
               video.controls = true;
               attachesEl.appendChild(video);
               return;
             }
-            if (attach.file_path.endsWith(".mp3")){
-              const audio = document.createElement('audio');
+            if (attach.file_path.endsWith(EXTENSION_MP3)){
+              const audio = document.createElement(TAG_AUDIO);
               audio.src = atob(attach.data);
               audio.controls = true;
               attachesEl.appendChild(audio);
               return
             }
             if (attach){
-              const doc = document.createElement('button');
-              doc.classList.add('file');
-              doc.target = "_blank";
-              const img = document.createElement('img');
+              const doc = document.createElement(TAG_BUTTON);
+              doc.classList.add(FILE_CLASS);
+              doc.target = TARGET_BLANK;
+              const img = document.createElement(TAG_IMG);
               img.src = documentIcon;
               doc.appendChild(img);
               doc.innerHTML = doc.innerHTML + attach.name;
@@ -137,13 +186,13 @@ export default async () => {
               }
               // doc.href = URL.createObjectURL(new Blob([atob(attach.data)], {type:"application/octet-stream"}));
               doc.href = URL.createObjectURL(new Blob([arr], {type:"application/octet-stream"}));
-              doc.addEventListener('click', (e) => {
+              doc.addEventListener(MOUSE_CLICK_EVENT, (e) => {
                 e.preventDefault();
-                const aEl = document.createElement('a');
-                aEl.setAttribute("download", e.target.text);
+                const aEl = document.createElement(TAG_A);
+                aEl.setAttribute(ATTRIBUTE_DOWNLOAD, e.target.text);
                 const href = e.target.href;
                 aEl.href = href;
-                aEl.setAttribute('target', '_blank');
+                aEl.setAttribute(TARGET, TARGET_BLANK);
                 aEl.click();
                 URL.revokeObjectURL(href);
               });
@@ -163,10 +212,8 @@ export default async () => {
     }
 
     profile.isOwner = isOwner;
-    console.log("render");
     // const profileWithoutZero = structuredClone(profile);
     const profileWithoutZero = Object.assign({}, profile);
-    console.log(profile);
     profileWithoutZero.subscribe_levels = profileWithoutZero.subscribe_levels.filter((e) => e.level !== 0);
     profileWithoutZero.subscribe_levels = Array.from(profileWithoutZero.subscribe_levels, (level) => {
       level.isOwner = isOwner;
@@ -180,76 +227,76 @@ export default async () => {
     rootElement.innerHTML = aprofile(profileWithoutZero);
 
     if (isOwner) {
-      const newPostButton = document.getElementById('new-post-button');
+      const newPostButton = document.getElementById(NEW_POST_BUTTON_ID);
 
-      newPostButton.addEventListener('click', () => {
-        window.router.redirect('newpost');
+      newPostButton.addEventListener(MOUSE_CLICK_EVENT, () => {
+        window.router.redirect(NEWPOST_URL);
       });
     } else {
-      const tipButton = document.getElementById('tip-button');
+      const tipButton = document.getElementById(TIP_BUTTON_ID);
 
-      tipButton.addEventListener('click', () => {
+      tipButton.addEventListener(MOUSE_CLICK_EVENT, () => {
         if (!isAuthorized) {
-          return window.router.redirect('login');
+          return window.router.redirect(LOGIN_URL);
         }
-        const donateModal = document.getElementById('donate-dialog');
+        const donateModal = document.getElementById(DONATE_DIALOG_ID);
         donateModal.showModal();
         donate(id);
       });
 
-      const subButton = document.getElementById('sub_button');
+      const subButton = document.getElementById(SUB_BUTTON_ID);
 
-      subButton.addEventListener('click', (event) => {
+      subButton.addEventListener(MOUSE_CLICK_EVENT, (event) => {
         if (!isAuthorized) {
-          return window.router.redirect('login');
+          return window.router.redirect(LOGIN_URL);
         }
         const subBtn = event.target;
         const { subbed } = subBtn.dataset;
-        const subsAmount = document.querySelector('.user-page__subs-amount');
-        if (subbed === 'true') {
-          subBtn.classList.remove('user-page__ava-btn_clicked');
-          subBtn.classList.add('user-page__ava-btn_unclicked');
-          subBtn.dataset.subbed = 'false';
+        const subsAmount = document.querySelector(SUBB_AMOUNT_CLASS);
+        if (subbed === TRUE_STRING) {
+          subBtn.classList.remove(AVA_BTN_CLICKED);
+          subBtn.classList.add(AVA_BTN_UNCLICKED);
+          subBtn.dataset.subbed = FALSE_STRING;
           subBtn.textContent = 'Отслеживать';
           subsAmount.textContent = String(Number(subsAmount.textContent) - 1);
           // api.unfollow(profile.subscribe_levels[0].id, id);
-          document.querySelectorAll('.sub-level-btn').forEach((btn) => {
-            btn.dataset.subbed = 'false';
+          document.querySelectorAll(SUB_LEVEL_BTN_CLASS).forEach((btn) => {
+            btn.dataset.subbed = FALSE_STRING;
             btn.textContent = 'Подписаться';
           });
           api.unfollow(profile.visiter_subscription_level_id, id);
         } else {
-          subBtn.classList.remove('user-page__ava-btn_unclicked');
-          subBtn.classList.add('user-page__ava-btn_clicked');
-          subBtn.dataset.subbed = 'true';
+          subBtn.classList.remove(AVA_BTN_UNCLICKED);
+          subBtn.classList.add(AVA_BTN_CLICKED);
+          subBtn.dataset.subbed = TRUE_STRING;
           subBtn.textContent = 'Перестать отслеживать';
           subsAmount.textContent = String(Number(subsAmount.textContent) + 1);
           api.follow(profile.subscribe_levels[0].id, id);
         }
       });
 
-      const subLevelBtns = document.querySelectorAll('.sub-level-btn');
+      const subLevelBtns = document.querySelectorAll(SUB_LEVEL_BTN_CLASS);
       subLevelBtns.forEach((btn) => {
-        btn.addEventListener('click', async (e) => {
+        btn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
           const { subbed } = btn.dataset;
-          if (subbed === 'true') {
-            btn.dataset.subbed = 'false';
+          if (subbed === TRUE_STRING) {
+            btn.dataset.subbed = FALSE_STRING;
             btn.textContent = 'Подписаться';
 
-            document.getElementById('sub_button').classList.remove('user-page__ava-btn_clicked');
-            document.getElementById('sub_button').classList.add('user-page__ava-btn_unclicked');
-            document.getElementById('sub_button').dataset.subbed = 'false';
-            document.getElementById('sub_button').textContent = 'Отслеживать';
-            document.querySelector('.user-page__subs-amount').textContent = String(Number(document.querySelector('.user-page__subs-amount').textContent) - 1);
+            document.getElementById(SUB_BUTTON_ID).classList.remove(AVA_BTN_CLICKED);
+            document.getElementById(SUB_BUTTON_ID).classList.add(AVA_BTN_UNCLICKED);
+            document.getElementById(SUB_BUTTON_ID).dataset.subbed = FALSE_STRING;
+            document.getElementById(SUB_BUTTON_ID).textContent = 'Отслеживать';
+            document.querySelector(SUBB_AMOUNT_CLASS).textContent = String(Number(document.querySelector(SUBB_AMOUNT_CLASS).textContent) - 1);
 
             api.unfollow(e.target.dataset.id, id);
           } else {
-            if (document.getElementById('sub_button').dataset.subbed === 'false') {
-              document.getElementById('sub_button').classList.remove('user-page__ava-btn_unclicked');
-              document.getElementById('sub_button').classList.add('user-page__ava-btn_clicked');
-              document.getElementById('sub_button').dataset.subbed = 'true';
-              document.getElementById('sub_button').textContent = 'Перестать отслеживать';
-              document.querySelector('.user-page__subs-amount').textContent = String(Number(document.querySelector('.user-page__subs-amount').textContent) + 1);
+            if (document.getElementById(SUB_BUTTON_ID).dataset.subbed === FALSE_STRING) {
+              document.getElementById(SUB_BUTTON_ID).classList.remove(AVA_BTN_UNCLICKED);
+              document.getElementById(SUB_BUTTON_ID).classList.add(AVA_BTN_CLICKED);
+              document.getElementById(SUB_BUTTON_ID).dataset.subbed = TRUE_STRING;
+              document.getElementById(SUB_BUTTON_ID).textContent = 'Перестать отслеживать';
+              document.querySelector(SUBB_AMOUNT_CLASS).textContent = String(Number(document.querySelector(SUBB_AMOUNT_CLASS).textContent) + 1);
             }
 
             // const otherBtns = document.querySelectorAll('.sub-level-btn');
@@ -278,32 +325,32 @@ export default async () => {
   } else {
     profile.isOwner = isOwner;
     rootElement.innerHTML = uprofile(profile);
-    for (const subPic of document.querySelectorAll('.user-page__sub-pic')) {
+    for (const subPic of document.querySelectorAll(SUB_PIC_CLASS)) {
       subPic.src = await api.getAvatar(subPic.dataset.sub);
-      subPic.addEventListener('click', () => window.router.redirect(`profile${subPic.dataset.sub}`));
+      subPic.addEventListener(MOUSE_CLICK_EVENT, () => window.router.redirect(`profile${subPic.dataset.sub}`));
     }
   }
 
-  const avatarElement = document.querySelector('.user-page__ava-img');
+  const avatarElement = document.querySelector(AVA_IMG_CLASS);
   const ava = await api.getAvatar(id);
   if (avatarElement !== null && avatarElement !== undefined) {
     avatarElement.src = ava;
   }
 
   if (isOwner) {
-    const statusSettingButton = document.getElementById('status-setting');
+    const statusSettingButton = document.getElementById(STATUS_SETTING_ID);
     if (statusSettingButton === null) {
       return
     }
     statusSettingButton.src = profileSettingIcon;
-    statusSettingButton.addEventListener('click', () => {
-      const dialog = document.getElementById('status_dialog');
+    statusSettingButton.addEventListener(MOUSE_CLICK_EVENT, () => {
+      const dialog = document.getElementById(STATUS_DIALOG);
       dialog.showModal();
-      const statusElement = document.getElementById('user_status');
-      const statusData = document.getElementById('status_input');
+      const statusElement = document.getElementById(USER_STATUS);
+      const statusData = document.getElementById(STATUS_INPUT);
       statusData.value = statusElement.textContent;
-      const statusVerifyButton = document.getElementById('status_save_btn');
-      statusVerifyButton.addEventListener('click', async () => {
+      const statusVerifyButton = document.getElementById(STATUS_SAVE_BTN_ID);
+      statusVerifyButton.addEventListener(MOUSE_CLICK_EVENT, async () => {
         await api.setStatus(id, statusData.value);
         dialog.close();
         statusElement.innerHTML = statusData.value;
@@ -311,16 +358,16 @@ export default async () => {
     });
 
     if (profile.user.is_author) {
-      const aboutSettingButton = document.getElementById('about-setting');
+      const aboutSettingButton = document.getElementById(ABOUT_SETTING_ID);
       aboutSettingButton.src = profileSettingIcon;
-      aboutSettingButton.addEventListener('click', () => {
-        const dialog = document.getElementById('about_dialog');
+      aboutSettingButton.addEventListener(MOUSE_CLICK_EVENT, () => {
+        const dialog = document.getElementById(ABOUT_DIALOG_ID);
         dialog.showModal();
-        const aboutElement = document.getElementById('user_about');
-        const aboutData = document.getElementById('about_input');
+        const aboutElement = document.getElementById(USER_ABOUT_ID);
+        const aboutData = document.getElementById(ABOUT_INPUT_ID);
         aboutData.value = aboutElement.textContent;
-        const statusVerifyButton = document.getElementById('about_save_btn');
-        statusVerifyButton.addEventListener('click', async () => {
+        const statusVerifyButton = document.getElementById(ABOUT_SAVE_BTN_ID);
+        statusVerifyButton.addEventListener(MOUSE_CLICK_EVENT, async () => {
           await api.setDescription(id, aboutData.value);
           dialog.close();
           aboutElement.innerHTML = aboutData.value;
