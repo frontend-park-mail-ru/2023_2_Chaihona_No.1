@@ -352,7 +352,7 @@ export default async () => {
     const subEl = document.getElementById(`${lastEditedPost.level}level`);
     subEl.checked = true;
     renderAttaches(lastEditedPost.attaches, pinned);
-    tagEl.value = lastEditedPost.tags.join(' ');
+    tagEl.value = lastEditedPost.tags.map((e) => e.name).join(' ');
   }
 
   const attachesEl = document.querySelector(POSST_EDIT_ATTACHES);
