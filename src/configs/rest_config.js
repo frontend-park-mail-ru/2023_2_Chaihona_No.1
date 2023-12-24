@@ -15,6 +15,10 @@ export const backendUrl = 'https://my-kopilka.ru/api/v1';
  * Все возможные endpoint'ы и их методы
  */
 export const restEndpoints = {
+  tag: {
+    url: '/tag/{tag}',
+    method: GET_METHOD,
+  },
   addDevice: {
     url: '/add_device',
     method: POST_METHOD,

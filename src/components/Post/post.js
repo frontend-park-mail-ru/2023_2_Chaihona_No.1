@@ -15,6 +15,7 @@ import { isAwaitKeyword } from 'typescript';
 import {
   MOUSE_CLICK_EVENT,
   LOGIN_URL,
+  FEDD_URL,
  } from '@configs/common_config.js';
 
 const SUBMENU_ID = 'submenu';
@@ -36,6 +37,7 @@ const LIKE_ICON_CLASS = '.post__like-comments-share_like';
 const SEND_ICON_CLASS = '.post__comment-input-send-button';
 const INPUT_AVA_IMG_CLASS = '.post__comment-input-ava';
 const POST_DATE_INPUT_AVA_CLASS = '.post__date-input-ava';
+const POST_TAGLINE_TAG_CLASS = '.post__tagline-tag';
 
 const STYLE_NONE = 'none';
 const STYLE_FLEX = 'flex';
@@ -198,6 +200,13 @@ export default (isOwner, userAva, posts, isFeed=false) => {
       event.target.src = likedImg;
     }
   }));
+
+  const tagsEl = document.querySelectorAll(POST_TAGLINE_TAG_CLASS);
+  tagsEl.forEach((tagEl) => {
+    tagEl.addEventListener(MOUSE_CLICK_EVENT, () => {
+      window.router.redirect(FEDD_URL, null, tagEl.innerHTML);
+    });
+  });
 
   commentJS();
 };

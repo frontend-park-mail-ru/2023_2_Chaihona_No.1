@@ -35,7 +35,7 @@ export class Router {
    * @param path - путь внутри приложения
    * @param state - состояние
    */
-  redirect(path, state = null) {
+  redirect(path, state = null, suffix = null) {
     const renderer = path.replace(/[/0-9]*/g, ''); // удалить лишние цифры если ссылка связана с каким-то id (e.g. id профиля)
     let route = routes[renderer];
     if (!path.startsWith('blob')){
@@ -43,7 +43,11 @@ export class Router {
       if (route === undefined) {
         route = routes.notfound;
       }
-      route.render();
+      if (renderer === 'feed') {
+        route.render(suffix);
+      } else {
+        route.render();
+      }
     }
   }
 }

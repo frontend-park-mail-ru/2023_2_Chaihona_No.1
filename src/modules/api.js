@@ -359,4 +359,10 @@ export class Api extends Requests {
     const url = backendUrl + endpoint.url;
     return this.make_request(url, endpoint.method, {device_id: token})
   }
+
+  async gePostsByTag(tag) {
+    const endpoint = restEndpoints.tag;
+    const url = backendUrl + endpoint.url.replace('{tag}', tag);
+    return this.make_request(url, endpoint.method);
+  }
 }

@@ -52,10 +52,15 @@ function checkImgExtension(imgName) {
   return re.test(imgName);
 }
 
-export default async () => {
+export default async (tag = null) => {
   const rootElement = document.querySelector(ROOT_ELEMENT_ID);
   const api = new Api();
-  const response = await api.getFeed();
+  let response = null;
+  if (tag === null) {
+    response = await api.getFeed();
+  } else {
+    response = await api.gePostsByTag(tag);
+  }
   rootElement.innerHTML = feed(response.data.body);
   const emptyElement = document.querySelector(FEED_EMPTY_CLASS);
   if (response.data.body === null ) {
