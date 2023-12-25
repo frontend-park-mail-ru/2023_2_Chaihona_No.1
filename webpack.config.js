@@ -22,12 +22,12 @@ module.exports = [
                     test: /\.(gif|png)$/i,
                     type: 'asset/resource',
                     use: [
-                        {
-                          loader: 'file-loader',
-                          options: {
-                            outputPath: '',
-                          },
-                        },
+                        // {
+                        //   loader: 'file-loader',
+                        //   options: {
+                        //     outputPath: '',
+                        //   },
+                        // },
                         {
                           loader: 'image-webpack-loader',
                           options: {
