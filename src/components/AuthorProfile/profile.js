@@ -6,6 +6,7 @@ import {
   ROOT_ELEMENT_ID,
   MOUSE_CLICK_EVENT,
   NEWPOST_URL,
+  LOGIN_URL,
 } from '@configs/common_config.js';
 import post from '@components/Post/post.js';
 import donate from '@components/Donate/donate.js';
