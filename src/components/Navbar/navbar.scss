@@ -1,6 +1,8 @@
 @import "@components/Shared/common.scss";
 
 .navbar {
+  z-index: 2;
+  position:relative;
   height: 50px;
   // width: 100vw;
   background-color: $white-color;
@@ -149,7 +151,7 @@
     // width: 100%;
     width: 100vw;
   }
-  
+
   #root {
     margin-top: 50px;
   }
