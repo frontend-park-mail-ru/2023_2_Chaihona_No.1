@@ -108,6 +108,10 @@ body::after, body::before {
   transition: transform 0.4s 0.4s;
 }
 
+body.hidden::before, body.hidden::after {
+  display: none !important;
+}
+
 body::before {
   top: 0;
   -webkit-transform: translateY(-100%);
@@ -351,9 +355,9 @@ main p {
   -ms-transform: scaleX(1);
   -o-transform: scaleX(1);
   transform: scaleX(1);
-  -webkit-transition: -webkit-transform 0.8s 0.8s ease-in;
-  -moz-transition: -moz-transform 0.8s 0.8s ease-in;
-  transition: transform 0.8s 0.8s ease-in;
+  -webkit-transition: -webkit-transform 0.6s 0.6s ease-in;
+  -moz-transition: -moz-transform 0.6s 0.6s ease-in;
+  transition: transform 0.6s 0.6s ease-in;
 }
 @media only screen and (min-width: 768px) {
   .cd-loading-bar {
