@@ -59,7 +59,7 @@
 
 th, td {
   padding: 1vh 1vw;
-  border: 1px solid lightgray;
+  // border: 1px solid lightgray;
 }
 
 td:first-child {
@@ -69,14 +69,14 @@ td:first-child {
   border-left: 1px solid #d3d3d3;
   border-top: 1px solid #d3d3d3;
 }
-td:second-child {
+td:nth-child {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   border: 1px solid #d3d3d3;
 }
 td:last-child {
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
   border-bottom: 1px solid #d3d3d3;
   border-right: 1px solid #d3d3d3;
   border-top: 1px solid #d3d3d3;
