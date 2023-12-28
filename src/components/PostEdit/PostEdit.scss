@@ -128,6 +128,20 @@
   }
 }
 
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tag-input {
+  width: fit-content;
+  border-radius: 12px;
+  border: 1px solid $main-color;
+  box-sizing: border-box;
+  line-height: 100%;
+  padding: 5px;
+}
+
 tr {
   border: 1px solid lightgray;
 }
