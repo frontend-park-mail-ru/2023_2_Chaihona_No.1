@@ -3,6 +3,7 @@ import {
   MIN_FAIL_RESPONSE, NOT_FOUND_URL,
   PASS_REQUIREMENTS_TEXT,
   ROOT_ELEMENT_ID,
+  MOUSE_CLICK_EVENT,
 } from '@configs/common_config.js';
 import settings from '@components/Settings/settings.handlebars';
 
@@ -11,16 +12,28 @@ import { Api } from '@modules/api';
 import Navbar from '@components/Navbar/Navbar.js';
 import profileImg from '@static/icons/Account.svg';
 
+const CHANGE_EVENT = 'change';
+const LOAD_EVENT = 'load';
+
+const FORMDATA_ID = 'id';
+const FORMDATA_AVATAR = 'avatar';
+const FORMDATA_LOGIN = 'login';
+const FORMDATA_STATUS = 'status';
+const FORMDATA_DESCRIPTION = 'description';
+
 const BACK_ELEMENT_ID = 'back';
 const LOGIN_ELEMENT_ID = 'login';
 const OLD_PASS_ELEMENT_ID = 'old-password';
 const NEW_PASS_ELEMENT_ID = 'new-password';
 const UPLOAD_AVA_ID = 'upload-avatar';
 const PROFILE_ICON_ID = 'profile-icon';
+const NEW_PASSWORD_REPEAT_ID = 'new-password-repeat';
 
 const SAVE_PROFILE_BUTTON_CLASS = '.settings__grid-params-buttons-save';
 const SETTINGS_AVA_CLASS = '.settings__grid-params-ava-grid-ava-pic';
 const ERROR_FIELD_CLASS = '.settings__grid-params-error-field';
+
+const ERROR_PASSWORD_MISSMATCH = 'password_missmatch';
 
 const imgExtRegExp = /(jp(e)?g|png)$/;
 
@@ -74,7 +87,7 @@ export default async () => {
 
   const backElement = document.getElementById(BACK_ELEMENT_ID);
 
-  backElement.addEventListener('click', () => {
+  backElement.addEventListener(MOUSE_CLICK_EVENT, () => {
     router.redirect(`profile${window.user.id}`);
   });
 
@@ -87,9 +100,9 @@ export default async () => {
 
   let avaBlob = null;
 
-  avatarField.addEventListener('change', (e) => {
+  avatarField.addEventListener(CHANGE_EVENT, (e) => {
     const reader = new FileReader();
-    reader.addEventListener('load', () => {
+    reader.addEventListener(LOAD_EVENT, () => {
       const upImage = reader.result;
       setAva.src = upImage;
       errorElement.textContent = '';
@@ -113,10 +126,11 @@ export default async () => {
     }
   });
 
-  saveButton.addEventListener('click', async () => {
+  saveButton.addEventListener(MOUSE_CLICK_EVENT, async () => {
     const newLoginField = document.getElementById(LOGIN_ELEMENT_ID);
     const newPassField = document.getElementById(NEW_PASS_ELEMENT_ID);
     const oldPassField = document.getElementById(OLD_PASS_ELEMENT_ID);
+    const repeatNewPassField = document.getElementById(NEW_PASSWORD_REPEAT_ID);
     const newLogin = newLoginField.value;
     const newPass = newPassField.value;
     const oldPass = oldPassField.value;
@@ -135,27 +149,36 @@ export default async () => {
         errorElement.textContent = PASS_REQUIREMENTS_TEXT;
         return;
       }
-      formData.append('new_password', newPass);
+      if (repeatNewPassField.value !== newPass) {
+        errorElement.textContent = "Пароли не совпадают";
+        return;
+      }
+
+      formData.append(NEW_PASS_ELEMENT_ID, newPass);
     }
     if (oldPass !== '') {
       if (!verifyPassword(oldPass)) {
         errorElement.textContent = PASS_REQUIREMENTS_TEXT;
         return;
       }
-      formData.append('old_password', oldPass);
+      formData.append(OLD_PASS_ELEMENT_ID, oldPass);
+    }
+    if (newPass === oldPass && oldPass !== '') {
+      errorElement.textContent = 'Новый пароль совпадает со старым';
+      return;
     }
 
-    formData.append('id', profile.user.id);
+    formData.append(FORMDATA_ID, profile.user.id);
     if (avatarFile) {
-      formData.append('avatar', avatarFile);
+      formData.append(FORMDATA_AVATAR, avatarFile);
     }
 
-    formData.append('login', profile.user.login);
-    formData.append('status', profile.user.status);
-    formData.append('description', profile.user.description);
+    formData.append(FORMDATA_LOGIN, profile.user.login);
+    formData.append(FORMDATA_STATUS, profile.user.status);
+    formData.append(FORMDATA_DESCRIPTION, profile.user.description);
 
     const response = await api.updateProfileFD(formData, profile.user.id);
-    if (response.data.error === 'password_missmatch') {
+    if (response.data.error === ERROR_PASSWORD_MISSMATCH) {
       errorElement.textContent = 'Неправильный старый пароль';
     } else {
       if (avatarFile) {

@@ -2,6 +2,11 @@
 
 
 .user-page {
+  &__main-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
   &__subscriptions {
     font-size: 22px;
     margin-top: 20px;
@@ -11,6 +16,9 @@
     padding-right: 3vh;
     background-color: white;
     border-radius: 12px;
+  }
+  &__sub-pic {
+    cursor: pointer;
   }
 
   &__sub-element {

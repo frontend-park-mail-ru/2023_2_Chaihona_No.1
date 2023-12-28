@@ -9,6 +9,7 @@ const PROFILE_MENU_BUTTON_ID = 'my_profile_button';
 const SETTINGS_MENU_BUTTON_ID = 'profile_settings_button';
 const PROFILE_MENU_ANALYTICS_ID = 'profile_analytics_button';
 
+const STATISTIC_URL = '/statistic';
 
 export default () => {
   const profileBtn = document.getElementById(PROFILE_MENU_BUTTON_ID);
@@ -23,6 +24,6 @@ export default () => {
   amalyticBtn.children[0].src = profileIcon;
   amalyticBtn.addEventListener(MOUSE_CLICK_EVENT, async (e) => {
     // window.router.redirect(`/profile${window.user.id}`);
-    return window.router.redirect('/statistic');
+    return window.router.redirect(STATISTIC_URL);
   });
 };

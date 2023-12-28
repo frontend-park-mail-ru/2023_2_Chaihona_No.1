@@ -1,4 +1,113 @@
+@import "@components/Shared/common.scss";
+
 .feed {
-    margin-left: 30vw;
-    margin-right: 30vw;
+    margin: 0 auto;
+    // width: fit-content;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 700px;
+    &__description{
+        background: white;
+        width: auto;
+        gap: 15px;
+        border-radius: 12px;
+        padding: 15px;
+        height: fit-content;
+    }
+    &__empty {
+        // background: white;
+        // background: #ffe5cc;
+        background: #ffdbb8;
+        width: auto;
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 15px;
+        height: fit-content;
+        align-items: center;
+        &__author-search {
+            // width: 250px;
+            width: fit-content;
+            border-radius: 12px;
+            border: 1px solid $main-color;
+            box-sizing: border-box;
+            line-height: 100%;
+            padding: 5px;
+          }
+          &__searched {
+            padding: 15px;
+            width: fit-content;
+            height: fit-content;
+            max-width: 200px;
+            max-height: 300px;
+            border-radius: 12px;
+            border: 1px solid;
+            border-color: #eaeaea;
+            background-color: white;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+            position: absolute;
+            top: 38px;
+            overflow: scroll;
+            z-index: 50;
+          
+            &__count {
+          
+            }
+            &__profiles{
+              width: 100%;
+              background-color: white;
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+          
+              &__profile{
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                align-items: center;
+                cursor: pointer;
+                gap: 5px;
+                max-height: 40px;
+                height: 40px;
+                &__avatar{
+                  position: relative;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  object-fit: cover;
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+            }
+          }
+        &__figure {
+            overflow: hidden;
+            height: 300px;
+        }
+        &__noposts {
+            text-align: center;
+            color: #d68048;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        &__search-img {
+            object-fit: contain;
+            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+        }
+        &__search-btn {
+            @include main-color-button;
+            width: fit-content;
+            padding: 15px;
+            height: 100%;
+        }
+    }
 }

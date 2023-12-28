@@ -17,6 +17,10 @@ const PASSWORD_HIDE_ID = 'register-page__pass-icon_hide';
 const LOGIN_FIELD_ID = '#login';
 const PASSWORD_FIELD_ID = '#password';
 
+const ATTRIBUTE_TYPE = 'type';
+const TYPE_TEXT = 'text';
+const TYPE_PASSWORD = 'password';
+
 /**
  * Функция отрисовки страницы логина
  */
@@ -30,15 +34,15 @@ export default async () => {
   const pig = document.querySelector(PIG_IMAGE_CLASS);
   pig.src = pigImg;
 
-  const pass = document.getElementById("password");
-  hidePassEl.addEventListener('click', (e) => {
+  const pass = document.getElementById(TYPE_PASSWORD);
+  hidePassEl.addEventListener(MOUSE_CLICK_EVENT, (e) => {
     e.preventDefault();
-    if (pass.getAttribute('type') === 'password') {
+    if (pass.getAttribute(ATTRIBUTE_TYPE) === TYPE_PASSWORD) {
       hidePassEl.classList.add(PASSWORD_HIDE_ID);
-      pass.setAttribute('type', 'text');
+      pass.setAttribute(ATTRIBUTE_TYPE, TYPE_TEXT);
     } else {
       hidePassEl.classList.remove(PASSWORD_HIDE_ID);
-      pass.setAttribute('type', 'password');
+      pass.setAttribute(ATTRIBUTE_TYPE, TYPE_PASSWORD);
     }
   });
 
@@ -63,6 +67,64 @@ export default async () => {
     const user = { id: result.data.body.id };
     window.user = user;
     await navbar(user);
+    subscribe();
     window.router.redirect(`/profile${user.id}`);
   });
 };
+
+function subscribe() {
+  // запрашиваем разрешение на получение уведомлений
+  window.messaging.requestPermission()
+      .then(function () {
+          // получаем ID устройства
+          window.messaging.getToken()
+              .then(async function (currentToken) {
+                  console.log(currentToken);
+                  const api = new Api();
+                  await api.addDevice(currentToken);
+                  if (currentToken) {
+                      sendTokenToServer(currentToken);
+                  } else {
+                      console.warn('Не удалось получить токен.');
+                      setTokenSentToServer(false);
+                  }
+              })
+              .catch(function (err) {
+                  console.warn('При получении токена произошла ошибка.', err);
+                  setTokenSentToServer(false);
+              });
+  })
+  .catch(function (err) {
+      console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+  });
+}
+
+// отправка ID на сервер
+async function sendTokenToServer(currentToken) {
+
+  if (!isTokenSentToServer(currentToken)) {
+      console.log('Отправка токена на сервер...');
+
+      // var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
+      // $.post(url, {
+      //     token: currentToken
+      // });
+
+      setTokenSentToServer(currentToken);
+  } else {
+      console.log('Токен уже отправлен на сервер.');
+  }
+}
+
+// используем localStorage для отметки того,
+// что пользователь уже подписался на уведомления
+function isTokenSentToServer(currentToken) {
+  return window.localStorage.getItem('sentFirebaseMessagingToken') == currentToken;
+}
+
+function setTokenSentToServer(currentToken) {
+  window.localStorage.setItem(
+      'sentFirebaseMessagingToken',
+      currentToken ? currentToken : ''
+  );
+}

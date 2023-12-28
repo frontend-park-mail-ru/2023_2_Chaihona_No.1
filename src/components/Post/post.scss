@@ -30,6 +30,13 @@
     color: rgba(0, 0, 0, 0.60);
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    &-input-ava {
+      cursor: pointer;
+    }
     // padding: 1.2% 2% 0 2%;
   }
 
@@ -115,10 +122,12 @@
       aspect-ratio: 1/1;
     }
   }
-
+  &__like-comments-share_like{
+    cursor: pointer;
+  }
   &__like-comments-share-like_clicked{
     cursor: pointer;
-    background-color: #FF4D4D;
+    // background-color: #FF4D4D;
     // padding: 0.5%;
     // margin-left: 2%;
   }
@@ -128,12 +137,13 @@
   }
 
   &__tagline{
-    height: 3vh;
-    padding: 2%;
+    // height: 3vh;
+    // padding: 2%;
   }
 
   &__tagline-tag{
     padding: 0.75% 1.5%;
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.30);
     color: black;
     width: fit-content;

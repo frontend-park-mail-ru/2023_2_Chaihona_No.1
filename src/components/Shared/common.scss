@@ -19,7 +19,7 @@ body {
   font-weight: 700;
   // margin-bottom: 1vh;
   word-wrap: break-word;
-  border-radius: 5px;
+  border-radius: 12px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
@@ -76,4 +76,291 @@ body {
   aspect-ratio: 1/1;
   position: relative;
   // width: 100%;
+}
+
+
+
+
+
+
+
+
+
+body::after, body::before {
+  /* these are the 2 half blocks which cover the content once the animation is triggered */
+  content: '';
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #f8f2ec;
+  z-index: 1;
+  /* Force Hardware Acceleration */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: -webkit-transform 0.4s 0.4s;
+  -moz-transition: -moz-transform 0.4s 0.4s;
+  transition: transform 0.4s 0.4s;
+}
+
+body.hidden::before, body.hidden::after {
+  display: none !important;
+}
+
+body::before {
+  top: 0;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+body::after {
+  bottom: 0;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  transform: translateY(100%);
+}
+body.page-is-changing::after, body.page-is-changing::before {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.4s 0s;
+  -moz-transition: -moz-transform 0.4s 0s;
+  transition: transform 0.4s 0s;
+}
+
+body.page-is-changing::before {
+  top: 50px;
+}
+
+main {
+  height: 100vh;
+  padding: 10px;
+  text-align: center;
+}
+main .cd-main-content {
+  position: relative;
+  height: calc(100vh - 20px);
+}
+main .cd-main-content > div {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+main .cd-main-content::after, main .cd-main-content::before {
+  /* these are the 2 gradient overlay at the top and bottom of the .cd-main-content - to indicate that you can scroll */
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 50px;
+  width: 100%;
+}
+main .cd-main-content::before {
+  top: 0;
+}
+main .cd-main-content::after {
+  bottom: 0;
+}
+main .cd-main-content.cd-index {
+  /* .cd-main-content basic style - index page */
+  background-color: #4089a6;
+  /* vertically center its content */
+  display: table;
+  width: 100%;
+}
+main .cd-main-content.cd-index > div {
+  /* vertically center the content inside the .cd-index */
+  display: table-cell;
+  vertical-align: middle;
+}
+main .cd-main-content.cd-index::after {
+  background-color: rgba(64, 137, 166, 0);
+  background-image: -webkit-linear-gradient(bottom, #4089a6, rgba(64, 137, 166, 0));
+  background-image: linear-gradient(to top,#4089a6, rgba(64, 137, 166, 0));
+}
+main .cd-main-content.cd-index::before {
+  background-color: rgba(64, 137, 166, 0);
+  background-image: -webkit-linear-gradient(top, #4089a6, rgba(64, 137, 166, 0));
+  background-image: linear-gradient(to bottom,#4089a6, rgba(64, 137, 166, 0));
+}
+main .cd-main-content.cd-about {
+  /* .cd-main-content basic style - about page */
+  background-color: #283040;
+}
+main .cd-main-content.cd-about > div {
+  padding-top: 50px;
+}
+main .cd-main-content.cd-about::after {
+  background-color: rgba(40, 48, 64, 0);
+  background-image: -webkit-linear-gradient(bottom, #283040, rgba(40, 48, 64, 0));
+  background-image: linear-gradient(to top,#283040, rgba(40, 48, 64, 0));
+}
+main .cd-main-content.cd-about::before {
+  background-color: rgba(40, 48, 64, 0);
+  background-image: -webkit-linear-gradient(top, #283040, rgba(40, 48, 64, 0));
+  background-image: linear-gradient(to bottom,#283040, rgba(40, 48, 64, 0));
+}
+main p {
+  width: 90%;
+  max-width: 768px;
+  margin: 3em auto;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #535966;
+  text-align: left;
+}
+@media only screen and (min-width: 768px) {
+  main {
+    padding: 20px;
+  }
+  main .cd-main-content {
+    height: calc(100vh - 100px);
+  }
+  main.cd-index > div {
+    padding-top: 200px;
+  }
+  main.cd-index > div {
+    padding-top: 50px;
+  }
+  main p {
+    font-size: 1.8rem;
+    line-height: 2;
+  }
+}
+
+.cd-cover-layer {
+  /* layer that covers the content when the animation is triggered */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  opacity: 0;
+  visibility: hidden;
+  background-color: #f8f2ec;
+  -webkit-transition: opacity 0.4s 0.4s, visibility 0s 0.8s;
+  -moz-transition: opacity 0.4s 0.4s, visibility 0s 0.8s;
+  transition: opacity 0.4s 0.4s, visibility 0s 0.8s;
+}
+.cd-about .cd-cover-layer {
+  background-color: #f8f2ec;
+}
+.page-is-changing .cd-cover-layer {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+@media only screen and (min-width: 768px) {
+  .cd-cover-layer {
+    height: calc(100% - 100px);
+    width: calc(100% - 40px);
+  }
+}
+
+.cd-loading-bar {
+  /* this is the loding bar - visible while switching from one page to the following one */
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  width: 90%;
+  background-color: #FF4D4D;
+  visibility: hidden;
+  -webkit-transition: visibility 0s 0.4s, -webkit-transform 0.4s 0s ease-in;
+  -moz-transition: visibility 0s 0.4s, -moz-transform 0.4s 0s ease-in;
+  transition: visibility 0s 0.4s, transform 0.4s 0s ease-in;
+  /* Force Hardware Acceleration */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.cd-about .cd-loading-bar {
+  background-color: #283040;
+}
+.cd-about .cd-loading-bar::before {
+  background-color: #4089a6;
+}
+.cd-loading-bar::before {
+  /* this is the progress bar inside the loading bar */
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #283040;
+  /* Force Hardware Acceleration */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+.page-is-changing .cd-loading-bar {
+  visibility: visible;
+  -webkit-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+  -moz-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+  -ms-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+  -o-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+  transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+  -webkit-transition: visibility 0s 0.3s, -webkit-transform 0.4s 0.4s;
+  -moz-transition: visibility 0s 0.3s, -moz-transform 0.4s 0.4s;
+  transition: visibility 0s 0.3s, transform 0.4s 0.4s;
+}
+.page-is-changing .cd-loading-bar::before {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: -webkit-transform 0.6s 0.6s ease-in;
+  -moz-transition: -moz-transform 0.6s 0.6s ease-in;
+  transition: transform 0.6s 0.6s ease-in;
+}
+@media only screen and (min-width: 768px) {
+  .cd-loading-bar {
+    width: calc(100% - 40px);
+  }
 }

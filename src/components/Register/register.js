@@ -16,10 +16,20 @@ const loginRegExp = /^[A-z0-9_-]{5,16}$/;
 // от 8 латинских символов, обязательно заглавные и строчные, цифры, спец символы
 const passRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+const INPUT_EVENT = 'input';
+const CUT_EVENT = 'cut';
+const PASTE_EVENT = 'paste';
+
 const LOGIN_FIELD_ID = '#login';
 const PASSWORD_FIELD_ID = 'password';
 const REPEAT_PASSWORD_FIELD_ID = 'repeat-password';
 const SWITCH_AUTHOR_ID = '#toggle';
+const STR_ID = 'str';
+const ZAG_ID = 'zag';
+const NUMS_ID = 'nums';
+const SPECS_ID = 'specs';
+const OTHER_ID = 'other';
+const EIGHT_ID = 'eight';
 
 const REG_BUTTON_CLASS = '.register-page__input-register-button';
 const ERROR_FIELD_CLASS = '.register-page__error-text';
@@ -28,6 +38,7 @@ const PIG_IMAGE_CLASS = '.register-page__pig-img';
 const ALREADY_EXISTS_ERR_TEXT = 'Пользователь с таким логином уже существует';
 
 const PASSWORD_HIDE_ID = 'register-page__pass-icon_hide';
+const PASS_NE_ID = 'pass-ne';
 
 const REQ_NEGATIVE_CLASS = 'register-page__input-password-reqs_negative';
 const REQ_POSITIVE_CLASS = 'register-page__input-password-reqs_positive';
@@ -40,6 +51,15 @@ const notAllowedType = 'NOTALLOWED';
 
 const hidePassId = 'hide-pass';
 const hideRepPassId = 'hide-rep-pass';
+
+const ATTRIBUTE_TEXt = 'text';
+const ATTRIBUTE_TYPE = 'type';
+const ATTRIBUTE_PASWORD = 'password';
+
+const STYLE_DISPLAY_BLOCK = 'block';
+const STYLE_DISPLAY_NONE = 'none';
+
+const TEXT_PLAIN_TYPE = 'text/plain';
 
 let nums = 0;
 let letters = 0;
@@ -125,27 +145,27 @@ function proceedChanges(value, changed, count) {
   for (let i = 0; i < changed.length; i++) {
     switch (typeOf(changed[i])) {
       case letterType:
-        const letterReq = document.getElementById('str');
+        const letterReq = document.getElementById(STR_ID);
         letters = redrawRequirement(letterReq, letters, count);
         break;
       case bigLetterType:
-        const bigLetterReq = document.getElementById('zag');
+        const bigLetterReq = document.getElementById(ZAG_ID);
         bigLetters = redrawRequirement(bigLetterReq, bigLetters, count);
         break;
       case numberType:
-        const numberReq = document.getElementById('nums');
+        const numberReq = document.getElementById(NUMS_ID);
         nums = redrawRequirement(numberReq, nums, count);
         break;
       case symbolType:
-        const symbolReq = document.getElementById('specs');
+        const symbolReq = document.getElementById(SPECS_ID);
         symbols = redrawRequirement(symbolReq, symbols, count);
         break;
       case notAllowedType:
-        const notAllowedReq = document.getElementById('other');
+        const notAllowedReq = document.getElementById(OTHER_ID);
         notAllowed = redrawRequirement(notAllowedReq, notAllowed, count, true);
     }
   }
-  const lenReq = document.getElementById('eight');
+  const lenReq = document.getElementById(EIGHT_ID);
   if (value.length < 8) {
     lenReq.classList.add(REQ_NEGATIVE_CLASS);
   } else {
@@ -181,7 +201,7 @@ export default async () => {
   const isAuthor = document.querySelector(SWITCH_AUTHOR_ID);
 
   [pass, repeatPass, login].forEach((formEl) => {
-    formEl.addEventListener('input', () => {
+    formEl.addEventListener(INPUT_EVENT, () => {
       const newData = {
         register: {
           login: login.value, password: pass.value, repeatPassword: repeatPass.value, isAuthor: isAuthor.checked,
@@ -191,7 +211,7 @@ export default async () => {
     });
   });
 
-  isAuthor.addEventListener('click', () => {
+  isAuthor.addEventListener(MOUSE_CLICK_EVENT, () => {
     const newData = {
       register: {
         login: login.value, password: pass.value, repeatPassword: repeatPass.value, isAuthor: isAuthor.checked,
@@ -201,23 +221,23 @@ export default async () => {
   });
 
   [hidePassEl, hideRepPassEl].forEach((hideEl) => {
-    hideEl.addEventListener('click', (e) => {
+    hideEl.addEventListener(MOUSE_CLICK_EVENT, (e) => {
       e.preventDefault();
-      if (pass.getAttribute('type') === 'password') {
+      if (pass.getAttribute(ATTRIBUTE_TYPE) === ATTRIBUTE_PASWORD) {
         hidePassEl.classList.add(PASSWORD_HIDE_ID);
         hideRepPassEl.classList.add(PASSWORD_HIDE_ID);
-        pass.setAttribute('type', 'text');
-        repeatPass.setAttribute('type', 'text');
+        pass.setAttribute(ATTRIBUTE_TYPE, ATTRIBUTE_TEXt);
+        repeatPass.setAttribute(ATTRIBUTE_TYPE, ATTRIBUTE_TEXt);
       } else {
         hidePassEl.classList.remove(PASSWORD_HIDE_ID);
         hideRepPassEl.classList.remove(PASSWORD_HIDE_ID);
-        pass.setAttribute('type', 'password');
-        repeatPass.setAttribute('type', 'password');
+        pass.setAttribute(ATTRIBUTE_TYPE, ATTRIBUTE_PASWORD);
+        repeatPass.setAttribute(ATTRIBUTE_TYPE, ATTRIBUTE_PASWORD);
       }
     });
   });
 
-  pass.addEventListener('input', () => {
+  pass.addEventListener(INPUT_EVENT, () => {
     const { value } = pass;
     let changed;
     let count = 1;
@@ -228,34 +248,34 @@ export default async () => {
       count = -1;
     }
     proceedChanges(value, changed, count);
-    const dontMatchEl = document.getElementById('pass-ne');
+    const dontMatchEl = document.getElementById(PASS_NE_ID);
     if (repeatPass.value !== pass.value) {
-      dontMatchEl.style.display = 'block';
+      dontMatchEl.style.display = STYLE_DISPLAY_BLOCK;
     } else {
-      dontMatchEl.style.display = 'none';
+      dontMatchEl.style.display = STYLE_DISPLAY_NONE;
     }
   });
 
-  pass.addEventListener('cut', () => {
+  pass.addEventListener(CUT_EVENT, () => {
     const { value } = pass;
     const changed = document.getSelection();
     const count = -1;
     proceedChanges(value, changed, count);
   });
 
-  pass.addEventListener('paste', (event) => {
+  pass.addEventListener(PASTE_EVENT, (event) => {
     const { value } = pass;
-    const changed = event.clipboardData.getData('text/plain');
+    const changed = event.clipboardData.getData(TEXT_PLAIN_TYPE);
     const count = 1;
     proceedChanges(value, changed, count);
   });
 
-  repeatPass.addEventListener('input', () => {
-    const dontMatchEl = document.getElementById('pass-ne');
+  repeatPass.addEventListener(INPUT_EVENT, () => {
+    const dontMatchEl = document.getElementById(PASS_NE_ID);
     if (repeatPass.value !== pass.value) {
-      dontMatchEl.style.display = 'block';
+      dontMatchEl.style.display = STYLE_DISPLAY_BLOCK;
     } else {
-      dontMatchEl.style.display = 'none';
+      dontMatchEl.style.display = STYLE_DISPLAY_NONE;
     }
   });
 
@@ -299,7 +319,65 @@ export default async () => {
     }
     const user = { id: result.data.body.id };
     window.user = user;
+    subscribe();
     window.router.redirect(`/profile${result.data.body.id}`);
     await navbar(user);
   });
 };
+
+function subscribe() {
+  // запрашиваем разрешение на получение уведомлений
+  window.messaging.requestPermission()
+      .then(function () {
+          // получаем ID устройства
+          window.messaging.getToken()
+              .then(async function (currentToken) {
+                  console.log(currentToken);
+                  const api = new Api();
+                  await api.addDevice(currentToken);
+                  if (currentToken) {
+                      sendTokenToServer(currentToken);
+                  } else {
+                      console.warn('Не удалось получить токен.');
+                      setTokenSentToServer(false);
+                  }
+              })
+              .catch(function (err) {
+                  console.warn('При получении токена произошла ошибка.', err);
+                  setTokenSentToServer(false);
+              });
+  })
+  .catch(function (err) {
+      console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+  });
+}
+
+// отправка ID на сервер
+async function sendTokenToServer(currentToken) {
+
+  if (!isTokenSentToServer(currentToken)) {
+      console.log('Отправка токена на сервер...');
+
+      // var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
+      // $.post(url, {
+      //     token: currentToken
+      // });
+
+      setTokenSentToServer(currentToken);
+  } else {
+      console.log('Токен уже отправлен на сервер.');
+  }
+}
+
+// используем localStorage для отметки того,
+// что пользователь уже подписался на уведомления
+function isTokenSentToServer(currentToken) {
+  return window.localStorage.getItem('sentFirebaseMessagingToken') == currentToken;
+}
+
+function setTokenSentToServer(currentToken) {
+  window.localStorage.setItem(
+      'sentFirebaseMessagingToken',
+      currentToken ? currentToken : ''
+  );
+}

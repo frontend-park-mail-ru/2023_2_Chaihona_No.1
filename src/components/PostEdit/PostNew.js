@@ -35,6 +35,9 @@ function checkAudioExtension(audioName) {
   return re.test(audioName);
 }
 
+function isZalgo(s) {
+  return /[\u0300-\u036F\u0483-\u0489\u1DC0-\u1DFF\u20D0-\u20FF\u2DE0-\u2DFF\uA640-\uA69F\uFE20-\uFE2F]/g.test(s);
+}
 
 function keyDownListen(event) {
   const postDescription = document.querySelector('.post-edit__params-description');
@@ -116,6 +119,7 @@ export default async () => {
   rootElement.innerHTML = postEdit({
     new: true,
     sub_levels: window.sub_levels,
+    isEdit: false,
   });
   const postBlocks = document.querySelectorAll('.post-block');
   const postDescription = document.querySelector('.post-edit__params-description');
@@ -489,28 +493,53 @@ export default async () => {
   });
 
   const verifyButton = document.getElementById(PUBLISH_ELEMENT_ID);
-  verifyButton.addEventListener("click", () => {
+  verifyButton.addEventListener("click", async () => {
     const header = headerEl.value;
     const body = '';
-    const postTags = null;
     const checked = document.querySelector("input:checked");
     if (pinned.length === 0 || header === "") {
       const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
-      errorEl.textContent = "Тема или текст поста не могут быть пустыми";
+      errorEl.textContent = "Заголовок или текст поста не могут быть пустыми";
     } else if (checked === null) {
       const errorEl = document.querySelector(SUB_ERROR_CLASS);
       errorEl.textContent = "Выберите уровень доступа";
     } else {
       const min_subscription_level_id = Number(checked.value);
       const attaches = pinned.filter(i => i !== undefined && i !==null);
+      const postTagsEl = document.getElementById('tags');
+      const postTags = postTagsEl.value.split(' ').filter((el) => el !== '').map((el) => {
+        return {name: el};
+      });
+
+
+      const isNormBody = attaches.every((attach) => {
+        return attach.isMedia || !isZalgo(attach.data);
+      });
+      const isNormTags = !isZalgo(postTagsEl.value);
+      const isNormHeader = !isZalgo(header);
+      if (!isNormBody || !isNormHeader || !isNormTags) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        errorEl.textContent = "Некорректные данные";
+        return
+      }
+
       //const  attaches = null;
-      api.newPost({
+      const createRequest = await api.newPost({
         header,
         min_subscription_level_id,
         body,
-        postTags,
+        tags: postTags,
         attaches,
       });
+      if (createRequest.status >= 400) {
+        const errorEl = document.querySelector(PARAMS_ERROR_CLASS);
+        if (createRequest.status === 521) {
+          errorEl.textContent = 'Ошибка: нет подключения к Интернету!';
+          return;
+        }
+        errorEl.textContent = "Произошла ошибка при создании поста, попробуйте позже";
+        return;
+      }
       window.history.back();
     }
   });

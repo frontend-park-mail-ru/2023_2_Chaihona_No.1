@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const webpack  = require('webpack');
 
 module.exports = [
@@ -16,7 +18,40 @@ module.exports = [
         module: {
             exprContextCritical: false,
             rules: [
-                {test: /\.(gif|png)$/i, type: 'asset/resource'},
+                {
+                    test: /\.(gif|png)$/i,
+                    type: 'asset/resource',
+                    use: [
+                        // {
+                        //   loader: 'file-loader',
+                        //   options: {
+                        //     outputPath: '',
+                        //   },
+                        // },
+                        {
+                          loader: 'image-webpack-loader',
+                          options: {
+                            mozjpeg: {
+                              progressive: true,
+                              quality: 65,
+                            },
+                            optipng: {
+                              enabled: false,
+                            },
+                            pngquant: {
+                              quality: [0.65, 0.90],
+                              speed: 4,
+                            },
+                            gifsicle: {
+                              interlaced: false,
+                            },
+                            webp: {
+                              quality: 75,
+                            },
+                          },
+                        },
+                    ],
+                },
                 {test: /\.svg/, type: 'asset/inline'},
                 //{test: /\.css$/, use: ['style-loader', 'css-loader']},
                 {
@@ -49,7 +84,12 @@ module.exports = [
                 {
                     test: /\.(css|scss)$/,
                     exclude: /node_modules/,
-                    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                    use: [
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'],
                 }
             ]
         },
@@ -88,12 +128,25 @@ module.exports = [
             new HtmlWebpackPlugin({template: './index.html'}),
             new CopyPlugin({
                 patterns: [
-                    {from: path.resolve(__dirname, 'src/sw.js'), to: ''},
+                    {from: path.resolve(__dirname, 'src/firebase-messaging-sw.js'), to: ''},
                 ],
             }),
             new webpack.ProvidePlugin({
                 process: 'process/browser',
             }),
-        ]
+            new MiniCssExtractPlugin({
+                filename: 'styles.css',
+            }),
+        ],
+        optimization: {
+            minimizer: [
+              new TerserPlugin({
+                parallel: true,
+                terserOptions: {
+                  ecma: 6,
+                },
+              }),
+            ],
+          },
     },
 ]

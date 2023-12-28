@@ -2,6 +2,10 @@ export const MIN_FAIL_RESPONSE = 400;
 
 export const NOT_FOUND_URL = 'nenahod';
 export const PROFILE_URL = 'profile';
+export const NEWPOST_URL = 'newpost';
+export const LOGIN_URL = 'login';
+export const FEDD_URL = 'feed';
+export const REGISTER_URL = 'register';
 
 export const LOGIN_ERROR_TEXT = 'Неправильный логин или пароль';
 
