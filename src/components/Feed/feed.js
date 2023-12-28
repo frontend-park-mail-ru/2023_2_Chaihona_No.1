@@ -7,9 +7,11 @@ import {
   MOUSE_CLICK_EVENT,
   NEWPOST_URL,
 } from '@configs/common_config.js';
+import lupa from '@static/img/lupa.png';
 import feed from '@components/Feed/feed.handlebars';
 import post from '@components/Post/post.js';
 import { Api } from '@modules/api.js';
+import e from 'express';
 
 const imgExtRegExp = /(jp(e)?g|png)$/;
 
@@ -64,12 +66,14 @@ export default async (tag = null) => {
   rootElement.innerHTML = feed(response.data.body);
   const emptyElement = document.querySelector(FEED_EMPTY_CLASS);
   const emptyDescriptionEl = document.querySelector('.feed__empty__noposts');
+  const emptyImgEl = document.querySelector('.feed__empty__search-img')
   if (response.data.body === null ) {
     emptyElement.textContent = 'Нет соединения с интернетом';
   }
   if (response.data.body.posts === null) {
     emptyElement.style.display = 'flex';
     emptyDescriptionEl.textContent = 'У вас ещё нет подписок';
+    emptyImgEl.src = lupa;
   }
 
   if (response.data.body.posts !== null) {
