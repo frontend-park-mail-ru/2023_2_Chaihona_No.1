@@ -8,6 +8,7 @@ import {
   NEWPOST_URL,
   LOGIN_URL,
 } from '@configs/common_config.js';
+import lupa from '@static/img/lupa.png';
 import post from '@components/Post/post.js';
 import donate from '@components/Donate/donate.js';
 
@@ -330,6 +331,12 @@ export default async () => {
       subPic.src = await api.getAvatar(subPic.dataset.sub);
       subPic.addEventListener(MOUSE_CLICK_EVENT, () => window.router.redirect(`profile${subPic.dataset.sub}`));
     }
+
+    const emptyImgEl = document.querySelector('.feed__empty__search-img');
+    emptyImgEl.src = lupa;
+    emprtSearchEl.addEventListener('click', () => {
+      document.querySelector('.navbar__author-search').click();
+    });
   }
 
   const avatarElement = document.querySelector(AVA_IMG_CLASS);

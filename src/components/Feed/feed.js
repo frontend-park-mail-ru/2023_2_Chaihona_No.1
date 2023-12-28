@@ -65,13 +65,17 @@ export default async (tag = null) => {
   rootElement.innerHTML = feed(response.data.body);
   const emptyElement = document.querySelector(FEED_EMPTY_CLASS);
   const emptyDescriptionEl = document.querySelector('.feed__empty__noposts');
-  const emptyImgEl = document.querySelector('.feed__empty__search-img')
+  const emprtSearchEl = document.querySelector('.feed__empty__search-btn');
+  const emptyImgEl = document.querySelector('.feed__empty__search-img');
   if (response.data.body === null ) {
     emptyElement.textContent = 'Нет соединения с интернетом';
   }
   if (response.data.body.posts === null) {
     emptyElement.style.display = 'flex';
     emptyImgEl.src = lupa;
+    emprtSearchEl.addEventListener('click', () => {
+      document.querySelector('.navbar__author-search').click();
+    });
   }
 
   if (response.data.body.posts !== null) {

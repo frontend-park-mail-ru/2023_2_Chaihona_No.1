@@ -9,16 +9,18 @@
     gap: 15px;
     width: 700px;
     &__description{
-        background: white;
+        background: rgb(19, 18, 18);
         width: auto;
         gap: 15px;
         border-radius: 12px;
         padding: 15px;
         height: fit-content;
+        text-align: center;
     }
     &__empty {
         // background: white;
-        background: #ffe5cc;
+        // background: #ffe5cc;
+        background: #ffdbb8;
         width: auto;
         gap: 15px;
         display: flex;
