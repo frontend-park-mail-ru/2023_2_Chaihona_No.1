@@ -67,6 +67,7 @@ export default async (tag = null) => {
     emptyElement.textContent = 'Нет соединения с интернетом';
   }
   if (response.data.body.posts === null) {
+    emptyElement.style.display = 'flex';
     emptyElement.textContent = 'У вас ещё нет подписок';
   }
 
