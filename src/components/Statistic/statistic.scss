@@ -72,9 +72,9 @@ td:first-child {
 td:nth-child(2){
   border: 1px solid #d3d3d3;
 }
-// td:nth-child(3){
-//   border: 1px solid #d3d3d3;
-// }
+td:nth-child(3){
+  border-right: 1px solid #d3d3d3;
+}
 td:last-child {
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
