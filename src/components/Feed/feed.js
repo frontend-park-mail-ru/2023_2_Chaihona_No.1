@@ -63,12 +63,13 @@ export default async (tag = null) => {
   }
   rootElement.innerHTML = feed(response.data.body);
   const emptyElement = document.querySelector(FEED_EMPTY_CLASS);
+  const emptyDescriptionEl = document.querySelector('.feed__empty__noposts');
   if (response.data.body === null ) {
     emptyElement.textContent = 'Нет соединения с интернетом';
   }
   if (response.data.body.posts === null) {
     emptyElement.style.display = 'flex';
-    emptyElement.textContent = 'У вас ещё нет подписок';
+    emptyDescriptionEl.textContent = 'У вас ещё нет подписок';
   }
 
   if (response.data.body.posts !== null) {
