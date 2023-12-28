@@ -25,11 +25,15 @@
         border-radius: 12px;
         padding: 15px;
         height: fit-content;
+        &__figure {
+            overflow: hidden;
+            height: 200px;
+        }
         &__noposts {
 
         }
         &__search-img {
-
+            object-fit: cover;
         }
         &__search-btn {
             @include main-color-button;
