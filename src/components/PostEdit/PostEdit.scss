@@ -134,14 +134,14 @@ th, td {
   border: 1px solid lightgray;
 }
 
-tr:last-child td:first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-tr:last-child td:last-child {
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-}
+// tr:last-child td:first-child {
+//   border-top-left-radius: 10px;
+//   border-bottom-left-radius: 10px;
+// }
+// tr:last-child td:last-child {
+//   border-bottom-right-radius: 10px;
+//   border-top-right-radius: 10px;
+// }
 
 td, label {
   cursor: pointer;

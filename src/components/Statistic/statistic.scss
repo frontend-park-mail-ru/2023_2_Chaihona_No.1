@@ -58,7 +58,7 @@
 }
 
 th, td {
-  padding: 1vh 1vw;
+  // padding: 1vh 1vw;
   // border: 1px solid lightgray;
 }
 
@@ -70,10 +70,11 @@ td:first-child {
   border-top: 1px solid #d3d3d3;
 }
 td:nth-child(2){
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
   border: 1px solid #d3d3d3;
 }
+// td:nth-child(3){
+//   border: 1px solid #d3d3d3;
+// }
 td:last-child {
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
