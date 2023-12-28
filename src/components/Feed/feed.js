@@ -71,7 +71,6 @@ export default async (tag = null) => {
   }
   if (response.data.body.posts === null) {
     emptyElement.style.display = 'flex';
-    emptyDescriptionEl.textContent = 'У вас ещё нет подписок';
     emptyImgEl.src = lupa;
   }
 
