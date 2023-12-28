@@ -7,7 +7,7 @@ import {
   MOUSE_CLICK_EVENT,
   NEWPOST_URL,
 } from '@configs/common_config.js';
-import lupa from '@static/img/lupa.png';
+// import lupa from '@static/img/lupa.png';
 import feed from '@components/Feed/feed.handlebars';
 import post from '@components/Post/post.js';
 import { Api } from '@modules/api.js';
@@ -73,7 +73,7 @@ export default async (tag = null) => {
   if (response.data.body.posts === null) {
     emptyElement.style.display = 'flex';
     emptyDescriptionEl.textContent = 'У вас ещё нет подписок';
-    emptyImgEl.src = lupa;
+    // emptyImgEl.src = lupa;
   }
 
   if (response.data.body.posts !== null) {
