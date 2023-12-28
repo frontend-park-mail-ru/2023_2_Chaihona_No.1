@@ -2,6 +2,11 @@
 
 
 .user-page {
+  &__main-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
   &__subscriptions {
     font-size: 22px;
     margin-top: 20px;

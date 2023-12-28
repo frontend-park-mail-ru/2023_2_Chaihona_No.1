@@ -48,6 +48,33 @@ const TAG_AUDIO = 'audio';
 const TAG_BUTTON = 'button';
 const TAG_A = 'a';
 
+function renderSearched(searched) {
+  const searchedEl = document.querySelector('.feed__empty__searched__profiles');
+  searchedEl.innerHTML = '';
+  if (searched.profiles !== null && searched.profiles !== undefined){
+    searched.profiles.forEach(async (profile) => {
+      const profileEl = document.createElement(TAG_DIV);
+      profileEl.classList.add('.feed__empty__searched__profiles__profile');
+      const avatar = new Image();
+      // const api = new Api();
+      // avatar.src = await api.getAvatar(profile.user.id);
+      avatar.src = profile.avatar;
+      avatar.classList.add('.feed__empty__searched__profiles__avatar');
+      profileEl.textContent = profile.user.login;
+
+      const figure = document.createElement(TAG_FIGURE);
+      figure.classList.add('ava-figure');
+      figure.appendChild(avatar);
+      profileEl.appendChild(figure);
+      profileEl.addEventListener(MOUSE_CLICK_EVENT, (e) => {
+        window.router.redirect(`profile${profile.user.id}`);
+        return;
+      });
+      searchedEl.appendChild(profileEl);
+    });
+  }
+}
+
 function checkImgExtension(imgName) {
   const re = new RegExp(imgExtRegExp);
   return re.test(imgName);
@@ -65,10 +92,32 @@ export default async (tag = null) => {
   rootElement.innerHTML = feed(response.data.body);
   const emptyElement = document.querySelector(FEED_EMPTY_CLASS);
   const emptyDescriptionEl = document.querySelector('.feed__empty__noposts');
-  const emprtSearchEl = document.querySelector('.feed__empty__search-btn');
-  emprtSearchEl.addEventListener('click', () => {
-    document.querySelector('.navbar__author-search').click();
+  const searchedEl = document.querySelector('.feed__empty__searched');
+  const searchEl = document.querySelector('.feed__empty__searched__profiles');
+  let searchOpen = false;
+  searchEl.addEventListener("input", async (e) => {
+    if (!searchOpen) {
+      searchedEl.style.display = "flex";
+    }
+    const searchRequest = await api.search(e.target.value);
+    const searched = searchRequest.data.body;
+    if (searched.profiles !== undefined && searched.profiles !== null) {
+      for (let i = 0; i < searched.profiles.length; ++i) {
+        searched.profiles[i].avatar = await api.getAvatar(searched.profiles[i].user.id);
+      }
+    }
+    renderSearched(searched);
   });
+  const rootEl = document.getElementById('root');
+  rootEl.addEventListener(MOUSE_CLICK_EVENT, (e) => {
+      if (searchedEl !== undefined && searchedEl !== null) {
+        searchedEl.style.display = 'none';
+        searchOpen = false;
+      }
+  });
+  // emprtSearchEl.addEventListener('click', () => {
+  //   document.querySelector('.navbar__author-search').click();
+  // });
   const emptyImgEl = document.querySelector('.feed__empty__search-img');
   if (response.data.body === null ) {
     emptyElement.textContent = 'Нет соединения с интернетом';

@@ -333,6 +333,7 @@ export default async () => {
     }
 
     const emptyImgEl = document.querySelector('.feed__empty__search-img');
+    const emprtSearchEl = document.querySelector('.feed__empty__search-btn');
     emptyImgEl.src = lupa;
     emprtSearchEl.addEventListener('click', () => {
       document.querySelector('.navbar__author-search').click();
