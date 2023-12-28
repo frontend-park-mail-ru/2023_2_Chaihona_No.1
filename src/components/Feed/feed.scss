@@ -15,7 +15,6 @@
         border-radius: 12px;
         padding: 15px;
         height: fit-content;
-        text-align: center;
     }
     &__empty {
         // background: white;
@@ -34,6 +33,7 @@
             height: 300px;
         }
         &__noposts {
+            text-align: center;
             color: #d68048;
             font-family: sans-serif;
             font-weight: bold;

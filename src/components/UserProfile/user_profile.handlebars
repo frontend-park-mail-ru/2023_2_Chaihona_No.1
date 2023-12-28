@@ -23,14 +23,15 @@
             </div>
             <div class="user-page__status" id="user_status">{{user.status}}</div>
         </div>
-
-        <div class="feed__empty" style="display: none;">
-            <p class="feed__empty__noposts">Подпишитесь на авторов, чтобы отслеживать больше контента</p>
-            <figure class="feed__empty__figure">
-                <img class="feed__empty__search-img">
-            </figure>
-            <button class="feed__empty__search-btn">Искать авторов</button>
-        </div>
+        {{#if isOwner}}
+            <div class="feed__empty" style="display: none;">
+                <p class="feed__empty__noposts">Подпишитесь на авторов, чтобы отслеживать больше контента</p>
+                <figure class="feed__empty__figure">
+                    <img class="feed__empty__search-img">
+                </figure>
+                <button class="feed__empty__search-btn">Искать авторов</button>
+            </div>
+        {{/if}}
     </div>
     <div class="user-page__right-column">
         <div class="user-page__subscriptions">
