@@ -1,0 +1,163 @@
+@import "@components/Shared/common.scss";
+
+.settings {
+  margin: 0 auto;
+  width: fit-content;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__header {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__grid {
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    // grid-template-columns: 62% 38%;
+  }
+
+  &__grid-params {
+    // padding-top: 0.5vh;
+    // padding-left: 1vw;
+    padding: 15px;
+    background-color: white;
+    border-radius: 12px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+
+    &__header {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    &__subheader {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  &__grid-list {
+    // margin-left: 1vw;
+    border-radius: 12px;
+    width: 250px;
+  }
+
+  &__grid-list-element {
+    background-color: white;
+    padding: 2vh;
+    border-radius: 12px;
+  }
+
+  &__grid-params-ava-grid {
+    display: grid;
+    grid-template-columns: 150px auto;
+    height: 150px;
+    gap: 15px;
+  }
+
+  &__grid-params-ava-grid-ava-pic {
+    // border-radius: 999px;
+    // width: 10vw;
+    // aspect-ratio: 1/1;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__grid-params-input {
+    border-color: #D9D9D9;
+    border-radius: 12px;
+    height: 2vh;
+    padding: 1vh;
+    width: 40%;
+  }
+
+  &__grid-params-buttons {
+    // padding: 1vh;
+    background-color: white;
+    border-radius: 12px;
+    // height: 5vh;
+    width: 100%;
+    height: 30px;
+    // margin-top: 3vh;
+    // margin-left: -1vw;
+  }
+
+  &__grid-params-ava-grid-reqs {
+    color: gray;
+    // margin-top: 2vh;
+  }
+
+  &__grid-params-label {
+    background-color: white;
+    padding: 0.5rem;
+    border: #FF4D4D solid;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  &__grid-params-buttons-save {
+    @include main-color-button;
+    width: fit-content;
+    height: 100%;
+    padding: 15px;
+  }
+}
+
+.upload-avatar-label {
+  cursor: pointer;
+  border: 2px solid #FF8A26;
+  padding: 10px;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/*.delete-profile-button {*/
+/*    border-color: #FF4D4D;*/
+/*    float: right;*/
+/*    margin-right: 20vh;*/
+/*    color: #FF4D4D;*/
+/*    width: 12vw;*/
+/*    background-color: white;*/
+/*    height: 100%;*/
+/*    margin-left: 1vw;*/
+/*}*/
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .settings {
+    margin: 0 !important;
+    width: 100%;
+    &__grid {
+      flex-direction: column !important;
+    }
+    &__grid-params {
+      order: 2;
+      width: auto !important;
+    }
+    &__grid-list {
+      order: 1;
+      width: 100% !important;
+    }
+    &__header {
+      margin-left: 15px;
+    }
+  }
+  #back {
+    margin-left: 15px;
+  }
+}

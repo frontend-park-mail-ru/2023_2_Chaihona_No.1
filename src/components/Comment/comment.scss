@@ -1,0 +1,44 @@
+.comment {
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    height: fit-content;
+    align-items: center;
+    padding: 5px 10px;
+
+    &__options-button {
+        cursor: pointer;
+        float: right;
+    }
+}
+
+.delete_comment_button {
+    cursor: pointer;
+}
+
+.comment-data {
+    color: rgba(0, 0, 0, 0.60);
+    padding: 1vh;
+    font-size: 18px;
+    flex: 1;
+    word-wrap: break-all;
+}
+
+.comment-ava {
+    cursor: pointer;
+}
+
+.comment-nickname{
+    color: black;
+}
+
+.comment-text {
+    margin-top: 1%;
+}
+
+.comment-date {
+    font-size: 16px;
+    margin-top: 1%;
+}

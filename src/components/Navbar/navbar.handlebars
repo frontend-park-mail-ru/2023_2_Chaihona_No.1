@@ -1,0 +1,31 @@
+<div class="navbar">
+    <img class="navbar__logo">
+    {{#if User}}
+        <button class="navbar__main-page-button" id="main-button" style="display: none;">На главную</button>
+        <div class="navbar__right-elements">
+            <div style="position: relative;">
+                <input type="text" class="navbar__author-search" placeholder="Поиск автора...">
+                <div class="searched" style="display: none">
+                    <div class="searched__count"></div>
+                    <div class="searched__profiles"></div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 5px; justify-content:flex-end;">
+                <figure class="ava-figure">
+                    <img src="" class="navbar__user-avatar">
+                </figure>
+                <div style="position: relative;">
+                    <img src="" id="submenu_button" class="navbar__down-button">
+                    {{>ProfileMenu this}}
+                </div>
+            </div>
+            <button class="navbar__exit-button" id="exit-btn"> Выйти</button>
+        </div>
+    {{else}}
+        <div class="navbar__right-elements">
+            <button class="navbar__registration-button" id="reg-btn"> Регистрация</button>
+            <img src="" id="submenu_button" class="navbar__down-button" style="display: none;">
+            <button class="navbar__exit-button" id="login-btn">Войти</button>
+        </div>
+    {{/if}}
+</div>

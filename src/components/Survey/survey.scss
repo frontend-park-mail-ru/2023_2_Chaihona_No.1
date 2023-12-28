@@ -1,0 +1,33 @@
+@import "@components/Shared/common.scss";
+
+.survey {
+  background-color: white;
+  // border-radius: 12px;
+  // padding: 1vh 1vw;
+  position: relative;
+  // left: 40%;
+  min-width: 100vw;
+  // max-width: 30%;
+  display: inline-block;
+  // gap: 15px;
+  
+  &__question {
+    &__text {
+      font-weight: 400;
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.80);
+    }
+  }
+  &__marks {
+    &__mark {
+      padding-top: 2vh;
+      font-size: 16px;
+    }
+  }
+
+  &__submit-button{
+    @include main-color-button;
+    min-width: 7vw;
+    height: 100%
+  }
+}

@@ -1,0 +1,6 @@
+<div class="feed">
+    <div class="feed__empty"></div>
+    {{#each posts}}
+        {{>post post=this isOwner=false}}
+    {{/each}}
+</div>

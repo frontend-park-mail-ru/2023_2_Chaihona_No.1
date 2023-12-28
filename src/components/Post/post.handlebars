@@ -1,0 +1,85 @@
+<div class="post" data-post="{{id}}">
+    <div class="post__date">
+        <span id="sub-level-{{id}}" style="display:none;">{{min_sub_level}}</span>
+        {{#if isOwner}}
+            <div style="position: relative;">
+                <img src="" class="post__options-button" data-post="{{id}}">
+                <div id="submenu-{{id}}" class="post__submenu" style="display: none;">
+                    <div id="edit_post_button">Редактировать пост</div>
+                    <div id="delete_post_button" data-post="{{id}}">Удалить пост</div>
+                </div>
+            </div>
+        {{/if}}
+        <span style="margin-right: 1vh;">{{created_at}}</span>
+    </div>
+    {{#if has_access}}
+        <div class="target-separator"></div>
+
+        <div class="post__data_unlocked">
+            <div class="post__topic_unlocked" id="header-{{id}}">
+                {{header}}
+            </div>
+            <div class="post__content_unlocked" id="body-{{id}}">
+                {{body}}
+            </div>
+        </div>
+
+        <!-- <div class="post__tagline" id="tags-{{id}}">
+            {{#each tags}}
+                <span class="post__tagline-tag">{{this.name}}</span>
+            {{/each}}
+        </div> -->
+
+        <div class="attaches" id="attaches-{{id}}"></div>
+        <div class="target-separator"></div>
+
+    {{else}}
+        <div class="post__data_locked">
+            <div class="post__topic_locked">
+                {{!-- {{topic}} --}}
+                {{header}}
+            </div>
+            
+            <div class="post__price_locked">Этот пост недоступен. Оформите подписку {{min_sub_level}} уровня, чтобы видеть больше контента.</div>
+            {{!-- <button class="post__buy-button_locked">Купить</button> --}}
+        </div>
+    {{/if}}
+
+
+    <div class="post__like-comments-share">
+        <div style="display: flex; gap: 5px;">
+            {{#if is_liked}}
+                {{!-- <span class="post__like-comments-share-like_clicked" id="like-{{id}}"> --}}
+                <span class="">
+                    <img src="" style="vertical-align: middle;" id="like-{{id}}" class="post__like-comments-share_like post__like-comments-share-like_clicked" data-post="{{id}}"
+                        data-liked="true">
+                    <span id="likes-{{id}}"> {{likes}} </span>
+                </span>
+            {{else}}
+                <span class="">
+                    <img src="" id="like-{{id}}" style="vertical-align: middle; cursor: pointer;" class="post__like-comments-share_like" data-post="{{id}}"
+                        data-liked="false">
+                    <span id="likes-{{id}}"> {{likes}} </span>
+                </span>
+            {{/if}}
+            <img src="" class="post__like-comments-share_comments-icon" style="display: inline; vertical-align: middle;">
+        </div>
+        <img src="" style="float:right;" class="post__like-comments-share_share-icon">
+    </div>
+
+    {{#if has_access}}
+        <div class="post__comment-list" id="post-comment-list-{{id}}">
+            {{#each comments}}
+                {{>comment this}}
+            {{/each}}
+        </div>
+        <p class="post__comment-error-text" id="comment-error-text-{{id}}" style="display: none;"></p>
+        <div class="post__comment-input-field" data-post="{{id}}">
+            <figure class="post__comment-input-ava ava-figure" style="height: 35.2px;"><img src=""></figure>
+            <input type="text" placeholder="Оставьте комментарий..." class="post__comment-input-field__input" id="comment-field-{{id}}" data-post="{{id}}">
+            <img src="" id="send-button={{id}}" class="post__comment-input-send-button" data-post="{{id}}">
+            {{!-- <div class="post__comment-input-field" data-post="{{id}}">
+            </div> --}}
+        </div>
+    {{/if}}
+</div>

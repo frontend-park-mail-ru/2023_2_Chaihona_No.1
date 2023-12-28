@@ -1,0 +1,86 @@
+@mixin log-reg-page {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  text-align: center;
+  position: relative;
+  // padding-top: 15px;
+  // margin: 2% auto;
+  margin: max(calc((100vh - 366px - 50px)/2), 30px) auto;
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
+}
+
+@mixin pig{
+  // width: 60%;
+  border-color: #FF8362;
+  border-width: 10px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #FFE5CC;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin log-reg-input {
+  border-color: #FF8362;
+  border-width: 10px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: white;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  gap: 15px;
+}
+
+@mixin login-field {
+  // margin-bottom: 1em;
+  // margin-top: 15px;
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #FFB97D;
+  height: calc(25px + 2.5vh);
+  // width: 100%;
+  margin-right: calc(25px);
+  padding-left: 10px;
+}
+
+@mixin password-field {
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: #FFB97D;
+  width: 100%;
+  height: calc(25px + 2.5vh);
+  // margin-top: 8px;
+  // margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+@mixin pig-text {
+  text-align: center;
+  // margin-left: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  // font-size: 1.5rem;
+  font-size: 28px;
+  color: #D68048;
+}
+
+@mixin log-reg-text{
+  text-align: center;
+  // margin-left: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  // font-size: 1.5rem;
+  font-size: 28px;
+  color: #D68048;
+}

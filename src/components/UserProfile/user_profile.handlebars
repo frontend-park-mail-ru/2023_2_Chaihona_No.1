@@ -1,0 +1,47 @@
+<div class="user-cover"></div>
+
+<div class="user-page">
+    <div class="user-page__left-column">
+        <div class="user-page__ava-block">
+            {{!-- <div class="user-page__ava">
+            </div> --}}
+            <figure class="user-page__ava-block__ava">
+                <img src="" class="user-page__ava-img">
+            </figure>
+            <div class="user-page__subs-amount">{{donated}}</div>
+            <div class="user-page__subs-word">Пожертвовано</div>
+        </div>
+    </div>
+
+    <div class="user-page__main-block">
+        <div class="user-page__name-and-status">
+            <div>
+                {{#if isOwner}}
+                    <img src="" id="status-setting" class="user-page__page-settings">
+                {{/if}}
+                <div class="user-page__nickname">{{user.login}}</div>
+            </div>
+            <div class="user-page__status" id="user_status">{{user.status}}</div>
+        </div>
+    </div>
+    <div class="user-page__right-column">
+        <div class="user-page__subscriptions">
+            Подписки
+            <div class='target-separator'></div>
+            {{#each subscriptions}}
+                <div class="user-page__sub-element">
+                    <img src="" class="user-page__sub-pic" data-sub="{{id}}">
+                    {{this.login}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <dialog id="status_dialog" class="user-page__status_dialog">
+        <h2 style="margin-top: 1vh">Статус:</h2>
+        <div><input type="text" class="user-page__status-input" id="status_input" maxlength="100"></div>
+        <div>
+            <button class="user-page__save-btn" id="status_save_btn">OK</button>
+        </div>
+    </dialog>
+</div>

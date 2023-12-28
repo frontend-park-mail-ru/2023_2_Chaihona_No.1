@@ -1,0 +1,74 @@
+<div class="post-edit">
+    <div id ="back">Назад</div>
+
+    {{#if new}}
+        <span class="post-edit__header">Новый пост</span>
+    {{else}}
+        <span class="post-edit__header">Редактирование поста</span>
+    {{/if}}
+
+    <div class="post-edit__grid">
+        <div class="post-edit__params">
+            <h3>Пост</h3>
+            <div class="post-edit__params-error" style="color: red;"></div>
+            <table class="post-edit__params-attach-vars">
+                <td>
+                    <input type="file" id="upload-img" name="up-img" accept=".jpg,.jpeg,.png" hidden multiple>
+                    <label for="upload-img">Фото</label>
+                </td>
+                <td>
+                    <input type="file" id="upload-video" name="up-video" accept=".mp4" hidden multiple>
+                    <label for="upload-video">Видео</label>
+                </td>
+                <td>
+                    <input type="file" id="upload-file" name="up-file" hidden multiple>
+                    <label for="upload-file">Файл</label>
+                </td>
+                <td>
+                    <input type="file" id="upload-audio" name="up-audio" accept=".mp3" hidden multiple>
+                    <label for="upload-audio">Аудио</label>
+                </td>
+            </table>
+            <input type="text" class="post-edit__params-theme" placeholder="Заголовок" id="theme">
+            <div class="post-edit__params-description">
+                <div class="post-block" contenteditable="true">
+                    <p>Текст поста</p>
+                </div>
+            </div>
+            <div class="post-edit__attaches">
+            </div>
+
+
+             <!-- <div class="tags"> -->
+            <!--    <h3>Теги поста</h3> -->
+            <!--    <input type="text" class="tag-input" placeholder="Введите тэги через проблем" id="tags"> -->
+            <!-- </div> -->
+
+            <div class="post-edit__params-buttons">
+                <button class="post-edit__params-buttons-save" id="publish">Опубликовать</button>
+
+                <!--{{#if new}}
+                    <button class="delete-profile-button common-button" id="now">
+                        <img src="">
+                        Сейчас
+                    </button>
+                {{/if}}-->
+            </div>
+        </div>
+        <div class="post-edit__sub-params">
+
+            <div class="post-edit__sub-params-available">
+                <h3>Кто может смотреть</h3>
+                <div class = 'target-separator'></div>
+                <div class="post-edit__sub-params-error" style="color: red;"></div>
+                {{#each sub_levels}}
+                    <div class="post-edit__sub-params-available-sub">
+                        <input type="radio" id="{{this.level}}level" name="sub_variant" value="{{this.id}}">
+                        <label for="{{this.level}}level">{{this.level}} уровень подписки</label>
+                    </div>
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+</div>

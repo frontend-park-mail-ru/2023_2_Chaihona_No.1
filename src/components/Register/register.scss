@@ -1,0 +1,209 @@
+@import "@components/Shared/common.scss";
+@import "@components/Shared/logreg.scss";
+@import "@components/Shared/reset.scss";
+
+@mixin pass-icon {
+  width: 20px;
+  height: 20px;
+  // display: inline;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@media (max-width: 760px){
+  // .register-page {
+  //   width: 80% !important;
+  // }
+
+  .register-page__pig {
+    display: none !important;
+  }
+
+  // .register-page__input {
+  //   margin-top: 2vh !important;
+  //   width: 100% !important;
+  //   border-radius: 12px !important;
+  // }
+
+  // .login-page__input-login-button {
+  //   margin-left: 1vh;
+  // }
+}
+
+.register-page {
+  @include log-reg-page;
+  margin: max(calc((100vh - 556px - 50px)/2), 30px) auto;
+  margin-bottom: 0px;
+
+  &__pig {
+    @include pig;
+  }
+
+  &__input {
+    @include log-reg-input;
+    max-width: 259px;
+  }
+
+  &__error-text {
+    color: black;
+    font-size: 14px;
+    word-break: break-all;
+  }
+  &__input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 15px;
+    &__list {
+      list-style-position: inside;
+      text-align: left;
+    }
+  }
+
+  &__input-login {
+    @include login-field;
+  }
+
+  &__input-password {
+    @include password-field;
+  }
+
+  &__input-register-button {
+    @include button;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    background-color: #FF8A26;
+    border: none;
+    font-family: sans-serif;
+    width: 100%;
+  }
+
+  &__input-entry-text {
+    @include log-reg-text;
+  }
+
+  &__pig-welcome-text {
+    @include pig-text;
+  }
+
+  &__author-checkbox {
+    text-align: left;
+    margin-left: 1px;
+  }
+
+  &__author-slot {
+    color: #D68048;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    overflow: hidden;
+    height: 1em;
+    margin-top: -1%;
+  }
+
+  &__author-toggle {
+     border-radius: 0.75em;
+     box-shadow: 0 0 0 0.1em;
+     cursor: pointer;
+     position: relative;
+     margin-right: 0.25em;
+     width: 2.3em;
+     height: 1.0em;
+     appearance: none;
+     color: #D68048;
+   }
+
+  &__author-toggle, &__author-toggle:before, &__author-slot-label {
+    transition-duration: 0.25s;
+  }
+
+  &__author-toggle:before, &__author-slot, &__author-slot-label {
+    display: block;
+  }
+
+  &__author-toggle:before {
+    position: absolute;
+  }
+
+  &__author-toggle:checked {
+    background-color: #fad5b4;
+  }
+
+  &__author-toggle:before {
+    border-color: #D68048;
+    background: currentColor;
+    border-radius: 50%;
+    content: "";
+    top: 0.07em;
+    left: 0.12em;
+    width: 0.85em;
+    height: 0.85em;
+  }
+
+  &__author-toggle:checked:before {
+    transform: translateX(1.2em);
+  }
+
+  &__author-toggle:checked ~ &__author-slot &__author-slot-label, &__author-slot-label:nth-child(2) {
+    transform: translateY(-50%) scaleY(0);
+  }
+
+  &__author-toggle:checked ~ &__author-slot &__author-slot-label:nth-child(2) {
+    transform: translateY(-100%) scaleY(1);
+  }
+
+  &__author-switch{
+    // color: #D68048;
+    // font: 1em "Helvetica Neue", Helvetica, sans-serif;
+    // line-height: 1.5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__pig-img {
+    // margin-top: 7vh;
+    height: 300px;
+    position: relative;
+  }
+
+  &__input-password-reqs {
+    &_positive {
+      list-style-type: "\2713";
+      color: green;
+    }
+
+    &_negative {
+      list-style-type: '\2A2F';
+      color: red;
+    }
+  }
+
+
+  &__pass-icon {
+    &_show {
+      @include pass-icon;
+      background: url(@static/icons/icons8-eye-30.png) center/contain no-repeat;
+    }
+    &_hide {
+      @include pass-icon;
+      background: url(@static/icons/icons8-hide-30.png) center/contain no-repeat;
+    }
+  }
+
+  &__passin {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    gap: 5px;
+  }
+}
+

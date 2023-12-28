@@ -1,0 +1,25 @@
+<div class="login-page">
+    <div class="login-page__pig">
+        <p class="login-page__pig-welcome-text">С возвращением!</p>
+        <div class="display: flex; align-items: center; height: 100%; justify-content: center;">
+            <img class="login-page__pig-img" src="default_pics/pngwing1.png">
+        </div>
+    </div>
+    <div class="login-page__input">
+        <p class="login-page__input-entry-text">Вход</p>
+        <div class="login-page__error-text" style="color: red;"></div>
+        <form action="login" method="post" class="login-page__input-form">
+            <div style="display: flex; flex-direction:column; gap:15px;">
+                <input type="login" class="login-page__input-login" placeholder="Логин" id="login" name="login" required>
+                <div class="login-page__passin">
+                    <input type="password" class="login-page__input-password" placeholder="Пароль" id="password" name="password" required>
+                    <button class="login-page__pass-icon_show" id="hide-pass"></button>
+                </div>
+            </div>
+            <div class="login-page__input-buttons">
+                <button type="button" class="login-page__input-login-button" name="buttonlog">Войти</button>
+                <p class="login-page__input-forgot-pass" href="/">Забыли пароль?</p>
+            </div>
+    </div>
+    </form>
+</div>

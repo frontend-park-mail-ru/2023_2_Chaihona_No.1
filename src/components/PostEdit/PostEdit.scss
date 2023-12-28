@@ -1,0 +1,215 @@
+@import "@components/Shared/common.scss";
+
+.attach-img {
+  height: 100px;
+  width: 100px;
+}
+
+
+.post-edit {
+  margin: 0 auto;
+  width: fit-content;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__header {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  //&__attaches {
+  //  display: flex;
+  //  flex-direction: row;
+  //  flex-wrap: wrap;
+  //  gap: 15px;
+  //  &__attach {
+  //    display: flex;
+  //    flex-direction: column-reverse;
+  //    gap: 5px;
+  //    height: 100px;
+  //    width: 100px;
+  //  }
+  //}
+
+  &__grid{
+    height: 100%;
+    display: flex;
+    gap: 15px;
+  }
+
+  &__params {
+    padding: 15px;
+    background-color: white;
+    border-radius: 12px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__sub-params{
+    border-radius: 12px;
+    width: 250px;
+  }
+
+  &__params-buttons{
+    background-color: white;
+    border-radius: 12px;
+    height: 30px;
+    width: 100%;
+  }
+
+  &__params-buttons-save{
+    @include main-color-button;
+    width: fit-content;
+    height: 100%;
+    padding: 15px;
+  }
+
+  &__params-attach-vars{
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  &__params-theme {
+    display: block;
+    font-size: 26px;
+    border: none;
+  }
+
+  &__params-description{
+    //display: block;
+    //font-size: 20px;
+    //border: none;
+    //width: 100%;
+    //resize: none;
+    //height: fit-content;
+  }
+
+  &__params-tags{
+    margin-top: 7vh;
+    background-color: white;
+    border-radius: 12px;
+    height: 10vh;
+    margin-left: -1vw;
+    padding-top: 1vh;
+    padding-bottom: 4vh;
+    padding-left: 1vw;
+  }
+
+  &__params-tag-input {
+    border-color: #D9D9D9;
+    border-radius: 12px;
+    height: 3vh;
+    padding: 1vh;
+    width: 90%;
+  }
+
+  &__sub-params-available{
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  &__sub-params-available-sub{
+    font-size: 16px;
+  }
+
+  &__sub-params-available-sub > label{
+    border: none !important;
+  }
+}
+
+th, td {
+  padding: 5px 15px;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+
+tr:last-child td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+td, label {
+  cursor: pointer;
+}
+
+
+#back {
+  cursor: pointer;
+  color: #FF8A26;
+}
+
+@media (max-width: 760px){
+  .post-edit {
+    width: 100% !important;
+    margin: 0 !important;
+    &__grid {
+      flex-direction: column !important;
+    }
+    &__header {
+      margin-left: 15px;
+    }
+    &__params {
+      width: auto;
+    }
+    &__sub-params {
+      width: auto;
+      &-available {
+        width: auto;
+      }
+    }
+  }
+}
+
+//.delete-profile-button {
+//  border-color: #FF4D4D;
+//  float: right;
+//  margin-right: 20vh;
+//  color: #FF4D4D;
+//  width: 12vw;
+//  background-color: white;
+//  height: 100%;
+//  margin-left: 1vw;
+//}
+
+.post-block {
+  outline: none;
+  height: fit-content;
+  margin: 0;
+  user-select: text;
+}
+
+.post-block p {
+  padding: 7px 0;
+  margin: 0;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-edit__attaches__attach__delete-btn {
+  border: none;
+  background: none;
+  color: gray;
+  font-style: italic;
+  height: auto;
+  cursor: pointer;
+}
+

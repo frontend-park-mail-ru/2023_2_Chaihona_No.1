@@ -1,0 +1,19 @@
+@import "@components/Shared/common.scss";
+
+.subscription-level {
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 15px;
+  font-size: 16px;
+
+  &__buy-button {
+    @include white-button;
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    width: 100%;
+  }
+}

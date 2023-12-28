@@ -1,0 +1,221 @@
+@import "@components/Shared/common.scss";
+
+@mixin container {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #FFE5CC;
+  gap: 15px;
+  padding: 15px;
+  width: fit-content;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 680px;
+}
+
+.start-page {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  margin-top: 15px;
+
+  // margin-top: 50px;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+ &__container{
+   @include container;
+   &-1{
+      @include container;
+      flex-direction: row;
+    }
+    &-2{
+      @include container;
+      flex-direction: row-reverse;
+   }
+   &-3{
+    @include container();
+    flex-direction: column;
+    align-items: center !important;
+   }
+
+   &__text-part {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-1 {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &-2 {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+   }
+
+   &__header{
+     text-align: center;
+     font-family: sans-serif;
+     font-weight: bold;
+     font-size: 20px;
+     color: #D68048;
+   }
+
+   &__img{
+    //  width: 50px;
+    //  height: 50px;
+    height: 160px;
+    object-fit: cover;
+   }
+
+   &__text{
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+     color: #D68048;
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+     &-1{
+      align-items: flex-start;
+      font-family: sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #D68048;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+     }
+     &-2 {
+      align-items: flex-end;
+      font-family: sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #D68048;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+     }
+   }
+
+   &__button{
+    @include main-color-button;
+    padding: 15px;
+   }
+
+   &__profiles{
+     border-radius: 12px;
+     border: 1.5px solid #FFB97D;
+     width: fit-content;
+     height: fit-content;
+     padding: 15px;
+     display: flex;
+     flex-direction: row;
+     gap: 15px;
+     background-color: #FFDBB8;
+     align-items: center;
+
+     &__arrow{
+       &__left{
+         display: inline-block;
+         width: 15px;
+         height: 15px;
+         border-top: 2px solid #000;
+         border-right: 2px solid #000;
+         color: #FFB97D;
+         transform: rotate(-135deg);
+       }
+       &__right{
+         display: inline-block;
+         width: 15px;
+         height: 15px;
+         border-top: 2px solid #000;
+         border-right: 2px solid #000;
+         color: #FFB97D;
+         transform: rotate(45deg);
+       }
+     }
+     &__profile{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       background-color: white;
+       border-radius: 12px;
+       border: 1.5px solid #FFB97D;
+       width: fit-content;
+       height: fit-content;
+       position: relative;
+       gap: 15px;
+       padding: 15px;
+
+       &__ava{
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        background-color: #C8D9EB;
+       }
+
+       &__name{
+         font-family: sans-serif;
+         font-size: 14px;
+         font-weight: bold;
+       }
+
+       &__followers{
+         font-family: sans-serif;
+         font-size: 12px;
+         font-weight: bold;
+       }
+       &__button{
+        @include main-color-button;
+       }
+     }
+   }
+ }
+}
+
+@media (max-width: 760px) {
+  .start-page {
+    margin: 0 !important;
+    width: 100%;
+    &__container {
+      &-1{
+        width: auto;
+        border-radius: 0;
+        min-width: 0 !important;
+      }
+      &-2{
+        width: auto;
+        border-radius: 0;
+        min-width: 0 !important;
+      }
+      &-3{
+        width: auto;
+        border-radius: 0;
+        min-width: 0 !important;
+      }
+      &__profiles{
+        max-width: 100%;
+        overflow: scroll;
+      }
+    }
+  }
+    
+  
+}

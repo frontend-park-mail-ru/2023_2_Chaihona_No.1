@@ -1,0 +1,105 @@
+<div class="start-page">
+    <div class="start-page__container-1">
+        <div class="start-page__container__text-part-1">
+            <p class="start-page__container__header">Начните зарабатывать на своих увлечениях</p>
+            <div class="start-page__container__text-1">
+                <span>Стабильный доход, независящий от рекламы</span>
+                <span>Создавайте уникальные мерпориятия</span>
+                <span>Свобода творчества</span>
+            </div>
+            <button type="button" class="start-page__container__button" name="buttonlog" id="author-btn">Стать автором</button>
+        </div>
+        <figure>
+            <img class="start-page__container__img" src="" id="flourish-pig">
+        </figure>
+    </div>
+    <div class="start-page__container-2">
+        <div class="start-page__container__text-part-2">
+            <p class="start-page__container__header">Поддержите своих любимых авторов</p>
+            <div class="start-page__container__text-2">
+                <span>Принимайте участие в творчестве автора</span>
+                <span>Следите за эксклюзивным контентом</span>
+                <span>Находите себе единомышленников</span>
+            </div>
+            <button type="button" class="start-page__container__button" name="buttonlog" id="donater-btn" >Стать донатером</button>
+        </div>
+        <figure>
+            <img class="start-page__container__img" src="" id="hand">
+        </figure>
+    </div>
+    <div class="start-page__container-3">
+        <p class="start-page__container__header">Уже с нами</p>
+        <div class="start-page__container__profiles">
+            <span class="start-page__container__profiles__arrow__left"></span>
+            {{#each profiles}}
+                <div class="start-page__container__profiles__profile">
+                    <figure class="ava-figure" style="height:50px">
+                        <img src="" class="start-page__container__profiles__profile__ava" data-sub="{{this.user.id}}">
+                    </figure>
+                    <div class="start-page__container__profiles__profile__name">
+                        {{this.user.login}}
+                    </div>
+                    <div class="start-page__container__profiles__profile__followers">
+                        {{this.subscribers}} подписчиков
+                    </div>
+                    <input type="button" class="start-page__container__profiles__profile__button" data-sub="{{this.user.id}}" name="buttonlog" value="Перейти в профиль">
+                </div>
+            {{/each}}
+            <span class="start-page__container__profiles__arrow__right"></span>
+        </div>
+        <button type="button" class="start-page__container__button" name="buttonlog" id="join-btn">Присоединиться</button>
+    </div>
+</div>
+
+
+{{!-- <div class="cont" align="center">
+    <div class="container1">
+        <p class="author_title">Начните зарабатывать на своих увлечениях</p>
+
+        <div class="text1">
+            <div class="author_text">
+                Стабильный доход, независящий от рекламы<br><br>
+                Создавайте уникальные мерпориятия<br><br>
+                Свобода творчества<br></div>
+            <input type="button" class="logbutton" name="buttonlog" value="Стать автором" id="author-btn">
+        </div>
+        <div class="ris1">
+            <img class="pig_with_coins" src="pngwing3.png" id="flourish-pig">
+        </div>
+    </div>
+    <br>
+    <div class="container2">
+        <p class="donater_title">Поддержите своих любимых авторов</p>
+        <div class="ris2">
+            <img class="hand" id="hand" src="pngwingHand.png">
+        </div>
+        <div class="text2">
+            <div class="donater_text">
+                Принимайте участие в творчестве автора<br><br>
+                Следите за эксклюзивным контентом<br><br>
+                Находите себе единомышленников<br></div>
+            <input type="button" class="logbutton" name="buttonlog" value="Стать донатером" id="donater-btn">
+        </div>
+    </div>
+    <br><br>
+    <div class="container3">
+        <p class="profiles_title">Уже с нами</p>
+    <div class="profiles">
+        <span class="arrow arrow-left"></span>
+        {{#each profiles}}
+            <div class="profile">
+                <div class="ava"></div>
+                <div class="name">
+                    {{this.user.login}} <br><br>
+                </div>
+                <div class="followers">
+                    {{this.subscribers}}<br>
+                </div>
+                <input type="button" class="logbutton1" name="buttonlog" value="Перейти в профиль">
+            </div>
+        {{/each}}
+            <span class="arrow arrow-right"></span>
+        </div>
+        <input type="button" class="joinbutton" name="buttonlog" value="Присоединиться" id="join-btn">
+    </div>
+</div> --}}
